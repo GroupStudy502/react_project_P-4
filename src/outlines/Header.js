@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
+import cookies from 'react-cookies';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +11,10 @@ import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
+import CurrentAdress from '../kakaoapi/CurrentAdress';
+
 import UserInfoContext from '../member/modules/UserInfoContext';
+import { SmallButton } from '../commons/components/Buttons';
 
 const { primary, dark, light } = color;
 
@@ -18,7 +22,7 @@ const HeaderBox = styled.header`
   .site-top {
     background: #f8f8f8;
     border-bottom: 1px solid #d5d5d5;
-    height: 35px;
+    height: 50px;
 
     div {
       text-align: right;
@@ -74,12 +78,21 @@ const Header = () => {
   const { t } = useTranslation();
   const {
     states: { isLogin, userInfo, isAdmin },
+    actions: { setIsLogin, setIsAdmin, setUserInfo },
   } = useContext(UserInfoContext);
+
+  const onLogout = useCallback(() => {
+    setIsLogin(false);
+    setIsAdmin(false);
+    setUserInfo(null);
+    cookies.remove('token', { path: '/' });
+  }, [setIsLogin, setIsAdmin, setUserInfo]);
 
   return (
     <HeaderBox>
       <section className="site-top">
         <div className="layout-width">
+          <CurrentAdress />
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
@@ -100,12 +113,9 @@ const Header = () => {
                   {t('사이트_관리')}
                 </NavLink>
               )}
-              <NavLink
-                to="/member/logout"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
+              <SmallButton color="secondary" width={150} onClick={onLogout}>
                 {t('로그아웃')}
-              </NavLink>
+              </SmallButton>
             </>
           ) : (
             <>
