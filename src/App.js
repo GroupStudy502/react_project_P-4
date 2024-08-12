@@ -16,9 +16,10 @@ const Login = loadable(() => import('./member/pages/Login'));
 const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 /* 마이페이지 E */
 
-/* 뉴스 페이지 S */
-const News = loadable(() => import('./news/pages/News'));
-/* 뉴스 페이지 E */
+/* 식당 페이지 S */
+const RestaurantInfo = loadable(() => import('./main/pages/RestaurantInfo'));
+const RestaurantList = loadable(() => import('./main/pages/RestaurantList'));
+/* 식당 페이지 E */
 
 // 매장 상세 페이지
 const DetailsMain = loadable(() => import('./restaurantdetails/pages/DetailsMain'));
@@ -39,13 +40,15 @@ const App = () => {
           <Route index element={<MypageMain />} />
         </Route>
         {/* 마이페이지 E */}
-        {/* 뉴스 페이지  */}
-        <Route path="news">
-          <Route path=":category?" element={<News />} />
+        {/* 식당 페이지 S */}
+        <Route path="restaurant">
+          <Route path="info" element={<RestaurantInfo />} />
+          <Route path="list" element={<RestaurantList />} />
         </Route>
         <Route path="restaurantList">
           <Route path="details/:id" element={<DetailsMain />} />
         </Route>
+        {/* 식당 페이지 E */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
     </Routes>
