@@ -1,9 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 
+
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
 const Main = loadable(() => import('./main/pages/Main')); // 메인페이지
+
 
 /* 회원 페이지 S */
 const Join = loadable(() => import('./member/pages/Join'));
@@ -17,6 +19,9 @@ const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 /* 뉴스 페이지 S */
 const News = loadable(() => import('./news/pages/News'));
 /* 뉴스 페이지 E */
+
+// 매장 상세 페이지
+const DetailsMain = loadable(() => import('./restaurantdetails/pages/DetailsMain'));
 
 const App = () => {
   return (
@@ -37,6 +42,9 @@ const App = () => {
         {/* 뉴스 페이지  */}
         <Route path="news">
           <Route path=":category?" element={<News />} />
+        </Route>
+        <Route path="restaurantList">
+          <Route path="details/:id" element={<DetailsMain />} />
         </Route>
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
