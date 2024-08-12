@@ -11,15 +11,18 @@ import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
+import CurrentAdress from '../kakaoapi/CurrentAdress';
+
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
+
 const { primary, dark, light } = color;
 
 const HeaderBox = styled.header`
   .site-top {
     background: #f8f8f8;
     border-bottom: 1px solid #d5d5d5;
-    height: 35px;
+    height: 50px;
 
     div {
       text-align: right;
@@ -89,6 +92,7 @@ const Header = () => {
     <HeaderBox>
       <section className="site-top">
         <div className="layout-width">
+          <CurrentAdress />
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
