@@ -3,8 +3,6 @@ import loadable from '@loadable/component';
 import { load } from 'react-cookies';
 import { Component } from 'react';
 
-
-
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
 const Main = loadable(() => import('./main/pages/Main')); // 메인페이지
@@ -27,6 +25,11 @@ const RestaurantList = loadable(() => import('./main/pages/RestaurantList'));
 const JjimList = loadable(() => import('./mypage/pages/JjimList'));
 /* 찜한 내역 E */
 
+// 매장 상세 페이지
+const DetailsMain = loadable(() =>
+  import('./restaurantdetails/pages/DetailsMain'),
+);
+
 const App = () => {
   return (
     <Routes>
@@ -43,13 +46,16 @@ const App = () => {
           <Route index element={<MypageMain />} />
         </Route>
         <Route path="JjimList">
-          <Route index element={<JjimList /> } />
+          <Route index element={<JjimList />} />
         </Route>
         {/* 마이페이지 E */}
         {/* 식당 페이지 S */}
         <Route path="restaurant">
           <Route path="info" element={<RestaurantInfo />} />
           <Route path="list" element={<RestaurantList />} />
+        </Route>
+        <Route path="restaurantList">
+          <Route path="details/:id" element={<DetailsMain />} />
         </Route>
         {/* 식당 페이지 E */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}

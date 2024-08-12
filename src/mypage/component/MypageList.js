@@ -11,9 +11,8 @@ const Box = styled.div`
   border-color: black;
   border: 3px solid;
   border-radius: 20px;
-  display: flex;
-  margin-top: 20px;
-  margin-left: 300px;
+  margin: 20px auto 0 auto;
+  position: relative;
 
   .profile-img .box {
     position: relative;
@@ -25,12 +24,26 @@ const Box = styled.div`
     box-sizing: 30px;
     display: none;
   }
+
+  img {
+    width: 100%;
+    vertical-align: middle;
+  }
+  .icon {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    bottom: 3px;
+    right: 3px;
+  }
 `;
 
 const MypageList = () => {
   return (
     <div className="profile-img">
       <Box>
+        <GrAddCircle className="icon" />
         <img src={chunsik} />
       </Box>
       <ButtonGroup width={450}>
