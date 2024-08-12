@@ -6,7 +6,11 @@ const FooterBox = styled.footer`
 `;
 
 const Footer = () => {
-  return <FooterBox></FooterBox>;
+  return (
+  <FooterBox>
+    <h1>footer</h1>
+  </FooterBox>
+  );
 };
 
 export default React.memo(Footer);
