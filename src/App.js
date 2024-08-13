@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
+
 import { load } from 'react-cookies';
 import { Component } from 'react';
 
@@ -53,8 +54,6 @@ const App = () => {
         <Route path="restaurant">
           <Route path="info" element={<RestaurantInfo />} />
           <Route path="list" element={<RestaurantList />} />
-        </Route>
-        <Route path="restaurantList">
           <Route path="details/:id" element={<DetailsMain />} />
         </Route>
         {/* 식당 페이지 E */}
