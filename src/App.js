@@ -1,11 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 
-
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
 const Main = loadable(() => import('./main/pages/Main')); // 메인페이지
-
 
 /* 회원 페이지 S */
 const Join = loadable(() => import('./member/pages/Join'));
@@ -22,7 +20,9 @@ const RestaurantList = loadable(() => import('./main/pages/RestaurantList'));
 /* 식당 페이지 E */
 
 // 매장 상세 페이지
-const DetailsMain = loadable(() => import('./restaurantdetails/pages/DetailsMain'));
+const DetailsMain = loadable(() =>
+  import('./restaurantdetails/pages/DetailsMain'),
+);
 
 const App = () => {
   return (
@@ -44,8 +44,6 @@ const App = () => {
         <Route path="restaurant">
           <Route path="info" element={<RestaurantInfo />} />
           <Route path="list" element={<RestaurantList />} />
-        </Route>
-        <Route path="restaurantList">
           <Route path="details/:id" element={<DetailsMain />} />
         </Route>
         {/* 식당 페이지 E */}
