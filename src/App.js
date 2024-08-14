@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import Restaurant from './routes/Restaurant';
 import loadable from '@loadable/component';
 
 import { load } from 'react-cookies';
@@ -20,6 +21,7 @@ const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 /* 식당 페이지 S */
 const RestaurantInfo = loadable(() => import('./main/pages/RestaurantInfo'));
 const RestaurantList = loadable(() => import('./main/pages/RestaurantList'));
+const RestaurantView = loadable(() => import('./main/pages/RestaurantView'));
 /* 식당 페이지 E */
 
 /* 찜한 내역 S */
@@ -31,7 +33,11 @@ const DetailsMain = loadable(() =>
   import('./restaurantdetails/pages/DetailsMain'),
 );
 
+const routeUrlPaths = ['member', 'mypage', 'restaurant']
+
 const App = () => {
+
+
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -55,6 +61,10 @@ const App = () => {
           <Route path="info" element={<RestaurantInfo />} />
           <Route path="list" element={<RestaurantList />} />
           <Route path="details/:id" element={<DetailsMain />} />
+        </Route>
+        <Route path="/restaurant">
+          <Route index element={<RestaurantList />} />
+          <Route path=":id" element={<RestaurantView />} />
         </Route>
         {/* 식당 페이지 E */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
