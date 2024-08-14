@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-
 import { FaSearch } from 'react-icons/fa';
-
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import logo from '../images/logo.png';
@@ -90,8 +88,14 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
+<<<<<<< HEAD
   // 관리자 url
   const adminUrl = process.env.REACT_APP_ADMIN_URL + "?token=" + cookies.load('token');
+=======
+  // 관리자 URL
+  const adminUrl =
+    process.env.REACT_APP_ADMIN_URL + '?token=' + cookies.load('token');
+>>>>>>> master
 
   return (
     <HeaderBox>
@@ -112,7 +116,11 @@ const Header = () => {
               </NavLink>
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
+<<<<<<< HEAD
                   {t('사이트관리')}
+=======
+                  {t('사이트_관리')}
+>>>>>>> master
                 </a>
               )}
               <SmallButton color="secondary" width={150} onClick={onLogout}>

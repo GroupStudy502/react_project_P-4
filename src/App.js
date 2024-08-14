@@ -1,73 +1,37 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
-
-import { load } from 'react-cookies';
-import { Component } from 'react';
 
 const MainLayout = loadable(() => import('./layouts/MainLayout'));
 const NotFound = loadable(() => import('./commons/pages/NotFound'));
 const Main = loadable(() => import('./main/pages/Main')); // 메인페이지
 
-/* 회원 페이지 S */
-const Join = loadable(() => import('./member/pages/Join'));
-const Login = loadable(() => import('./member/pages/Login'));
-/* 회원 페이지 E */
+// 회원 페이지
+const Member = loadable(() => import('./routes/Member'));
 
-/* 마이페이지 S */
-const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
-/* 마이페이지 E */
+// 마이 페이지
+const Mypage = loadable(() => import('./routes/Mypage'));
 
-/* 식당 페이지 S */
-const RestaurantInfo = loadable(() => import('./main/pages/RestaurantInfo'));
-/* 식당 페이지 E */
+// 식당 페이지
+const Restaurant = loadable(() => import('./routes/Restaurant'));
 
-/* 찜한 내역 S */
-const JjimList = loadable(() => import('./mypage/pages/JjimList'));
-/* 찜한 내역 E */
+// 식당 찾기 페이지
+const Find = loadable(() => import('./routes/Find'));
 
-// 매장 상세 페이지
-const DetailsMain = loadable(() =>
-  import('./restaurantdetails/pages/DetailsMain'),
-);
-
-/* 식당 페이지 B */
-const RestaurantList2 = loadable(() => import("./restaurant/pages/RestaurantList"));
-const RestaurantView = loadable(() => import("./restaurant/pages/RestaurantList"));
-/* 식당 페이지 D */
-
-const routeUrlPath = ['member', 'mypage', 'restaurant'];
-
+const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'find'];
 
 const App = () => {
-  return (
+  const location = useLocation();
+  return routeUrlPaths.includes(location.pathname.split('/')[1]) ? (
+    <>  
+      <Member />
+      <Mypage />
+      <Restaurant />
+      <Find />
+    </>
+  ) : (
     <Routes>
-      <Route path="/" element={<MainLayout />}> 
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<Main />} /> {/* 메인 페이지 */}
-        {/* 회원 페이지 S */}
-        <Route path="member">
-          <Route path="join" element={<Join />} />
-          <Route path="login" element={<Login />} />
-        </Route>
-        {/* 회원 페이지 E */}
-        {/* 마이페이지 S */}
-        <Route path="mypage">
-          <Route index element={<MypageMain />} />
-        </Route>
-        <Route path="JjimList">
-          <Route index element={<JjimList />} />
-        </Route>
-        {/* 마이페이지 E */}
-        {/* 식당 페이지 S */}
-        <Route path="restaurant2">
-          <Route path="info" element={<RestaurantInfo />} />
-         
-          <Route path="details/:id" element={<DetailsMain />} />
-        </Route>
-        <Route path='/restaurant' element={<MainLayout/>}>
-          <Route path='list' element={<RestaurantList2 />} />
-          <Route path=":id" element={<RestaurantView />} />
-         </Route>
-        {/* 식당 페이지 E */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
     </Routes>

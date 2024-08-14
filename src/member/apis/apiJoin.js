@@ -3,7 +3,11 @@ import cookies from 'react-cookies';
 
 export const apiJoin = (form) =>
   new Promise((resolve, reject) => {
+<<<<<<< HEAD
     cookies.remove('token', { path: '/'});
+=======
+    cookies.remove('token', { path: '/' });
+>>>>>>> master
 
     apiRequest('/account', 'POST', form)
       .then((res) => {
