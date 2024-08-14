@@ -19,6 +19,9 @@ const KakaoMap = ({
 }) => {
   const [_center, setCenter] = useState(center ?? {});
   const mapRef = useRef(null);
+  useEffect(() => {
+    setCenter(center);
+  }, [center]);
 
   // 현재 위치 기반 S
   useEffect(() => {

@@ -21,7 +21,7 @@ const Restaurant = () => {
     <Routes>
       <Route path="/restaurant" element={<MainLayout />}>
         <Route path="list" element={<RestaurantList />} />
-        <Route path=":id" element={<RestaurantView />} />
+        <Route path="info/:rstrId" element={<RestaurantView />} />
         <Route path="details/:id" element={<DetailsMain />} />
       </Route>
     </Routes>
