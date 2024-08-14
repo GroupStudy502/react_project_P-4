@@ -3,6 +3,15 @@ import Loading from '../../commons/components/Loading';
 import { apiGet } from '../apis/apiInfo';
 import { useParams } from 'react-router-dom';
 import KakaoMap from '../../kakaoapi/KakaoMap';
+import itemImage from '../components/itemImage';
+import ItemDescription from '../components/ItemDescription';
+import ItemImage from '../components/itemImage';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+    display: flex;
+    margin-bottom: 15px;
+`;
 
 const ViewContainer = ({setPageTitle}) => {
     const [item, setItem] = useState(null);
@@ -12,6 +21,8 @@ const ViewContainer = ({setPageTitle}) => {
     const { rstrId } = useParams();
 
     useEffect(() => {
+        setLoading(true);
+
         apiGet(rstrId)
             .then(item => {
                 setPageTitle(item.rstrNm);
@@ -29,14 +40,23 @@ const ViewContainer = ({setPageTitle}) => {
             setLoading(false);
     }, [rstrId, setPageTitle]);
 
-    if (loading) {
+    const onShowImage = useCallback((imageUrl) => {
+        console.log('이미지 주소', imageUrl);
+    }, []);
+
+    if (loading || !item) {
         return <Loading />;
     }
 
-    return <>
+    return (
+        <>
+        <Wrapper>
+          {item?.images?.length && (<ItemImage images={item.images} />
+        )}
+          <ItemDescription item={item} />
+        </Wrapper>
         <KakaoMap {...mapOptions} />
-    </>;
-
-};
-
+        </>
+      );
+    };
 export default React.memo(ViewContainer);
