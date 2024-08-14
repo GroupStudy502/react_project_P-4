@@ -18,6 +18,8 @@ import { SmallButton } from '../commons/components/Buttons';
 
 const { primary, dark, light } = color;
 
+
+
 const HeaderBox = styled.header`
   .site-top {
     background: #f8f8f8;
@@ -88,6 +90,9 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
+  // 관리자 url
+  const adminUrl = process.env.REACT_APP_ADMIN_URL + "?token=" + cookies.load('token');
+
   return (
     <HeaderBox>
       <section className="site-top">
@@ -106,12 +111,9 @@ const Header = () => {
                 {t('마이페이지')}
               </NavLink>
               {isAdmin && (
-                <NavLink
-                  to="/admin"
-                  className={({ isActive }) => classNames({ on: isActive })}
-                >
-                  {t('사이트_관리')}
-                </NavLink>
+                <a href={adminUrl} target="_blank">
+                  {t('사이트관리')}
+                </a>
               )}
               <SmallButton color="secondary" width={150} onClick={onLogout}>
                 {t('로그아웃')}

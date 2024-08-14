@@ -31,10 +31,16 @@ const DetailsMain = loadable(() =>
   import('./restaurantdetails/pages/DetailsMain'),
 );
 
+/* 식당 페이지 B */
+const RestaurantList2 = loadable(() => import("./restaurant/pages/RestaurantList2"));
+const RestaurantView = loadable(() => import("./restaurant/pages/RestaurantList2"));
+/* 식당 페이지 D */
+
+
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<MainLayout />}> 
         <Route index element={<Main />} /> {/* 메인 페이지 */}
         {/* 회원 페이지 S */}
         <Route path="member">
@@ -56,6 +62,10 @@ const App = () => {
           <Route path="list" element={<RestaurantList />} />
           <Route path="details/:id" element={<DetailsMain />} />
         </Route>
+        <Route path='/restaurant2' element={<MainLayout/>}>
+          <Route index element={<RestaurantList2 />} />
+          <Route path=":id" element={<RestaurantView />} />
+         </Route>
         {/* 식당 페이지 E */}
         <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
       </Route>
