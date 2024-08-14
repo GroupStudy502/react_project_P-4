@@ -19,7 +19,6 @@ const MypageMain = loadable(() => import('./mypage/pages/MypageMain'));
 
 /* 식당 페이지 S */
 const RestaurantInfo = loadable(() => import('./main/pages/RestaurantInfo'));
-const RestaurantList = loadable(() => import('./main/pages/RestaurantList'));
 /* 식당 페이지 E */
 
 /* 찜한 내역 S */
@@ -32,9 +31,11 @@ const DetailsMain = loadable(() =>
 );
 
 /* 식당 페이지 B */
-const RestaurantList2 = loadable(() => import("./restaurant/pages/RestaurantList2"));
-const RestaurantView = loadable(() => import("./restaurant/pages/RestaurantList2"));
+const RestaurantList2 = loadable(() => import("./restaurant/pages/RestaurantList"));
+const RestaurantView = loadable(() => import("./restaurant/pages/RestaurantList"));
 /* 식당 페이지 D */
+
+const routeUrlPath = ['member', 'mypage', 'restaurant'];
 
 
 const App = () => {
@@ -57,13 +58,13 @@ const App = () => {
         </Route>
         {/* 마이페이지 E */}
         {/* 식당 페이지 S */}
-        <Route path="restaurant">
+        <Route path="restaurant2">
           <Route path="info" element={<RestaurantInfo />} />
-          <Route path="list" element={<RestaurantList />} />
+         
           <Route path="details/:id" element={<DetailsMain />} />
         </Route>
-        <Route path='/restaurant2' element={<MainLayout/>}>
-          <Route index element={<RestaurantList2 />} />
+        <Route path='/restaurant' element={<MainLayout/>}>
+          <Route path='list' element={<RestaurantList2 />} />
           <Route path=":id" element={<RestaurantView />} />
          </Route>
         {/* 식당 페이지 E */}

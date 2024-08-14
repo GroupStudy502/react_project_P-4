@@ -6,7 +6,7 @@ import { MainTitle } from '../../commons/components/TitleBox';
 import ListContainer from '../containers/ListContainer';
 
 
-const RestaurantList2 = () => {
+const RestaurantList = () => {
     const { t } = useTranslation();
 
     return (
@@ -22,4 +22,4 @@ const RestaurantList2 = () => {
       );
     };
 
-export default React.memo(RestaurantList2);
+export default React.memo(RestaurantList);
