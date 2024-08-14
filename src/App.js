@@ -17,7 +17,10 @@ const Restaurant = loadable(() => import('./routes/Restaurant'));
 // 식당 찾기 페이지
 const Find = loadable(() => import('./routes/Find'));
 
-const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'find'];
+// 예약 페이지
+const Reservation = loadable(() => import('./routes/Reservation'));
+
+const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'find', 'reservation'];
 
 const App = () => {
   const location = useLocation();
@@ -27,6 +30,7 @@ const App = () => {
       <Mypage />
       <Restaurant />
       <Find />
+      <Reservation />
     </>
   ) : (
     <Routes>
