@@ -29,4 +29,6 @@ const ItemsBox = ({ items }) => {
   );
 };
 
+
 export default React.memo(ItemsBox);
+

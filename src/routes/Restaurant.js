@@ -24,4 +24,6 @@ const Restaurant = () => {
   );
 };
 
+
 export default React.memo(Restaurant);
+
