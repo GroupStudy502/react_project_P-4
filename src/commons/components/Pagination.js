@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import styled from 'styled-components';
 import { MdFirstPage, MdLastPage, MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import classNames from 'classnames';
@@ -61,12 +60,6 @@ const Pagination  = ({pagination, onClick}) => {
           </Wrapper>
         )
       );
-
-=======
-
-const Pagination = () => {
-  return <h1>페이징...</h1>;
->>>>>>> master
 };
 
 export default React.memo(Pagination);
