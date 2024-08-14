@@ -17,7 +17,7 @@ const Restaurant = () => {
   return (
     <Routes>
       <Route path="/restaurant" element={<MainLayout />}>
-        <Route index element={<RestaurantList />} />
+        <Route path="list" element={<RestaurantList />} />
         <Route path=":id" element={<RestaurantView />} />
       </Route>
     </Routes>
