@@ -35,10 +35,10 @@ const MainMenu = () => {
     <MenuBox>
       <div className="layout-width">
         <NavLink
-          to="/restaurant/info"
+          to="/find"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('근처 식당 찾기')}
+          {t('식당 찾기')}
         </NavLink>
       </div>
     </MenuBox>

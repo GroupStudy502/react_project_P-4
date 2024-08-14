@@ -14,15 +14,19 @@ const Mypage = loadable(() => import('./routes/Mypage'));
 // 식당 페이지
 const Restaurant = loadable(() => import('./routes/Restaurant'));
 
-const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival'];
+// 식당 찾기 페이지
+const Find = loadable(() => import('./routes/Find'));
+
+const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'find'];
 
 const App = () => {
   const location = useLocation();
   return routeUrlPaths.includes(location.pathname.split('/')[1]) ? (
-    <>
+    <>  
       <Member />
       <Mypage />
       <Restaurant />
+      <Find />
     </>
   ) : (
     <Routes>

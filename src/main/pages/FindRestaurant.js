@@ -29,8 +29,8 @@ const options = {
     'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
 };
 
-const RestaurantInfo = () => {
+const FindRestaurant = () => {
   return <KakaoMap {...options} />;
 };
 
-export default React.memo(RestaurantInfo);
+export default React.memo(FindRestaurant);
