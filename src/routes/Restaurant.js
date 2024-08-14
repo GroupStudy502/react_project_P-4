@@ -11,6 +11,9 @@ const RestaurantList = loadable(() =>
 const RestaurantView = loadable(() =>
   import('../restaurant/pages/RestaurantView'),
 );
+const DetailsMain = loadable(() =>
+  import('../restaurantdetails/pages/DetailsMain'),
+);
 /* 식당 페이지 E */
 
 const Restaurant = () => {
@@ -19,6 +22,7 @@ const Restaurant = () => {
       <Route path="/restaurant" element={<MainLayout />}>
         <Route path="list" element={<RestaurantList />} />
         <Route path=":id" element={<RestaurantView />} />
+        <Route path="details/:id" element={<DetailsMain />} />
       </Route>
     </Routes>
   );
