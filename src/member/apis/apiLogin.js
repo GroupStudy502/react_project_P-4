@@ -1,41 +1,39 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import loadable from '@loadable/component';
+import apiRequest from '../../commons/libs/apiRequest';
+import cookies from 'react-cookies';
 
-const MainLayout = loadable(() => import('./layouts/MainLayout'));
-const NotFound = loadable(() => import('./commons/pages/NotFound'));
-const Main = loadable(() => import('./main/pages/Main')); // 메인페이지
+// 로그인 처리
+export const apiLogin = (form) =>
+  new Promise((resolve, reject) => {
+    cookies.remove('token', { path: '/' });
+    apiRequest('/account/token', 'POST', form)
+      .then((res) => {
+        if (!res.data.success) {
+          // 검증 실패, 로그인 실패
+          reject(res.data);
+          return;
+        }
 
-// 회원 페이지
-const Member = loadable(() => import('./routes/Member'));
+        // 로그인 성공시 - 토큰 데이터
+        resolve(res.data);
+      })
+      .catch((err) => reject(err));
+  });
 
-// 마이 페이지
-const Mypage = loadable(() => import('./routes/Mypage'));
+// 로그인한 회원정보 조회
+export const apiUser = () =>
+  new Promise((resolve, reject) => {
+    apiRequest('/account')
+      .then((res) => {
+        if (res.status !== 200) {
+          reject(res.data);
+          cookies.remove('token', { path: '/' });
+          return;
+        }
 
-// 식당 페이지
-const Restaurant = loadable(() => import('./routes/Restaurant'));
-
-// 식당 찾기 페이지
-const Find = loadable(() => import('./routes/Find'));
-
-const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'find'];
-
-const App = () => {
-  const location = useLocation();
-  return routeUrlPaths.includes(location.pathname.split('/')[1]) ? (
-    <>  
-      <Member />
-      <Mypage />
-      <Restaurant />
-      <Find />
-    </>
-  ) : (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Main />} /> {/* 메인 페이지 */}
-        <Route path="*" element={<NotFound />} /> {/* 없는 페이지 */}
-      </Route>
-    </Routes>
-  );
-};
-
-export default App;
+        resolve(res.data.data);
+      })
+      .catch((err) => {
+        cookies.remove('token', { path: '/' });
+        reject(err);
+      });
+  });
