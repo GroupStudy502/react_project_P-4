@@ -54,7 +54,7 @@ const ViewContainer = ({ setPageTitle }) => {
         <ItemDescription item={item} />
       </Wrapper>
       <KakaoMap {...mapOptions} />
-      <div>{item.rstrRdnmAdr}</div>
+      <div>{item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
     </>
   );
 };
