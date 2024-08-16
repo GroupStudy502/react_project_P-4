@@ -16,6 +16,16 @@ function getQueryString(searchParams) {
   return qs;
 }
 
+function getQueryString(searchParams) {
+  const qs = {};
+  if (searchParams.size > 0) {
+    for (const [k, v] of searchParams) {
+      qs[k] = v;
+    }
+  }
+  return qs;
+}
+
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
 
@@ -37,6 +47,7 @@ const ListContainer = () => {
         console.error(err);
       }
     })();
+
   }, [search]);
 
   /* 검색 관련 함수 */
