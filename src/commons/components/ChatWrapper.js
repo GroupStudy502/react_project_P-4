@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Typing from "react-typing-animation";
 import styled from 'styled-components';
+import { color } from "../../styles/color";
+import fontSize from "../../styles/fontSize";
+
+const { medium } = fontSize;
+
 const OuterChatBox = styled.div`
 
   display: flex;
@@ -13,7 +18,7 @@ const OuterChatBox = styled.div`
 .chat-box {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: ${color.light};
   border-radius: 8px;
   box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
   overflow: hidden;
@@ -35,8 +40,8 @@ const OuterChatBox = styled.div`
 
 .user-message {
   align-self: flex-end;
-  background: #ff2942;
-  color: #fff;
+  background: ${color.jmt};
+  color: ${color.light};
   padding: 10px 15px;
   border-radius: 16px 16px 0 16px;
 }
@@ -68,14 +73,14 @@ const OuterChatBox = styled.div`
   padding: 10px 20px;
   border-radius: 16px;
   border: none;
-  background-color: #ff2942;
-  color: #fff;
+  background-color: ${color.jmt};
+  color: ${color.light};
   cursor: pointer;
 }
 
 h1 {
   text-align: center;
-  background-color: #f5f5f5;
+  background-color: ${color.primary};
   padding: 20px;
   margin: 0;
 }

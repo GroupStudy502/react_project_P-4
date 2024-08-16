@@ -7,7 +7,7 @@ export const color = {
   info: '#17a2b8',
   light: '#f8f9fa',
   dark: '#343a40',
-  jmt: '#ff2942',
+  jmt: '#ff3d00',
 };
 
 export const buttonColor = {

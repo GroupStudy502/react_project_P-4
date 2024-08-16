@@ -17,7 +17,7 @@ const Main = () => {
         <MainTitle>{t('배너')}</MainTitle>
         <MainTitle>{t('식당 카테고리')}</MainTitle>
       </OuterBox>
-      <ModalChat>{t('채팅창')}</ModalChat>
+      <ModalChat>{t('점메추 AI')}</ModalChat>
     </>
   );
 };
