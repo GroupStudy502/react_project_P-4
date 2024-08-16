@@ -17,5 +17,5 @@ export const apiList = (search) => {
 };
 
 // 상세 조회
-export const apiGet = (seq) => requestData(`/restaurant/info/${seq}`);
+export const apiGet = (rstrId) => requestData(`/restaurant/info/${rstrId}`);
 

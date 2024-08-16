@@ -40,6 +40,7 @@ const ListContainer = () => {
     })();
   }, [search]);
 
+
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
     setForm((form) => ({ ...form, [e.target.name]: [e.target.value] }));
