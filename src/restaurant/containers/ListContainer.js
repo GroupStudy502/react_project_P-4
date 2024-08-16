@@ -16,16 +16,6 @@ function getQueryString(searchParams) {
   return qs;
 }
 
-function getQueryString(searchParams) {
-  const qs = {};
-  if (searchParams.size > 0) {
-    for (const [k, v] of searchParams) {
-      qs[k] = v;
-    }
-  }
-  return qs;
-}
-
 const ListContainer = () => {
   const [searchParams] = useSearchParams();
 
