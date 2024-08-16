@@ -23,15 +23,21 @@ const ListContainer = () => {
   const [search, setSearch] = useState(() => getQueryString(searchParams));
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
-  const [loading, setLoding] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoding(true);
-    apiList(search).then((res) => {
-      setItems(res.items);
-      setPagination(res.pagination);
-      setLoding(false);
-    });
+    (async () => {
+      try {
+        setLoading(true);
+        const { items, pagination } = await apiList(search);
+        setItems(items);
+        setPagination(pagination);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
   }, [search]);
 
 
