@@ -17,8 +17,13 @@ const KakaoMap = ({
   currentLocation, // 위치 기반
   address, // 주소
 }) => {
+  
   const [_center, setCenter] = useState(center ?? {});
   const mapRef = useRef(null);
+
+  useEffect(() => {
+    setCenter(center);
+  }, [center]);
 
   // 현재 위치 기반 S
   useEffect(() => {
@@ -52,6 +57,7 @@ const KakaoMap = ({
       _center?.lat ?? 37.557756188912954,
       _center?.lng ?? 126.94062742683245,
     );
+    
     const map = new kakao.maps.Map(mapEl, {
       center: position,
       level: zoom || 3,
@@ -116,7 +122,13 @@ const KakaoMap = ({
 
         return _marker;
       });
-    }
+    } else if (_center?.lat && _center?.lng) {
+      const options = {
+        position: new kakao.maps.LatLng(_center.lat, _center.lng),
+      };
+      const _marker = new kakao.maps.Marker(options);
+      _marker.setMap(map);
+    } 
     // 마커 출력 E
   }, [mapRef, _center, zoom, marker, markerImage]);
 

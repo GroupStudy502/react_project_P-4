@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 
 const ItemBox = ({ item, className }) => {
-  const { seq, images, rstrNm, rstrIntrcnCont } = item;
-  const url = `/restaurant/${seq}`;
+  const { rstrId, images, rstrNm, rstrIntrcnCont } = item;
+  const url = `/restaurant/info/${rstrId}`;
   return (
     <li className={className}>
       <Link to={url}>
@@ -43,7 +43,7 @@ const ItemStyledBox = styled(ItemBox)`
 const ItemsBox = ({ items }) => {
   return (
     items.length > 0 &&
-    items.map((item) => <ItemStyledBox key={item.seq} item={item} />)
+    items.map((item) => <ItemStyledBox key={item.rstrId} item={item} />)
   );
 };
 
