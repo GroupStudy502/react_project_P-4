@@ -30,6 +30,7 @@ const ListContainer = () => {
       try {
         setLoading(true);
         const { items, pagination } = await apiList(search);
+
         setItems(items);
         setPagination(pagination);
         setLoading(false);
@@ -37,7 +38,6 @@ const ListContainer = () => {
         console.error(err);
       }
     })();
-
   }, [search]);
 
   /* 검색 관련 함수 */

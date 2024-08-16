@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 
@@ -10,7 +9,15 @@ const ItemBox = ({ item, className }) => {
   return (
     <li className={className}>
       <Link to={url}>
-        {images && images.length > 0 && <ImageBgBox className="photo" url={images[0].rstrImgUrl} alt={rstrNm} width="150px" height="150px" />}
+        {images && images.length > 0 && (
+          <ImageBgBox
+            className="photo"
+            url={images[0].rstrImgUrl}
+            alt={rstrNm}
+            width="150px"
+            height="150px"
+          />
+        )}
         <div className="item-content">
           <div className="title">{rstrNm}</div>
           <div className="description">{rstrIntrcnCont}</div>
@@ -48,6 +55,4 @@ const ItemsBox = ({ items }) => {
   );
 };
 
-
 export default React.memo(ItemsBox);
-
