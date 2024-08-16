@@ -4,6 +4,17 @@ import { apiList } from '../apis/apiInfo';
 import ItemsBox from '../components/ItemsBox';
 import SearchBox from '../components/SearchBox';
 import Pagination from '../../commons/components/Pagination';
+import Loading from '../../commons/components/Loading';
+
+function getQueryString(searchParams) {
+  const qs = {};
+  if (searchParams.size > 0) {
+    for (const [k, v] of searchParams) {
+      qs[k] = v;
+    }
+  }
+  return qs;
+}
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -22,12 +33,21 @@ const ListContainer = () => {
   const [search, setSearch] = useState(() => getQueryString(searchParams));
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    apiList(search).then((res) => {
-      setItems(res.items);
-      setPagination(res.pagination);
-    });
+    (async () => {
+      try {
+        setLoading(true);
+        const { items, pagination } = await apiList(search);
+        setItems(items);
+        setPagination(pagination);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
   }, [search]);
 
   /* 검색 관련 함수 */
@@ -47,6 +67,12 @@ const ListContainer = () => {
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
+
+  // 로딩 처리
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <SearchBox
