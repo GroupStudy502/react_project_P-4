@@ -7,10 +7,9 @@ import fontSize from '../../styles/fontSize';
 
 const { medium } = fontSize;
 
-const LinkBox = styled.div``;
 
 const Wrapper = styled.div`
-  width: 350px;
+  width: 100%;
   word-break: break-all;
 
   dl {
@@ -79,14 +78,9 @@ const ItemDescription = ({ item }) => {
           </dd>
         </dl>
       )}
-      <LinkBox>
-        <Link to="/reservation/1">
-          <MidButton type="button" color="primary">
-            {t('예약하기')}
-          </MidButton>
-        </Link>
-      </LinkBox>
+      
     </Wrapper>
+    
   );
 };
 

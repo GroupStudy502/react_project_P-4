@@ -7,6 +7,11 @@ import itemImage from '../components/itemImage';
 import ItemDescription from '../components/ItemDescription';
 import ItemImage from '../components/itemImage';
 import styled from 'styled-components';
+import { MidButton } from '../../commons/components/Buttons';
+import { Link, NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import ItemTabmenu from '../components/ItemTabmenu';
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,6 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const ViewContainer = ({ setPageTitle }) => {
+  const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '300px', zoom: 3 });
@@ -51,10 +57,17 @@ const ViewContainer = ({ setPageTitle }) => {
     <>
       <Wrapper>
         {item?.images?.length && <ItemImage images={item.images} />}
-        <ItemDescription item={item} />
       </Wrapper>
+      <ItemDescription item={item} />
+      <ItemTabmenu />
       <KakaoMap {...mapOptions} />
       <div>{item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
+      <Link to="/reservation">
+          <MidButton type="button" color="primary">
+            {t('예약하기')}
+          </MidButton>
+      </Link>
+    
     </>
   );
 };
