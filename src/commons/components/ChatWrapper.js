@@ -12,13 +12,13 @@ const OuterChatBox = styled.div`
   justify-content: center;
   align-items: center;
   height: 95%;
-  background: #f5f5f5;
+  background: ${color.light};
 
 
 .chat-box {
   width: 100%;
   height: 100%;
-  background: ${color.light};
+  background: white;
   border-radius: 8px;
   box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
   overflow: hidden;
@@ -49,13 +49,13 @@ const OuterChatBox = styled.div`
 .ai-message {
   align-self: flex-start;
   background: #f0f0f0;
-  color: #333;
+  color: ${color.dark};
   padding: 10px 15px;
   border-radius: 16px 16px 16px 0;
 }
 
 .message-form {
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid ${color.light};
   padding: 20px;
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@ const OuterChatBox = styled.div`
   flex-grow: 1;
   padding: 10px;
   border-radius: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid ${color.dark};
   margin-right: 10px;
 }
 
@@ -80,7 +80,7 @@ const OuterChatBox = styled.div`
 
 h1 {
   text-align: center;
-  background-color: ${color.primary};
+  background-color: ${color.light};
   padding: 20px;
   margin: 0;
 }
@@ -195,7 +195,7 @@ const MessageForm = ({ onSendMessage }) => {
         className="message-input"
       />
       <button type="submit" className="send-button">
-        Send
+      물어보기
       </button>
     </form>
   );

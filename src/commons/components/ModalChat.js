@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import  {ChatButton} from './ChatButton';
 import ChatRoom from './ChatRoom';
 import Modal from 'react-modal';
-import { color } from '../../styles/color';
+import { IoCloseSharp } from "react-icons/io5";
 
 const customStyles = {
   content: {
@@ -10,7 +10,7 @@ const customStyles = {
     left: 'calc(50% - 280px)',
     width: '500px',
     height: '600px',
-    radius: '10px'
+    radius: '10px',
   },
 };
 
@@ -33,10 +33,10 @@ const ModalChat = ({ children, gid, color }) => {
       </ChatButton>
       {open && (
         <Modal isOpen={open} style={customStyles} >
+        <button type="button" onClick={() => setOpen(false)}>
+        <IoCloseSharp />
+        </button>
           <ChatRoom />
-          <button type="button" onClick={() => setOpen(false)}>
-            닫기
-          </button>
         </Modal>
       )}
     </>
