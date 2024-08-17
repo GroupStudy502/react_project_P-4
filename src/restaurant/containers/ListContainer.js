@@ -26,13 +26,20 @@ const ListContainer = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    apiList(search).then((res) => {
-      setItems(res.items);
-      setPagination(res.pagination);
-      setLoading(false);
-    });
+    (async () => {
+      try {
+        setLoading(true);
+        const { items, pagination } = await apiList(search);
+        setItems(items);
+        setPagination(pagination);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+
   }, [search]);
+
 
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
@@ -56,7 +63,7 @@ const ListContainer = () => {
     if (loading) {
       return <Loading />;
     }
-  
+
   return (
     <>
       <SearchBox

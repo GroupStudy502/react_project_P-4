@@ -1,8 +1,7 @@
-// 정보 조회
-/* eslint-disable no-undef */
-import requestData from "../../commons/libs/requestData";
+import requestData from '../../commons/libs/requestData';
 
-// 검색 양식
+// 목록 조회
+
 export const apiList = (search) => {
   search = search ?? {};
 
@@ -17,5 +16,6 @@ export const apiList = (search) => {
   return requestData(url);
 };
 
-// 개별 상세 조회
+// 상세 조회
 export const apiGet = (rstrId) => requestData(`/restaurant/info/${rstrId}`);
+

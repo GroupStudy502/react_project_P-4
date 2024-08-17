@@ -7,3 +7,4 @@ export const ImageBgBox = styled.div`
     width: ${({width}) => width ?? '200px'}; 
     height: ${({height}) => height ?? '200px'};
 `;
+
