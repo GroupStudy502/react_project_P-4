@@ -3,9 +3,9 @@ import Loading from '../../commons/components/Loading';
 import { apiGet } from '../apis/apiInfo';
 import { useParams } from 'react-router-dom';
 import KakaoMap from '../../kakaoapi/KakaoMap';
-import itemImage from '../components/itemImage';
+import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
-import ItemImage from '../components/itemImage';
+
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -54,7 +54,9 @@ const ViewContainer = ({ setPageTitle }) => {
         <ItemDescription item={item} />
       </Wrapper>
       <KakaoMap {...mapOptions} />
-      <div>{item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
+      <div>
+        {item.rstrRdnmAdr} / {item.rstrLnnoAdres}
+      </div>
     </>
   );
 };
