@@ -5,7 +5,7 @@ import { FaCheckSquare, FaRegCheckSquare } from 'react-icons/fa';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
-
+import ImageUpload from '../../commons/components/ImageUpload';
 const FormBox = styled.form`
   dl {
     display: flex;
@@ -97,6 +97,13 @@ const JoinForm = ({ form, onSubmit, onChange, onToggle, onReset, errors }) => {
             onChange={onChange}
           />
           <MessageBox messages={errors.mobile} color="danger" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>{t('프로필이미지')}</dt>
+        <dd>
+        <ImageUpload gid="testgid">{t('모달창')}</ImageUpload>
+
         </dd>
       </dl>
       <div className="terms-agree" onClick={onToggle}>
