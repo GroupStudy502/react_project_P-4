@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Wrapper = styled.div`
   flex-grow: 1;
   margin-right: 10px;
@@ -7,6 +8,7 @@ const Wrapper = styled.div`
   height: 500px;
   overflow: hidden;
 `;
+
 const ImageBox = styled.div`
   background: url('${({ image }) => image}') no-repeat center center;
   background-color: cover;
@@ -17,16 +19,17 @@ const ImageBox = styled.div`
 
 const ItemImage = ({ images, onClick }) => {
   images = Array.isArray(images) ? images : [images];
+  console.log(images);
 
   return (
     images.length > 0 && (
       <Wrapper className="item-images">
-        {images.map((image) => (
+        {images.map(({ rstrImgUrl }) => (
           <ImageBox
-            image={image}
-            key={image}
+            image={rstrImgUrl}
+            key={rstrImgUrl}
             className="item-image"
-            onClick={() => onClick(image)}
+            onClick={() => onClick(rstrImgUrl)}
           />
         ))}
       </Wrapper>
