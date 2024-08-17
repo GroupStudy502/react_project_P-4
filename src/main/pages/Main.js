@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
+import ModalChat from '../../commons/components/ModalChat';
 
 const Main = () => {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ const Main = () => {
         <MainTitle>{t('배너')}</MainTitle>
         <MainTitle>{t('식당 카테고리')}</MainTitle>
       </OuterBox>
+      <ModalChat>{t('점메추 AI')}</ModalChat>
     </>
   );
 };
