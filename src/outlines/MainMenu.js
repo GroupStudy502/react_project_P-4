@@ -35,7 +35,7 @@ const MainMenu = () => {
     <MenuBox>
       <div className="layout-width">
         <NavLink
-          to="/find"
+          to="/restaurant/list"
           className={({ isActive }) => classNames({ on: isActive })}
         >
           {t('식당 찾기')}
