@@ -15,7 +15,6 @@ const Main = () => {
         <title>{t('점메추')}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{t('배너')}</MainTitle>
         <CategoryContainer />
       </OuterBox>
       <ModalChat>{t('점메추 AI')}</ModalChat>

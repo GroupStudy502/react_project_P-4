@@ -2,6 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
+import korean from '../../images/category/korean.png';
+import chinese from '../../images/category/chinese.png';
+
 const CategoryListWrap = styled.div`
   0 20px 20px;
 `;
@@ -53,21 +56,15 @@ const RestaurantCategory = ({}) => {
       <CategoryList>
         <ListItem>
           <IconWrap>
-            <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
+            <img src={korean} />
           </IconWrap>
           <Title>한식</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
-            <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
+          <img src={chinese} />
           </IconWrap>
           <Title>중식</Title>
-        </ListItem>
-        <ListItem>
-          <IconWrap>
-            <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
-          </IconWrap>
-          <Title>양식</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
@@ -79,19 +76,19 @@ const RestaurantCategory = ({}) => {
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>아시안</Title>
+          <Title>분식</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>구이</Title>
+          <Title>경양식</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>치킨</Title>
+          <Title>패밀리레스토랑</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
@@ -103,43 +100,49 @@ const RestaurantCategory = ({}) => {
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>돈까스</Title>
+          <Title>치킨</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>분식</Title>
+          <Title>구이</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>회/해물</Title>
+          <Title>회</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>샌드위치</Title>
+          <Title>탕/국밥</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>샐러드</Title>
+          <Title>냉면</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>커피/차</Title>
+          <Title>외국음식전문점</Title>
         </ListItem>
         <ListItem>
           <IconWrap>
             <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
           </IconWrap>
-          <Title>디저트</Title>
+          <Title>커피</Title>
+        </ListItem>
+        <ListItem>
+          <IconWrap>
+            <img src="https://d3kzx7mqemhf0.cloudfront.net/common_img/comm_23122719075605249.webp"></img>
+          </IconWrap>
+          <Title>베이커리</Title>
         </ListItem>
       </CategoryList>
     </CategoryListWrap>
