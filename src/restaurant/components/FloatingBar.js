@@ -16,6 +16,7 @@ const FloatingContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0 20px;
+  border-top: 1px solid #d1cfcf;
 `;
 
 const IconWrapper = styled.div`

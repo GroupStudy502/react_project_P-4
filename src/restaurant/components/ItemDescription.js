@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
 import { Link, NavLink } from 'react-router-dom';
 import fontSize from '../../styles/fontSize';
 
@@ -64,6 +63,13 @@ const ItemDescription = ({ item }) => {
         <dl>
           <dt>{t('운영시간')}</dt>
           <dd>{bsnsTmCn}</dd>
+        </dl>
+      )}
+
+      {restdyInfoCn && (
+        <dl>
+          <dt>{t('휴무일')}</dt>
+          <dd>{restdyInfoCn}</dd>
         </dl>
       )}
 
