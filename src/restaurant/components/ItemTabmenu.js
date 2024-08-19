@@ -44,7 +44,7 @@ const ItemTapmenu = ({ item }) => {
                 {item.foods &&
                   item.foods.map((food) => (
                     <dl key={food.menuId}>
-                      <dd>{food.menuNm}</dd>
+                      <dt>{food.menuNm}</dt>
                       <dd>{food.menuPrice}</dd>
                       <dd>{food.menuDscrn}</dd>
                     </dl>
