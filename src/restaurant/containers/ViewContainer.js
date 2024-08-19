@@ -3,7 +3,7 @@ import Loading from '../../commons/components/Loading';
 import { apiGet } from '../apis/apiInfo';
 import { useParams } from 'react-router-dom';
 import KakaoMap from '../../kakaoapi/KakaoMap';
-import ItemImage from '../components/ItemImage';
+import ItemImage from '../components/itemImage';
 import ItemDescription from '../components/ItemDescription';
 
 import styled from 'styled-components';
