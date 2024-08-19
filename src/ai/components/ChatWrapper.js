@@ -92,27 +92,26 @@ const ChatWrapper = () => {
   const [messages, setMessages] = useState([]);
   const [currentTypingId, setCurrentTypingId] = useState(null);
 
-  const aiApiGet = (userMessage) => requestData(`/ai?message=${userMessage}`);
+  const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
   
-
   const handleSendMessage = (message) => {
     alert("2. handleSendMessage-" + message);
 
-    aiApiGet(message + "한국말로 대답해줘").then((message) => {
-
-    alert(message);
+    aiApiGet(message + "한국말로 대답해줘").then((aiMessage) => {
+      alert(aiMessage);
     });
 
-    setMessages((prevMessages) => [
+    setMessages((prevMessages) =>  [
       ...prevMessages,
       { text: message, isUser: true },
       {
-        text: `Your message is: "${message + '***'}"`,
+        text: `AI message is: "${message + '***'}"`,
         isUser: false,
         isTyping: false, //true
         id: Date.now()
       }
     ]);
+
 
   };
 
@@ -142,7 +141,6 @@ const ChatWrapper = () => {
   return (
     <OuterChatBox>
       <div className="chat-box">
-        <h3>메뉴추천AI</h3>
         <MessageList
           messages={messages}
           currentTypingId={currentTypingId}
@@ -201,6 +199,7 @@ const MessageForm = ({ onSendMessage }) => {
     alert("1 handleSubmit : " + message);
     onSendMessage(message);
     setMessage("");
+
   };
 
   return (
