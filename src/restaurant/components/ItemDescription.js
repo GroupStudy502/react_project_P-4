@@ -7,10 +7,8 @@ import fontSize from '../../styles/fontSize';
 
 const { medium } = fontSize;
 
-const LinkBox = styled.div``;
-
 const Wrapper = styled.div`
-  width: 350px;
+  width: 100%;
   word-break: break-all;
 
   dl {
@@ -34,8 +32,15 @@ const Wrapper = styled.div`
 
 const ItemDescription = ({ item }) => {
   const { t } = useTranslation();
-  const { bsnsTmCn, rstrNm, rstrIntrcnCont, hmpgUrl, rstrTelNo, restdyInfoCn, rstrRdnmAdr } =
-    item; // 알맞는 식당 레스토랑 엔티티 서치
+  const {
+    bsnsTmCn,
+    rstrNm,
+    rstrIntrcnCont,
+    hmpgUrl,
+    rstrTelNo,
+    restdyInfoCn,
+    rstrRdnmAdr,
+  } = item; // 알맞는 식당 레스토랑 엔티티 서치
 
   return (
     <Wrapper>
@@ -79,13 +84,6 @@ const ItemDescription = ({ item }) => {
           </dd>
         </dl>
       )}
-      <LinkBox>
-        <Link to="/reservation/1">
-          <MidButton type="button" color="primary">
-            {t('예약하기')}
-          </MidButton>
-        </Link>
-      </LinkBox>
     </Wrapper>
   );
 };
