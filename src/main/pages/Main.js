@@ -16,7 +16,6 @@ const Main = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{t('배너')}</MainTitle>
-        <MainTitle>{t('식당 카테고리')}</MainTitle>
         <CategoryContainer />
       </OuterBox>
       <ModalChat>{t('점메추 AI')}</ModalChat>
