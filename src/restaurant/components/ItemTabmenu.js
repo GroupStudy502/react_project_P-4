@@ -1,20 +1,22 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
+import { Tab, Nav } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import TabMenu from './TabMenu';
+import TabMenuPhoto from './TabMenuPhoto';
+import TabReview from './TabReview';
+import TabIconInfo from './TabIconInfo';
 
 const TabMenuBox = styled.div`
   margin: 20px 0;
 `;
 
-const Wrapper = styled.div`
+const Menu = styled.div`
   width: 100%;
-  word-break: break-all;
+  word-break: keep-All;
 
   dl {
-    display: flex;
-
-    padding: 10px 15px;
+    padding: 10px 10px;
 
     dt {
       width: 100px;
@@ -36,29 +38,29 @@ const ItemTapmenu = ({ item }) => {
   return (
     <>
       <TabMenuBox>
-        <Nav variant="underline" defaultActiveKey="menu">
-          <Nav.Item>
-            <Nav.Link eventKey="menu">{t('메뉴')}</Nav.Link>
-            <Wrapper>
-              <div className="menu">
-                {item.foods &&
-                  item.foods.map((food) => (
-                    <dl key={food.menuId}>
-                      <dt>{food.menuNm}</dt>
-                      <dd>{food.menuPrice}</dd>
-                      <dd>{food.menuDscrn}</dd>
-                    </dl>
-                  ))}
-              </div>
-            </Wrapper>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="사진">{t('사진')}</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="리뷰">{t('리뷰')}</Nav.Link>
-          </Nav.Item>
-        </Nav>
+        <Tab.Container defaultActiveKey="menu">
+          <Nav variant="underline">
+            <Nav.Item>
+              <Nav.Link eventKey="menu">{t('메뉴')}</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="photo">{t('사진')}</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="review">{t('리뷰')}</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="icons">{t('편의정보')}
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+          <Tab.Content>
+            <TabMenu item={item} />
+            <TabMenuPhoto item={item} />
+            <TabReview />
+            <TabIconInfo item= {item} />
+          </Tab.Content>
+        </Tab.Container>
       </TabMenuBox>
     </>
   );

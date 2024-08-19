@@ -62,8 +62,11 @@ const ViewContainer = ({ setPageTitle }) => {
       </Wrapper>
       <ItemDescription item={item} />
       <ItemTabmenu item={item}/>
-      <KakaoMap {...mapOptions} />
-      <div>{item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
+      
+        <h3>{t('매장위치')}</h3>
+        <KakaoMap {...mapOptions} />
+        <div> {item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
+      
       <FloatingBar />
       
     </>
