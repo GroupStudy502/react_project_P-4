@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import chunsik from '../../images/chunsik.png';
-import { GrAddCircle } from 'react-icons/gr';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
+
 
 const Box = styled.div`
   width: 160px;
@@ -29,32 +30,43 @@ const Box = styled.div`
     width: 100%;
     vertical-align: middle;
   }
+
+  .editbtn {
+    color: white;
+    background: white;
+    border-color: white;
+    width: auto;
+    border-radius: 100%;
+  }
   .icon {
-    position: absolute;
     width: 2rem;
     height: 2rem;
     display: block;
     bottom: 3px;
     right: 3px;
   }
+
+ 
 `;
 
 const MypageList = () => {
+  const { t } = useTranslation();
   return (
     <div className="profile-img">
       <Box>
-        <GrAddCircle className="icon" />
-        <img src={chunsik} />
+        <button type="button" className="editbtn">
+          <img src={chunsik} />
+        </button>
       </Box>
-      <ButtonGroup width={450}>
-        <BigButton type="submit" color="light" onClick={alert}>
-          회원정보수정
+      <ButtonGroup width={400} height={300}>
+        <BigButton type="submit" color="dark" onClick={alert}>
+         {t('회원정보수정')}
         </BigButton>
         <BigButton type="submit" color="dark" onClick={alert}>
-          리뷰작성
+          {t('리뷰작성')}
         </BigButton>
         <BigButton type="submit" color="dark" onClick={alert}>
-          찜한내역
+          {t('찜한내역')}
         </BigButton>
       </ButtonGroup>
     </div>
