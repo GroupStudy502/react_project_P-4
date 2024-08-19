@@ -78,4 +78,6 @@ const Pagination = ({ pagination, onClick }) => {
   );
 };
 
+
 export default React.memo(Pagination);
+

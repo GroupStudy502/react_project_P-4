@@ -1,11 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
-import { OuterBox } from '../../commons/components/LayoutBox';
-import { MainTitle } from '../../commons/components/TitleBox';
-import ListContainer from '../containers/ListContainer';
 import KakaoMap from '../../kakaoapi/KakaoMap';
-
 
 const markers = [
   {
@@ -35,21 +29,8 @@ const options = {
     'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
 };
 
-const RestaurantList = () => {
-  const { t } = useTranslation();
-
-  return (
-    <>
-      <Helmet>
-        <title>{t('식당_목록')}</title>
-      </Helmet>
-      <OuterBox>
-        <MainTitle>{t('식당_목록')}</MainTitle>
-        <KakaoMap {...options} />
-        <ListContainer />
-      </OuterBox>
-    </>
-  );
+const RestaurantInfo = () => {
+  return <KakaoMap {...options} />;
 };
 
-export default React.memo(RestaurantList);
+export default React.memo(RestaurantInfo);
