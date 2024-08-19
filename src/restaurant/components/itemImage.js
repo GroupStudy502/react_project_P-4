@@ -5,15 +5,16 @@ const Wrapper = styled.div`
   flex-grow: 1;
   margin-right: 10px;
   border-radius: 5px;
-  height: 500px;
+  height: 350px;
   overflow: hidden;
 `;
 
 const ImageBox = styled.div`
   background: url('${({ image }) => image}') no-repeat center center;
+  background-size: contain;
   background-color: cover;
   width: 100%;
-  height: 500px;
+  height: 100%;
   cursor: pointer;
 `;
 
