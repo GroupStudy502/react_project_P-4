@@ -11,6 +11,8 @@ import { MidButton } from '../../commons/components/Buttons';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ItemTabmenu from '../components/ItemTabmenu';
+import FloatingBar from '../components/FloatingBar';
+
 
 
 const Wrapper = styled.div`
@@ -59,15 +61,11 @@ const ViewContainer = ({ setPageTitle }) => {
         {item?.images?.length && <ItemImage images={item.images} />}
       </Wrapper>
       <ItemDescription item={item} />
-      <ItemTabmenu />
+      <ItemTabmenu item={item}/>
       <KakaoMap {...mapOptions} />
       <div>{item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
-      <Link to="/reservation">
-          <MidButton type="button" color="primary">
-            {t('예약하기')}
-          </MidButton>
-      </Link>
-    
+      <FloatingBar />
+      
     </>
   );
 };
