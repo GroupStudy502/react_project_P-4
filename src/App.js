@@ -19,7 +19,7 @@ const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival'];
 const App = () => {
   const location = useLocation();
   return routeUrlPaths.includes(location.pathname.split('/')[1]) ? (
-    <>  
+    <>
       <Member />
       <Mypage />
       <Restaurant />
