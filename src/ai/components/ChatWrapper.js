@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import Typing from "react-typing-animation";
 import styled from 'styled-components';
 import { color } from "../../styles/color";
@@ -94,13 +93,14 @@ const ChatWrapper = () => {
   const [currentTypingId, setCurrentTypingId] = useState(null);
 
   const aiApiGet = (userMessage) => requestData(`/ai?message=${userMessage}`);
-  const { message } = useParams();
   
 
   const handleSendMessage = (message) => {
     alert("2. handleSendMessage-" + message);
-    aiApiGet(message).then((item) => {
-      alert(item);
+
+    aiApiGet(message + "한국말로 대답해줘").then((message) => {
+
+    alert(message);
     });
 
     setMessages((prevMessages) => [
@@ -113,6 +113,7 @@ const ChatWrapper = () => {
         id: Date.now()
       }
     ]);
+
   };
 
   const handleEndTyping = (id) => {
