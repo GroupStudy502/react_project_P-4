@@ -1,10 +1,12 @@
 import React, { useState, useCallback, Component } from 'react';
 import { SmallButton } from './Buttons';
+import ChatRoom from './ChatRoom';
 import Modal from 'react-modal';
 
 const customStyles = {
   content: {
     top: 'calc(50% - 200px)',
+
     left: 'calc(50% -150px)',
     width: '300px',
     height: '400px',
@@ -14,6 +16,7 @@ const customStyles = {
 const ImageUpload = ({ childeren, gid, color }) => {
   Modal.setAppElement('#root');
   color = color ?? 'primary'; //기본값 컬러 지정
+
   const [open, setOpen] = useState(false);
 
   const onClick = useCallback(() => {
