@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Typing from "react-typing-animation";
 import styled from 'styled-components';
 import { color } from "../../styles/color";
-import fontSize from "../../styles/fontSize";
+import requestData from '../../commons/libs/requestData';
 
-const { medium } = fontSize;
 
 const OuterChatBox = styled.div`
 
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 95%;
+  height: 530px;
+  width: 100%;
   background: ${color.light};
 
 
@@ -30,12 +31,13 @@ const OuterChatBox = styled.div`
   padding: 15px;
   flex-grow: 1;
   overflow-y: auto;
+  width: 100%;
 }
 
 .user-message,
 .ai-message {
   margin-bottom: 20px;
-  max-width: 80%;
+  max-width: 90%;
 }
 
 .user-message {
@@ -91,29 +93,41 @@ const ChatWrapper = () => {
   const [messages, setMessages] = useState([]);
   const [currentTypingId, setCurrentTypingId] = useState(null);
 
+  const aiApiGet = (userMessage) => requestData(`/ai?message=${userMessage}`);
+  const { message } = useParams();
+  
+
   const handleSendMessage = (message) => {
+    alert("2. handleSendMessage-" + message);
+    aiApiGet(message).then((item) => {
+      alert(item);
+    });
+
     setMessages((prevMessages) => [
       ...prevMessages,
       { text: message, isUser: true },
       {
-        text: `Your message is: "${message}"`,
+        text: `Your message is: "${message + '***'}"`,
         isUser: false,
-        isTyping: true,
+        isTyping: false, //true
         id: Date.now()
       }
     ]);
   };
 
   const handleEndTyping = (id) => {
+    alert("3. handleEndTyping- " + id);
     setMessages((prevMessages) =>
-      prevMessages.map((msg) =>
+      prevMessages.map((msg) => 
         msg.id === id ? { ...msg, isTyping: false } : msg
+      
       )
     );
     setCurrentTypingId(null);
   };
 
   useEffect(() => {
+
     if (currentTypingId === null) {
       const nextTypingMessage = messages.find(
         (msg) => !msg.isUser && msg.isTyping
@@ -140,6 +154,7 @@ const ChatWrapper = () => {
 };
 
 const MessageList = ({ messages, currentTypingId, onEndTyping }) => (
+  
   <div className="messages-list">
     {messages.map((message, index) => (
       <Message
@@ -182,6 +197,7 @@ const MessageForm = ({ onSendMessage }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    alert("1 handleSubmit : " + message);
     onSendMessage(message);
     setMessage("");
   };
