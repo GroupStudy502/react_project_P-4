@@ -16,10 +16,8 @@ const Mypage = loadable(() => import('./routes/Mypage'));
 const Restaurant = loadable(() => import('./routes/Restaurant'));
 
 
-// 식당 찾기 페이지
-const Find = loadable(() => import('./routes/Find'));
+const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival'];
 
-const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'find'];
 
 
 const App = () => {
@@ -31,7 +29,6 @@ const App = () => {
       <Member />
       <Mypage />
       <Restaurant />
-      <Find />
     </>
   ) : (
     <Routes>
