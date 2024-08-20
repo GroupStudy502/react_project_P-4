@@ -2,6 +2,9 @@ import React from 'react';
 import { Tab } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { color } from '../../styles/color';
+
+const { jmt } = color;
 
 const Menu = styled.div`
   width: 100%;
@@ -12,10 +15,14 @@ const Menu = styled.div`
 
     dt {
       width: 100px;
+      font-size: 1.1em;
+      
     }
 
     dd {
       width: calc(100% - 120px);
+      color: ${jmt};
+      font-weight: bold;
     }
   }
 
