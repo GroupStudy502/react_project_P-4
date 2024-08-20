@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Typing from "react-typing-animation";
 import styled from 'styled-components';
 import { color } from "../../styles/color";
@@ -40,14 +40,15 @@ const OuterChatBox = styled.div`
 }
 
 .user-message {
+  float: right;
   align-self: flex-end;
   background: ${color.jmt};
   color: ${color.light};
   padding: 10px 15px;
   border-radius: 16px 16px 0 16px;
 }
-
 .ai-message {
+  float: left;
   align-self: flex-start;
   background: #f0f0f0;
   color: ${color.dark};
@@ -91,27 +92,24 @@ h1 {
 const ChatWrapper = () => {
   const [messages, setMessages] = useState([]);
   const [currentTypingId, setCurrentTypingId] = useState(null);
-
   const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
-  
+
   const handleSendMessage = (message) => {
-    alert("2. handleSendMessage-" + message);
+    
+    aiApiGet(" 한국말로 알려주세요" + message).then((aiMessage) => {
 
-    aiApiGet(message + "한국말로 대답해줘").then((aiMessage) => {
-      alert(aiMessage);
+      setMessages((prevMessages) =>  [
+        ...prevMessages,
+        { text: message, isUser: true },
+        {
+          text: `${aiMessage}`,
+          isUser: false,
+          isTyping: false, //true
+          id: Date.now()
+        }
+      ]);
+
     });
-
-    setMessages((prevMessages) =>  [
-      ...prevMessages,
-      { text: message, isUser: true },
-      {
-        text: `AI message is: "${message + '***'}"`,
-        isUser: false,
-        isTyping: false, //true
-        id: Date.now()
-      }
-    ]);
-
 
   };
 
@@ -140,7 +138,7 @@ const ChatWrapper = () => {
 
   return (
     <OuterChatBox>
-      <div className="chat-box">
+      <div className="chat-box"> 
         <MessageList
           messages={messages}
           currentTypingId={currentTypingId}
@@ -152,19 +150,26 @@ const ChatWrapper = () => {
   );
 };
 
-const MessageList = ({ messages, currentTypingId, onEndTyping }) => (
-  
-  <div className="messages-list">
-    {messages.map((message, index) => (
-      <Message
-        key={index}
-        {...message}
-        onEndTyping={onEndTyping}
-        currentTypingId={currentTypingId}
-      />
-    ))}
-  </div>
-);
+const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
+
+  const scrollRef = useRef();
+    useEffect(() => {
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  }, [messages])
+
+  return (
+    <div className="messages-list" ref={scrollRef}>
+      {messages.map((message, index) => (
+        <Message
+          key={index}
+          {...message}
+          onEndTyping={onEndTyping}
+          currentTypingId={currentTypingId}
+        />
+      ))}
+    </div>
+  )
+};
 
 const Message = ({
   text,
@@ -196,7 +201,7 @@ const MessageForm = ({ onSendMessage }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("1 handleSubmit : " + message);
+    //alert("1 handleSubmit : " + message);
     onSendMessage(message);
     setMessage("");
 

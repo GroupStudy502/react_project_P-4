@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import  {ChatButton} from './ChatButton';
-import ChatRoom from './ChatRoom';
 import Modal from 'react-modal';
 import { IoCloseSharp } from "react-icons/io5";
+import ChatWrapper from './ChatWrapper';
 
 const customStyles = {
   content: {
@@ -14,8 +14,7 @@ const customStyles = {
   },
 };
 
-
-const ModalChat = ({ children, gid, color }) => {
+const ModalChat = ({ children, color }) => {
   Modal.setAppElement('#root');
 
   color = color ?? 'primary';
@@ -33,10 +32,10 @@ const ModalChat = ({ children, gid, color }) => {
       </ChatButton>
       {open && (
         <Modal isOpen={open} style={customStyles} >
-        <button type="button" onClick={() => setOpen(false)}>
+        <button type="button" onClick={() => setOpen(false)} >
         <IoCloseSharp />
         </button>
-          <ChatRoom />
+          <ChatWrapper />
         </Modal>
       )}
     </>
