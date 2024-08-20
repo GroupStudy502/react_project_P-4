@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 
-const View = () => {
+const Update = () => {
   const { t } = useTranslation();
   const [board, setBoard] = useState({
     bName: '자유게시판',
@@ -23,4 +23,4 @@ const View = () => {
   );
 };
 
-export default React.memo(View);
+export default React.memo(Update);
