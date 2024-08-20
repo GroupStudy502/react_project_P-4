@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
-import { FaRegBookmark, FaBookmark } from "react-icons/fa";
+import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
 
-const FloatingContainer = styled.div`
+const FloatingBox = styled.div`
   background-color: #fff;
   width: 900px;
   height: 80px;
@@ -19,21 +19,28 @@ const FloatingContainer = styled.div`
   border-top: 1px solid #d1cfcf;
 `;
 
+const ContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
+
 const IconWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 20px; 
+  margin-right: 20px;
   cursor: pointer;
-  font-size: 2em; 
+  font-size: 2em;
 `;
 
 const StyledButton = styled(MidButton)`
-  flex: 1; 
-  height: 50px; 
-  
+  flex: 1;
+  height: 40px;
+  font-weight: bold;
+  font-size: 1.5em;
 `;
 
-const FloatingBar = () => {
+const FloatingBar = ({ onReservationClick }) => {
   const { t } = useTranslation();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -42,16 +49,20 @@ const FloatingBar = () => {
   };
 
   return (
-    <FloatingContainer>
-      <IconWrapper onClick={handleBookmarkClick}>
-        {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
-      </IconWrapper>
-      <Link to="/reservation" style={{ flex: 1 }}>
-        <StyledButton type="button" color="primary">
+    <FloatingBox>
+      <ContentWrapper>
+        <IconWrapper onClick={handleBookmarkClick}>
+          {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
+        </IconWrapper>
+        <StyledButton
+          type="button"
+          color="primary"
+          onClick={onReservationClick}
+        >
           {t('예약하기')}
         </StyledButton>
-      </Link>
-    </FloatingContainer>
+      </ContentWrapper>
+    </FloatingBox>
   );
 };
 
