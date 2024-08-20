@@ -1,14 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import { Routs, Route } from 'react-router-dom';
-import loadable from '@loadable/component';
-
-const Board = () => {
-
-};
-
-export default React.memo(Board);
-=======
 import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 
@@ -33,4 +23,3 @@ const Board = () => {
 };
 
 export default React.memo(Board);
->>>>>>> master
