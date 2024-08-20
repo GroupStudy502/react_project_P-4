@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const MapArea = styled.div`
   width: ${({ width }) => width ?? '100%'};
-  height: ${({ height }) => height ?? '38.5rem'};
+  height: ${({ height }) => height ?? '30rem'};
 `;
 
 const KakaoMap = ({
