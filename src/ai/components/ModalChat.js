@@ -9,10 +9,21 @@ const customStyles = {
     top: 'calc(50% - 350px)',
     left: 'calc(50% - 280px)',
     width: '500px',
-    height: '600px',
+    height: '610px',
     radius: '10px',
-  },
-};
+}};
+const divStyles = {
+  display: 'flex',
+  float: 'left',
+  color: 'red',
+  fontSize: '1.5rem',
+  
+}
+
+const buttonStyles = {
+  display: 'flex',
+  float: 'right',
+} 
 
 const ModalChat = ({ children, color }) => {
   Modal.setAppElement('#root');
@@ -32,9 +43,12 @@ const ModalChat = ({ children, color }) => {
       </ChatButton>
       {open && (
         <Modal isOpen={open} style={customStyles} >
-        <button type="button" onClick={() => setOpen(false)} >
-        <IoCloseSharp />
-        </button>
+          <div >
+            <div style={divStyles} className="aiTitle"><b>JeomMeChu AI</b></div>
+            <button style={buttonStyles} type="button" onClick={() => setOpen(false)} >
+              <IoCloseSharp />
+            </button>
+          </div>
           <ChatWrapper />
         </Modal>
       )}

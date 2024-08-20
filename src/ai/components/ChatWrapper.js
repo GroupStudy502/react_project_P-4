@@ -27,6 +27,13 @@ const OuterChatBox = styled.div`
     flex-grow: 1;
     overflow-y: auto;
     width: 100%;
+      &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background: ${color.secondary};
+    }
   }
 
   .user-message,
@@ -90,17 +97,12 @@ const ChatWrapper = () => {
 
   const handleSendMessage = (message) => {
     aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
-      aiMessage = aiMessage.replace(
-        'url',
-        process.env.REACT_APP_URL + '/restaurant/info',
-      );
+      aiMessage = aiMessage.replace('url', process.env.REACT_APP_URL + '/restaurant/info',);
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: message, isUser: true },
         {
           text: `${aiMessage}`,
-          isUser: false,
-          isTyping: false, //true
           id: Date.now(),
         },
       ]);
@@ -129,8 +131,6 @@ const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
         <Message
           key={index}
           {...message}
-          onEndTyping={onEndTyping}
-          currentTypingId={currentTypingId}
         />
       ))}
     </div>
@@ -138,11 +138,12 @@ const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
 };
 
 const Message = ({ text, isUser }) => {
+  //console.log(text);
   return (
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
-        {text.replace(/&lt;/g, '<').replace(/&gt;/g, '>')}
+        {text}
       </p>
     </div>
   );
@@ -150,12 +151,13 @@ const Message = ({ text, isUser }) => {
 
 const MessageForm = ({ onSendMessage }) => {
   const [message, setMessage] = useState('');
+  const inputRef = useRef();
 
   const onSubmit = (event) => {
     event.preventDefault();
-    //alert("1 onSubmit : " + message);
     onSendMessage(message);
     setMessage('');
+    inputRef.current.focus();    
   };
 
   return (
@@ -165,6 +167,7 @@ const MessageForm = ({ onSendMessage }) => {
         value={message}
         onChange={(event) => setMessage(event.target.value)}
         className="message-input"
+        ref={inputRef}
       />
       <button type="submit" className="send-button">
         물어보기
