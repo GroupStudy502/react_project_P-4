@@ -1,11 +1,12 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import chunsik from '../../images/chunsik.png';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
+import FileUpload from '../../commons/components/FileUpload';
 
 
-const Box = styled.div`
+const mypage_main = styled.div`
   width: 160px;
   height: 160px;
   background-color: white;
@@ -15,52 +16,62 @@ const Box = styled.div`
   margin: 20px auto 0 auto;
   position: relative;
 
-  .profile-img .box {
-    position: relative;
-    display: inline-block;
-  }
-
-  .box {
-    width: 30px;
-    box-sizing: 30px;
-    display: none;
-  }
-
-  img {
-    width: 100%;
-    vertical-align: middle;
-  }
-
-  .editbtn {
-    color: white;
-    background: white;
-    border-color: white;
-    width: auto;
-    border-radius: 100%;
-  }
-  .icon {
-    width: 2rem;
-    height: 2rem;
-    display: block;
-    bottom: 3px;
-    right: 3px;
-  }
-
- 
 `;
 
+const Profile = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-content: center;
+`;
+
+
 const MypageList = () => {
+  const [ Image , setImage ] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+  
+  const fileInput = useRef(null)
+
+  const onChange = (e) => {
+    if (e.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImage(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setImage(
+        'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+      );
+    }
+  };
+
   const { t } = useTranslation();
+
+
   return (
-    <div className="profile-img">
-      <Box>
-        <button type="button" className="editbtn">
-          <img src={chunsik} />
-        </button>
-      </Box>
+    
+    <div className="mypage-main">
+      <div className="myprofile"></div>
+      <Profile
+  src= {Image}
+  style={{margin: '20px'}}
+  size={200}
+  onClick={()=> {fileInput.current.click()}} />
+      
+      <input
+        type="file"
+        ref={fileInput}
+        style={{ display: 'none' }}
+        onChange={onChange}
+      />
+    <FileUpload />
+
       <ButtonGroup width={400} height={300}>
         <BigButton type="submit" color="dark" onClick={alert}>
-         {t('회원정보수정')}
+          {t('회원정보수정')}
         </BigButton>
         <BigButton type="submit" color="dark" onClick={alert}>
           {t('리뷰작성')}
