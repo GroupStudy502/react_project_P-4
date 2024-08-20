@@ -39,7 +39,7 @@ const TabIconInfo = ({ item }) => {
             <dd>
             <LuParkingSquare title='ParkingAvailable'/>
             </dd>
-            <span>{t('주차 가능')}</span>
+            <dd>{t('주차 가능')}</dd>
           </dl>
           )}
         {item.wifiOfrYn && (

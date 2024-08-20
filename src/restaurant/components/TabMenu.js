@@ -14,7 +14,7 @@ const Menu = styled.div`
     padding: 10px 10px;
 
     dt {
-      width: 100px;
+      width: 100%;
       font-size: 1.1em;
       
     }
