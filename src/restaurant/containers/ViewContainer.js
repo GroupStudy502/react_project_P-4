@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import KakaoMap from '../../kakaoapi/KakaoMap';
 import itemImage from '../components/itemImage';
 import ItemDescription from '../components/ItemDescription';
-import ItemImage from '../components/itemImage';
+
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -68,7 +68,7 @@ const ViewContainer = ({ setPageTitle }) => {
   return (
     <ViewWrapper>
       <Wrapper>
-        {item?.images?.length && <ItemImage images={item.images} />}
+        {item?.images?.length && <itemImage images={item.images} />}
       </Wrapper>
       <ItemDescription item={item} />
       <Seperator/>
