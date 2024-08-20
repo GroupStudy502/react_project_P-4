@@ -13,7 +13,7 @@ const { primary, dark, light, jmt } = color;
 const IconWrapper = styled.div`
   
   font-weight: bold; 
-  font-size: 1em; 
+  font-size: 1.1em; 
 
   dl {
     padding: 10px 15px;
