@@ -151,15 +151,15 @@ const Message = ({ text, isUser }) => {
 const MessageForm = ({ onSendMessage }) => {
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    //alert("1 handleSubmit : " + message);
+    //alert("1 onSubmit : " + message);
     onSendMessage(message);
     setMessage('');
   };
 
   return (
-    <form onSubmit={handleSubmit} className="message-form">
+    <form onSubmit={onSubmit} className="message-form">
       <input
         type="text"
         value={message}
