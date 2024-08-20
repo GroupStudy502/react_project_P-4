@@ -5,6 +5,27 @@ import { LuParkingSquare, LuWifi, LuLanguages, LuSmartphoneNfc  } from "react-ic
 import { GiKidSlide } from "react-icons/gi";
 import { MdPets, MdMobileFriendly } from "react-icons/md";
 import styled from 'styled-components';
+import { color } from '../../styles/color';
+
+const { primary, dark, light, jmt } = color;
+
+
+const IconWrapper = styled.div`
+  
+  font-weight: bold; 
+  font-size: 1em; 
+
+  dl {
+    padding: 10px 15px;
+    display: flex;
+
+    dd {
+      
+      margin-left: 10px;
+    }
+  }
+
+`;
 
 
 const TabIconInfo = ({ item }) => {
@@ -12,43 +33,56 @@ const TabIconInfo = ({ item }) => {
 
   return (
     <Tab.Pane eventKey="icons">
-      <div>
+      <IconWrapper>
         {item.prkgPosYn && (
-          <div>
-            <LuParkingSquare title='Parking Available'/>{t('주차 가능')}
-          </div>
+          <dl>
+            <dd>
+            <LuParkingSquare title='ParkingAvailable'/>
+            </dd>
+            <dd>{t('주차 가능')}</dd>
+          </dl>
           )}
         {item.wifiOfrYn && (
-           <div>
-            <LuWifi title='WiFi Available' />{t('와이파이 제공')}
-            </div>
+           <dl>
+             <dd>
+            <LuWifi title='WiFi Available' /></dd>
+            <dd>{t('와이파이 제공')}</dd>
+            </dl>
             )}
         {item.dcrnYn && (
-          <div>
-            <GiKidSlide title='Kids Area Available' />{t('놀이방 제공')}
-            </div>
+          <dl>
+            <dd>
+            <GiKidSlide title='Kids Area Available' /></dd>
+            <dd>{t('놀이방 제공')}</dd>
+            </dl>
             )}
         {item.petEntrnPosblYn && ( 
-          <div>
-          <MdPets title='Pets Allowed'/>{t('반려동물 입장가능')}
-          </div>
+          <dl>
+            <dd>
+          <MdPets title='Pets Allowed'/>
+          </dd>
+          <dd>{t('반려동물 입장가능')}</dd>
+          </dl>
       )}
         {item.fgggMenuOfrYn  && (
-          <div>
-          <LuLanguages title='Foreign Language Menu'/>{t('다국어메뉴 제공')}
-          </div>
+          <dl>
+          <dd><LuLanguages title='Foreign Language Menu'/></dd>
+          <dd>{t('다국어메뉴 제공')}</dd>
+          </dl>
           )}
         {item.mbPmamtYn && (
-          <div>
-          <MdMobileFriendly title='Mobile Payment Available' />{t('모바일결제 가능')}
-          </div>
+          <dl>
+          <dd><MdMobileFriendly title='Mobile Payment Available' /></dd>
+          <dd>{t('모바일결제 가능')}</dd>
+          </dl>
           )}
         {item.smorderYn && (
-          <div>
-          <LuSmartphoneNfc title='Smart Order Available'/>{t('스마트오더 가능')}
-          </div>
+          <dl>
+          <dd><LuSmartphoneNfc title='Smart Order Available'/></dd>
+          <dd>{t('스마트오더 가능')}</dd>
+          </dl>
           )}
-      </div>
+      </IconWrapper>
     </Tab.Pane>
   );
 };

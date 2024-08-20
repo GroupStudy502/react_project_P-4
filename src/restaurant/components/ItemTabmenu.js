@@ -6,31 +6,29 @@ import TabMenu from './TabMenu';
 import TabMenuPhoto from './TabMenuPhoto';
 import TabReview from './TabReview';
 import TabIconInfo from './TabIconInfo';
+import { color } from '../../styles/color';
+
+const { jmt } = color;
 
 const TabMenuBox = styled.div`
-  margin: 20px 0;
-`;
+    margin: 20px 0;
 
-const Menu = styled.div`
-  width: 100%;
-  word-break: keep-All;
-
-  dl {
-    padding: 10px 10px;
-
-    dt {
-      width: 100px;
+    .nav-link {
+      color: #000;
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+     
     }
 
-    dd {
-      width: calc(100% - 120px) l;
-    }
-  }
-
-  dl + dl {
-    border-top: 1px dashed #818181;
+    .nav {
+    display: flex;
+    justify-content: space-between; // Distribute items evenly
+    max-width: 80%; // Adjust this value to control the overall width of the nav
+    margin: 0 auto; // Center the nav
+    
   }
 `;
+
 
 const ItemTapmenu = ({ item }) => {
   const { t } = useTranslation();

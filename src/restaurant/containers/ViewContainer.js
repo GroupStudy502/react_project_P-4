@@ -13,7 +13,12 @@ import { useTranslation } from 'react-i18next';
 import ItemTabmenu from '../components/ItemTabmenu';
 import FloatingBar from '../components/FloatingBar';
 
-
+const Seperator = styled.div`
+  margin: 10px 0;
+  width: 100%;
+  height: 8px;
+  background-color: #ececec;
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,7 +66,9 @@ const ViewContainer = ({ setPageTitle }) => {
         {item?.images?.length && <ItemImage images={item.images} />}
       </Wrapper>
       <ItemDescription item={item} />
+      <Seperator/>
       <ItemTabmenu item={item}/>
+      <Seperator/>
       
         <h3>{t('매장위치')}</h3>
         <KakaoMap {...mapOptions} />

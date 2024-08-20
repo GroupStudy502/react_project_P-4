@@ -9,6 +9,7 @@ const { medium } = fontSize;
 const Wrapper = styled.div`
   width: 100%;
   word-break: break-all;
+  margin: 10px 0;
 
   dl {
     display: flex;
@@ -21,6 +22,10 @@ const Wrapper = styled.div`
 
     dd {
       width: calc(100% - 120px) l;
+    }
+
+    a {
+      height: 100%;
     }
   }
 
