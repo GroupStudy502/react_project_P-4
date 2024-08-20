@@ -14,7 +14,6 @@ import ItemTabmenu from '../components/ItemTabmenu';
 import FloatingBar from '../components/FloatingBar';
 
 
-
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: 15px;
