@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import KakaoMap from '../../kakaoapi/KakaoMap';
 import itemImage from '../components/itemImage';
 import ItemDescription from '../components/ItemDescription';
-import ItemImage from '../components/itemImage';
+
 import styled from 'styled-components';
 import { MidButton } from '../../commons/components/Buttons';
 import { Link, NavLink } from 'react-router-dom';
@@ -63,7 +63,7 @@ const ViewContainer = ({ setPageTitle }) => {
   return (
     <>
       <Wrapper>
-        {item?.images?.length && <ItemImage images={item.images} />}
+        {item?.images?.length && <itemImage images={item.images} />}
       </Wrapper>
       <ItemDescription item={item} />
       <Seperator/>
@@ -75,7 +75,6 @@ const ViewContainer = ({ setPageTitle }) => {
         <div> {item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
       
       <FloatingBar />
-      
     </>
   );
 };

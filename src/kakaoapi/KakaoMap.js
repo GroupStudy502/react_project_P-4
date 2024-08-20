@@ -20,6 +20,9 @@ const KakaoMap = ({
   
   const [_center, setCenter] = useState(center ?? {});
   const mapRef = useRef(null);
+  useEffect(() => {
+    setCenter(center);
+  }, [center]);
 
   useEffect(() => {
     setCenter(center);
@@ -128,7 +131,9 @@ const KakaoMap = ({
       };
       const _marker = new kakao.maps.Marker(options);
       _marker.setMap(map);
-    } 
+
+    }
+
     // 마커 출력 E
   }, [mapRef, _center, zoom, marker, markerImage]);
 
