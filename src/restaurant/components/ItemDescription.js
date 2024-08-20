@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { MidButton } from '../../commons/components/Buttons';
 import { Link, NavLink } from 'react-router-dom';
 import fontSize from '../../styles/fontSize';
 
@@ -10,6 +9,7 @@ const { medium } = fontSize;
 const Wrapper = styled.div`
   width: 100%;
   word-break: break-all;
+  margin: 10px 0;
 
   dl {
     display: flex;
@@ -22,6 +22,10 @@ const Wrapper = styled.div`
 
     dd {
       width: calc(100% - 120px) l;
+    }
+
+    a {
+      height: 100%;
     }
   }
 
@@ -64,6 +68,13 @@ const ItemDescription = ({ item }) => {
         <dl>
           <dt>{t('운영시간')}</dt>
           <dd>{bsnsTmCn}</dd>
+        </dl>
+      )}
+
+      {restdyInfoCn && (
+        <dl>
+          <dt>{t('휴무일')}</dt>
+          <dd>{restdyInfoCn}</dd>
         </dl>
       )}
 
