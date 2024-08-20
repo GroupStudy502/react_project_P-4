@@ -40,6 +40,12 @@ const MainMenu = () => {
         >
           {t('식당 찾기')}
         </NavLink>
+        <NavLink
+          to="/reservationList"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('예약내역')}
+        </NavLink>
       </div>
     </MenuBox>
   );
