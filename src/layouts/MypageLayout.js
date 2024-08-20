@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../outlines/Header';
 import Footer from '../outlines/Footer';
-//import Side from '../mypage/components/Side'; // 우측 메뉴   <Side />
+//import Side from '../mypage/components/Side';  ,<Side />
 
 const MainBox = styled.main`
   min-height: 650px;
@@ -27,6 +27,7 @@ const MypageLayout = () => {
         <section className="main-content">
           <Outlet />
         </section>
+        
       </MainBox>
       <Footer />
     </>
