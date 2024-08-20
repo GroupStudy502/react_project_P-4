@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import Typing from "react-typing-animation";
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { color } from "../../styles/color";
+import { color } from '../../styles/color';
 import requestData from '../../commons/libs/requestData';
 
-
 const OuterChatBox = styled.div`
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,136 +11,106 @@ const OuterChatBox = styled.div`
   width: 100%;
   background: ${color.light};
 
+  .chat-box {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
 
-.chat-box {
-  width: 100%;
-  height: 100%;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+  .messages-list {
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%;
+  }
 
-.messages-list {
-  padding: 15px;
-  flex-grow: 1;
-  overflow-y: auto;
-  width: 100%;
-}
+  .user-message,
+  .ai-message {
+    margin-bottom: 20px;
+    max-width: 90%;
+  }
 
-.user-message,
-.ai-message {
-  margin-bottom: 20px;
-  max-width: 90%;
-}
+  .user-message {
+    float: right;
+    align-self: flex-end;
+    background: ${color.jmt};
+    color: ${color.light};
+    padding: 10px 15px;
+    border-radius: 16px 16px 0 16px;
+  }
+  .ai-message {
+    float: left;
+    align-self: flex-start;
+    background: #f0f0f0;
+    color: ${color.dark};
+    padding: 10px 15px;
+    border-radius: 16px 16px 16px 0;
+  }
 
-.user-message {
-  float: right;
-  align-self: flex-end;
-  background: ${color.jmt};
-  color: ${color.light};
-  padding: 10px 15px;
-  border-radius: 16px 16px 0 16px;
-}
-.ai-message {
-  float: left;
-  align-self: flex-start;
-  background: #f0f0f0;
-  color: ${color.dark};
-  padding: 10px 15px;
-  border-radius: 16px 16px 16px 0;
-}
+  .message-form {
+    border-top: 1px solid ${color.light};
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
 
-.message-form {
-  border-top: 1px solid ${color.light};
-  padding: 20px;
-  display: flex;
-  align-items: center;
-}
+  .message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid ${color.dark};
+    margin-right: 10px;
+  }
 
-.message-input {
-  flex-grow: 1;
-  padding: 10px;
-  border-radius: 16px;
-  border: 1px solid ${color.dark};
-  margin-right: 10px;
-}
+  .send-button {
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: none;
+    background-color: ${color.jmt};
+    color: ${color.light};
+    cursor: pointer;
+  }
 
-.send-button {
-  padding: 10px 20px;
-  border-radius: 16px;
-  border: none;
-  background-color: ${color.jmt};
-  color: ${color.light};
-  cursor: pointer;
-}
-
-h1 {
-  text-align: center;
-  background-color: ${color.light};
-  padding: 20px;
-  margin: 0;
-}
-
+  h1 {
+    text-align: center;
+    background-color: ${color.light};
+    padding: 20px;
+    margin: 0;
+  }
 `;
 
 const ChatWrapper = () => {
   const [messages, setMessages] = useState([]);
-  const [currentTypingId, setCurrentTypingId] = useState(null);
   const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
 
   const handleSendMessage = (message) => {
-    
-    aiApiGet(" 한국말로 알려주세요" + message).then((aiMessage) => {
-
-      setMessages((prevMessages) =>  [
+    aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
+      aiMessage = aiMessage.replace(
+        'url',
+        process.env.REACT_APP_URL + '/restaurant/info',
+      );
+      setMessages((prevMessages) => [
         ...prevMessages,
         { text: message, isUser: true },
         {
           text: `${aiMessage}`,
           isUser: false,
           isTyping: false, //true
-          id: Date.now()
-        }
+          id: Date.now(),
+        },
       ]);
-
     });
-
   };
-
-  const handleEndTyping = (id) => {
-    alert("3. handleEndTyping- " + id);
-    setMessages((prevMessages) =>
-      prevMessages.map((msg) => 
-        msg.id === id ? { ...msg, isTyping: false } : msg
-      
-      )
-    );
-    setCurrentTypingId(null);
-  };
-
-  useEffect(() => {
-
-    if (currentTypingId === null) {
-      const nextTypingMessage = messages.find(
-        (msg) => !msg.isUser && msg.isTyping
-      );
-      if (nextTypingMessage) {
-        setCurrentTypingId(nextTypingMessage.id);
-      }
-    }
-  }, [messages, currentTypingId]);
 
   return (
     <OuterChatBox>
-      <div className="chat-box"> 
-        <MessageList
-          messages={messages}
-          currentTypingId={currentTypingId}
-          onEndTyping={handleEndTyping}
-        />
+      <div className="chat-box">
+        <MessageList messages={messages} />
         <MessageForm onSendMessage={handleSendMessage} />
       </div>
     </OuterChatBox>
@@ -151,11 +118,10 @@ const ChatWrapper = () => {
 };
 
 const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
-
   const scrollRef = useRef();
-    useEffect(() => {
+  useEffect(() => {
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-  }, [messages])
+  }, [messages]);
 
   return (
     <div className="messages-list" ref={scrollRef}>
@@ -168,43 +134,28 @@ const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
         />
       ))}
     </div>
-  )
+  );
 };
 
-const Message = ({
-  text,
-  isUser,
-  isTyping,
-  id,
-  onEndTyping,
-  currentTypingId
-}) => {
+const Message = ({ text, isUser }) => {
   return (
-    <div className={isUser ? "user-message" : "ai-message"}>
-      {isTyping && currentTypingId === id ? (
-        <Typing speed={50} onFinishedTyping={() => onEndTyping(id)}>
-          <p>
-            <b>AI</b>: {text}
-          </p>
-        </Typing>
-      ) : (
-        <p>
-          <b>{isUser ? "User" : "AI"}</b>: {text}
-        </p>
-      )}
+    <div className={isUser ? 'user-message' : 'ai-message'}>
+      <p>
+        <b>{isUser ? 'User' : 'AI'}</b>:{' '}
+        {text.replace(/&lt;/g, '<').replace(/&gt;/g, '>')}
+      </p>
     </div>
   );
 };
 
 const MessageForm = ({ onSendMessage }) => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     //alert("1 handleSubmit : " + message);
     onSendMessage(message);
-    setMessage("");
-
+    setMessage('');
   };
 
   return (
@@ -216,7 +167,7 @@ const MessageForm = ({ onSendMessage }) => {
         className="message-input"
       />
       <button type="submit" className="send-button">
-      물어보기
+        물어보기
       </button>
     </form>
   );
