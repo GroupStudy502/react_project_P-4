@@ -7,13 +7,14 @@ const OuterChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 530px;
+  height: ${({ height }) => height ?? '530px'};
   width: 100%;
-  background: ${color.light};
+  background: white;
 
   .chat-box {
     width: 100%;
     height: 100%;
+    margin-top: ${({marginTop}) => marginTop ?? '15px'};
     background: white;
     border-radius: 8px;
     box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
@@ -91,13 +92,15 @@ const OuterChatBox = styled.div`
   }
 `;
 
-const ChatWrapper = () => {
+const ChatWrapper = ({height, marginTop}) => {
   const [messages, setMessages] = useState([]);
   const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
 
   const handleSendMessage = (message) => {
+    alert(height);
     aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
-      aiMessage = aiMessage.replace('url', process.env.REACT_APP_URL + '/restaurant/info',);
+      
+      aiMessage = aiMessage.replace('url', '/restaurant/info',);
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: message, isUser: true },
@@ -110,8 +113,9 @@ const ChatWrapper = () => {
   };
 
   return (
-    <OuterChatBox>
+    <OuterChatBox height={height} marginTop={marginTop}>
       <div className="chat-box">
+      
         <MessageList messages={messages} />
         <MessageForm onSendMessage={handleSendMessage} />
       </div>
@@ -143,6 +147,7 @@ const Message = ({ text, isUser }) => {
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
+        
         {text}
       </p>
     </div>

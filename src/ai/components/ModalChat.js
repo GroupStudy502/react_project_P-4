@@ -49,7 +49,7 @@ const ModalChat = ({ children, color }) => {
               <IoCloseSharp />
             </button>
           </div>
-          <ChatWrapper />
+          <ChatWrapper height="530px" marginTop="0"/>
         </Modal>
       )}
     </>
