@@ -35,7 +35,7 @@ const FooterBox = styled.footer`
     flex-wrap: wrap;
     align-content: center;
     border-top: 1px solid #e4e4e4;
-    padding: 9px 0 6px;
+    padding: 10px 0 10px;
   }
 
   .footer-menu a {
@@ -45,7 +45,7 @@ const FooterBox = styled.footer`
   .footer-menu span {
     color: #aaa;
     display: block;
-    margin: 0 4px;
+    margin: 0 10px;
     height: 16px;
   }
   
@@ -89,7 +89,7 @@ const Footer = () => {
       </p>
     </address>
     <p class="">
-      "(주)점메추는 통신판매중개자이며 통신판매의 당사자가 아닙니다. (주)점메추는 예약 및 구매 관련 통신판매업자가 제공하는 상품, 거래정보 및 거래 등에 대하여 책임을 지지 않습니다."
+      (주)점메추는 통신판매중개자이며 통신판매의 당사자가 아닙니다. (주)점메추는 예약 및 구매 관련 통신판매업자가 제공하는 상품, 거래정보 및 거래 등에 대하여 책임을 지지 않습니다.
     </p>
     <nav class="footer-menu">
       <a href="https://app.catchtable.co.kr/ct/main/policyService">서비스 이용 약관</a>
