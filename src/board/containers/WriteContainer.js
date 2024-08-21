@@ -19,7 +19,7 @@ const WriteContainer = ({ setPageTitle }) => {
   const [board, setBoard] = useState(null);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    mode: 'write', // 글쓰기는 기본값으로
+    mode: 'write',
     notice: false,
   });
   const [editor, setEditor] = useState();
