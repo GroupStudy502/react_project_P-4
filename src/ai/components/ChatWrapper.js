@@ -98,15 +98,11 @@ const ChatWrapper = ({height, marginTop}) => {
 
   const handleSendMessage = (message) => {
     aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
-      
       aiMessage = aiMessage.replace('url', '/restaurant/info',);
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: message, isUser: true },
-        {
-          text: `${aiMessage}`,
-          id: Date.now(),
-        },
+        { text: aiMessage, isUser: false},
       ]);
     });
   };
@@ -122,8 +118,10 @@ const ChatWrapper = ({height, marginTop}) => {
   );
 };
 
-const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
+const MessageList = ({ messages }) => {
+
   const scrollRef = useRef();
+  
   useEffect(() => {
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages]);
@@ -141,13 +139,11 @@ const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
 };
 
 const Message = ({ text, isUser }) => {
-  //console.log(text);
   return (
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
-        
-        ({text})
+        {text}
       </p>
     </div>
   );
