@@ -97,7 +97,6 @@ const ChatWrapper = ({height, marginTop}) => {
   const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
 
   const handleSendMessage = (message) => {
-    alert(height);
     aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
       
       aiMessage = aiMessage.replace('url', '/restaurant/info',);
@@ -148,7 +147,7 @@ const Message = ({ text, isUser }) => {
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
         
-        {text}
+        ({text})
       </p>
     </div>
   );
