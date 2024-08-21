@@ -11,6 +11,8 @@ import { BrowserRouter } from 'react-router-dom';
 import ErrorPage from './commons/pages/Error';
 import { UserInfoProvider } from './member/modules/UserInfoContext';
 
+import 'react-calendar/dist/Calendar.css';
+
 import './i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
