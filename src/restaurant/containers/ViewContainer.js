@@ -35,7 +35,7 @@ const ViewContainer = ({ setPageTitle }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '300px', zoom: 3 });
-
+  
   const { rstrId } = useParams();
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const ViewContainer = ({ setPageTitle }) => {
         <KakaoMap {...mapOptions} />
         <div> {item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
       
-      <FloatingBarContainer />
+      <FloatingBarContainer rstrId={rstrId}/>
       
     </ViewWrapper>
   );

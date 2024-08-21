@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import FloatingBar from '../components/FloatingBar';
 
-const FloatingBarContainer = () => {
+const FloatingBarContainer = ({ rstrId }) => {
     const navigate = useNavigate();
     const { states: { isLogin } } = useContext(UserInfoContext);
   
     const handleReservationClick = () => {
       if (isLogin) {
-        navigate('/reservation');
+        navigate(`/reservation/${rstrId}`);
       } else {
         navigate('/member/login');
       }
