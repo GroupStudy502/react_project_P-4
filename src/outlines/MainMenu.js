@@ -44,7 +44,7 @@ const MainMenu = () => {
           to="/reservationList"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('예약내역')}
+          {t('예약 내역')}
         </NavLink>
         <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
           {t('점메추AI')}
