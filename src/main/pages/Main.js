@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import ModalChat from '../../commons/components/ModalChat';
+import ModalChat from '../../ai/components/ModalChat';
 import CategoryContainer from '../containers/CategoryContainer';
 
 const Main = () => {
