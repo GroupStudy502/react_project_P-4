@@ -16,4 +16,4 @@ const Reservation = () => {
     );
 };
 
-export default React.momo(Reservation);
+export default React.memo(Reservation);
