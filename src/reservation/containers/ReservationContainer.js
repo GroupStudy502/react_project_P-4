@@ -50,11 +50,17 @@ const ReservationContainer = ({ setPageTitle }) => {
     [data],
   );
 
-
   const onTimeClick = useCallback((rTime) => {
-    setForm(form => ({ ...form, rTime }));
+    setForm((form) => ({ ...form, rTime }));
+  }, []);
 
-  })
+  const onChange = useCallback((e) => {
+    setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
+  }, []);
+
+  const onSubmit = useCallback((e) => {
+    e.preventDefault();
+  }, []);
 
   if (!data) {
     return <Loading />;
@@ -66,6 +72,9 @@ const ReservationContainer = ({ setPageTitle }) => {
       form={form}
       times={times}
       onCalendarClick={onCalendarClick}
+      onTimeClick={onTimeClick}
+      onChange={onChange}
+      onSubmit={onSubmit}
     />
   );
 };
