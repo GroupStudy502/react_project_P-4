@@ -1,6 +1,6 @@
 import React, { useState, useCallback, Component } from 'react';
 import { SmallButton } from './Buttons';
-import ChatRoom from './ChatRoom';
+import ChatRoom from '../../ai/components/ChatRoom';
 import Modal from 'react-modal';
 
 const customStyles = {
