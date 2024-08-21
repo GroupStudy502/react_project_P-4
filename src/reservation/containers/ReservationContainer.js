@@ -17,9 +17,8 @@ const ReservationContainer = ({ setPageTitle }) => {
     (async () => {
       try {
         const res = await apiGet(rstrId);
-
         res.availableDates = res.availableDates.map((d) => new Date(d));
-        console.log('res', res);
+
         setData(res);
         setPageTitle(`${res.rstrNm} ${t('예약하기')}`);
       } catch (err) {
