@@ -8,7 +8,7 @@ const ReservationList = () => {
   return (
     <>
       <Helmet>
-        <title>{t('예약내역')}</title>
+        <title>{t('예약_내역')}</title>
       </Helmet>
     </>
   );

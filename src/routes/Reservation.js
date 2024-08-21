@@ -3,18 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 
 const MainLayout = loadable(() => import('../layouts/MainLayout'));
-
-const ApplyPage = loadable(() => import('../reservation/pages/Apply'));
-const CompletionPage = loadable(() =>
-  import('../reservation/pages/Completion'),
+const ReservationPage = loadable(() => 
+  import("../reservation/pages/Reservation"),
 );
 
 const Reservation = () => {
   return (
     <Routes>
       <Route path="/reservation" element={<MainLayout />}>
-        <Route path="complete" element={<CompletionPage />} />
-        <Route path=":seq" element={<ApplyPage />} />
+        <Route path=":rstrId" element={<ReservationPage />} />
       </Route>
     </Routes>
   );
