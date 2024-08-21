@@ -7,6 +7,7 @@ import MessageBox from '../../../../commons/components/MessageBox';
 import InputBox from '../../../../commons/components/InputBox';
 import UserInfoContext from '../../../../member/modules/UserInfoContext';
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
+import ReservationList from '../../../../reservationlist/pages/ReservationList';
 
 import 'ckeditor5/ckeditor5.css';
 
@@ -67,10 +68,10 @@ const Form = ({
         <dl>
           <dt>{t('식당명')}</dt>
           <dd>
-            <InputBox
+            <text
               type="text"
               name="restaurant"
-              value={form.restaurant}
+              value={ReservationList}
               onChange={onFormChange}
             />
             {errors.restaurant && (
