@@ -20,12 +20,16 @@ const Board = loadable(() => import('./routes/Board'));
 // 예약 내역 페이지
 const ReservationList = loadable(() => import('./routes/ReservationList'));
 
+// AI 페이지
+const Ai = loadable(() => import('./routes/Ai'));
+
 const routeUrlPaths = [
   'member',
   'mypage',
   'restaurant',
   'board',
   'reservationlist',
+  'ai',
 ];
 
 const App = () => {
@@ -37,6 +41,7 @@ const App = () => {
       <Restaurant />
       <Board />
       <ReservationList />
+      <Ai />
     </>
   ) : (
     <Routes>
