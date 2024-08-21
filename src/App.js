@@ -14,13 +14,23 @@ const Mypage = loadable(() => import('./routes/Mypage'));
 // 식당 페이지
 const Restaurant = loadable(() => import('./routes/Restaurant'));
 
+// 게시판 페이지
+const Board = loadable(() => import('./routes/Board'));
+
 // 예약 내역 페이지
-const ReservationList = loadable(() => import("./routes/ReservationList"));
+const ReservationList = loadable(() => import('./routes/ReservationList'));
 
 // AI 페이지
-const Ai = loadable(() => import("./routes/Ai"));
+const Ai = loadable(() => import('./routes/Ai'));
 
-const routeUrlPaths = ['member', 'mypage', 'restaurant', 'festival', 'reservationlist', 'ai'];
+const routeUrlPaths = [
+  'member',
+  'mypage',
+  'restaurant',
+  'board',
+  'reservationlist',
+  'ai',
+];
 
 const App = () => {
   const location = useLocation();
@@ -29,6 +39,7 @@ const App = () => {
       <Member />
       <Mypage />
       <Restaurant />
+      <Board />
       <ReservationList />
       <Ai />
     </>
