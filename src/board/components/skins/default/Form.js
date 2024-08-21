@@ -64,6 +64,21 @@ const Form = ({
             )}
           </dd>
         </dl>
+        <dl>
+          <dt>{t('식당명')}</dt>
+          <dd>
+            <InputBox
+              type="text"
+              name="restaurant"
+              value={form.restaurant}
+              onChange={onFormChange}
+            />
+            {errors.restaurant && (
+              <MessageBox color="danger" messages={errors.restaurant} />
+            )}
+          </dd>
+        </dl>
+
         {(form.mode === 'write' && !isLogin) ||
           (form.mode === 'update' && !form.member && (
             <dl>

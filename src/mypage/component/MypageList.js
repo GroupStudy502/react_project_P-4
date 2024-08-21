@@ -13,7 +13,6 @@ const mypage_main = styled.div`
   border-color: black;
   border: 3px solid;
   border-radius: 20px;
-  margin: 20px auto 0 auto;
   position: relative;
 
 `;
