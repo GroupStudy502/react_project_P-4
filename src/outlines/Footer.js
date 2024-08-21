@@ -3,9 +3,8 @@ import styled from 'styled-components';
 const FooterBox = styled.footer`
   min-height: 250px;
   background: #f9f9f9;
-  margin: 0px auto;
+  margin: 0px auto 50px;
   padding: 0px 200px;
-  border: 0;
   display: block;
   font-size: 100%;
   vertical-align: baseline;
@@ -35,6 +34,8 @@ const FooterBox = styled.footer`
     align-items: center;
     flex-wrap: wrap;
     align-content: center;
+    border-top: 1px solid #e4e4e4;
+    padding: 9px 0 6px;
   }
 
   .footer-menu a {
