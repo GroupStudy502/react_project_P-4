@@ -86,7 +86,6 @@ const Header = () => {
     cookies.remove('token', { path: '/' });
   }, [setIsLogin, setIsAdmin, setUserInfo]);
 
-
   // 관리자 URL
   const adminUrl =
     process.env.REACT_APP_ADMIN_URL + '?token=' + cookies.load('token');
