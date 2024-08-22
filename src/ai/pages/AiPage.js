@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ChatWrapper from '../components/ChatWrapper';
+import { OuterChat } from '../../commons/components/LayoutBox';
+
 
 const AiPage = () => {
   const { t } = useTranslation();
@@ -10,7 +12,9 @@ const AiPage = () => {
       <Helmet>
         <title>{t('JeomMechu_AI')}</title>
       </Helmet>
-      <ChatWrapper/>
+      <OuterChat>
+        <ChatWrapper height="560px" marginTop="50px"/>
+      </OuterChat>
     </>
   );
 };

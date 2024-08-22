@@ -10,3 +10,8 @@ export const OuterBox = styled.div`
   box-shadow: 2px 2px 5px ${dark};
   margin: 50px auto;
 `;
+
+export const OuterChat = styled.div`
+  width: 700px;
+  margin: auto;
+`;
