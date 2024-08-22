@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import InputBox from '../../commons/components/InputBox';
 import UserInfoContext from '../../member/modules/UserInfoContext'; // 유저정보
+import { MidButton } from '../../commons/components/Buttons';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = styled.img`
   width: 100px;
@@ -36,6 +38,9 @@ const FormBox = styled.form`
 `;
 
 const MyInfo = ({ onSubmit }) => {
+  let navigate = useNavigate();
+  navigate('/mypage');
+
   const [Image, setImage] = useState(
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
   );
@@ -61,8 +66,6 @@ const MyInfo = ({ onSubmit }) => {
         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
       );
     }
-
-    const InfoForm = ({}) => {};
   };
 
   return (
@@ -109,6 +112,21 @@ const MyInfo = ({ onSubmit }) => {
             </td>
           </tbody>
         </FormBox>
+
+        <MidButton type="submit" className="editbtn">
+          {t('수정하기')}
+        </MidButton>
+
+        <div>
+          <MidButton
+            className="backbtn"
+            onClick={() => {
+              navigate('/mypage');
+            }}
+          >
+            {t('나가기')}
+          </MidButton>
+        </div>
       </div>
     </div>
   );
