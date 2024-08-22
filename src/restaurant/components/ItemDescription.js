@@ -29,8 +29,8 @@ const Wrapper = styled.div`
     }
   }
 
-  dl + dl {
-    border-top: 1px dashed #818181;
+  dl:first-child {
+    border-bottom: 1px solid #e5e5e5;
   }
 `;
 
@@ -44,6 +44,7 @@ const ItemDescription = ({ item }) => {
     rstrTelNo,
     restdyInfoCn,
     rstrRdnmAdr,
+    dbsnsStatmBzcndNm,
   } = item; // 알맞는 식당 레스토랑 엔티티 서치
 
   return (
@@ -54,10 +55,6 @@ const ItemDescription = ({ item }) => {
           <dd>{rstrIntrcnCont}</dd>
         </dl>
       )}
-      <dl>
-        <dt>{t('식당명')}</dt>
-        <dd>{rstrNm}</dd>
-      </dl>
 
       <dl>
         <dt>{t('상세주소')}</dt>
