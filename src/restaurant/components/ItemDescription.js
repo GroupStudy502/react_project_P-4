@@ -51,7 +51,7 @@ const ItemDescription = ({ item }) => {
     <Wrapper>
       {rstrIntrcnCont && (
         <dl>
-          <dt>{t('소개')}</dt>
+          
           <dd>{rstrIntrcnCont}</dd>
         </dl>
       )}

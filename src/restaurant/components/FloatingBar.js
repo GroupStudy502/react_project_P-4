@@ -56,7 +56,7 @@ const FloatingBar = ({ onReservationClick }) => {
         </IconWrapper>
         <StyledButton
           type="button"
-          color="primary"
+          color="jmt"
           onClick={onReservationClick}
         >
           {t('예약하기')}
