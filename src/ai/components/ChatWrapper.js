@@ -90,6 +90,9 @@ const OuterChatBox = styled.div`
     padding: 20px;
     margin: 0;
   }
+  a {
+    color: ${color.primary};
+  }
 `;
 
 const ChatWrapper = ({height, marginTop}) => {
@@ -99,6 +102,8 @@ const ChatWrapper = ({height, marginTop}) => {
   const handleSendMessage = (message) => {
     aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
       aiMessage = aiMessage.replace('url', '/restaurant/info',);
+      
+      
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: message, isUser: true },
@@ -143,7 +148,8 @@ const Message = ({ text, isUser }) => {
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
-        {text}
+        <span dangerouslySetInnerHTML={{__html: text}}
+        />
       </p>
     </div>
   );
