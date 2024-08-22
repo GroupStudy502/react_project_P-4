@@ -39,9 +39,9 @@ const TitleWithIcon = styled.h2`
 `;
 
 const TimeButton = styled.button`
-  background: ${({ isSelected }) => (isSelected ? '#007bff' : '#ffffff')};
-  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#007bff')};
-  border: 1px solid #007bff;
+  background: ${({ isSelected }) => (isSelected ? '#ff3d00' : '#ffffff')};
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
+  border: 1px solid #ff3d00;
   border-radius: 5px;
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
   margin: 3px; // 버튼 상하좌우 마진
@@ -51,15 +51,15 @@ const TimeButton = styled.button`
   transition: background 0.3s, color 0.3s;
 
   &:hover {
-    background: #0056b3;
+    background: #ff3d00;
     color: #ffffff;
   }
 `;
 
 const PersonButton = styled.button`
-  background: ${({ isSelected }) => (isSelected ? '#28a745' : '#ffffff')};
-  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#28a745')};
-  border: 1px solid #28a745;
+  background: ${({ isSelected }) => (isSelected ? '#ff3d00' : '#ffffff')};
+  color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
+  border: 1px solid #ff3d00;
   border-radius: 50%;
   width: 50px; // 인원 버튼 가로 크기
   height: 50px; // 인원 버튼 세로 크기
@@ -70,9 +70,10 @@ const PersonButton = styled.button`
   font-size: 1.2em;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
+  margin-bottom: 30px;
 
   &:hover {
-    background: #218838;
+    background: #ff3d00;
     color: #ffffff;
   }
 `;
@@ -158,7 +159,7 @@ const ReservationForm = ({
                 ))}
               </PersonButtonsContainer>
             </dl>
-            <BigButton type="submit" color="primary">
+            <BigButton type="submit" color="jmt">
               {t('예약하기')}
             </BigButton>
           </>
