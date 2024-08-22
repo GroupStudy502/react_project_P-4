@@ -8,6 +8,7 @@ import InputBox from '../../../../commons/components/InputBox';
 import UserInfoContext from '../../../../member/modules/UserInfoContext';
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 import ReservationList from '../../../../reservationlist/pages/ReservationList';
+import { MidButton } from '../../../../commons/components/Buttons';
 
 import 'ckeditor5/ckeditor5.css';
 
@@ -136,11 +137,7 @@ const Form = ({
                 onReady={(editor) => {
                   //setEditor(() => editor);
                 }}
-                onChange={(e, editor) => {
-                  onFormChange({
-                    target: { name: 'content', value: editor.getData() },
-                  });
-                }}
+                onChange={(e, editor) => {}}
               />
             ) : (
               <textarea
