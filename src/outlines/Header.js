@@ -138,13 +138,6 @@ const Header = () => {
           <Link to="/">
             <img src={logo} alt={t('로고')} />
           </Link>
-
-          <form autoComplete="off">
-            <input type="text" />
-            <button type="submit">
-              <FaSearch />
-            </button>
-          </form>
         </div>
       </section>
       <MainMenu />
