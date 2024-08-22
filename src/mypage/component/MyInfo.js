@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import InputBox from '../../commons/components/InputBox';
 import UserInfoContext from '../../member/modules/UserInfoContext'; // 유저정보
 import { MidButton } from '../../commons/components/Buttons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // 페이지이동
 
 const Profile = styled.img`
   width: 100px;
@@ -19,21 +19,17 @@ const Profile = styled.img`
 `;
 
 const FormBox = styled.form`
-  dl {
+  th {
     display: flex;
     align-items: center;
 
-    dt {
+    td {
       width: 120px;
     }
 
-    dd {
+    tr {
       flex-grow: 1;
     }
-  }
-
-  dl + dl {
-    margin-top: 5px;
   }
 `;
 
@@ -86,7 +82,7 @@ const MyInfo = ({ onSubmit }) => {
         style={{ display: 'none' }}
         onChange={onChange}
       />
-      <FileUpload />
+
       <div className="modify">
         <FormBox autoComplete="off" onSubmit={onSubmit}>
           <tbody>
@@ -95,10 +91,7 @@ const MyInfo = ({ onSubmit }) => {
             <tr></tr>
             <th>{t('비밀번호')}</th>
             <td>
-              <InputBox
-                type="text"
-                value="form.password" // 로그인할 때 비밀번호값을 끌고오기
-              />
+              <InputBox type="text" value="form.password" />
             </td>
             <tr></tr>
             <th>{t('이름')}</th>
@@ -106,26 +99,23 @@ const MyInfo = ({ onSubmit }) => {
             <tr></tr>
             <th>{t('휴대전화')}</th>
             <td>
-              <InputBox
-                type="text" // 수정가능
-              />
+              <InputBox type="text" />
             </td>
           </tbody>
         </FormBox>
 
-        <MidButton type="submit" className="editbtn">
+        <button type="submit" className="editbtn">
           {t('수정하기')}
-        </MidButton>
+        </button>
 
-        <div>
-          <MidButton
-            className="backbtn"
+        <div className="backbtn">
+          <button
             onClick={() => {
               navigate('/mypage');
             }}
           >
             {t('나가기')}
-          </MidButton>
+          </button>
         </div>
       </div>
     </div>
