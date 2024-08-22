@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReservationForm from '../components/ReservationForm';
+import CalendarForm from '../components/CalendarForm';
 import { apiGet } from '../../restaurant/apis/apiInfo';
 import Loading from '../../commons/components/Loading';
 import { useTranslation } from 'react-i18next';
@@ -71,15 +72,21 @@ const ReservationContainer = ({ setPageTitle }) => {
   }
 
   return (
-    <ReservationForm
-      data={data}
-      form={form}
-      times={times}
-      onCalendarClick={onCalendarClick}
-      onTimeClick={onTimeClick}
-      onChange={onChange}
-      onSubmit={onSubmit}
-    />
+    <div>
+      <CalendarForm
+        availableDates={data.availableDates}
+        onClick={onCalendarClick}
+      />
+      <ReservationForm
+        data={data}
+        form={form}
+        times={times}
+        onCalendarClick={onCalendarClick}
+        onTimeClick={onTimeClick}
+        onChange={onChange}
+        onSubmit={onSubmit}
+      />
+    </div>
   );
 };
 
