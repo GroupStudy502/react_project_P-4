@@ -39,6 +39,16 @@ const Subtitle = styled.h3`
   color: #666;
 `;
 
+const Checktitle = styled.h3`
+  margin: 10px 0 20px 7px; 
+  font-size: 1.2em; 
+`;
+
+const LastCheckTitle = styled(Checktitle)`
+
+  margin: 40px 0 30px 7px; 
+`;
+
 const TimeButton = styled.button`
   background: ${({ isSelected }) => (isSelected ? '#ff3d00' : '#ffffff')};
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
@@ -164,7 +174,20 @@ const ReservationForm = ({
           <TitleWithIcon>
             <IoMdCheckmarkCircleOutline />
             <h2>{t('예약 시 확인해 주세요')}</h2>
-          </TitleWithIcon>
+            </TitleWithIcon>
+              {[
+                '* 노쇼 방지를 위해 예약금과 함께 예약 신청을 받고 있습니다.',
+                '* 예약금은 식사 금액에서 차감합니다.',
+                '* 예약시간 15분 이상 늦을 시 자동 취소됩니다.(예약금 환불 X)',
+                '* 1인 1메뉴 주문 부탁드립니다.',
+                '* 외부 음식, 음료 반입 및 취식이 불가합니다.',
+                '* 인원 변경 시 방문 3시간 전까지 예약 수정 가능합니다.',
+              ].map((item, index) => (
+                <Checktitle key={index}>{t(item)}</Checktitle>
+              ))}
+              <LastCheckTitle>
+                {t('당일 취소 및 노쇼는 레스토랑뿐만 아니라 다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다.')}
+              </LastCheckTitle>
             </div>
             <BigButton type="submit" color="jmt">
               {t('예약하기')}
