@@ -19,16 +19,22 @@ const TimeTableAndPerson = styled.div`
 const TitleWithIcon = styled.h2`
   display: flex;
   align-items: center;
-  margin-bottom: 20px; /* Space between sections */
+  margin-bottom: 15px; /* 아이콘+글씨 줄 아래 마진 */
+  margin-top: 30px; /* 아이콘+글씨 줄 위 마진 */
   
   svg {
-    margin-right: 8px;
-    font-size: 1.5em; /* Adjust icon size */
+    margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
+    font-size: 1.5em; /* 아이콘 크기 */
   }
 
   h2 {
     margin: 0; /* Remove default margin from h2 */
-    font-size: 1.25em; /* Adjust heading size */
+    font-size: 0.8em; /* h2 글씨 크기(...선택해 주세요) */
+  }
+
+  h3 {
+    margin: 0; /* Remove default margin from h2 */
+    font-size: 0.5em; /* h3 글씨 크기(...선택해 주세요) */
   }
 `;
 
@@ -37,9 +43,10 @@ const TimeButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#007bff')};
   border: 1px solid #007bff;
   border-radius: 5px;
-  padding: 10px 15px;
-  margin: 5px;
-  font-size: 1em;
+  padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
+  margin: 3px; // 버튼 상하좌우 마진
+  margin-right: 20px; // 버튼 오른쪽 마진
+  font-size: 1.2em; // 시간 버튼 글자 크기
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
 
@@ -49,10 +56,31 @@ const TimeButton = styled.button`
   }
 `;
 
-const PersonButton = styled(TimeButton)`
+const PersonButton = styled.button`
   background: ${({ isSelected }) => (isSelected ? '#28a745' : '#ffffff')};
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#28a745')};
   border: 1px solid #28a745;
+  border-radius: 50%;
+  width: 50px; // 인원 버튼 가로 크기
+  height: 50px; // 인원 버튼 세로 크기
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+
+  &:hover {
+    background: #218838;
+    color: #ffffff;
+  }
+`;
+
+const PersonButtonsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping if needed */
+  gap: 10px; /* Space between buttons */
 `;
 
 const ReservationForm = ({
@@ -78,7 +106,6 @@ const ReservationForm = ({
           <FaCalendarAlt />
           <h2>{t('날짜를 선택해 주세요')}</h2>
         </TitleWithIcon>
-        <h3>{t('1~20명까지 선택 가능합니다.')}</h3>
         <Calendar
           onChange={onCalendarClick}
           minDate={startDate}
@@ -114,21 +141,22 @@ const ReservationForm = ({
               ))}
             </div>
             <dl className="persons">
-            <TitleWithIcon>
-              <GoPersonFill />
-              <h2>{t('인원을 선택해 주세요')}</h2>
-            </TitleWithIcon>
-            <div className="person-buttons">
+              <TitleWithIcon>
+                <GoPersonFill />
+                <h2>{t('인원을 선택해 주세요')}</h2>
+                <h3>{t('1~10명까지 선택 가능합니다.')}</h3>
+              </TitleWithIcon>
+              <PersonButtonsContainer>
                 {personOptions.map((person) => (
                   <PersonButton
                     key={person}
                     isSelected={form.persons === person}
                     onClick={() => onChange({ target: { name: 'persons', value: person } })}
                   >
-                    {person} {t('명')}
+                    {person}
                   </PersonButton>
                 ))}
-              </div>
+              </PersonButtonsContainer>
             </dl>
             <BigButton type="submit" color="primary">
               {t('예약하기')}
