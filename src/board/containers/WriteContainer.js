@@ -22,7 +22,8 @@ const WriteContainer = ({ setPageTitle }) => {
     mode: 'write',
     notice: false,
   });
-  const [editor, setEditor] = useState();
+  const [notice, setNotice] = useState(false);
+
   const [errors, setErrors] = useState({});
 
   const { t } = useTranslation();
@@ -43,18 +44,24 @@ const WriteContainer = ({ setPageTitle }) => {
     })();
   }, [bid, setPageTitle]);
 
-  const onFormChange = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: e.target.value.trim() }));
-  }, []);
+  const onToggleNotice = useCallback(() => setNotice((notice) => !notice), []);
 
-  const onToggleNotice = useCallback(
-    () => setForm((form) => ({ ...form, notice: !form.notice })),
-    [],
+  const onSubmit = useCallback(
+    (e, editor) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      for (const [k, v] of formData) {
+        form[k] = v;
+      }
+
+      form.content = editor.getData();
+
+      setForm({ ...form });
+
+      console.log(form);
+    },
+    [form],
   );
-
-  const onSubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
 
   if (loading || !board) {
     return <Loading />;
@@ -65,10 +72,9 @@ const WriteContainer = ({ setPageTitle }) => {
   return skinRoute(skin, {
     board,
     form,
-    setEditor,
-    onFormChange,
     onSubmit,
     onToggleNotice,
+    notice,
     errors,
   });
 };
