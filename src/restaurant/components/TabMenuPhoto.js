@@ -11,7 +11,8 @@ const ImagesContainer = styled.div`
   img {
     max-width: 250px;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 5px;
   }
 `;
 
