@@ -14,15 +14,22 @@ const IconWrapper = styled.div`
   
   font-weight: bold; 
   font-size: 1.1em; 
+  display: flex;
+  align-items: center;
 
   dl {
     padding: 10px 15px;
-    display: flex;
+    display: inline-flex;
 
     dd {
-      
+    
       margin-left: 10px;
+
     }
+  }
+
+  dl + dl {
+    margin-right: 12px;
   }
 
 `;
