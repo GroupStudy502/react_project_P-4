@@ -4,20 +4,15 @@ import styled from 'styled-components';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import MyInfo from './MyInfo';
-import ProfileImage from '../../member/components/ProfileImage';
+import Myprofile from './Myprofile';
 
 const MypageList = () => {
 
   const { t } = useTranslation();
-  const [Image, setImage] = useState(
-    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
-  );
 
   return (
     <div className="mymember">
-
-        
+        <Myprofile />
 
       <NavLink
         to="/mypage/info"
