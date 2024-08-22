@@ -82,8 +82,17 @@ const SearchContainer = () => {
 
   return (
     <>
+      <SearchBox
+        form={form}
+        onChange={onChangeSearch}
+        onSubmit={onSubmitSearch}
+      />
       {locations && locations.length > 0 && (
         <KakaoMap marker={locations} zoom={8} />
+      )}
+      <ItemsBox items={items} />
+      {items.length > 0 && (
+        <Pagination onClick={onChangePage} pagination={pagination} />
       )}
     </>
   );

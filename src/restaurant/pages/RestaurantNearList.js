@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import NearContainer from '../containers/SearchContainer';
+import NearContainer from '../containers/NearContainer';
 import CurrentAdress from '../../kakaoapi/CurrentAdress';
 
 const RestaurantNearList = () => {
