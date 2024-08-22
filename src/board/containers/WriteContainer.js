@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import loadable from '@loadable/component';
+import { produce } from 'immer';
 import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
+import { apiFileDelete } from '../../commons/libs/file/apiFile';
+import UserInfoContext from '../../member/modules/UserInfoContext';
 
 function skinRoute(skin, props) {
   const WriteMain = loadable(() =>
@@ -22,11 +25,13 @@ const WriteContainer = ({ setPageTitle }) => {
     gid: '' + Date.now(),
     mode: 'write',
     notice: false,
+    attachFiles: [],
+    editorImages: [],
   });
-  const [editorImages, setEditorImages] = useState([]);
-  const [attachFiles, setAttachFiles] = useState([]);
 
-  const [notice, setNotice] = useState(false);
+  const {
+    states: { isLogin, isAdmin },
+  } = useContext(UserInfoContext);
 
   const [errors, setErrors] = useState({});
 
@@ -52,48 +57,113 @@ const WriteContainer = ({ setPageTitle }) => {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   }, []);
 
-  const onToggleNotice = useCallback(() => setNotice((notice) => !notice), []);
+  const onToggleNotice = useCallback(() => {
+    setForm(
+      produce((draft) => {
+        draft.notice = !draft.notice;
+      }),
+    );
+  }, []);
 
   /* 파일 업로드 후속 처리 */
   const fileUploadCallback = useCallback((files, editor) => {
     if (!files || files.length === 0) return;
 
-
     const imageUrls = [];
-    const _editorImage = [];
+    const _editorImages = [];
     const _attachFiles = [];
+
     for (const file of files) {
       const { location, fileUrl } = file;
 
       if (location === 'editor') {
         imageUrls.push(fileUrl);
-        setEditorImages((items) => items.concat(file));
+        _editorImages.push(file);
       } else {
-        setAttachFiles((items) => items.concat(file));
-      }
-
-      // 에디터에 이미지 추가
-      if (imageUrls.length > 0) {
-        editor.execute('insertImage', { source: imageUrls });
+        _attachFiles.push(file);
       }
     }
+
+    // 에디터에 이미지 추가
+    if (imageUrls.length > 0) {
+      editor.execute('insertImage', { source: imageUrls });
+    }
+
+    setForm(
+      produce((draft) => {
+        draft.attachFiles.push(..._attachFiles);
+        draft.editorImages.push(..._editorImages);
+      }),
+    );
+  }, []);
+
+  /* 파일 삭제 처리 */
+  const fileDeleteCallback = useCallback((seq) => {
+    if (!window.confirm('정말 삭제하겠습니까?')) {
+      return;
+    }
+
+    (async () => {
+      try {
+        await apiFileDelete(seq);
+
+        setForm(
+          produce((draft) => {
+            draft.attachFiles = draft.attachFiles.filter(
+              (file) => file.seq !== seq,
+            );
+
+            draft.editorImages = draft.editorImages.filter(
+              (file) => file.seq !== seq,
+            );
+          }),
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    })();
   }, []);
 
   const onSubmit = useCallback(
-    (e, editor) => {
+    (e) => {
       e.preventDefault();
-      const formData = new FormData(e.target);
-      for (const [k, v] of formData) {
-        form[k] = v;
+
+      /* 유효성 검사 - 필수 항목 검증 S */
+      const requiredFields = {
+        poster: t('작성자를_입력하세요.'),
+        subject: t('제목을_입력하세요.'),
+        content: t('내용을_입력하세요.'),
+      };
+
+      if (!isLogin) {
+        // 비회원인 경우
+        requiredFields.guestPw = t('비밀번호를_입력하세요.');
       }
 
-      form.content = editor.getData();
+      if (!isAdmin) {
+        // 관리자가 아니면 공지글 작성 X
+        form.notice = false;
+      }
 
-      setForm({ ...form });
+      const _errors = {};
+      let hasErrors = false;
+      for (const [field, message] of Object.entries(requiredFields)) {
+        if (!form[field]?.trim()) {
+          _errors[field] = _errors[field] ?? [];
+          _errors[field].push(message);
 
-      console.log(form);
+          hasErrors = true;
+        }
+      }
+      /* 유효성 검사 - 필수 항목 검증 E */
+
+      // 검증 실패시에는 처리 X
+      if (hasErrors) {
+        setErrors(_errors);
+        return;
+      }
     },
-    [form],
+    [t, form, isAdmin, isLogin],
   );
 
   if (loading || !board) {
@@ -108,11 +178,9 @@ const WriteContainer = ({ setPageTitle }) => {
     onSubmit,
     onChange,
     onToggleNotice,
-    notice,
     errors,
     fileUploadCallback,
-    editorImages,
-    attachFiles,
+    fileDeleteCallback,
   });
 };
 
