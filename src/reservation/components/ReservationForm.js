@@ -31,11 +31,12 @@ const TitleWithIcon = styled.h2`
     margin: 0; /* Remove default margin from h2 */
     font-size: 0.8em; /* h2 글씨 크기(...선택해 주세요) */
   }
+`;
 
-  h3 {
-    margin: 0; /* Remove default margin from h2 */
-    font-size: 0.5em; /* h3 글씨 크기(...선택해 주세요) */
-  }
+const Subtitle = styled.h3`
+  margin: 5px 0 15px 5px; 
+  font-size: 0.9em; 
+  color: #666;
 `;
 
 const TimeButton = styled.button`
@@ -145,8 +146,8 @@ const ReservationForm = ({
               <TitleWithIcon>
                 <GoPersonFill />
                 <h2>{t('인원을 선택해 주세요')}</h2>
-                <h3>{t('1~10명까지 선택 가능합니다.')}</h3>
               </TitleWithIcon>
+              <Subtitle>{t('1~10명까지 선택 가능합니다.')}</Subtitle>
               <PersonButtonsContainer>
                 {personOptions.map((person) => (
                   <PersonButton
@@ -159,6 +160,12 @@ const ReservationForm = ({
                 ))}
               </PersonButtonsContainer>
             </dl>
+            <div>
+          <TitleWithIcon>
+            <IoMdCheckmarkCircleOutline />
+            <h2>{t('예약 시 확인해 주세요')}</h2>
+          </TitleWithIcon>
+            </div>
             <BigButton type="submit" color="jmt">
               {t('예약하기')}
             </BigButton>
