@@ -7,13 +7,14 @@ const OuterChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 530px;
+  height: ${({ height }) => height ?? '530px'};
   width: 100%;
-  background: ${color.light};
+  background: white;
 
   .chat-box {
     width: 100%;
     height: 100%;
+    margin-top: ${({marginTop}) => marginTop ?? '15px'};
     background: white;
     border-radius: 8px;
     box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
@@ -89,29 +90,32 @@ const OuterChatBox = styled.div`
     padding: 20px;
     margin: 0;
   }
+  a {
+    color: ${color.primary};
+  }
 `;
 
-const ChatWrapper = () => {
+const ChatWrapper = ({height, marginTop}) => {
   const [messages, setMessages] = useState([]);
   const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
 
   const handleSendMessage = (message) => {
     aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
-      aiMessage = aiMessage.replace('url', process.env.REACT_APP_URL + '/restaurant/info',);
+      aiMessage = aiMessage.replace('url', '/restaurant/info',);
+      
+      
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: message, isUser: true },
-        {
-          text: `${aiMessage}`,
-          id: Date.now(),
-        },
+        { text: aiMessage, isUser: false},
       ]);
     });
   };
 
   return (
-    <OuterChatBox>
+    <OuterChatBox height={height} marginTop={marginTop}>
       <div className="chat-box">
+      
         <MessageList messages={messages} />
         <MessageForm onSendMessage={handleSendMessage} />
       </div>
@@ -119,8 +123,10 @@ const ChatWrapper = () => {
   );
 };
 
-const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
+const MessageList = ({ messages }) => {
+
   const scrollRef = useRef();
+  
   useEffect(() => {
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   }, [messages]);
@@ -138,12 +144,12 @@ const MessageList = ({ messages, currentTypingId, onEndTyping }) => {
 };
 
 const Message = ({ text, isUser }) => {
-  //console.log(text);
   return (
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
-        {text}
+        <span dangerouslySetInnerHTML={{__html: text}}
+        />
       </p>
     </div>
   );
