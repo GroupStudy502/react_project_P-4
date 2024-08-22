@@ -85,28 +85,28 @@ const Form = ({
           )}
         </dd>
       </dl>
-      {(form.mode === 'write' && !isLogin) ||
-        (form.mode === 'update' && !form.member && (
-          <dl>
-            <dt>{t('비밀번호')}</dt>
-            <dd>
-              <InputBox
-                type="password"
-                name="guestPw"
-                defaultValue={form?.guestPw}
-              />
-              {errors?.guestPw && (
-                <MessageBox color="danger" messages={errors.guestPw} />
-              )}
-            </dd>
-          </dl>
-        ))}
+      {((form.mode === 'write' && !isLogin) ||
+        (form.mode === 'update' && !form?.member)) && (
+        <dl>
+          <dt>{t('비밀번호')}</dt>
+          <dd>
+            <InputBox
+              type="password"
+              name="guestPw"
+              defaultValue={form?.guestPw}
+            />
+            {errors?.guestPw && (
+              <MessageBox color="danger" messages={errors.guestPw} />
+            )}
+          </dd>
+        </dl>
+      )}
       {isAdmin && (
         <dl>
           <dt>{t('공지글')}</dt>
           <dd>
             <label onClick={onToggleNotice}>
-              {notice ? <FaCheckSquare /> : <FaSquare />}
+              {form?.notice ? <FaCheckSquare /> : <FaSquare />}
               {t('공지글로_등록하기')}
             </label>
           </dd>
@@ -208,7 +208,9 @@ const Form = ({
           </dd>
         </dl>
       )}
-      <button type="submit">제출</button>
+      <MidButton type="submit" color="info">
+        {t(form.mode === 'update' ? '수정하기' : '작성하기')}
+      </MidButton>
     </Wrapper>
   );
 };
