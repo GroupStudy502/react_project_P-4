@@ -26,6 +26,8 @@ const ListContainer = () => {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const [locations, setLocations] = useState([]); // 검색된 위치들의 위도, 경도를 저장하는 배열 -> 마커 표기할 위도, 경도 정보
+
   useEffect(() => {
     (async () => {
       try {
@@ -35,12 +37,25 @@ const ListContainer = () => {
         setItems(items);
         setPagination(pagination);
         setLoading(false);
+        /* 마커 표기 좌표 가공 처리 S */
+        if (!items || items?.length === 0) {
+          return;
+        }
+
+        const _locations = items
+          .filter((d) => d.rstrLa && d.rstrLo)
+          .map((d) => ({
+            lat: d.rstrLa,
+            lng: d.rstrLo,
+          }));
+
+        setLocations(_locations);
+        /* 마커 표기 좌표 가공 처리 E */
       } catch (err) {
         console.error(err);
       }
     })();
   }, [search]);
-
 
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
@@ -60,40 +75,10 @@ const ListContainer = () => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
 
-    // 로딩 처리
-    if (loading) {
-      return <Loading />;
-    }
-
-  /* 카카오 지도 S*/
-  const markers = [
-    {
-      lat: 37.557756188912954,
-      lng: 126.94062742683245,
-      info: { content: '<h1>출력</h1>', removable: true },
-    },
-    {
-      lat: 37.557287959390024,
-      lng: 126.94120499658828,
-      image:
-        'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
-      info: { content: '<h1>출력2</h1>', clickable: true }, // 클릭시 토글 형태로 인포윈도우 노출
-    },
-    { lat: 37.561184514897825, lng: 126.94069261563956 },
-  ];
-  
-  const options = {
-    currentLocation: true, // 현재 위치 기반
-    center: {
-      lat: 33.450701,
-      lng: 126.570667,
-    },
-    zoom: 4,
-    marker: markers,
-    markerImage:
-      'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
-  };
-  /* 카카오 지도 E*/
+  // 로딩 처리
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -102,7 +87,9 @@ const ListContainer = () => {
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
-      <KakaoMap {...options} />
+      {locations && locations.length > 0 && (
+        <KakaoMap marker={locations} zoom={8} />
+      )}
       <ItemsBox items={items} />
       {items.length > 0 && (
         <Pagination onClick={onChangePage} pagination={pagination} />
