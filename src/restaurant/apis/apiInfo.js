@@ -1,7 +1,6 @@
 import requestData from '../../commons/libs/requestData';
 
-// 목록 조회
-
+// 검색 목록 조회
 export const apiList = (search) => {
   search = search ?? {};
 
@@ -18,4 +17,3 @@ export const apiList = (search) => {
 
 // 상세 조회
 export const apiGet = (rstrId) => requestData(`/restaurant/info/${rstrId}`);
-
