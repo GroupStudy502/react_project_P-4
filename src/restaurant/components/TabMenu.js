@@ -16,13 +16,14 @@ const Menu = styled.div`
     dt {
       width: 100%;
       font-size: 1.1em;
-      
+      letter-spacing: 1.5px;
     }
 
     dd {
       width: calc(100% - 120px);
       color: ${jmt};
       font-weight: bold;
+      margin-top: 10px;
     }
   }
 
@@ -36,6 +37,10 @@ const NoDataText = styled.div`
   color: #818181;
 `;
 
+const formatPrice = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const TabMenu = ({ item }) => {
   const { t } = useTranslation();
 
@@ -48,7 +53,7 @@ const TabMenu = ({ item }) => {
           item.foods.map((food) => ( 
             <dl key={food.menuId}>
               <dt>{food.menuNm}</dt>
-              <dd>{food.menuPrice}{t('원')}</dd>
+              <dd>{formatPrice(food.menuPrice)}{t('원')}</dd>
             </dl>
           ))}
       </Menu>

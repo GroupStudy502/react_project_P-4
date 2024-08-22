@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReservationForm from '../components/ReservationForm';
 import { apiGet } from '../../restaurant/apis/apiInfo';
 import Loading from '../../commons/components/Loading';
@@ -12,13 +12,18 @@ const ReservationContainer = ({ setPageTitle }) => {
 
   const { rstrId } = useParams();
   const { t } = useTranslation();
-
+  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       try {
         const res = await apiGet(rstrId);
-        res.availableDates = res.availableDates.map((d) => new Date(d));
-
+        console.log(res);
+        res.availableDates = res?.availableDates?.map((d) => new Date(d));
+        if (!res.availableDates) {
+          // 예약가능일이 없는 경우
+          navigate('/restaurant/info/' + rstrId);
+          return;
+        }
         setData(res);
         setPageTitle(`${res.rstrNm} ${t('예약하기')}`);
       } catch (err) {

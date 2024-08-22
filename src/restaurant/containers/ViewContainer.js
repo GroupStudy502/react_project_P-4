@@ -7,11 +7,16 @@ import itemImage from '../components/itemImage';
 import ItemDescription from '../components/ItemDescription';
 
 import styled from 'styled-components';
-import { MidButton } from '../../commons/components/Buttons';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ItemTabmenu from '../components/ItemTabmenu';
-import FloatingBar from '../components/FloatingBar';
+import FloatingBarContainer from './FloatingBarContainer';
+
+const ViewWrapper = styled.div`
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+`;
 
 const Seperator = styled.div`
   margin: 10px 0;
@@ -30,7 +35,7 @@ const ViewContainer = ({ setPageTitle }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '300px', zoom: 3 });
-
+  
   const { rstrId } = useParams();
 
   useEffect(() => {
@@ -61,7 +66,7 @@ const ViewContainer = ({ setPageTitle }) => {
   }
 
   return (
-    <>
+    <ViewWrapper>
       <Wrapper>
         {item?.images?.length && <itemImage images={item.images} />}
       </Wrapper>
@@ -74,8 +79,9 @@ const ViewContainer = ({ setPageTitle }) => {
         <KakaoMap {...mapOptions} />
         <div> {item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
       
-      <FloatingBar />
-    </>
+      <FloatingBarContainer rstrId={rstrId}/>
+      
+    </ViewWrapper>
   );
 };
 export default React.memo(ViewContainer);
