@@ -5,7 +5,7 @@ import Header from '../outlines/Header';
 import Footer from '../outlines/Footer';
 
 const MainBox = styled.main`
-  min-height: 650px;
+  min-height: calc(100vh - 250px);
   position: relative;
 `;
 
