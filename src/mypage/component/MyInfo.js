@@ -101,14 +101,19 @@ const MyInfo = ({ onSubmit }) => {
             <td>
               <InputBox type="text" />
             </td>
+            <tr></tr>
+            <th>{t('활동 지역')}</th>
+            <td>
+              <InputBox type="text"></InputBox>
+            </td>
           </tbody>
         </FormBox>
-
+        <div className="btn">
         <button type="submit" className="editbtn">
           {t('수정하기')}
         </button>
 
-        <div className="backbtn">
+        
           <button
             onClick={() => {
               navigate('/mypage');
