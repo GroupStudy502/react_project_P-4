@@ -19,9 +19,13 @@ const WriteContainer = ({ setPageTitle }) => {
   const [board, setBoard] = useState(null);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
+    gid: '' + Date.now(),
     mode: 'write',
     notice: false,
+    attachFiles: [],
+    editorImages: [],
   });
+
   const [notice, setNotice] = useState(false);
 
   const [errors, setErrors] = useState({});
@@ -44,24 +48,48 @@ const WriteContainer = ({ setPageTitle }) => {
     })();
   }, [bid, setPageTitle]);
 
+  const onChange = useCallback((e) => {
+    setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
+  }, []);
+
   const onToggleNotice = useCallback(() => setNotice((notice) => !notice), []);
 
-  const onSubmit = useCallback(
-    (e, editor) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      for (const [k, v] of formData) {
-        form[k] = v;
+  /* 파일 업로드 후속 처리 */
+  const fileUploadCallback = useCallback((files, editor) => {
+    if (!files || files.length === 0) return;
+
+    const imageUrls = [];
+    const _editorImages = [];
+    const _attachFiles = [];
+
+    for (const file of files) {
+      const { location, fileUrl } = file;
+
+      if (location === 'editor') {
+        imageUrls.push(fileUrl);
+        _editorImages.push(file);
+      } else {
+        _attachFiles.push(file);
       }
+    }
 
-      form.content = editor.getData();
+    // 에디터에 이미지 추가
+    if (imageUrls.length > 0) {
+      editor.execute('insertImage', { source: imageUrls });
+    }
+    setForm((form) => ({
+      ...form,
+      attachFiles: [...form.attachFiles].concat(_attachFiles),
+      editorImages: [...form.editorImages].concat(_editorImages),
+    }));
+  }, []);
 
-      setForm({ ...form });
+  /* 파일 삭제 처리 */
+  const fileDeleteCallback = useCallback((seq) => {}, []);
 
-      console.log(form);
-    },
-    [form],
-  );
+  const onSubmit = useCallback((e) => {
+    e.preventDefault();
+  }, []);
 
   if (loading || !board) {
     return <Loading />;
@@ -73,9 +101,12 @@ const WriteContainer = ({ setPageTitle }) => {
     board,
     form,
     onSubmit,
+    onChange,
     onToggleNotice,
     notice,
     errors,
+    fileUploadCallback,
+    fileDeleteCallback,
   });
 };
 
