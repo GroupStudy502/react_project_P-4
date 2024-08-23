@@ -1,11 +1,15 @@
-import React from 'react';
-import Calendar from 'react-calendar';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { IoIosTime, IoMdCheckmarkCircleOutline } from 'react-icons/io';
-import { GoPersonFill } from "react-icons/go";
-import { FaCalendarAlt } from "react-icons/fa";
+import UserInfoContext from '../../member/modules/UserInfoContext';
+import InfoInputBox from './InfoInputBox';
+import { IoIosTime, IoMdCheckmarkCircleOutline, IoMdNotificationsOff } from 'react-icons/io';
+import { GoPersonFill } from 'react-icons/go';
+import { FaAddressBook } from "react-icons/fa";
+import { PiAddressBookFill } from "react-icons/pi";
+import { BsPersonLinesFill } from "react-icons/bs";
 import { BigButton } from '../../commons/components/Buttons';
+import CalendarForm from './CalendarForm';
 
 const FormBox = styled.form`
   display: flex;
@@ -21,10 +25,10 @@ const TitleWithIcon = styled.h2`
   align-items: center;
   margin-bottom: 15px; /* 아이콘+글씨 줄 아래 마진 */
   margin-top: 30px; /* 아이콘+글씨 줄 위 마진 */
-  
+
   svg {
     margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
-    font-size: 1.5em; /* 아이콘 크기 */
+    font-size: 1.1em; /* 아이콘 크기 */
   }
 
   h2 {
@@ -34,19 +38,18 @@ const TitleWithIcon = styled.h2`
 `;
 
 const Subtitle = styled.h3`
-  margin: 5px 0 15px 5px; 
-  font-size: 0.9em; 
+  margin: 5px 0 15px 5px;
+  font-size: 0.9em;
   color: #666;
 `;
 
 const Checktitle = styled.h3`
-  margin: 10px 0 20px 7px; 
-  font-size: 1.2em; 
+  margin: 10px 0 20px 7px;
+  font-size: 1.2em;
 `;
 
 const LastCheckTitle = styled(Checktitle)`
-
-  margin: 40px 0 30px 7px; 
+  margin: 40px 0 30px 7px;
 `;
 
 const TimeButton = styled.button`
@@ -54,9 +57,9 @@ const TimeButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 5px;
+  width: 130px;
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
-  margin: 3px; // 버튼 상하좌우 마진
-  margin-right: 20px; // 버튼 오른쪽 마진
+  margin: 5px 5px 20px 20px; //상/우/하/좌 
   font-size: 1.2em; // 시간 버튼 글자 크기
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -72,12 +75,12 @@ const PersonButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 50%;
-  width: 50px; // 인원 버튼 가로 크기
-  height: 50px; // 인원 버튼 세로 크기
+  width: 57px; // 인원 버튼 가로 크기
+  height: 57px; // 인원 버튼 세로 크기
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px;
+  margin: 5px;
   font-size: 1.2em;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -95,6 +98,10 @@ const PersonButtonsContainer = styled.div`
   gap: 10px; /* Space between buttons */
 `;
 
+const ReservationInfoBox = styled.dt`
+  font-size: 1.2em;
+`;
+
 const ReservationForm = ({
   data,
   form,
@@ -107,33 +114,21 @@ const ReservationForm = ({
   const { availableDates } = data;
   const startDate = availableDates[0];
   const endDate = availableDates[availableDates.length - 1];
+  const { 
+    states: { userInfo },
+  } = useContext(UserInfoContext);
   const { t } = useTranslation();
 
-  const personOptions = [...new Array(10).keys()].map(i => i + 1);
+  const personOptions = [...new Array(10).keys()].map((i) => i + 1);
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
-      <div>
-        <TitleWithIcon>
-          <FaCalendarAlt />
-          <h2>{t('날짜를 선택해 주세요')}</h2>
-        </TitleWithIcon>
-        <Calendar
-          onChange={onCalendarClick}
-          minDate={startDate}
-          maxDate={endDate}
-          tileDisabled={({ date }) => {
-            return (
-              availableDates.findIndex(
-                (d) =>
-                  date.getFullYear() === d.getFullYear() &&
-                  d.getMonth() === date.getMonth() &&
-                  date.getDate() === d.getDate(),
-              ) === -1
-            );
-          }}
-        />
-      </div>
+      <CalendarForm
+        startDate={startDate}
+        endDate={endDate}
+        availableDates={availableDates}
+        onCalendarClick={onCalendarClick}
+      />
       <TimeTableAndPerson>
         {times?.length > 0 && (
           <>
@@ -163,18 +158,42 @@ const ReservationForm = ({
                   <PersonButton
                     key={person}
                     isSelected={form.persons === person}
-                    onClick={() => onChange({ target: { name: 'persons', value: person } })}
+                    onClick={() =>
+                      onChange({ target: { name: 'persons', value: person } })
+                    }
                   >
-                    {person}
+                    {person}명
                   </PersonButton>
                 ))}
               </PersonButtonsContainer>
             </dl>
-            <div>
-          <TitleWithIcon>
-            <IoMdCheckmarkCircleOutline />
-            <h2>{t('예약 시 확인해 주세요')}</h2>
-            </TitleWithIcon>
+            <div> 
+              <TitleWithIcon>
+                <FaAddressBook />
+                <h2>{t('예약자 정보')}</h2>
+              </TitleWithIcon>
+              <ReservationInfoBox>
+              <dl>
+                <dt>
+                  {t('예약자')}
+                  <InfoInputBox type="text" value="form.userName" />
+                </dt>
+              </dl>
+              <dl>
+                <dt>{t('연락처')}
+                  <InfoInputBox type="text" value="form.mobile" />
+                </dt>
+              </dl>
+              <dl>
+                <dt>{t('이메일')}
+                  <InfoInputBox type="text" value="form.email" />
+                </dt>
+              </dl>
+              </ReservationInfoBox>
+              <TitleWithIcon>
+                <IoMdCheckmarkCircleOutline />
+                <h2>{t('예약 시 확인해 주세요')}</h2>
+              </TitleWithIcon>
               {[
                 '* 노쇼 방지를 위해 예약금과 함께 예약 신청을 받고 있습니다.',
                 '* 예약금은 식사 금액에서 차감합니다.',
@@ -186,7 +205,9 @@ const ReservationForm = ({
                 <Checktitle key={index}>{t(item)}</Checktitle>
               ))}
               <LastCheckTitle>
-                {t('당일 취소 및 노쇼는 레스토랑뿐만 아니라 다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다.')}
+                {t(
+                  '당일 취소 및 노쇼는 레스토랑뿐만 아니라 다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다.',
+                )}
               </LastCheckTitle>
             </div>
             <BigButton type="submit" color="jmt">

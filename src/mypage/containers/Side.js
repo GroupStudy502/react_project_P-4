@@ -35,13 +35,13 @@ const Side = () => {
         to="/mypage/reservation"
         className={({ isActive }) => classNames({ on: isActive })}
       >
-        {t('예약관리')}
+        {t('예약내역')}
       </NavLink>
       <NavLink
         to="/mypage/board"
         className={({ isActive }) => classNames({ on: isActive })}
       >
-        {t('게시글_관리')}
+        {t('리뷰작성')}
       </NavLink>
     </Wrapper>
   );

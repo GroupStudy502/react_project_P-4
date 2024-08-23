@@ -79,7 +79,7 @@ const ViewContainer = ({ setPageTitle }) => {
         <KakaoMap {...mapOptions} />
         <div> {item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
       
-      <FloatingBarContainer rstrId={rstrId}/>
+      <FloatingBarContainer item={item}/>
       
     </ViewWrapper>
   );

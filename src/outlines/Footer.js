@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const FooterBox = styled.footer`
   min-height: 250px;
   background: #f9f9f9;
-  margin: 0px auto 50px;
+  margin: 50px auto;
   padding: 0px 200px;
   display: block;
   font-size: 100%;
@@ -68,7 +68,7 @@ const Footer = () => {
     <h4>
       <strong>(주)점메추</strong>
     </h4>
-    <address class="">
+    <address>
       <p>대표 :
         <span> 홍길동</span>
       </p> 
@@ -88,10 +88,10 @@ const Footer = () => {
         <span> 070-1234-5678</span>
       </p>
     </address>
-    <p class="">
+    <p>
       (주)점메추는 통신판매중개자이며 통신판매의 당사자가 아닙니다. (주)점메추는 예약 및 구매 관련 통신판매업자가 제공하는 상품, 거래정보 및 거래 등에 대하여 책임을 지지 않습니다.
     </p>
-    <nav class="footer-menu">
+    <nav className="footer-menu">
       <a href="https://app.catchtable.co.kr/ct/main/policyService">서비스 이용 약관</a>
       <span>|</span>
       <a href="https://app.catchtable.co.kr/ct/main/policyPrivacy">개인정보 처리방침</a>
