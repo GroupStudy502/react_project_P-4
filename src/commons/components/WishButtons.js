@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { addWish, removeWish } from '../libs/wish/apiWish';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 
+
 const WishButton = ({ IconOn, IconOff, seq, type }) => {
   const [toggle, setToggle] = useState(false);
   const On = IconOn ?? FaBookmark;

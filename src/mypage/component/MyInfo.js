@@ -18,6 +18,7 @@ const FormBox = styled.form`
     }
     dd {
       flex-grow: 1;
+      
     }
   }
 
@@ -30,6 +31,7 @@ const Btn = styled.div`
   width: 300px;
   margin: 20px 20px 0 480px;
   text-align: center;
+  position: absolute;
 
   .editbtn {
     width: 70px;

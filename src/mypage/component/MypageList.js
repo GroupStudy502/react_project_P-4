@@ -35,7 +35,7 @@ const MypageList = () => {
           color="dark"
           onClick={() => navigate('/mypage/jjim')}
         >
-          {t('찜한 내역')}
+          {t('찜한 식당')}
         </BigButton>
         <BigButton
           type="submit"
