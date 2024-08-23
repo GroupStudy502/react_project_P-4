@@ -1,7 +1,7 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 import styled from 'styled-components';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { BiSolidCalendar } from 'react-icons/bi';
 
 const CalendarWrapper = styled.div`
   display: flex;
@@ -16,6 +16,25 @@ const StyledCalendar = styled(Calendar)`
   border: none;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* 연월 표시 부분 스타일 */
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;  /* 공간을 균등하게 배분하여 양쪽 끝으로 화살표 버튼 배치 */
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;  /* 내비게이션 버튼이 가로 크기에 맞게 공간 확보 */
+  }
+
+  .react-calendar__navigation button {
+    color: #ff3d00;
+    background: none;
+    font-size: 1.5em;  /* 내비게이션 버튼 글자 크기 */
+    font-weight: bold;
+    flex: 1;  /* 버튼이 균등하게 공간을 차지하도록 설정 */
+    max-width: 33%;  /* 각 버튼의 최대 너비를 33%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
+    text-align: center;  /* 텍스트를 중앙에 배치 */
+  }
 
   /* 요일 이름 스타일 */
   .react-calendar__month-view__weekdays {
@@ -40,7 +59,10 @@ const StyledCalendar = styled(Calendar)`
   }
 
   .react-calendar__tile--now {
-    background: #ffe4e1;
+    //background: #ffe4e1;
+    background: #ffcccb;  /* 핑크색 배경 */
+    color: #d32f2f;  /* 핑크색과 조화를 이루는 진한 빨간색 텍스트 */
+    border-radius: 10px; /* 모서리가 둥근 사각형으로 표시 */
   }
 
   .react-calendar__tile--active {
@@ -76,25 +98,30 @@ const StyledCalendar = styled(Calendar)`
 const TitleWithIcon = styled.h2`
   display: flex;
   align-items: center;
-  margin-bottom: 15px; /* 아이콘+글씨 줄 아래 마진 */
-  margin-top: 30px; /* 아이콘+글씨 줄 위 마진 */
-  
+  margin: 30px 0px 15px 30px;
+
   svg {
-    margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
-    font-size: 1.5em; /* 아이콘 크기 */
+    margin-right: 7px; //아이콘과 글씨 사이 간격 
+    font-size: 1.1em; // 아이콘 크기 
+    margin-bottom: 5px;
   }
 
   h2 {
-    margin: 0; /* Remove default margin from h2 */
-    font-size: 0.8em; /* h2 글씨 크기(...선택해 주세요) */
+    margin: 0;
+    font-size: 0.8em; // h2 글씨 크기(...선택해 주세요)
   }
 `;
 
-const CalendarForm = ({ startDate, endDate, availableDates, onCalendarClick }) => {
+const CalendarForm = ({
+  startDate,
+  endDate,
+  availableDates,
+  onCalendarClick,
+}) => {
   return (
     <CalendarWrapper>
       <TitleWithIcon>
-        <FaCalendarAlt />
+        <BiSolidCalendar />
         <h2>날짜를 선택해 주세요</h2>
       </TitleWithIcon>
       <StyledCalendar
@@ -106,7 +133,7 @@ const CalendarForm = ({ startDate, endDate, availableDates, onCalendarClick }) =
             (d) =>
               date.getFullYear() === d.getFullYear() &&
               date.getMonth() === d.getMonth() &&
-              date.getDate() === d.getDate()
+              date.getDate() === d.getDate(),
           ) === -1
         }
       />
