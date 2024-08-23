@@ -134,7 +134,7 @@ const ReservationForm = ({
           <>
             <TitleWithIcon>
               <IoIosTime />
-              <h2>{t('시간을 선택해 주세요')}</h2>
+              <h2>{t('시간선택')}</h2>
             </TitleWithIcon>
             <div className="time-buttons">
               {times.map((time) => (
@@ -150,9 +150,9 @@ const ReservationForm = ({
             <dl className="persons">
               <TitleWithIcon>
                 <GoPersonFill />
-                <h2>{t('인원을 선택해 주세요')}</h2>
+                <h2>{t('인원선택')}</h2>
               </TitleWithIcon>
-              <Subtitle>{t('1~10명까지 선택 가능합니다.')}</Subtitle>
+              <Subtitle>{t('최대최소인원명수')}</Subtitle>
               <PersonButtonsContainer>
                 {personOptions.map((person) => (
                   <PersonButton
@@ -170,7 +170,7 @@ const ReservationForm = ({
             <div> 
               <TitleWithIcon>
                 <FaAddressBook />
-                <h2>{t('예약자 정보')}</h2>
+                <h2>{t('예약자_정보')}</h2>
               </TitleWithIcon>
               <ReservationInfoBox>
               <dl>
@@ -192,7 +192,7 @@ const ReservationForm = ({
               </ReservationInfoBox>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />
-                <h2>{t('예약 시 확인해 주세요')}</h2>
+                <h2>{t('예약확인문구')}</h2>
               </TitleWithIcon>
               {[
                 '* 노쇼 방지를 위해 예약금과 함께 예약 신청을 받고 있습니다.',
@@ -206,7 +206,7 @@ const ReservationForm = ({
               ))}
               <LastCheckTitle>
                 {t(
-                  '당일 취소 및 노쇼는 레스토랑뿐만 아니라 다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다.',
+                  '예약자당부문구',
                 )}
               </LastCheckTitle>
             </div>
