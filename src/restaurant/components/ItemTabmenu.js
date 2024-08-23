@@ -11,24 +11,22 @@ import { color } from '../../styles/color';
 const { jmt } = color;
 
 const TabMenuBox = styled.div`
-    margin: 20px 0;
+  margin: 20px 0;
 
-    .nav-link {
-      color: #000;
-      font-size: 1.5rem;
-      padding: 0.5rem 1rem;
-     
-    }
+  .nav-link {
+    color: #000;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  
+  }
 
-    .nav {
+  .nav {
     display: flex;
-    justify-content: space-between; // Distribute items evenly
-    max-width: 80%; // Adjust this value to control the overall width of the nav
-    margin: 0 auto; // Center the nav
-    
+    justify-content: space-between; 
+    max-width: 80%;
+    margin: 20px auto; 
   }
 `;
-
 
 const ItemTapmenu = ({ item }) => {
   const { t } = useTranslation();
@@ -48,15 +46,14 @@ const ItemTapmenu = ({ item }) => {
               <Nav.Link eventKey="review">{t('리뷰')}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="icons">{t('편의정보')}
-              </Nav.Link>
+              <Nav.Link eventKey="icons">{t('편의정보')}</Nav.Link>
             </Nav.Item>
           </Nav>
           <Tab.Content>
             <TabMenu item={item} />
             <TabMenuPhoto item={item} />
             <TabReview />
-            <TabIconInfo item= {item} />
+            <TabIconInfo item={item} />
           </Tab.Content>
         </Tab.Container>
       </TabMenuBox>
