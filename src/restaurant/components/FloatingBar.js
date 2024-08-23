@@ -38,7 +38,6 @@ const IconWrapper = styled.div`
 const StyledButton = styled(MidButton)`
   flex: 1;
   height: 40px;
-  font-weight: bold;
   font-size: 1.5em;
 `;
 

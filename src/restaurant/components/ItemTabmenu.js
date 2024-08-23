@@ -7,6 +7,9 @@ import TabMenuPhoto from './TabMenuPhoto';
 import TabReview from './TabReview';
 import TabIconInfo from './TabIconInfo';
 import { color } from '../../styles/color';
+import fontSize from '../../styles/fontSize';
+
+const { medium, big } = fontSize;
 
 const { jmt } = color;
 
@@ -15,7 +18,7 @@ const TabMenuBox = styled.div`
 
   .nav-link {
     color: #000;
-    font-size: 1.5rem;
+    font-size: ${big};
     padding: 0.5rem 1rem;
   
   }
