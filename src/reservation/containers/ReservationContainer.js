@@ -73,10 +73,6 @@ const ReservationContainer = ({ setPageTitle }) => {
 
   return (
     <div>
-      <CalendarForm
-        availableDates={data.availableDates}
-        onClick={onCalendarClick}
-      />
       <ReservationForm
         data={data}
         form={form}
