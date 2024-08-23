@@ -16,13 +16,14 @@ const Menu = styled.div`
     dt {
       width: 100%;
       font-size: 1.1em;
+      font-weight: bold;
       letter-spacing: 1.5px;
+      
     }
 
     dd {
       width: calc(100% - 120px);
       color: ${jmt};
-      font-weight: bold;
       margin-top: 10px;
     }
   }
