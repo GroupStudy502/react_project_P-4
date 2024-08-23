@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext, useState, useRef } from 'react';
 import styled from 'styled-components';
 
+//분리중
 const Profile = styled.img`
   width: 100px;
   height: 100px;
