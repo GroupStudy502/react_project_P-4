@@ -2,17 +2,14 @@ import React from 'react';
 import { useContext, useState, useRef } from 'react';
 import styled from 'styled-components';
 
-//분리중
+
 const Profile = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
   cursor: pointer;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-`;
+  display: block;
+`; 
 
 const MyProfile = () => {
   const [Image, setImage] = useState(
@@ -42,7 +39,7 @@ const MyProfile = () => {
       <div>
         <Profile
           src={Image}
-          style={{ margin: '20px' }}
+          style={{ margin: '20px auto' }}
           size={200}
           onClick={() => {
             fileInput.current.click();
