@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
     dt {
       width: 100px;
+      font-weight: normal;
     }
 
     dd {
@@ -51,7 +52,7 @@ const ItemDescription = ({ item }) => {
     <Wrapper>
       {rstrIntrcnCont && (
         <dl>
-          <dt>{t('소개')}</dt>
+          
           <dd>{rstrIntrcnCont}</dd>
         </dl>
       )}
