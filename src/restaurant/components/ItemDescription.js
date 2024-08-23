@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 
     dt {
       width: 100px;
+      font-weight: normal;
     }
 
     dd {
