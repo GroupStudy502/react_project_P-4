@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiList } from '../apis/apiInfo';
+import { apiList } from '../../restaurant/apis/apiInfo';
 import Loading from '../../commons/components/Loading';
 import KakaoMap from '../../kakaoapi/KakaoMap';
 
@@ -7,7 +7,6 @@ const NearContainer = () => {
   const [search, setSearch] = useState({});
   const [center, setCenter] = useState([]); // 지도 중심 좌표(현재 위치의 위도, 경도) - 사용자의 현재 위치 기반으로 설정
   const [locations, setLocations] = useState([]); // 검색된 위치들의 위도, 경도를 저장하는 배열 -> 마커 표기할 위도, 경도 정보
-
 
   /* 현재 위치 찾기 S */
   /*

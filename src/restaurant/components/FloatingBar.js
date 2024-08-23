@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MidButton } from '../../commons/components/Buttons';
 import { FaRegBookmark, FaBookmark } from 'react-icons/fa';
+import WishButton from '../../commons/components/WishButton';
+import Loading from '../../commons/components/Loading';
 
 const FloatingBox = styled.div`
   background-color: #fff;
@@ -40,25 +42,21 @@ const StyledButton = styled(MidButton)`
   font-size: 1.5em;
 `;
 
-const FloatingBar = ({ onReservationClick }) => {
+const FloatingBar = ({ onReservationClick, item }) => {
   const { t } = useTranslation();
-  const [isBookmarked, setIsBookmarked] = useState(false);
 
-  const handleBookmarkClick = () => {
-    setIsBookmarked(!isBookmarked);
-  };
+  const { rstrId } = item;
+  if (!item) {
+    return <Loading />;
+  }
 
   return (
     <FloatingBox>
       <ContentWrapper>
-        <IconWrapper onClick={handleBookmarkClick}>
-          {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
+        <IconWrapper>
+          <WishButton seq={rstrId} type="RESTAURANT" />
         </IconWrapper>
-        <StyledButton
-          type="button"
-          color="primary"
-          onClick={onReservationClick}
-        >
+        <StyledButton type="button" color="jmt" onClick={onReservationClick}>
           {t('예약하기')}
         </StyledButton>
       </ContentWrapper>

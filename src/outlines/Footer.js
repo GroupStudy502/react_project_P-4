@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const FooterBox = styled.footer`
   min-height: 250px;
   background: #f9f9f9;
-  margin: 0px auto 50px;
+  margin: 50px auto;
   padding: 0px 200px;
   display: block;
   font-size: 100%;
