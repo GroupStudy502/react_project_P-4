@@ -7,23 +7,56 @@ import { useNavigate } from 'react-router-dom'; // 페이지이동
 import Myprofile from './Myprofile';
 
 const FormBox = styled.form`
-  th {
+  width: 300px;
+  margin: 0 auto;
+  dl {
     display: flex;
     align-items: center;
 
-    td {
-      width: 120px;
+    dt {
+      width: 80px;
     }
-
-    tr {
+    dd {
       flex-grow: 1;
     }
+  }
+
+  dl + dl {
+    margin-top: 10px;
+  }
+`;
+
+const Btn = styled.div`
+  width: 300px;
+  margin: 20px 20px 0 480px;
+  text-align: center;
+
+  .editbtn {
+    width: 70px;
+    height: 40px;
+    border-radius: 60px;
+    margin-right: 30px;
+    background-color: black;
+    border: white;
+    color: white;
+    font-size: 18px;
+  }
+
+  .exitbtn {
+    width: 70px;
+    height: 40px;
+    border-radius: 60px;
+    margin-right: 30px;
+    background-color: black;
+    border: white;
+    color: white;
+    font-size: 18px;
   }
 `;
 
 const MyInfo = ({ onSubmit }) => {
-  let navigate = useNavigate();
-  navigate('/mypage');
+  //let navigate = useNavigate();
+  // navigate('/mypage');
 
   const {
     states: { userInfo },
@@ -33,46 +66,51 @@ const MyInfo = ({ onSubmit }) => {
 
   return (
     <div className="mypage-main">
-
       <Myprofile />
       <div className="modify">
         <FormBox autoComplete="off" onSubmit={onSubmit}>
-          <tbody>
-            <th>{t('이메일')}</th>
-            <td>{userInfo.email}</td>
-            <tr></tr>
-            <th>{t('비밀번호')}</th>
-            <td>
+          <dl>
+            <dt>{t('이메일')}</dt>
+            <dd>{userInfo.email}</dd>
+          </dl>
+          <dl>
+            <dt>{t('비밀번호')}</dt>
+            <dd>
               <InputBox type="text" value="form.password" />
-            </td>
-            <tr></tr>
-            <th>{t('이름')}</th>
-            <td>{userInfo.userName}</td>
-            <tr></tr>
-            <th>{t('휴대전화')}</th>
-            <td>
+            </dd>
+          </dl>
+          <dl>
+            <dt>{t('이름')}</dt>
+            <dd>{userInfo.userName}</dd>
+          </dl>
+          <dl>
+            <dt>{t('휴대전화')}</dt>
+            <dd>
               <InputBox type="text" />
-            </td>
-            <tr></tr>
-            <th>{t('활동 지역')}</th>
-            <td>
+            </dd>
+          </dl>
+          <dl>
+            <dt>{t('활동 지역')}</dt>
+            <dd>
               <InputBox type="text"></InputBox>
-            </td>
-          </tbody>
+            </dd>
+          </dl>
         </FormBox>
-        <div className="btn">
+
+        <Btn>
           <button type="submit" className="editbtn">
             {t('수정하기')}
           </button>
 
           <button
+            className="exitbtn"
             onClick={() => {
-              navigate('/mypage');
+              //   navigate('/mypage');
             }}
           >
             {t('나가기')}
           </button>
-        </div>
+        </Btn>
       </div>
     </div>
   );
