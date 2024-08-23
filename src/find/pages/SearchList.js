@@ -5,7 +5,7 @@ import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import SearchContainer from '../containers/SearchContainer';
 
-const RestaurantSearchList = () => {
+const SearchList = () => {
   const { t } = useTranslation();
 
   return (
@@ -21,4 +21,4 @@ const RestaurantSearchList = () => {
   );
 };
 
-export default React.memo(RestaurantSearchList);
+export default React.memo(SearchList);

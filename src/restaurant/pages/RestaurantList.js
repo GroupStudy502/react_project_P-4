@@ -3,24 +3,22 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import NearContainer from '../containers/NearContainer';
-import CurrentAdress from '../../kakaoapi/CurrentAdress';
+import ListContainer from '../containers/ListContainer';
 
-const RestaurantNearList = () => {
+const RestaurantList = () => {
   const { t } = useTranslation();
 
   return (
     <>
       <Helmet>
-        <title>{t('내 주변 식당 찾기')}</title>
+        <title>{t('식당 목록')}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{t('내 주변 식당 찾기')}</MainTitle>
-        <CurrentAdress />
-        <NearContainer />
+        <MainTitle>{t('식당 목록')}</MainTitle>
+        <ListContainer />
       </OuterBox>
     </>
   );
 };
 
-export default React.memo(RestaurantNearList);
+export default React.memo(RestaurantList);

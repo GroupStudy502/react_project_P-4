@@ -12,7 +12,7 @@ import MainMenu from './MainMenu';
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
 
-const { primary, dark, light } = color;
+const { jmt } = color;
 
 const HeaderBox = styled.header`
   .site-top {
@@ -30,7 +30,7 @@ const HeaderBox = styled.header`
         font-size: ${fontSize.normal};
 
         &.on {
-          color: ${primary};
+          color: ${jmt};
         }
       }
     }
@@ -74,7 +74,7 @@ const Header = () => {
             <>
               {/* 로그인 상태 */}
               <span>
-                {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
+                {userInfo?.userName}({userInfo?.email}){t('님 로그인')}
               </span>
               <NavLink
                 to="/mypage"
@@ -84,7 +84,7 @@ const Header = () => {
               </NavLink>
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
-                  {t('사이트_관리')}
+                  {t('사이트 관리')}
                 </a>
               )}
               <SmallButton color="secondary" width={150} onClick={onLogout}>

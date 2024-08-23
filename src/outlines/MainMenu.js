@@ -49,14 +49,14 @@ const MainMenu = () => {
         >
           {t('내 주변 식당 찾기')}
         </NavLink>
+        <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
+          {t('점메추AI')}
+        </NavLink>
         <NavLink
           to="/reservationList"
           className={({ isActive }) => classNames({ on: isActive })}
         >
           {t('예약 내역')}
-        </NavLink>
-        <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
-          {t('점메추AI')}
         </NavLink>
       </div>
     </MenuBox>
