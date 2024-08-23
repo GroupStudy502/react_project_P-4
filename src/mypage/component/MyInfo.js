@@ -7,23 +7,45 @@ import { useNavigate } from 'react-router-dom'; // 페이지이동
 import Myprofile from './Myprofile';
 
 const FormBox = styled.form`
+  width: 300px;
+  margin: 0 auto;
   th {
     display: flex;
+    margin: 0 15px 30px 30px;
     align-items: center;
 
     td {
       width: 120px;
+      margin: 0 0 100px;
     }
 
     tr {
       flex-grow: 1;
+     
     }
   }
 `;
 
+const Btn = styled.div`
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+
+  .editbtn {
+    width: 80px;
+    height: 30px;
+    border-radius: 50px;
+    margin-right: 30px;
+  }
+
+  .exitbtn {
+    
+  }
+`;
+
 const MyInfo = ({ onSubmit }) => {
-  let navigate = useNavigate();
-  navigate('/mypage');
+  //let navigate = useNavigate();
+  // navigate('/mypage');
 
   const {
     states: { userInfo },
@@ -33,7 +55,6 @@ const MyInfo = ({ onSubmit }) => {
 
   return (
     <div className="mypage-main">
-
       <Myprofile />
       <div className="modify">
         <FormBox autoComplete="off" onSubmit={onSubmit}>
@@ -60,19 +81,20 @@ const MyInfo = ({ onSubmit }) => {
             </td>
           </tbody>
         </FormBox>
-        <div className="btn">
+
+        <Btn>
           <button type="submit" className="editbtn">
             {t('수정하기')}
           </button>
 
-          <button
+          <button className="exitbtn"
             onClick={() => {
-              navigate('/mypage');
+              //   navigate('/mypage');
             }}
           >
             {t('나가기')}
           </button>
-        </div>
+        </Btn>
       </div>
     </div>
   );
