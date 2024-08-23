@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { IoIosTime, IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import UserInfoContext from '../../member/modules/UserInfoContext';
+import InfoInputBox from './InfoInputBox';
+import { IoIosTime, IoMdCheckmarkCircleOutline, IoMdNotificationsOff } from 'react-icons/io';
 import { GoPersonFill } from 'react-icons/go';
 import { FaAddressBook } from "react-icons/fa";
 import { PiAddressBookFill } from "react-icons/pi";
@@ -96,6 +98,9 @@ const PersonButtonsContainer = styled.div`
   gap: 10px; /* Space between buttons */
 `;
 
+const ReservationInfoBox = styled.div`
+`;
+
 const ReservationForm = ({
   data,
   form,
@@ -108,6 +113,9 @@ const ReservationForm = ({
   const { availableDates } = data;
   const startDate = availableDates[0];
   const endDate = availableDates[availableDates.length - 1];
+  const { 
+    states: { userInfo },
+  } = useContext(UserInfoContext);
   const { t } = useTranslation();
 
   const personOptions = [...new Array(10).keys()].map((i) => i + 1);
@@ -171,8 +179,24 @@ const ReservationForm = ({
                 <BsPersonLinesFill />
                 <h2>{t('예약자 정보')}</h2>
               </TitleWithIcon>
-            </div>
-            <div>
+              <ReservationInfoBox>
+              <dl>
+                <dt>
+                  {t('예약자')}
+                  <InfoInputBox type="text" value="form.userName" />
+                </dt>
+              </dl>
+              <dl>
+                <dt>{t('연락처')}</dt>
+                  <InfoInputBox type="text" value="form.mobile" />
+              </dl>
+              <dl>
+                <dt>{t('이메일')}</dt>
+                <dd>
+                  <InfoInputBox type="text" value="form.email" />
+                </dd>
+              </dl>
+              </ReservationInfoBox>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />
                 <h2>{t('예약 시 확인해 주세요')}</h2>
