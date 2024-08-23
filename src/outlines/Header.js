@@ -76,12 +76,6 @@ const Header = () => {
               <span>
                 {userInfo?.userName}({userInfo?.email}){t('님 로그인')}
               </span>
-              <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
-                {t('마이페이지')}
-              </NavLink>
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
                   {t('사이트 관리')}
