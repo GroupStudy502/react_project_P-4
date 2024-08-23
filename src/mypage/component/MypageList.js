@@ -1,6 +1,5 @@
 import React, { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
@@ -19,7 +18,7 @@ const MypageList = () => {
           color="dark"
           onClick={() => navigate('/mypage/info')}
         >
-          {t('회원정보수정')}
+          {t('회원정보_수정')}
         </BigButton>
 
         <BigButton
@@ -27,7 +26,7 @@ const MypageList = () => {
           color="dark"
           onClick={() => navigate('/mypage/review')}
         >
-          {t('리뷰 작성')}
+          {t('리뷰_작성')}
         </BigButton>
 
         <BigButton
@@ -35,14 +34,14 @@ const MypageList = () => {
           color="dark"
           onClick={() => navigate('/mypage/jjim')}
         >
-          {t('찜한 식당')}
+          {t('찜한_식당')}
         </BigButton>
         <BigButton
           type="submit"
           color="dark"
           onClick={() => navigate('/mypage/reserve')}
         >
-          {t('예약 내역')}
+          {t('예약_내역')}
         </BigButton>
       </ButtonGroup>
     </div>

@@ -18,7 +18,6 @@ const FormBox = styled.form`
     }
     dd {
       flex-grow: 1;
-      
     }
   }
 
@@ -92,7 +91,7 @@ const MyInfo = ({ onSubmit }) => {
             </dd>
           </dl>
           <dl>
-            <dt>{t('활동 지역')}</dt>
+            <dt>{t('활동_지역')}</dt>
             <dd>
               <InputBox type="text"></InputBox>
             </dd>
