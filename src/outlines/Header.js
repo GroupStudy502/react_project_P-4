@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-import { FaSearch } from 'react-icons/fa';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import logo from '../images/logo.png';
@@ -37,36 +36,14 @@ const HeaderBox = styled.header`
     }
   }
 
-  .logo-search {
+  .logo {
     div {
+      width: 360px;
+      height: 150px;
       display: flex;
       justify-content: space-between;
-      height: 150px;
       align-items: center;
-
-      form {
-        display: flex;
-        height: 45px;
-        width: 380px;
-
-        button {
-          width: 45px;
-          background: ${dark};
-          border: 0;
-          cursor: pointer;
-
-          svg {
-            color: ${light};
-            font-size: 1.75rem;
-          }
-        }
-
-        input[type='text'] {
-          flex-grow: 1;
-          border: 5px solid ${dark};
-          padding: 0 10px;
-        }
-      }
+      margin: 0 auto;
     }
   }
 `;
@@ -133,8 +110,8 @@ const Header = () => {
           )}
         </div>
       </section>
-      <section className="logo-search">
-        <div className="layout-width">
+      <section className="logo">
+        <div>
           <Link to="/">
             <img src={logo} alt={t('로고')} />
           </Link>

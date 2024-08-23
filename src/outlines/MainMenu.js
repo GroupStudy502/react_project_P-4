@@ -6,23 +6,26 @@ import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 
-const { dark, primary, light } = color;
+const { dark, light, jmt } = color;
 
 const MenuBox = styled.nav`
-  background: ${dark};
+  background: ${light};
 
   div {
     display: flex;
     height: 50px;
+    width: 900px;
+    margin: 0 auto;
 
     a {
-      color: ${light};
+      color: ${dark};
       line-height: 50px;
       padding: 0 50px;
-      font-size: ${fontSize.medium};
+      font-size: ${fontSize.extraBig};
 
       &.on {
-        background: ${primary};
+        background: ${jmt};
+        color: ${light};
       }
     }
   }
@@ -33,7 +36,7 @@ const MainMenu = () => {
 
   return (
     <MenuBox>
-      <div className="layout-width">
+      <div>
         <NavLink
           to="/restaurant/search"
           className={({ isActive }) => classNames({ on: isActive })}
