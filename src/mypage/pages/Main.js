@@ -4,6 +4,8 @@ import MypageList from '../component/MypageList';
 import MypageContainer from '../containers/MypageContainer';
 
 
+
+
 const Main = () => {
   return (
     <MemberOnlyContainer>
