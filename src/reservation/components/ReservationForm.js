@@ -1,11 +1,10 @@
 import React from 'react';
-import Calendar from 'react-calendar';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { IoIosTime, IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { GoPersonFill } from "react-icons/go";
-import { FaCalendarAlt } from "react-icons/fa";
 import { BigButton } from '../../commons/components/Buttons';
+import CalendarForm from './CalendarForm';
 
 const FormBox = styled.form`
   display: flex;
@@ -113,27 +112,12 @@ const ReservationForm = ({
 
   return (
     <FormBox onSubmit={onSubmit} autoComplete="off">
-      <div>
-        <TitleWithIcon>
-          <FaCalendarAlt />
-          <h2>{t('날짜를 선택해 주세요')}</h2>
-        </TitleWithIcon>
-        <Calendar
-          onChange={onCalendarClick}
-          minDate={startDate}
-          maxDate={endDate}
-          tileDisabled={({ date }) => {
-            return (
-              availableDates.findIndex(
-                (d) =>
-                  date.getFullYear() === d.getFullYear() &&
-                  d.getMonth() === date.getMonth() &&
-                  date.getDate() === d.getDate(),
-              ) === -1
-            );
-          }}
-        />
-      </div>
+      <CalendarForm
+        startDate={startDate}
+        endDate={endDate}
+        availableDates={availableDates}
+        onCalendarClick={onCalendarClick}
+      />
       <TimeTableAndPerson>
         {times?.length > 0 && (
           <>
