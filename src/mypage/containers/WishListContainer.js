@@ -4,52 +4,47 @@ import { useTranslation } from 'react-i18next';
 import TabMenus from '../../commons/components/TabMenus';
 import { apiWishlist as getRestaurantList } from '../../restaurant/apis/apiInfo';
 import Loading from '../../commons/components/Loading';
-import WishListItem from '../components/WishListItem';
+import WishListItem from '../component/WishListItem';
 
 const WishListContainer = () => {
   const [menus, setMenus] = useState([]);
   const { t } = useTranslation();
   const { tab } = useParams();
-  const [ items, setItems ] = useState();
-  const [ pagination, setPagination] = useState();
-
+  const [items, setItems] = useState();
+  const [pagination, setPagination] = useState();
 
   useEffect(() => {
     setMenus(() => [
-        { name: t('식당'), link: '/mypage/wishlist/restaurant' },
-        { name: t('게시글'), link: 'mypage/wishlist/board' },
-
+      { name: t('식당'), link: '/mypage/wishlist/restaurant' },
+      { name: t('게시글'), link: '/mypage/wishlist/board' },
     ]);
 
     let apiList = null;
-    switch(tab) {
-        case 'board' :
-            break;
-        default: 
+    switch (tab) {
+      case 'board':
+        break;
+      default:
         apiList = getRestaurantList;
         break;
         return;
-    } 
+    }
 
     if (!apiList) {
-        return;
+      return;
     }
-  
 
-(async ()=> {
-    try {
+    (async () => {
+      try {
         const res = await apiList();
-            setItems(res.items);
-            setPagination(res.pagination);
+        setItems(res.items);
+        setPagination(res.pagination);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [t, tab]);
 
-    } catch(err){
-        console.error(err)
-    }
-}) ();
-}, [t,tab]);
-
-
-return (
+  return (
     <>
       <TabMenus items={menus} />
       {items && items.length > 0 ? (
