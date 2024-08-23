@@ -6,23 +6,26 @@ import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 
-const { dark, primary, light } = color;
+const { dark, light, jmt } = color;
 
 const MenuBox = styled.nav`
-  background: ${dark};
+  background: ${light};
 
   div {
     display: flex;
     height: 50px;
+    width: 900px;
+    margin: 0 auto;
 
     a {
-      color: ${light};
+      color: ${dark};
       line-height: 50px;
       padding: 0 50px;
-      font-size: ${fontSize.medium};
+      font-size: ${fontSize.extraBig};
 
       &.on {
-        background: ${primary};
+        background: ${jmt};
+        color: ${light};
       }
     }
   }
@@ -33,12 +36,18 @@ const MainMenu = () => {
 
   return (
     <MenuBox>
-      <div className="layout-width">
+      <div>
         <NavLink
-          to="/restaurant/list"
+          to="/restaurant/search"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('식당 찾기')}
+          {t('식당 검색')}
+        </NavLink>
+        <NavLink
+          to="/restaurant/near"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('내 주변 식당 찾기')}
         </NavLink>
         <NavLink
           to="/reservationList"

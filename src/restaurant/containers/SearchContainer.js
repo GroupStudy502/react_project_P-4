@@ -17,7 +17,7 @@ function getQueryString(searchParams) {
   return qs;
 }
 
-const ListContainer = () => {
+const SearchContainer = () => {
   const [searchParams] = useSearchParams();
 
   const [form, setForm] = useState(() => getQueryString(searchParams));
@@ -98,4 +98,4 @@ const ListContainer = () => {
   );
 };
 
-export default React.memo(ListContainer);
+export default React.memo(SearchContainer);
