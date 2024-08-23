@@ -100,9 +100,7 @@ const ChatWrapper = ({height, marginTop}) => {
   const aiApiGet = (msg) => requestData(`/ai?message=${msg}`);
 
   const handleSendMessage = (message) => {
-    aiApiGet(' 한국말로 알려주세요' + message).then((aiMessage) => {
-      aiMessage = aiMessage.replace('url', '/restaurant/info',);
-      
+    aiApiGet(message).then((aiMessage) => {
       
       setMessages((prevMessages) => [
         ...prevMessages,
