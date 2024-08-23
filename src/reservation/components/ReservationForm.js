@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { IoIosTime, IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { GoPersonFill } from 'react-icons/go';
+import { FaAddressBook } from "react-icons/fa";
+import { PiAddressBookFill } from "react-icons/pi";
+import { BsPersonLinesFill } from "react-icons/bs";
 import { BigButton } from '../../commons/components/Buttons';
 import CalendarForm from './CalendarForm';
 
@@ -155,6 +158,20 @@ const ReservationForm = ({
                 ))}
               </PersonButtonsContainer>
             </dl>
+            <div>
+            <TitleWithIcon>
+                <FaAddressBook />
+                <h2>{t('예약자 정보')}</h2>
+              </TitleWithIcon>
+              <TitleWithIcon>
+                <PiAddressBookFill />
+                <h2>{t('예약자 정보')}</h2>
+              </TitleWithIcon>
+              <TitleWithIcon>
+                <BsPersonLinesFill />
+                <h2>{t('예약자 정보')}</h2>
+              </TitleWithIcon>
+            </div>
             <div>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />
