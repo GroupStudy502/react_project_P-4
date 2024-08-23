@@ -57,9 +57,9 @@ const TimeButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 5px;
+  width: 130px;
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
-  margin: 3px; // 버튼 상하좌우 마진
-  margin-right: 20px; // 버튼 오른쪽 마진
+  margin: 5px 5px 20px 20px; //상/우/하/좌 
   font-size: 1.2em; // 시간 버튼 글자 크기
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -75,12 +75,12 @@ const PersonButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 50%;
-  width: 55px; // 인원 버튼 가로 크기
-  height: 55px; // 인원 버튼 세로 크기
+  width: 57px; // 인원 버튼 가로 크기
+  height: 57px; // 인원 버튼 세로 크기
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px;
+  margin: 5px;
   font-size: 1.2em;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -98,7 +98,8 @@ const PersonButtonsContainer = styled.div`
   gap: 10px; /* Space between buttons */
 `;
 
-const ReservationInfoBox = styled.div`
+const ReservationInfoBox = styled.dt`
+  font-size: 1.2em;
 `;
 
 const ReservationForm = ({
@@ -166,17 +167,9 @@ const ReservationForm = ({
                 ))}
               </PersonButtonsContainer>
             </dl>
-            <div>
-            <TitleWithIcon>
+            <div> 
+              <TitleWithIcon>
                 <FaAddressBook />
-                <h2>{t('예약자 정보')}</h2>
-              </TitleWithIcon>
-              <TitleWithIcon>
-                <PiAddressBookFill />
-                <h2>{t('예약자 정보')}</h2>
-              </TitleWithIcon>
-              <TitleWithIcon>
-                <BsPersonLinesFill />
                 <h2>{t('예약자 정보')}</h2>
               </TitleWithIcon>
               <ReservationInfoBox>
@@ -187,14 +180,14 @@ const ReservationForm = ({
                 </dt>
               </dl>
               <dl>
-                <dt>{t('연락처')}</dt>
+                <dt>{t('연락처')}
                   <InfoInputBox type="text" value="form.mobile" />
+                </dt>
               </dl>
               <dl>
-                <dt>{t('이메일')}</dt>
-                <dd>
+                <dt>{t('이메일')}
                   <InfoInputBox type="text" value="form.email" />
-                </dd>
+                </dt>
               </dl>
               </ReservationInfoBox>
               <TitleWithIcon>
