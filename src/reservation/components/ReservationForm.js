@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { IoIosTime, IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import UserInfoContext from '../../member/modules/UserInfoContext';
+import InfoInputBox from './InfoInputBox';
+import { IoIosTime, IoMdCheckmarkCircleOutline, IoMdNotificationsOff } from 'react-icons/io';
 import { GoPersonFill } from 'react-icons/go';
+import { FaAddressBook } from "react-icons/fa";
+import { PiAddressBookFill } from "react-icons/pi";
+import { BsPersonLinesFill } from "react-icons/bs";
 import { BigButton } from '../../commons/components/Buttons';
 import CalendarForm from './CalendarForm';
 
@@ -52,9 +57,9 @@ const TimeButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 5px;
+  width: 130px;
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
-  margin: 3px; // 버튼 상하좌우 마진
-  margin-right: 20px; // 버튼 오른쪽 마진
+  margin: 5px 5px 20px 20px; //상/우/하/좌 
   font-size: 1.2em; // 시간 버튼 글자 크기
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -70,12 +75,12 @@ const PersonButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 50%;
-  width: 55px; // 인원 버튼 가로 크기
-  height: 55px; // 인원 버튼 세로 크기
+  width: 57px; // 인원 버튼 가로 크기
+  height: 57px; // 인원 버튼 세로 크기
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px;
+  margin: 5px;
   font-size: 1.2em;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -93,6 +98,10 @@ const PersonButtonsContainer = styled.div`
   gap: 10px; /* Space between buttons */
 `;
 
+const ReservationInfoBox = styled.dt`
+  font-size: 1.2em;
+`;
+
 const ReservationForm = ({
   data,
   form,
@@ -105,6 +114,9 @@ const ReservationForm = ({
   const { availableDates } = data;
   const startDate = availableDates[0];
   const endDate = availableDates[availableDates.length - 1];
+  const { 
+    states: { userInfo },
+  } = useContext(UserInfoContext);
   const { t } = useTranslation();
 
   const personOptions = [...new Array(10).keys()].map((i) => i + 1);
@@ -155,7 +167,29 @@ const ReservationForm = ({
                 ))}
               </PersonButtonsContainer>
             </dl>
-            <div>
+            <div> 
+              <TitleWithIcon>
+                <FaAddressBook />
+                <h2>{t('예약자 정보')}</h2>
+              </TitleWithIcon>
+              <ReservationInfoBox>
+              <dl>
+                <dt>
+                  {t('예약자')}
+                  <InfoInputBox type="text" value="form.userName" />
+                </dt>
+              </dl>
+              <dl>
+                <dt>{t('연락처')}
+                  <InfoInputBox type="text" value="form.mobile" />
+                </dt>
+              </dl>
+              <dl>
+                <dt>{t('이메일')}
+                  <InfoInputBox type="text" value="form.email" />
+                </dt>
+              </dl>
+              </ReservationInfoBox>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />
                 <h2>{t('예약 시 확인해 주세요')}</h2>
