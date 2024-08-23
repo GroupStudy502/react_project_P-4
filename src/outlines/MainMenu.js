@@ -59,11 +59,11 @@ const MainMenu = () => {
           {t('예약 내역')}
         </NavLink>
         <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
-                {t('마이페이지')}
-              </NavLink>
+          to="/mypage"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('마이페이지')}
+        </NavLink>
       </div>
     </MenuBox>
   );
