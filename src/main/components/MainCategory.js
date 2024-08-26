@@ -18,14 +18,6 @@ import image13 from '../../images/category/13.PNG';
 import image14 from '../../images/category/14.PNG';
 import image15 from '../../images/category/15.PNG';
 
-//import loadable from '@loadable/component';
-
-/*
-function getCategoryImage(no) {
-  return loadable(() => import(`../../images/category/${no}.PNG`));
-}
-*/
-
 const CategoryListWrap = styled.div`
   0 200px 200px;
 `;

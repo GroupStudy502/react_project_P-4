@@ -14,7 +14,7 @@ const MenuBox = styled.nav`
   div {
     display: flex;
     height: 50px;
-    width: 1100px;
+    width: 1300px;
     margin: 0 auto;
 
     a {
@@ -26,6 +26,7 @@ const MenuBox = styled.nav`
       &.on {
         background: ${jmt};
         color: ${light};
+        border-radius: 10px;
       }
     }
   }
@@ -50,7 +51,7 @@ const MainMenu = () => {
           {t('내 주변 식당 찾기')}
         </NavLink>
         <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
-          {t('점메추AI')}
+          {t('점메추_AI')}
         </NavLink>
         <NavLink
           to="/reservationList"
@@ -59,11 +60,11 @@ const MainMenu = () => {
           {t('예약 내역')}
         </NavLink>
         <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
-                {t('마이페이지')}
-              </NavLink>
+          to="/mypage"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
+          {t('마이페이지')}
+        </NavLink>
       </div>
     </MenuBox>
   );
