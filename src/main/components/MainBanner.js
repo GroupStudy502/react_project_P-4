@@ -8,8 +8,7 @@ import image from '../../images/banner/banner1.png';
 const BannerImage = styled.div`
   display: flex;  
   align-items: center;
-  max-width: 1000px;
-  min-width: 800px;
+  padding: 5px;
   margin-bottom: 50px;
 
   img {
