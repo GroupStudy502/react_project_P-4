@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ import Myprofile from './Myprofile';
 const MypageList = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   return (
     <div className="mymember">
       <Myprofile />
