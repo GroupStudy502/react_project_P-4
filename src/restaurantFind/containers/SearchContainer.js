@@ -44,12 +44,12 @@ const SearchContainer = () => {
         }
 
         const _locations = items
-          .filter((d) => d.rstrLa && d.rstrLo)
+          .filter((d) => d.rstrLa && d.rstrLo && d.rstrNm)
           .map((d) => ({
             lat: d.rstrLa,
             lng: d.rstrLo,
+            info: { content: d.rstrNm, clickable: true }, // 인포윈도우
           }));
-
         setLocations(_locations);
         /* 마커 표기 좌표 가공 처리 E */
       } catch (err) {
@@ -93,8 +93,8 @@ const SearchContainer = () => {
           currentLocation={true}
           marker={locations}
           markerImage={marker}
-          info={{content: '<h1>출력2</h1>', clickable: true}}
-          zoom={8} />
+          zoom={8}
+        />
       )}
       <ItemsBox items={items} />
       {items.length > 0 && (
