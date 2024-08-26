@@ -3,6 +3,7 @@ import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addWish, removeWish } from '../libs/wish/apiWish';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const AlertMessage = styled.div`
@@ -20,6 +21,7 @@ const AlertMessage = styled.div`
 `;
 
 const WishButton = ({ IconOn, IconOff, seq, type }) => {
+  const { t } = useTranslation();
   const [toggle, setToggle] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const On = IconOn ?? FaBookmark;
@@ -64,7 +66,7 @@ const WishButton = ({ IconOn, IconOff, seq, type }) => {
   ) : (
     <Off onClick={() => onClick(true)} />
   )}
-  {showAlert && <AlertMessage>저장되었습니다</AlertMessage>}
+  {showAlert && <AlertMessage>{t('저장되었습니다')}</AlertMessage>}
   </>
   );
 };
