@@ -20,6 +20,7 @@ const ReservationContainer = ({ setPageTitle }) => {
     name: userInfo?.userName,
     email: userInfo?.email,
     mobile: userInfo?.mobile,
+    //persons: 1,
   });
   const [times, setTimes] = useState([]);
   const [errors, setErrors] = useState({});
@@ -79,11 +80,11 @@ const ReservationContainer = ({ setPageTitle }) => {
       let hasErrors = false;
       // 필수 항목 검증 S
       const requiredFields = {
-        rDate: t('예약날짜를_선택하세요.'),
-        rTime: t('예약시간을_선택하세요.'),
-        name: t('예약자명을_입력하세요.'),
-        email: t('이메일을_입력하세요.'),
-        mobile: t('휴대전화번호를_입력하세요.'),
+        rDate: t('예약날짜를_선택하세요'),
+        rTime: t('예약시간을_선택하세요'),
+        name: t('예약자명을_입력하세요'),
+        email: t('이메일을_입력하세요'),
+        mobile: t('휴대전화번호를_입력하세요'),
       };
       for (const [field, message] of Object.entries(requiredFields)) {
         if (!form[field]?.trim()) {
@@ -94,7 +95,7 @@ const ReservationContainer = ({ setPageTitle }) => {
       }
 
       if (!form?.persons) {
-        _errors.persons = [t('예약인원수를_선택하세요.')];
+        _errors.persons = [t('예약인원수를_선택하세요')];
         hasErrors = true;
       }
 

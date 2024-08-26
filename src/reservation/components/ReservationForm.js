@@ -12,7 +12,6 @@ import { GoPersonFill } from 'react-icons/go';
 import { FaAddressBook } from 'react-icons/fa';
 import { BigButton } from '../../commons/components/Buttons';
 import CalendarForm from './CalendarForm';
-import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 
 const FormBox = styled.form`
