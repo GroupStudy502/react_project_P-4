@@ -3,12 +3,17 @@ import { Tab } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
+import fontSize from '../../styles/fontSize';
+
+const { medium, big } = fontSize;
+
 
 const { jmt } = color;
 
 const Menu = styled.div`
   width: 100%;
   word-break: keep-all;
+  font-size: ${medium};
 
   dl {
     padding: 10px 10px;
@@ -16,9 +21,8 @@ const Menu = styled.div`
     dt {
       width: 100%;
       font-size: 1.1em;
-      font-weight: bold;
+      font-weight: normal;
       letter-spacing: 1.5px;
-      
     }
 
     dd {
