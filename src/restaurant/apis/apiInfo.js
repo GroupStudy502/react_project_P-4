@@ -1,6 +1,6 @@
 import requestData from '../../commons/libs/requestData';
 
-// 검색 목록 조회
+// 목록 조회
 export const apiList = (search) => {
   search = search ?? {};
 
