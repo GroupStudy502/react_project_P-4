@@ -15,10 +15,10 @@ const RestaurantView = loadable(() =>
 
 /* 식당 찾기 페이지 S */
 const SearchList = loadable(() =>
-  import('../restaurantFind/pages/SearchList'),
+  import('../restaurantfind/pages/SearchList'),
 );
 const NearList = loadable(() =>
-  import('../restaurantFind/pages/NearList'),
+  import('../restaurantfind/pages/NearList'),
 );
 /* 식당 찾기 페이지 E */
 
