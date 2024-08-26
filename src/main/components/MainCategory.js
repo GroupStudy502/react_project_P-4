@@ -19,7 +19,8 @@ import image14 from '../../images/category/14.png';
 import image15 from '../../images/category/15.png';
 
 const CategoryListWrap = styled.div`
-  0 200px 200px;
+     0 200px 200px
+
 `;
 
 const CategoryList = styled.div`

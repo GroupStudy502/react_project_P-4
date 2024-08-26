@@ -17,7 +17,7 @@ const BannerImage = styled.div`
     height: 100%;
     border-radius: 4px;
   }
-}
+
 `;
 
 const MainBanner = ({}) => {
