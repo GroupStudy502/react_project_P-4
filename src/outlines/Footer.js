@@ -4,7 +4,9 @@ const FooterBox = styled.footer`
   min-height: 250px;
   background: #f9f9f9;
   margin: 50px auto;
-  padding: 0px 200px;
+  padding: 50px;
+  max-width: 1200px;
+  min-width: 1000px;
   display: block;
   font-size: 100%;
   vertical-align: baseline;

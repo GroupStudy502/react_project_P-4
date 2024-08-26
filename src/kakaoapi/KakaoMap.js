@@ -83,7 +83,7 @@ const KakaoMap = ({
         if (mi) {
           const mIcon = new kakao.maps.MarkerImage(
             mi,
-            new kakao.maps.Size(64, 69),
+            new kakao.maps.Size(45, 45),
             { offset: new kakao.maps.Point(27, 69) },
           );
 
