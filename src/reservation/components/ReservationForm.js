@@ -176,7 +176,7 @@ const ReservationForm = ({
               <dl>
                 <dt>
                   {t('예약자')}
-                  <InfoInputBox type="text" value="form.userName" />
+                  <InfoInputBox type="text" value="userInfo.email" />
                 </dt>
               </dl>
               <dl>
