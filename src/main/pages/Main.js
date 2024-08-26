@@ -13,10 +13,6 @@ const MainOuterBox = styled.div`
   margin: 50px auto;
 `;
 
-const Title = styled.div`
-  font-size: 1.75rem;
-`;
-
 const Main = () => {
   const { t } = useTranslation();
 
@@ -26,7 +22,6 @@ const Main = () => {
         <title>{t('점메추')}</title>
       </Helmet>
       <MainOuterBox>
-        <Title>{t('점메추_타이틀')}</Title>
         <MainContainer />
         <ModalChat>
           <RiRobot2Line />

@@ -14,7 +14,7 @@ const MenuBox = styled.nav`
   div {
     display: flex;
     height: 50px;
-    width: 1100px;
+    width: 1200px;
     margin: 0 auto;
 
     a {
@@ -50,7 +50,7 @@ const MainMenu = () => {
           {t('내 주변 식당 찾기')}
         </NavLink>
         <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
-          {t('점메추AI')}
+          {t('점메추_AI')}
         </NavLink>
         <NavLink
           to="/reservationList"
