@@ -165,6 +165,7 @@ const ReservationForm = ({
               <PersonButtonsContainer>
                 {personOptions.map((person) => (
                   <PersonButton
+                    type="button"
                     key={person}
                     isSelected={form.persons === person}
                     onClick={() =>
