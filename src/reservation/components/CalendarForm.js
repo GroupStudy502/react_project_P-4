@@ -23,7 +23,7 @@ const StyledCalendar = styled(Calendar)`
     justify-content: space-between;  /* 공간을 균등하게 배분하여 양쪽 끝으로 화살표 버튼 배치 */
     align-items: center;
     margin-bottom: 10px;
-    padding: 0 10px;  /* 내비게이션 버튼이 가로 크기에 맞게 공간 확보 */
+    padding: 0 170px;  /* 내비게이션 버튼이 가로 크기에 맞게 공간 확보 */
   }
 
   .react-calendar__navigation button {
@@ -32,8 +32,9 @@ const StyledCalendar = styled(Calendar)`
     font-size: 1.5em;  /* 내비게이션 버튼 글자 크기 */
     font-weight: bold;
     flex: 1;  /* 버튼이 균등하게 공간을 차지하도록 설정 */
-    max-width: 33%;  /* 각 버튼의 최대 너비를 33%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
+    max-width: 43%;  /* 각 버튼의 최대 너비를 33%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
     text-align: center;  /* 텍스트를 중앙에 배치 */
+    //max-width: 50%; /* 버튼의 최대 너비를 50%로 조정하여 월 이동 버튼만 보이도록 함 */
   }
 
   /* 요일 이름 스타일 */
@@ -136,6 +137,11 @@ const CalendarForm = ({
               date.getDate() === d.getDate(),
           ) === -1
         }
+        prevLabel="<"  /* 이전 월로 가는 버튼의 라벨 */
+        nextLabel=">"  /* 다음 월로 가는 버튼의 라벨 */
+        navigationLabel={null}  /* 연도 표시를 위한 내비게이션 라벨을 숨김 */
+        next2Label={null}  /* 다음 연도로 가는 버튼을 숨김 */
+        prev2Label={null}  /* 이전 연도로 가는 버튼을 숨김 */
       />
     </CalendarWrapper>
   );
