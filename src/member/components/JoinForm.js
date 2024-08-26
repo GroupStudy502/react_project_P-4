@@ -181,29 +181,7 @@ const JoinForm = ({
           <MessageBox messages={errors.mobile} color="danger" />
         </dd>
       </dl>
-      <dl>
-        <dt>{t('프로필_이미지')}</dt>
-        <dd>
-          {form.profile && (
-            <ProfileImage
-              items={form.profile}
-              width="250px"
-              height="250px"
-              radius="5px"
-              onDelete={fileDeleteCallback}
-            />
-          )}
-          <FileUpload
-            width={150}
-            color="primary"
-            gid={form.gid}
-            imageOnly={true}
-            callback={fileUploadCallback}
-          >
-            {t('이미지_업로드')}
-          </FileUpload>
-        </dd>
-      </dl>
+     
       <div className="terms-agree" onClick={onToggle}>
         {form.agree ? <FaCheckSquare /> : <FaRegCheckSquare />}
         {t('회원가입_약관에_동의합니다.')}
