@@ -9,16 +9,23 @@ import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import { write } from '../apis/apiBoard';
 
-function skinRoute(skin, props) {
-  const WriteMain = loadable(() =>
-    import(`../components/skins/${skin}/WriteMain`),
-  );
-
-  return <WriteMain {...props} />;
+const DefaultForm = loadable(() => import('../components/skins/default/Form'));
+const GalleryForm = loadable(() => import('../components/skins/gallery/Form'));
+function skinRoute(skin) {
+  switch (skin) {
+    case 'gallery':
+      return GalleryForm;
+    default:
+      return DefaultForm;
+  }
 }
 
 const WriteContainer = ({ setPageTitle }) => {
   const { bid } = useParams();
+
+  const {
+    states: { isLogin, isAdmin, userInfo },
+  } = useContext(UserInfoContext);
 
   const [board, setBoard] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -28,12 +35,8 @@ const WriteContainer = ({ setPageTitle }) => {
     notice: false,
     attachFiles: [],
     editorImages: [],
-    poster = userInfo?.userName,
+    poster: userInfo?.userName,
   });
-
-  const {
-    states: { isLogin, isAdmin },
-  } = useContext(UserInfoContext);
 
   const [errors, setErrors] = useState({});
 
@@ -57,9 +60,12 @@ const WriteContainer = ({ setPageTitle }) => {
     })();
   }, [bid, setPageTitle]);
 
-  const onChange = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
-  }, []);
+  const onChange = useCallback(
+    (e) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    },
+    [form],
+  );
 
   const onToggleNotice = useCallback(() => {
     setForm(
@@ -155,21 +161,21 @@ const WriteContainer = ({ setPageTitle }) => {
         if (!form[field]?.trim()) {
           _errors[field] = _errors[field] ?? [];
           _errors[field].push(message);
-
           hasErrors = true;
         }
       }
       /* 유효성 검사 - 필수 항목 검증 E */
 
       // 검증 실패시에는 처리 X
+      setErrors(_errors);
       if (hasErrors) {
-        setErrors(_errors);
         return;
       }
+
       /* 데이터 저장 처리 S */
       (async () => {
         try {
-          const res = await (bid, form);
+          const res = await write(bid, form);
           const { locationAfterWriting } = board;
           const url =
             locationAfterWriting === 'list'
@@ -180,6 +186,7 @@ const WriteContainer = ({ setPageTitle }) => {
           setErrors(err.message);
         }
       })();
+
       /* 데이터 저장 처리 E */
     },
     [t, form, isAdmin, isLogin, board, navigate],
@@ -203,6 +210,18 @@ const WriteContainer = ({ setPageTitle }) => {
       fileDeleteCallback={fileDeleteCallback}
     />
   );
+  /*
+  return skinRoute(skin, {
+    board,
+    form,
+    onSubmit,
+    onChange,
+    onToggleNotice,
+    errors,
+    fileUploadCallback,
+    fileDeleteCallback,
+  });
+  */
 };
 
 export default React.memo(WriteContainer);

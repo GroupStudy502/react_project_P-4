@@ -26,6 +26,9 @@ const ReservationList = loadable(() => import('./routes/ReservationList'));
 // AI 페이지
 const Ai = loadable(() => import('./routes/Ai'));
 
+// 결제 처리 URL
+const Payment = loadable(() => import('./routes/Payment'));
+
 const routeUrlPaths = [
   'member',
   'mypage',
@@ -34,6 +37,7 @@ const routeUrlPaths = [
   'reservation',
   'reservationlist',
   'ai',
+  'payment',
 ];
 
 const App = () => {
@@ -47,6 +51,7 @@ const App = () => {
       <Reservation />
       <ReservationList />
       <Ai />
+      <Payment />
     </>
   ) : (
     <Routes>
