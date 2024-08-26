@@ -14,7 +14,7 @@ const MenuBox = styled.nav`
   div {
     display: flex;
     height: 50px;
-    width: 1300px;
+    width: 1200px;
     margin: 0 auto;
 
     a {
@@ -22,6 +22,7 @@ const MenuBox = styled.nav`
       line-height: 50px;
       padding: 0 50px;
       font-size: ${fontSize.extraBig};
+      font-family: "NanumSquareEB";
 
       &.on {
         background: ${jmt};

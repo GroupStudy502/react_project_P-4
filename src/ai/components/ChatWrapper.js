@@ -17,7 +17,7 @@ const OuterChatBox = styled.div`
     margin-top: ${({marginTop}) => marginTop ?? '15px'};
     background: white;
     border-radius: 8px;
-    box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
+
     overflow: hidden;
     display: flex;
     flex-direction: column;

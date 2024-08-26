@@ -4,8 +4,16 @@
   src: url('./commons/fonts/font1/NanumBarunGothicBold.ttf');
 }
 @font-face {
-  font-family: "NanumSquare";
-  src: url('./commons/fonts/font2/NanumSquareB.ttf');
+  font-family: "NanumSquareR";
+  src: url('./commons/fonts/font2/NanumSquare_acR.ttf');
+}
+@font-face {
+  font-family: "NanumSquareB";
+  src: url('./commons/fonts/font2/NanumSquare_acB.ttf');
+}
+@font-face {
+  font-family: "NanumSquareEB";
+  src: url('./commons/fonts/font2/NanumSquare_acEB.ttf');
 }
 @font-face {
   font-family: "NanumSquareRound";
@@ -20,8 +28,7 @@
 * { 
   box-sizing: border-box; 
   outline: none; 
-  /*font-family: "Do Hyeon", sans-serif;*/
-  font-family: "NanumSquare";
+  font-family: "NanumSquareR";
 }
 
 html {
