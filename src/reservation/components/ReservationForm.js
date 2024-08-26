@@ -145,6 +145,7 @@ const ReservationForm = ({
             <div className="time-buttons">
               {times.map((time) => (
                 <TimeButton
+                  type="button"
                   key={time}
                   isSelected={form.rTime === time}
                   onClick={() => onTimeClick(time)}
@@ -185,48 +186,48 @@ const ReservationForm = ({
                 <h2>{t('예약자_정보')}</h2>
               </TitleWithIcon>
               <ReservationInfoBox>
-              <dl>
-                <dt>{t('예약자')}</dt>
-                <dd>
-                  <InfoInputBox
-                    type="text"
-                    name="name"
-                    value={form?.name}
-                    onChange={onChange}
-                  />
-                  {errors?.name && (
-                    <MessageBox color="danger" messages={errors.name} />
-                  )}
-                </dd>
-              </dl>
-              <dl>
-                <dt>{t('이메일')}</dt>
-                <dd>
-                  <InfoInputBox
-                    type="text"
-                    name="email"
-                    value={form?.email}
-                    onChange={onChange}
-                  />
-                  {errors?.email && (
-                    <MessageBox color="danger" messages={errors.email} />
-                  )}
-                </dd>
-              </dl>
-              <dl>
-                <dt>{t('휴대전화번호')}</dt>
-                <dd>
-                  <InfoInputBox
-                    type="text"
-                    name="mobile"
-                    value={form?.mobile}
-                    onChange={onChange}
-                  />
-                  {errors?.mobile && (
-                    <MessageBox color="danger" messages={errors.mobile} />
-                  )}
-                </dd>
-              </dl>
+                <dl>
+                  <dt>{t('예약자')}</dt>
+                  <dd>
+                    <InfoInputBox
+                      type="text"
+                      name="name"
+                      value={form?.name}
+                      onChange={onChange}
+                    />
+                    {errors?.name && (
+                      <MessageBox color="danger" messages={errors.name} />
+                    )}
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>{t('이메일')}</dt>
+                  <dd>
+                    <InfoInputBox
+                      type="text"
+                      name="email"
+                      value={form?.email}
+                      onChange={onChange}
+                    />
+                    {errors?.email && (
+                      <MessageBox color="danger" messages={errors.email} />
+                    )}
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>{t('휴대전화번호')}</dt>
+                  <dd>
+                    <InfoInputBox
+                      type="text"
+                      name="mobile"
+                      value={form?.mobile}
+                      onChange={onChange}
+                    />
+                    {errors?.mobile && (
+                      <MessageBox color="danger" messages={errors.mobile} />
+                    )}
+                  </dd>
+                </dl>
               </ReservationInfoBox>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />

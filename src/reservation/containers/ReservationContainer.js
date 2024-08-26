@@ -20,7 +20,6 @@ const ReservationContainer = ({ setPageTitle }) => {
     name: userInfo?.userName,
     email: userInfo?.email,
     mobile: userInfo?.mobile,
-    persons: 1,
   });
   const [times, setTimes] = useState([]);
   const [errors, setErrors] = useState({});
@@ -93,6 +92,12 @@ const ReservationContainer = ({ setPageTitle }) => {
           hasErrors = true;
         }
       }
+
+      if (!form?.persons) {
+        _errors.persons = [t('예약인원수를_선택하세요.')];
+        hasErrors = true;
+      }
+
       // 필수 항목 검증 E
       setErrors(_errors);
       if (hasErrors) {
@@ -103,7 +108,6 @@ const ReservationContainer = ({ setPageTitle }) => {
         try {
           const res = await apiApply(form);
           setPayConfig(res);
-          console.log(res);
         } catch (err) {
           console.error(err);
           setErrors(err.message);

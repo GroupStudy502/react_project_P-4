@@ -32,9 +32,8 @@ const StyledCalendar = styled(Calendar)`
     font-size: 1.5em;  /* 내비게이션 버튼 글자 크기 */
     font-weight: bold;
     flex: 1;  /* 버튼이 균등하게 공간을 차지하도록 설정 */
-    max-width: 43%;  /* 각 버튼의 최대 너비를 33%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
+    max-width: 43%;  /* 각 버튼의 최대 너비를 43%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
     text-align: center;  /* 텍스트를 중앙에 배치 */
-    //max-width: 50%; /* 버튼의 최대 너비를 50%로 조정하여 월 이동 버튼만 보이도록 함 */
   }
 
   /* 요일 이름 스타일 */
