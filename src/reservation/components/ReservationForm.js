@@ -10,6 +10,8 @@ import { PiAddressBookFill } from "react-icons/pi";
 import { BsPersonLinesFill } from "react-icons/bs";
 import { BigButton } from '../../commons/components/Buttons';
 import CalendarForm from './CalendarForm';
+import InputBox from '../../commons/components/InputBox';
+import MessageBox from '../../commons/components/MessageBox';
 
 const FormBox = styled.form`
   display: flex;
@@ -18,6 +20,7 @@ const FormBox = styled.form`
 
 const TimeTableAndPerson = styled.div`
   margin-left: 20px;
+  flex-grow: 1;
 `;
 
 const TitleWithIcon = styled.h2`
@@ -110,6 +113,7 @@ const ReservationForm = ({
   onTimeClick,
   onChange,
   onSubmit,
+  errors,
 }) => {
   const { availableDates } = data;
   const startDate = availableDates[0];
@@ -130,11 +134,54 @@ const ReservationForm = ({
         onCalendarClick={onCalendarClick}
       />
       <TimeTableAndPerson>
+      <h2>{t('예약자_기본정보')}</h2>
+        <dl>
+          <dt>{t('예약자')}</dt>
+          <dd>
+            <InputBox
+              type="text"
+              name="name"
+              value={form?.name}
+              onChange={onChange}
+            />
+            {errors?.name && (
+              <MessageBox color="danger" messages={errors.name} />
+            )}
+          </dd>
+        </dl>
+        <dl>
+          <dt>{t('이메일')}</dt>
+          <dd>
+            <InputBox
+              type="text"
+              name="email"
+              value={form?.email}
+              onChange={onChange}
+            />
+            {errors?.email && (
+              <MessageBox color="danger" messages={errors.email} />
+            )}
+          </dd>
+        </dl>
+        <dl>
+          <dt>{t('휴대전화번호')}</dt>
+          <dd>
+            <InputBox
+              type="text"
+              name="mobile"
+              value={form?.mobile}
+              onChange={onChange}
+            />
+            {errors?.mobile && (
+              <MessageBox color="danger" messages={errors.mobile} />
+            )}
+          </dd>
+        </dl>
         {times?.length > 0 && (
           <>
             <TitleWithIcon>
               <IoIosTime />
-              <h2>{t('시간을 선택해 주세요')}</h2>
+              <h2>{t('시간선택')}</h2>
             </TitleWithIcon>
             <div className="time-buttons">
               {times.map((time) => (
@@ -147,12 +194,15 @@ const ReservationForm = ({
                 </TimeButton>
               ))}
             </div>
+            {errors?.rTime && (
+              <MessageBox color="danger" messages={errors.rTime} />
+            )}
             <dl className="persons">
               <TitleWithIcon>
                 <GoPersonFill />
-                <h2>{t('인원을 선택해 주세요')}</h2>
+                <h2>{t('인원선택')}</h2>
               </TitleWithIcon>
-              <Subtitle>{t('1~10명까지 선택 가능합니다.')}</Subtitle>
+              <Subtitle>{t('최대최소인원명수')}</Subtitle>
               <PersonButtonsContainer>
                 {personOptions.map((person) => (
                   <PersonButton
@@ -170,13 +220,13 @@ const ReservationForm = ({
             <div> 
               <TitleWithIcon>
                 <FaAddressBook />
-                <h2>{t('예약자 정보')}</h2>
+                <h2>{t('예약자_정보')}</h2>
               </TitleWithIcon>
               <ReservationInfoBox>
               <dl>
                 <dt>
                   {t('예약자')}
-                  <InfoInputBox type="text" value="form.userName" />
+                  <InfoInputBox type="text" value="userInfo.email" />
                 </dt>
               </dl>
               <dl>
@@ -192,7 +242,7 @@ const ReservationForm = ({
               </ReservationInfoBox>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />
-                <h2>{t('예약 시 확인해 주세요')}</h2>
+                <h2>{t('예약확인문구')}</h2>
               </TitleWithIcon>
               {[
                 '* 노쇼 방지를 위해 예약금과 함께 예약 신청을 받고 있습니다.',
@@ -206,7 +256,7 @@ const ReservationForm = ({
               ))}
               <LastCheckTitle>
                 {t(
-                  '당일 취소 및 노쇼는 레스토랑뿐만 아니라 다른 고객님께도 피해가 될 수 있으므로 신중히 예약 부탁드립니다.',
+                  '예약자당부문구',
                 )}
               </LastCheckTitle>
             </div>
