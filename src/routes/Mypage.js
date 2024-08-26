@@ -16,10 +16,10 @@ const Mypage = () => {
     <Routes>
       <Route path="/mypage" element={<MypageLayout />}>
         <Route index element={<MainPage />} />
-        <Route path="info" element={<InfoPage />} />
+        <Route path="info" element={<InfoPage />} /> 
         <Route path="reservation" element={<ReservationPage />} />
-        <Route path="review" element={<BoardPage />} />
-        <Route path="jjim" element={<WishRestaurantPage/>} />
+        <Route path="freetalk" element={<BoardPage />} />
+        <Route path="wishlist" element={<WishRestaurantPage/>} />
       </Route>
     </Routes>
   );

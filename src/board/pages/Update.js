@@ -7,7 +7,7 @@ import { MainTitle } from '../../commons/components/TitleBox';
 const Update = () => {
   const { t } = useTranslation();
   const [board, setBoard] = useState({
-    bName: '리뷰게시판',
+    bName: '자유게시판',
   });
 
   const { bName } = board;

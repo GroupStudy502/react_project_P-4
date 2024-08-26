@@ -25,7 +25,7 @@ const MypageList = () => {
         <BigButton
           type="submit"
           color="dark"
-          onClick={() => navigate('/mypage/review')}
+          onClick={() => navigate('/board/write/freetalk')}
         >
           {t('리뷰_작성')}
         </BigButton>
@@ -33,7 +33,7 @@ const MypageList = () => {
         <BigButton
           type="submit"
           color="dark"
-          onClick={() => navigate('/mypage/jjim')}
+          onClick={() => navigate('/board/wishlist/restaurant')}
         >
           {t('찜한_식당')}
         </BigButton>

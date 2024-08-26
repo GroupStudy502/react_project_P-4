@@ -10,19 +10,8 @@ const Profile = styled.img`
   height: 100px;
   border-radius: 50%;
   display: block;
+  position: relative;
 `;
-
-const EditIcon = styled(MdModeEdit)`
-display: block;
-width: 23px;
-height: 23px;
-margin-top: -80px;
-vertical-align: middle;
-margin-left: 500px;
-margin-bottom: 50px;
-box-sizing: 30px;
-
-`
 
 
 const MyProfile = () => {
@@ -43,15 +32,14 @@ const MyProfile = () => {
   return (
     <div className="profile">
       <div>
+       
         <Profile
           src={Image}
           style={{ margin: '50px auto' }}
           size={200}
           onClick={handleClick}
         />
-    
-          <EditIcon />
- 
+        
         <input
           type="file"
           ref={fileInput}
