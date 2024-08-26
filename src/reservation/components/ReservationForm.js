@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import InfoInputBox from './InfoInputBox';
-import { IoIosTime, IoMdCheckmarkCircleOutline, IoMdNotificationsOff } from 'react-icons/io';
+import {
+  IoIosTime,
+  IoMdCheckmarkCircleOutline,
+  IoMdNotificationsOff,
+} from 'react-icons/io';
 import { GoPersonFill } from 'react-icons/go';
-import { FaAddressBook } from "react-icons/fa";
-import { PiAddressBookFill } from "react-icons/pi";
-import { BsPersonLinesFill } from "react-icons/bs";
+import { FaAddressBook } from 'react-icons/fa';
 import { BigButton } from '../../commons/components/Buttons';
 import CalendarForm from './CalendarForm';
-import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 
 const FormBox = styled.form`
@@ -62,7 +63,7 @@ const TimeButton = styled.button`
   border-radius: 5px;
   width: 130px;
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
-  margin: 5px 5px 20px 20px; //상/우/하/좌 
+  margin: 5px 5px 20px 20px; //상/우/하/좌
   font-size: 1.2em; // 시간 버튼 글자 크기
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -118,7 +119,7 @@ const ReservationForm = ({
   const { availableDates } = data;
   const startDate = availableDates[0];
   const endDate = availableDates[availableDates.length - 1];
-  const { 
+  const {
     states: { userInfo },
   } = useContext(UserInfoContext);
   const { t } = useTranslation();
@@ -134,49 +135,6 @@ const ReservationForm = ({
         onCalendarClick={onCalendarClick}
       />
       <TimeTableAndPerson>
-      <h2>{t('예약자_기본정보')}</h2>
-        <dl>
-          <dt>{t('예약자')}</dt>
-          <dd>
-            <InputBox
-              type="text"
-              name="name"
-              value={form?.name}
-              onChange={onChange}
-            />
-            {errors?.name && (
-              <MessageBox color="danger" messages={errors.name} />
-            )}
-          </dd>
-        </dl>
-        <dl>
-          <dt>{t('이메일')}</dt>
-          <dd>
-            <InputBox
-              type="text"
-              name="email"
-              value={form?.email}
-              onChange={onChange}
-            />
-            {errors?.email && (
-              <MessageBox color="danger" messages={errors.email} />
-            )}
-          </dd>
-        </dl>
-        <dl>
-          <dt>{t('휴대전화번호')}</dt>
-          <dd>
-            <InputBox
-              type="text"
-              name="mobile"
-              value={form?.mobile}
-              onChange={onChange}
-            />
-            {errors?.mobile && (
-              <MessageBox color="danger" messages={errors.mobile} />
-            )}
-          </dd>
-        </dl>
         {times?.length > 0 && (
           <>
             <TitleWithIcon>
@@ -186,6 +144,7 @@ const ReservationForm = ({
             <div className="time-buttons">
               {times.map((time) => (
                 <TimeButton
+                  type="button"
                   key={time}
                   isSelected={form.rTime === time}
                   onClick={() => onTimeClick(time)}
@@ -216,29 +175,58 @@ const ReservationForm = ({
                   </PersonButton>
                 ))}
               </PersonButtonsContainer>
+              {errors?.persons && (
+                <MessageBox color="danger" messages={errors.persons} />
+              )}
             </dl>
-            <div> 
+            <div>
               <TitleWithIcon>
                 <FaAddressBook />
                 <h2>{t('예약자_정보')}</h2>
               </TitleWithIcon>
               <ReservationInfoBox>
-              <dl>
-                <dt>
-                  {t('예약자')}
-                  <InfoInputBox type="text" value="userInfo.email" />
-                </dt>
-              </dl>
-              <dl>
-                <dt>{t('연락처')}
-                  <InfoInputBox type="text" value="form.mobile" />
-                </dt>
-              </dl>
-              <dl>
-                <dt>{t('이메일')}
-                  <InfoInputBox type="text" value="form.email" />
-                </dt>
-              </dl>
+                <dl>
+                  <dt>{t('예약자')}</dt>
+                  <dd>
+                    <InfoInputBox
+                      type="text"
+                      name="name"
+                      value={form?.name}
+                      onChange={onChange}
+                    />
+                    {errors?.name && (
+                      <MessageBox color="danger" messages={errors.name} />
+                    )}
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>{t('이메일')}</dt>
+                  <dd>
+                    <InfoInputBox
+                      type="text"
+                      name="email"
+                      value={form?.email}
+                      onChange={onChange}
+                    />
+                    {errors?.email && (
+                      <MessageBox color="danger" messages={errors.email} />
+                    )}
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>{t('휴대전화번호')}</dt>
+                  <dd>
+                    <InfoInputBox
+                      type="text"
+                      name="mobile"
+                      value={form?.mobile}
+                      onChange={onChange}
+                    />
+                    {errors?.mobile && (
+                      <MessageBox color="danger" messages={errors.mobile} />
+                    )}
+                  </dd>
+                </dl>
               </ReservationInfoBox>
               <TitleWithIcon>
                 <IoMdCheckmarkCircleOutline />
@@ -254,11 +242,7 @@ const ReservationForm = ({
               ].map((item, index) => (
                 <Checktitle key={index}>{t(item)}</Checktitle>
               ))}
-              <LastCheckTitle>
-                {t(
-                  '예약자당부문구',
-                )}
-              </LastCheckTitle>
+              <LastCheckTitle>{t('예약자당부문구')}</LastCheckTitle>
             </div>
             <BigButton type="submit" color="jmt">
               {t('예약하기')}
