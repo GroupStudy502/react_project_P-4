@@ -1,9 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@font-face {
+  font-family: "NanumBarunGothic";
+  src: url('./commons/fonts/font1/NanumBarunGothicBold.ttf');
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url('./commons/fonts/font2/NanumSquareB.ttf');
+}
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url('./commons/fonts/font3/NanumSquareRoundB.ttf');
+}
+@font-face {
+  font-family: "cafe24dangdang";
+  src: url('./commons/fonts/font4/Cafe24Ohsquare-v2.0.ttf');
+}
+
 
 * { 
   box-sizing: border-box; 
   outline: none; 
-  font-family: "Do Hyeon", sans-serif;
+  /*font-family: "Do Hyeon", sans-serif;*/
+  font-family: "NanumSquare";
 }
 
 html {

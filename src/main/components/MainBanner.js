@@ -2,14 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import image from '../../images/banner/B1.png';
+import image from '../../images/banner/banner1.png';
 //import SwiperComponent from '../../Swiper/Swiper';
 
 const BannerImage = styled.div`
   display: flex;  
   align-items: center;
   max-width: 1200px;
-  min-width: 900px;
+  min-width: 1000px;
   margin-bottom: 50px;
 
   img {

@@ -14,7 +14,7 @@ const MenuBox = styled.nav`
   div {
     display: flex;
     height: 50px;
-    width: 1200px;
+    width: 1300px;
     margin: 0 auto;
 
     a {
@@ -26,6 +26,7 @@ const MenuBox = styled.nav`
       &.on {
         background: ${jmt};
         color: ${light};
+        border-radius: 10px;
       }
     }
   }

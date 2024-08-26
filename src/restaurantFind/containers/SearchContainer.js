@@ -6,6 +6,7 @@ import SearchBox from '../components/SearchBox';
 import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
 import KakaoMap from '../../kakaoapi/KakaoMap';
+import marker from '../../images/marker.png';
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -88,7 +89,12 @@ const SearchContainer = () => {
         onSubmit={onSubmitSearch}
       />
       {locations && locations.length > 0 && (
-        <KakaoMap marker={locations} zoom={8} />
+        <KakaoMap
+          currentLocation={true}
+          marker={locations}
+          markerImage={marker}
+          info={{content: '<h1>출력2</h1>', clickable: true}}
+          zoom={8} />
       )}
       <ItemsBox items={items} />
       {items.length > 0 && (
