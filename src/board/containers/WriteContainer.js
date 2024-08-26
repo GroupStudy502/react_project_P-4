@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import loadable from '@loadable/component';
 import { produce } from 'immer';
@@ -7,6 +7,7 @@ import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
 import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import { write } from '../apis/apiBoard';
 
 function skinRoute(skin, props) {
   const WriteMain = loadable(() =>
@@ -27,6 +28,7 @@ const WriteContainer = ({ setPageTitle }) => {
     notice: false,
     attachFiles: [],
     editorImages: [],
+    poster = userInfo?.userName,
   });
 
   const {
@@ -36,6 +38,8 @@ const WriteContainer = ({ setPageTitle }) => {
   const [errors, setErrors] = useState({});
 
   const { t } = useTranslation();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -162,8 +166,23 @@ const WriteContainer = ({ setPageTitle }) => {
         setErrors(_errors);
         return;
       }
+      /* 데이터 저장 처리 S */
+      (async () => {
+        try {
+          const res = await (bid, form);
+          const { locationAfterWriting } = board;
+          const url =
+            locationAfterWriting === 'list'
+              ? `/board/list/${bid}`
+              : `/board/view/${res.seq}`;
+          navigate(url, { replace: true });
+        } catch (err) {
+          setErrors(err.message);
+        }
+      })();
+      /* 데이터 저장 처리 E */
     },
-    [t, form, isAdmin, isLogin],
+    [t, form, isAdmin, isLogin, board, navigate],
   );
 
   if (loading || !board) {
@@ -171,17 +190,19 @@ const WriteContainer = ({ setPageTitle }) => {
   }
 
   const { skin } = board;
-
-  return skinRoute(skin, {
-    board,
-    form,
-    onSubmit,
-    onChange,
-    onToggleNotice,
-    errors,
-    fileUploadCallback,
-    fileDeleteCallback,
-  });
+  const Form = skinRoute(skin);
+  return (
+    <Form
+      board={board}
+      form={form}
+      onSubmit={onSubmit}
+      onChange={onChange}
+      onToggleNotice={onToggleNotice}
+      errors={errors}
+      fileUploadCallback={fileUploadCallback}
+      fileDeleteCallback={fileDeleteCallback}
+    />
+  );
 };
 
 export default React.memo(WriteContainer);
