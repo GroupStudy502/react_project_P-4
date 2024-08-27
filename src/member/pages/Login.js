@@ -35,7 +35,7 @@ const Login = () => {
         <title>{t('로그인')}</title>
       </Helmet>
       <OuterBox>
-        <h1>{t('로그인')}</h1>
+
         <LoginContainer />
       </OuterBox>
     </GuestOnlyContainer>

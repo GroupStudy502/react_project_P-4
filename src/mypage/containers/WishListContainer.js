@@ -16,7 +16,7 @@ const WishListContainer = () => {
   useEffect(() => {
     setMenus(() => [
       { name: t('식당'), link: '/mypage/wishlist/restaurant' },
-      { name: t('게시글'), link: '/mypage/wishlist/board' },
+      //{ name: t('게시글'), link: '/mypage/wishlist/board' },
     ]);
 
     let apiList = null;
@@ -25,9 +25,7 @@ const WishListContainer = () => {
         break;
       default:
         apiList = getRestaurantList;
-        return;
     }
-
     if (!apiList) {
       return;
     }
@@ -35,6 +33,7 @@ const WishListContainer = () => {
     (async () => {
       try {
         const res = await apiList();
+
         setItems(res.items);
         setPagination(res.pagination);
       } catch (err) {
