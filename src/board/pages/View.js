@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import WriteContainer from '../containers/WriteContainer';
+import ViewContainer from '../containers/ViewContainer';
 
-const Write = () => {
-  const [pageTitle, setPageTitle] = useState('');
+const View = () => {
+ const [pageTitle, setPageTitle] = useState('');
+
 
   return (
     <>
@@ -14,10 +16,10 @@ const Write = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{pageTitle}</MainTitle>
-        <WriteContainer setPageTitle={setPageTitle} />
+        <ViewContainer />
       </OuterBox>
     </>
   );
 };
 
-export default React.memo(Write);
+export default React.memo(View);

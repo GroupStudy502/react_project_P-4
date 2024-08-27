@@ -19,7 +19,7 @@ const Mypage = () => {
         <Route path="info" element={<InfoPage />} /> 
         <Route path="reservation" element={<ReservationPage />} />
         <Route path="freetalk" element={<BoardPage />} />
-        <Route path="restaurant" element={<WishRestaurantPage/>} />
+        <Route path="wishlist/:tab" element={<WishRestaurantPage/>} />
       </Route>
     </Routes>
   );

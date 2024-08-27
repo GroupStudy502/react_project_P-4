@@ -25,7 +25,6 @@ const WishListContainer = () => {
         break;
       default:
         apiList = getRestaurantList;
-        break;
         return;
     }
 

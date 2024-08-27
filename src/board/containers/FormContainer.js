@@ -7,7 +7,7 @@ import apiConfig from '../apis/apiConfig';
 import Loading from '../../commons/components/Loading';
 import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
-import { write } from '../apis/apiBoard';
+import { write, update, getInfo } from '../apis/apiBoard';
 
 const DefaultForm = loadable(() => import('../components/skins/default/Form'));
 const GalleryForm = loadable(() => import('../components/skins/gallery/Form'));
@@ -20,8 +20,8 @@ function skinRoute(skin) {
   }
 }
 
-const WriteContainer = ({ setPageTitle }) => {
-  const { bid } = useParams();
+const FormContainer = ({ setPageTitle }) => {
+  const { bid, seq } = useParams();
 
   const {
     states: { isLogin, isAdmin, userInfo },
@@ -44,7 +44,38 @@ const WriteContainer = ({ setPageTitle }) => {
 
   const navigate = useNavigate();
 
+  /**
+   * 게시글 번호 seq로 유입되면 수정
+   *
+   */
   useEffect(() => {
+    if (!seq) {
+      return;
+    }
+
+    (async () => {
+      try {
+        setLoading(true);
+
+        const res = await getInfo(seq);
+        res.mode = 'update';
+        delete res.guestPw;
+
+        setForm(res);
+        setBoard(res.board);
+        setPageTitle(`${res.subject}`);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [seq, setPageTitle]);
+
+  useEffect(() => {
+    if (board || !bid) {
+      return;
+    }
+
     (async () => {
       try {
         setLoading(true);
@@ -58,7 +89,7 @@ const WriteContainer = ({ setPageTitle }) => {
         console.error(err);
       }
     })();
-  }, [bid, setPageTitle]);
+  }, [bid, setPageTitle, board]);
 
   const onChange = useCallback(
     (e) => {
@@ -152,7 +183,7 @@ const WriteContainer = ({ setPageTitle }) => {
 
       if (!isAdmin) {
         // 관리자가 아니면 공지글 작성 X
-        form.notice = false;
+        setForm({ ...form, notice: false });
       }
 
       const _errors = {};
@@ -175,8 +206,12 @@ const WriteContainer = ({ setPageTitle }) => {
       /* 데이터 저장 처리 S */
       (async () => {
         try {
-          const res = await write(bid, form);
-          const { locationAfterWriting } = board;
+          const { locationAfterWriting, bid } = board;
+          const res =
+            form.mode === 'update'
+              ? await update(seq, form)
+              : await write(bid, form);
+
           const url =
             locationAfterWriting === 'list'
               ? `/board/list/${bid}`
@@ -189,7 +224,7 @@ const WriteContainer = ({ setPageTitle }) => {
 
       /* 데이터 저장 처리 E */
     },
-    [t, form, isAdmin, isLogin, board, navigate],
+    [t, form, isAdmin, isLogin, board, navigate, seq],
   );
 
   if (loading || !board) {
@@ -224,4 +259,4 @@ const WriteContainer = ({ setPageTitle }) => {
   */
 };
 
-export default React.memo(WriteContainer);
+export default React.memo(FormContainer);
