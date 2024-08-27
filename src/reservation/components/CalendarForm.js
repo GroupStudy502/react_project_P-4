@@ -7,6 +7,7 @@ const CalendarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  font-weight: bold;
   width: 100%; /* 부모 컨테이너의 크기에 맞게 확장 */
 `;
 
@@ -109,6 +110,7 @@ const TitleWithIcon = styled.h2`
   h2 {
     margin: 0;
     font-size: 0.8em; // h2 글씨 크기(...선택해 주세요)
+    font-weight: bold;
   }
 `;
 
