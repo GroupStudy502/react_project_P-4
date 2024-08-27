@@ -7,15 +7,20 @@ import InputBox from '../../commons/components/InputBox';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
+import loginimage from '../../images/loginimage.png';
+import { IoHome } from "react-icons/io5";
 
 const { small } = fontSize;
 
 const FormBox = styled.form`
   width: 350px;
   margin: 0 auto;
+  padding-bottom: 5px;
 
   input {
-    margin-bottom: 5px;
+    width:250;
+    margin-bottom: 10px;
+    
   }
 `;
 const LinkBox = styled.div`
@@ -39,12 +44,23 @@ const LinkBox = styled.div`
   }
 `;
 
+const LoginImage = styled.img`
+  width: 300px;
+  height: 250px;
+  margin-left:20px; 
+  display: block;
+
+`;
+
 const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   const { t } = useTranslation();
 
   return (
     <>
+    <IoHome/>
       <FormBox onSubmit={onSubmit} autoComplete="off">
+        <LoginImage src={loginimage} />
+
         <InputBox
           type="text"
           name="email"
