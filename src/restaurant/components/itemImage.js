@@ -16,7 +16,14 @@ const Wrapper = styled.div`
 `;
 
 
-const StyleSlideBanner = styled(SlideBanner)``;
+const StyleSlideBanner = styled(SlideBanner)`
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: calc(50% - 22px);
+    color: #ececec;
+    opacity: 0.7;
+  }
+`;
 
 const ItemImage = ({ images }) => {
   const items = images
