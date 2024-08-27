@@ -28,11 +28,12 @@ const FormBox = styled.form`
 
 const Btn = styled.div`
   width: 300px;
-  margin: 20px 20px 0 480px;
+  margin: 20px 20px 0 450px;
   text-align: center;
+  position: absolute;
 
   .editbtn {
-    width: 70px;
+    width: 80px;
     height: 40px;
     border-radius: 60px;
     margin-right: 30px;
@@ -43,7 +44,7 @@ const Btn = styled.div`
   }
 
   .exitbtn {
-    width: 70px;
+    width: 80px;
     height: 40px;
     border-radius: 60px;
     margin-right: 30px;
@@ -90,7 +91,7 @@ const MyInfo = ({ onSubmit }) => {
             </dd>
           </dl>
           <dl>
-            <dt>{t('활동 지역')}</dt>
+            <dt>{t('활동_지역')}</dt>
             <dd>
               <InputBox type="text"></InputBox>
             </dd>
