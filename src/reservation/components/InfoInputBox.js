@@ -8,6 +8,7 @@ const MessageBox = styled.input`
   width: 100%;
   padding: 0 10px;
   border-radius: 3px;
+  font-weight: bold;
 `;
 
 export default React.memo(MessageBox);
