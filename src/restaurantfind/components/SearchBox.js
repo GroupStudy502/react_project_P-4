@@ -64,8 +64,9 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
         <>
           <div>
             <select name="dbsnsStatmBzcndNm" value={search?.dbsnsStatmBzcndNm} onChange={onChange}>
+              <option value="">{t('음식종류_선택')}</option>
               <option value="한식">{t('한식')}</option>
-              <option value="중국식">{t('중국식')}</option>
+              <option value="중국식">{t('중식')}</option>
               <option value="일식">{t('일식')}</option>
               <option value="분식">{t('분식')}</option>
               <option value="경양식">{t('경양식')}</option>
@@ -74,20 +75,24 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
               <option value="호프/통닭">{t('치킨')}</option>
               <option value="식육(숯불구이)">{t('구이')}</option>
               <option value="회집">{t('회')}</option>
-              <option value="탕류(보신용)">{t('탕/국밥')}</option>
+              <option value="탕류(보신용)">{t('탕_국밥')}</option>
               <option value="냉면집">{t('냉면')}</option>
               <option value="외국음식전문점(인도,태국등)">{t('외국음식전문점')}</option>
               <option value="커피숍">{t('커피')}</option>
               <option value="제과점영업">{t('베이커리')}</option>
             </select>
           </div>
+        </>
+      )}
+      {search.areaNm && search.dbsnsStatmBzcndNm && (
+        <>
           <div>
             <select name="sopt" onChange={onChange} value={search?.sopt}>
               <option value="ALL">{t('통합검색')}</option>
               <option value="TITLE">{t('식당명')}</option>
               <option value="TEL">{t('연락처')}</option>
-              <option value="ADDRESS">{t('도로명 주소')}</option>
-              <option value="CATEGORY">{t('업종명')}</option>
+              <option value="ADDRESS1">{t('도로명_주소')}</option>
+              <option value="ADDRESS2">{t('지번_주소')}</option>
             </select>
             <input
               type="text"

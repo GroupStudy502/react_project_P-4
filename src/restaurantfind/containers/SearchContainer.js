@@ -25,7 +25,8 @@ const SearchContainer = () => {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const [locations, setLocations] = useState([]); // 검색된 위치들의 위도, 경도를 저장하는 배열 -> 마커 표기할 위도, 경도 정보
+  const [center, setCenter] = useState([]); // 지도 중심 좌표(현재 위치)
+  const [locations, setLocations] = useState([]); // 마커 표기할 위도, 경도 정보
 
   useEffect(() => {
     (async () => {
@@ -46,7 +47,11 @@ const SearchContainer = () => {
           .map((d) => ({
             lat: d.rstrLa,
             lng: d.rstrLo,
-            info: { content: d.rstrNm, clickable: true }, // 인포윈도우
+            info: {
+              content: d.rstrNm,
+              clickable: true,
+              removable: true
+            }, // 인포윈도우
           }));
         setLocations(_locations);
         /* 마커 표기 좌표 가공 처리 E */
@@ -86,6 +91,7 @@ const SearchContainer = () => {
       {locations && locations.length > 0 && (
         <KakaoMap
           currentLocation={true}
+          center={center}
           marker={locations}
           markerImage={marker}
           zoom={8}
