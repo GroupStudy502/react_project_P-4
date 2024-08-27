@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import { apiList } from '../../restaurant/apis/apiInfo';
 import Loading from '../../commons/components/Loading';

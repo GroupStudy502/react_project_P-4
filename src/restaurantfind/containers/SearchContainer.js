@@ -48,7 +48,12 @@ const SearchContainer = () => {
             lat: d.rstrLa,
             lng: d.rstrLo,
             info: {
-              content: d.rstrNm,
+              content: 
+              `<div>
+                <div style="font-weight:bold">${d.rstrNm}</div>
+                <a href="/restaurant/info/${d.rstrId}">상세 페이지 이동</a><br>
+                <a href="https://map.kakao.com/link/map/${d.rstrNm}, ${d.rstrLa}, ${d.rstrLo}" target="_blank" style="color:blue">카카오맵 길찾기</a>
+              </div>`,
               clickable: true,
               removable: true
             }, // 인포윈도우
