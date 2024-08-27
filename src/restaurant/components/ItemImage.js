@@ -4,46 +4,37 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+import SlideBanner from '../../commons/components/SlideBanner';
 
 const Wrapper = styled.div`
   flex-grow: 1;
   margin-right: 10px;
   border-radius: 5px;
-  height: 350px;
+  min-height: 350px;
   overflow: hidden;
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
 `;
 
-const ImageBox = styled.div`
-  background: url('${({ image }) => image}') no-repeat center center;
-  background-size: contain;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  
-`;
 
-const ItemImage = ({ images, onClick }) => {
-  useEffect(() => {
-    console.log('Images:', images);
-  }, [images]);
+const StyleSlideBanner = styled(SlideBanner)``;
+
+const ItemImage = ({ images }) => {
+  const items = images
+    ? images.map(({ rstrImgUrl, rstrNm }) => ({
+        image: rstrImgUrl,
+        alt: rstrNm,
+      }))
+    : [];
 
   images = Array.isArray(images) ? images : [images];
 
   return (
     images.length > 0 && (
       <Wrapper className="item-images">
-       
-          {images.map((img) => (
-           
-              <ImageBox
-                image={img.rstrImgUrl}
-                className="item-image"
-                onClick={() => onClick(img.rstrImgUrl)}
-              />
-           
-          ))}
-      
+        <StyleSlideBanner
+          items={items}
+          options={{ navigation: true, loop: true, speed: 700 }}
+        />
       </Wrapper>
     )
   );
