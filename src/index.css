@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-@font-face {
-  font-family: "NanumBarunGothic";
-  src: url('./commons/fonts/font1/NanumBarunGothicBold.ttf');
-}
+/* 나눔스퀘어 S*/
 @font-face {
   font-family: "NanumSquareR";
   src: url('./commons/fonts/font2/NanumSquare_acR.ttf');
@@ -14,6 +10,12 @@
 @font-face {
   font-family: "NanumSquareEB";
   src: url('./commons/fonts/font2/NanumSquare_acEB.ttf');
+}
+/* 나눔스퀘어 E*/
+
+@font-face {
+  font-family: "NanumBarunGothic";
+  src: url('./commons/fonts/font1/NanumBarunGothicBold.ttf');
 }
 @font-face {
   font-family: "NanumSquareRound";
