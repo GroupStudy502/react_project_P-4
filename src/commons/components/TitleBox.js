@@ -9,4 +9,5 @@ export const MainTitle = styled.h1`
   padding: 0 15px 15px;
   margin: 0 0 20px;
   line-height: 1;
+  text-align: center;
 `;

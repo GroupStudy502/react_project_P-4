@@ -16,9 +16,12 @@ const { jmt } = color;
 
 const HeaderBox = styled.header`
   .site-top {
-    background: #f8f8f8;
     border-bottom: 1px solid #d5d5d5;
     height: 50px;
+    
+    .layout-width{
+      margin-top: 20px;
+    }
 
     div {
       text-align: right;
@@ -74,14 +77,14 @@ const Header = () => {
             <>
               {/* 로그인 상태 */}
               <span>
-                {userInfo?.userName}({userInfo?.email}){t('님 로그인')}
+                {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span>
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
-                  {t('사이트 관리')}
+                  {t('사이트_관리')}
                 </a>
               )}
-              <SmallButton color="secondary" width={150} onClick={onLogout}>
+              <SmallButton color="secondary" width={100} onClick={onLogout}>
                 {t('로그아웃')}
               </SmallButton>
             </>

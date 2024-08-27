@@ -16,19 +16,19 @@ const BannerImage = styled.div`
     height: 100%;
     border-radius: 4px;
   }
-}
-`
+
+`;
 
 const MainBanner = ({}) => {
-    const { t } = useTranslation(); 
-    return (
+  const { t } = useTranslation();
+  return (
     <BannerImage>
-        <NavLink to={"/ai"}>
-            <img src={image} alt="배너" />
-        </NavLink>
+      <NavLink to={'/ai'}>
+        <img src={image} alt="배너" />
+      </NavLink>
     </BannerImage>
-        //<SwiperComponent>배너</SwiperComponent>
-    );
+    //<SwiperComponent>배너</SwiperComponent>
+  );
 };
-  
+
 export default React.memo(MainBanner);

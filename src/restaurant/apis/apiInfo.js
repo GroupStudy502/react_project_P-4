@@ -17,3 +17,6 @@ export const apiList = (search) => {
 
 // 상세 조회
 export const apiGet = (rstrId) => requestData(`/restaurant/info/${rstrId}`);
+
+export const apiWishlist = () => requestData(`/restaurant/wish`);
+
