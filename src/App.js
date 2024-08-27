@@ -11,11 +11,11 @@ const Member = loadable(() => import('./routes/Member'));
 // 마이 페이지
 const Mypage = loadable(() => import('./routes/Mypage'));
 
+// 리뷰 게시판 페이지
+const Board = loadable(()=> import('./routes/Board'))
+
 // 식당 페이지
 const Restaurant = loadable(() => import('./routes/Restaurant'));
-
-// 게시판 페이지
-const Board = loadable(() => import('./routes/Board'));
 
 // 예약 페이지
 const Reservation = loadable(() => import('./routes/Reservation'));

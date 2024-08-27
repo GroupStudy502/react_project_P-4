@@ -8,8 +8,7 @@ import image from '../../images/banner/banner1.png';
 const BannerImage = styled.div`
   display: flex;  
   align-items: center;
-  max-width: 1200px;
-  min-width: 1000px;
+  padding: 5px;
   margin-bottom: 50px;
 
   img {
@@ -17,19 +16,19 @@ const BannerImage = styled.div`
     height: 100%;
     border-radius: 4px;
   }
-}
-`
+
+`;
 
 const MainBanner = ({}) => {
-    const { t } = useTranslation(); 
-    return (
+  const { t } = useTranslation();
+  return (
     <BannerImage>
-        <NavLink to={"/ai"}>
-            <img src={image} alt="배너" />
-        </NavLink>
+      <NavLink to={'/ai'}>
+        <img src={image} alt="배너" />
+      </NavLink>
     </BannerImage>
-        //<SwiperComponent>배너</SwiperComponent>
-    );
+    //<SwiperComponent>배너</SwiperComponent>
+  );
 };
-  
+
 export default React.memo(MainBanner);

@@ -7,8 +7,8 @@ import styled from 'styled-components';
 import { RiRobot2Line } from "react-icons/ri";
 
 const MainOuterBox = styled.div`
-  max-width: 1200px;
-  min-width: 1000px;
+  max-width: 1000px;
+  min-width: 800px;
   padding: 50px;
   margin: 50px auto;
 `;

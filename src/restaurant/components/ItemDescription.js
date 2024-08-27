@@ -19,10 +19,12 @@ const Wrapper = styled.div`
     dt {
       width: 100px;
       font-weight: normal;
+      font-size: ${medium};
     }
 
     dd {
       width: calc(100% - 120px) l;
+      
     }
 
     a {
@@ -32,6 +34,7 @@ const Wrapper = styled.div`
 
   dl:first-child {
     border-bottom: 1px solid #e5e5e5;
+    
   }
 `;
 
