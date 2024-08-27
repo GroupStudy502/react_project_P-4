@@ -20,8 +20,6 @@ function getQueryString(searchParams) {
 
 const SearchContainer = () => {
   const [searchParams] = useSearchParams();
-
-  const [form, setForm] = useState(() => getQueryString(searchParams));
   const [search, setSearch] = useState(() => getQueryString(searchParams));
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
@@ -60,20 +58,17 @@ const SearchContainer = () => {
 
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: [e.target.value] }));
+    setSearch((search) => ({ ...search, [e.target.name]: [e.target.value] }));
   }, []);
 
-  const onSubmitSearch = useCallback(
-    (e) => {
-      e.preventDefault();
-      setSearch({ ...form, page: 1 });
-    },
-    [form],
-  );
+  const onSubmitSearch = useCallback((e) => {
+    e.preventDefault();
+    setSearch((search) => ({ ...search, page: 1 }));
+  }, []);
 
   /* 페이지 변경 함수 */
-  const onChangePage = useCallback((p) => {
-    setSearch((search) => ({ ...search, page: p }));
+  const onChangePage = useCallback((page) => {
+    setSearch((search) => ({ ...search, page }));
   }, []);
 
   // 로딩 처리
@@ -84,7 +79,7 @@ const SearchContainer = () => {
   return (
     <>
       <SearchBox
-        form={form}
+        search={search}
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
