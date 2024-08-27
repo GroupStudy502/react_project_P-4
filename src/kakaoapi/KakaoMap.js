@@ -107,7 +107,6 @@ const KakaoMap = ({
               if (_marker.isInfoWindowOpen) {
                 // 미노출
                 infoWindow.close();
-
                 _marker.isInfoWindowOpen = false;
               } else {
                 // 노출

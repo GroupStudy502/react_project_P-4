@@ -20,8 +20,6 @@ function getQueryString(searchParams) {
 
 const SearchContainer = () => {
   const [searchParams] = useSearchParams();
-
-  const [form, setForm] = useState(() => getQueryString(searchParams));
   const [search, setSearch] = useState(() => getQueryString(searchParams));
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
@@ -44,12 +42,12 @@ const SearchContainer = () => {
         }
 
         const _locations = items
-          .filter((d) => d.rstrLa && d.rstrLo)
+          .filter((d) => d.rstrLa && d.rstrLo && d.rstrNm)
           .map((d) => ({
             lat: d.rstrLa,
             lng: d.rstrLo,
+            info: { content: d.rstrNm, clickable: true }, // 인포윈도우
           }));
-
         setLocations(_locations);
         /* 마커 표기 좌표 가공 처리 E */
       } catch (err) {
@@ -60,20 +58,17 @@ const SearchContainer = () => {
 
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
-    setForm((form) => ({ ...form, [e.target.name]: [e.target.value] }));
+    setSearch((search) => ({ ...search, [e.target.name]: [e.target.value] }));
   }, []);
 
-  const onSubmitSearch = useCallback(
-    (e) => {
-      e.preventDefault();
-      setSearch({ ...form, page: 1 });
-    },
-    [form],
-  );
+  const onSubmitSearch = useCallback((e) => {
+    e.preventDefault();
+    setSearch((search) => ({ ...search, page: 1 }));
+  }, []);
 
   /* 페이지 변경 함수 */
-  const onChangePage = useCallback((p) => {
-    setSearch((search) => ({ ...search, page: p }));
+  const onChangePage = useCallback((page) => {
+    setSearch((search) => ({ ...search, page }));
   }, []);
 
   // 로딩 처리
@@ -84,7 +79,7 @@ const SearchContainer = () => {
   return (
     <>
       <SearchBox
-        form={form}
+        search={search}
         onChange={onChangeSearch}
         onSubmit={onSubmitSearch}
       />
@@ -93,8 +88,8 @@ const SearchContainer = () => {
           currentLocation={true}
           marker={locations}
           markerImage={marker}
-          info={{content: '<h1>출력2</h1>', clickable: true}}
-          zoom={8} />
+          zoom={8}
+        />
       )}
       <ItemsBox items={items} />
       {items.length > 0 && (

@@ -72,7 +72,7 @@ const Footer = () => {
     </h4>
     <address>
       <p>대표 :
-        <span> 홍길동</span>
+        <span> 2조</span>
       </p> 
       <p>주소 :
         <span> 서울특별시 마포구 신촌로 176, 502호</span>

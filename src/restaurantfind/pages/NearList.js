@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import NearContainer from '../containers/NearContainer';
-import CurrentAdress from '../../kakaoapi/CurrentAdress';
+import CurrentAddress from '../../kakaoapi/CurrentAddress';
 
 const NearList = () => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const NearList = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{t('주변_식당')}</MainTitle>
-        <CurrentAdress />
+        <CurrentAddress />
         <NearContainer />
       </OuterBox>
     </>
