@@ -33,7 +33,7 @@ const MypageList = () => {
         <BigButton
           type="submit"
           color="dark"
-          onClick={() => navigate('/board/wishlist/restaurant')}
+          onClick={() => navigate('/mypage/wishlist/restaurant')}
         >
           {t('찜한_식당')}
         </BigButton>

@@ -12,8 +12,8 @@ const Member = () => {
     <Routes>
       <Route path="/member" element={<MainLayout />}>
         <Route path="join" element={<Join />} />
-        <Route path="login" element={<Login />} />
       </Route>
+      <Route path="/member/login" element={<Login />} />
     </Routes>
   );
 };
