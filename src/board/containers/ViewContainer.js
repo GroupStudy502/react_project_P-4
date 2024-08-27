@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getInfo } from '../apis/apiBoard';
+import { getInfo , deleteData } from '../apis/apiBoard';
 import Loading from '../../commons/components/Loading';
 import MessageBox from '../../commons/components/MessageBox';
 
@@ -33,7 +33,7 @@ const ViewContainer = ({ setPageTitle }) => {
         const res = await getInfo(seq);
         setData(res);
         setBoard(res.board);
-        setPageTitle(res.subject);
+        setPageTitle && setPageTitle(res.subject);
 
         /* 댓글 기본 양식 */
         setCommentForm({ bSeq: seq });
@@ -55,10 +55,17 @@ const ViewContainer = ({ setPageTitle }) => {
       if (!window.confirm(t('정말_삭제_하겠습니까?'))) {
         return;
       }
+      (async () => {
+        try {
+          await deleteData(seq);
+          navigate(`/board/list/${board.bid}`);
+        } catch (err) {
+          console.error(err);
+        }
+      })();
     },
-    [t],
+    [t, navigate, board],
   );
-
   const onChange = useCallback((e) => {
     setCommentForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   }, []);

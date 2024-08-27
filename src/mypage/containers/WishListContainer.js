@@ -25,9 +25,7 @@ const WishListContainer = () => {
         break;
       default:
         apiList = getRestaurantList;
-        return;
     }
-
     if (!apiList) {
       return;
     }
@@ -35,6 +33,7 @@ const WishListContainer = () => {
     (async () => {
       try {
         const res = await apiList();
+
         setItems(res.items);
         setPagination(res.pagination);
       } catch (err) {
