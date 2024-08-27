@@ -1,3 +1,4 @@
+
 import React, { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { AiFillCloseSquare } from 'react-icons/ai';
@@ -34,7 +35,7 @@ const ImageBox = styled.div`
 
 const ProfileImage = ({ items, width, height, radius, onDelete }) => {
   items = Array.isArray(items) ? items : [items];
-
+  
   return (
     <>
       {items?.length > 0 &&
