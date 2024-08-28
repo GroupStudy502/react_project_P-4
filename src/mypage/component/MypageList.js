@@ -37,13 +37,7 @@ const MypageList = () => {
         >
           {t('찜한_식당')}
         </BigButton>
-        <BigButton
-          type="submit"
-          color="dark"
-          onClick={() => navigate('/mypage/reserve')}
-        >
-          {t('예약_내역')}
-        </BigButton>
+      
       </ButtonGroup>
     </div>
   );
