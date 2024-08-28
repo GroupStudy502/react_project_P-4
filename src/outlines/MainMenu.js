@@ -5,29 +5,30 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
+import logo from '../images/logo.png';
 
-const { black, light, jmt } = color;
+const { black, jmt } = color;
 
 const MenuBox = styled.nav`
-  background: ${light};
-
   div {
     display: flex;
-    height: 50px;
-    width: 1200px;
+    height: 70px;
+    width: 1400px;
     margin: 0 auto;
 
     a {
       color: ${black};
-      line-height: 50px;
+      line-height: 70px;
       padding: 0 50px;
-      font-size: ${fontSize.extraBig};
-      font-family: "NanumSquareEB";
+      font-size: ${fontSize.big};
+      font-family: "NanumSquareB";
 
       &.on {
-        background: ${jmt};
-        color: ${light};
-        border-radius: 10px;
+        color: ${jmt};
+      }
+
+      img {
+        width: 200px;
       }
     }
   }
@@ -39,6 +40,9 @@ const MainMenu = () => {
   return (
     <MenuBox>
       <div>
+        <NavLink to="/" className="logo">
+          <img src={logo} alt={t('로고')} />
+        </NavLink>
         <NavLink
           to="/restaurant/search"
           className={({ isActive }) => classNames({ on: isActive })}

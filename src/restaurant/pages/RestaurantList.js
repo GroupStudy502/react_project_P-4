@@ -11,10 +11,10 @@ const RestaurantList = () => {
   return (
     <>
       <Helmet>
-        <title>{t('식당 목록')}</title>
+        <title>{t('식당_목록')}</title>
       </Helmet>
       <OuterBox>
-        <MainTitle>{t('식당 목록')}</MainTitle>
+        <MainTitle>{t('식당_목록')}</MainTitle>
         <ListContainer />
       </OuterBox>
     </>

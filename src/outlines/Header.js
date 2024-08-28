@@ -1,12 +1,11 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
 
 import UserInfoContext from '../member/modules/UserInfoContext';
@@ -36,17 +35,6 @@ const HeaderBox = styled.header`
           color: ${jmt};
         }
       }
-    }
-  }
-
-  .logo {
-    div {
-      width: 360px;
-      height: 150px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 auto;
     }
   }
 `;
@@ -105,13 +93,6 @@ const Header = () => {
               </NavLink>
             </>
           )}
-        </div>
-      </section>
-      <section className="logo">
-        <div>
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
         </div>
       </section>
       <MainMenu />
