@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import InputBox from '../../commons/components/InputBox';
 import UserInfoContext from '../../member/modules/UserInfoContext'; // 유저정보
-import { useNavigate } from 'react-router-dom'; // 페이지이동
+import { Link } from 'react-router-dom'; // 페이지이동
 import Myprofile from './Myprofile';
 
 const FormBox = styled.form`
@@ -56,9 +56,6 @@ const Btn = styled.div`
 `;
 
 const MyInfo = ({ onSubmit }) => {
-  //let navigate = useNavigate();
-  // navigate('/mypage');
-
   const {
     states: { userInfo },
   } = useContext(UserInfoContext);
@@ -102,15 +99,12 @@ const MyInfo = ({ onSubmit }) => {
           <button type="submit" className="editbtn">
             {t('수정하기')}
           </button>
-
+          <Link to="/mypage">
           <button
-            className="exitbtn"
-            onClick={() => {
-              //   navigate('/mypage');
-            }}
-          >
+            className="exitbtn">
             {t('나가기')}
           </button>
+          </Link>
         </Btn>
       </div>
     </div>
