@@ -99,7 +99,7 @@ const MyInfo = ({ onSubmit }) => {
           <button type="submit" className="editbtn">
             {t('수정하기')}
           </button>
-          <Link to="/mypage">
+         <Link to="/mypage">
           <button
             className="exitbtn">
             {t('나가기')}
