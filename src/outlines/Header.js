@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import MainMenu from './MainMenu';
+import topbanner from '../images/topbanner.png';
 
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
@@ -59,6 +60,11 @@ const Header = () => {
 
   return (
     <HeaderBox>
+      <section className="top-banner">
+        <NavLink to="/ai">
+          <img src={topbanner} alt={t('탑배너')} />
+        </NavLink>
+      </section>
       <section className="site-top">
         <div className="layout-width">
           {isLogin ? (
