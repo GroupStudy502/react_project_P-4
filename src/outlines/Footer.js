@@ -5,7 +5,6 @@ const FooterBox = styled.footer`
   display: block;
   font-size: 100%;
   vertical-align: baseline;
-  background: #000;
 
   div {
     padding: 50px 200px;
@@ -14,7 +13,7 @@ const FooterBox = styled.footer`
   h4 {
     font-size: 14px;
     font-weight: 500;
-    color: #e4e4e4;
+    color: #666;
     margin-bottom: 10px;
     line-height: 1.25;
   } 
@@ -40,8 +39,8 @@ const FooterBox = styled.footer`
   }
 
   .footer-menu a {
+    color: #666;
     height: 16px;
-    color: #aaa;
   }
 
   .footer-menu span {
