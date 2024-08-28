@@ -38,6 +38,7 @@ const TitleWithIcon = styled.h2`
   h2 {
     margin: 0; /* Remove default margin from h2 */
     font-size: 0.8em; /* h2 글씨 크기(...선택해 주세요) */
+    font-weight: bold;
   }
 `;
 
@@ -45,6 +46,7 @@ const Subtitle = styled.h3`
   margin: 5px 0 15px 5px;
   font-size: 0.9em;
   color: #666;
+  font-weight: bold;
 `;
 
 const Checktitle = styled.h3`
@@ -54,6 +56,7 @@ const Checktitle = styled.h3`
 
 const LastCheckTitle = styled(Checktitle)`
   margin: 40px 0 30px 7px;
+  font-weight: bold;
 `;
 
 const TimeButton = styled.button`
@@ -65,6 +68,7 @@ const TimeButton = styled.button`
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
   margin: 5px 5px 20px 20px; //상/우/하/좌
   font-size: 1.2em; // 시간 버튼 글자 크기
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
 
@@ -86,6 +90,7 @@ const PersonButton = styled.button`
   justify-content: center;
   margin: 5px;
   font-size: 1.2em;
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
   margin-bottom: 30px;

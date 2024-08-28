@@ -49,6 +49,7 @@ const FormContainer = ({ setPageTitle }) => {
    *
    */
   useEffect(() => {
+    window.scrollTo(0,0);
     if (!seq) {
       return;
     }

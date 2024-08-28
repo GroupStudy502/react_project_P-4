@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { FaLock, FaKey, FaUserPlus } from 'react-icons/fa';
+import { FaLock, FaKey, FaUserPlus, FaHome } from 'react-icons/fa';
 import InputBox from '../../commons/components/InputBox';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
 import fontSize from '../../styles/fontSize';
 import loginimage from '../../images/loginimage.png';
-import { IoHome } from "react-icons/io5";
 
 const { small } = fontSize;
 
@@ -18,9 +17,8 @@ const FormBox = styled.form`
   padding-bottom: 5px;
 
   input {
-    width:250;
+    width: 250;
     margin-bottom: 10px;
-    
   }
 `;
 const LinkBox = styled.div`
@@ -47,18 +45,19 @@ const LinkBox = styled.div`
 const LoginImage = styled.img`
   width: 300px;
   height: 250px;
-  margin-left:20px; 
+  margin-left: 20px;
   display: block;
-
 `;
+
 
 const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   const { t } = useTranslation();
-
+ 
   return (
+
     <>
-    <IoHome/>
       <FormBox onSubmit={onSubmit} autoComplete="off">
+      <FaHome style={{ width: '100px', height: '100px' }} />
         <LoginImage src={loginimage} />
 
         <InputBox
