@@ -8,7 +8,7 @@ import Myprofile from './Myprofile';
 
 const FormBox = styled.form`
   width: 300px;
-  margin: 0 auto;
+  margin: 0 auto; 
   dl {
     display: flex;
     align-items: center;
@@ -17,6 +17,7 @@ const FormBox = styled.form`
       width: 80px;
     }
     dd {
+      margin-top: 5px;
       flex-grow: 1;
     }
   }
