@@ -6,7 +6,7 @@ import image from '../../images/banner/banner1.png';
 //import SwiperComponent from '../../Swiper/Swiper';
 
 const BannerImage = styled.div`
-  display: flex;  
+  display: flex;
   align-items: center;
   padding: 5px;
   margin-bottom: 50px;
@@ -16,13 +16,12 @@ const BannerImage = styled.div`
     height: 100%;
     border-radius: 4px;
   }
-
 `;
 
 const MainBanner = ({}) => {
   const { t } = useTranslation();
   return (
-    <BannerImage>
+     <BannerImage>
       <NavLink to={'/ai'}>
         <img src={image} alt="배너" />
       </NavLink>
