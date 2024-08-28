@@ -72,10 +72,10 @@ const Footer = () => {
     </h4>
     <address>
       <p>대표 :
-        <span> 2조</span>
+        <span> 502호 2조</span>
       </p> 
       <p>주소 :
-        <span> 서울특별시 마포구 신촌로 176, 502호</span>
+        <span> 서울특별시 마포구 신촌로 176</span>
       </p>
       <p>사업자등록번호 :
         <span> 123-45-67890</span>

@@ -25,7 +25,7 @@ const SearchContainer = () => {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const [center, setCenter] = useState([]); // 지도 중심 좌표(현재 위치)
+  const [center, setCenter] = useState([]); // 지도 중심 좌표
   const [locations, setLocations] = useState([]); // 마커 표기할 위도, 경도 정보
 
   useEffect(() => {
@@ -48,17 +48,16 @@ const SearchContainer = () => {
             lat: d.rstrLa,
             lng: d.rstrLo,
             info: {
-              content: 
-              `<div>
-                <div style="font-weight:bold">${d.rstrNm}</div>
-                <a href="/restaurant/info/${d.rstrId}">상세 페이지 이동</a><br>
-                <a href="https://map.kakao.com/link/map/${d.rstrNm}, ${d.rstrLa}, ${d.rstrLo}" target="_blank" style="color:blue">카카오맵 길찾기</a>
-              </div>`,
+              content: `<div>
+                  <a href="/restaurant/info/${d.rstrId}" style="font-weight:bold">${d.rstrNm}</a>
+                </div>`,
               clickable: true,
-              removable: true
+              removable: true,
             }, // 인포윈도우
           }));
         setLocations(_locations);
+        if (_locations.length > 0)
+          setCenter({ lat: _locations[0].lat, lng: _locations[0].lng });
         /* 마커 표기 좌표 가공 처리 E */
       } catch (err) {
         console.error(err);
