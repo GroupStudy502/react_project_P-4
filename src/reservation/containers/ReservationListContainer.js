@@ -23,17 +23,14 @@ const ReservationListContainer = () => {
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
     (async () => {
       try {
         setLoading(true);
         const { items, pagination } = await apiList(search);
-
         setItems(items);
         setPagination(pagination);
         setLoading(false);
-
       } catch (err) {
         console.error(err);
       }

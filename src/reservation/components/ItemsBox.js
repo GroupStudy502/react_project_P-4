@@ -2,20 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ItemBox = ({ item = {}, className }) => {
-  const { orderNo = '', rName = '', rDateTime = '', persons = '', name = '', email = '', mobile = '' } = item;
-  const url = `/reservation/info/${orderNo}`;
+const ItemBox = ({ item, className }) => {
+  const url = `/reservation/info/${item?.orderno}`;
 
   return (
     <li className={className}>
       <Link to={url}>
         <div className="item-content">
-          <div className="rName">{rName}</div>
-          <div className="rDateTime">{rDateTime}</div>
-          <div className="persons">{persons}</div>
-          <div className="name">{name}</div>
-          <div className="email">{email}</div>
-          <div className="mobile">{mobile}</div>
+          <div className="rName">{item?.rname}</div>
+          <div className="rDateTime">{item?.rdateTime}</div>
+          <div className="persons">{item?.persons}</div>
+          <div className="name">{item?.name}</div>
+          <div className="email">{item?.email}</div>
+          <div className="mobile">{item?.mobile}</div>
         </div>
       </Link>
     </li>
