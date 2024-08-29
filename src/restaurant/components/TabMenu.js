@@ -22,7 +22,7 @@ const Menu = styled.div`
       width: 100%;
       font-size: 1.1em;
       font-weight: normal;
-      letter-spacing: 1.5px;
+      letter-spacing: 3px;
     }
 
     dd {
