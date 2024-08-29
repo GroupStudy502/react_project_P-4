@@ -28,6 +28,7 @@ const Menu = styled.div`
     dd {
       width: calc(100% - 120px);
       color: ${jmt};
+      font-weight: bold;
       margin-top: 10px;
     }
   }

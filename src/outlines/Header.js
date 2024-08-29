@@ -1,13 +1,13 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
+import topbanner from '../images/topbanner.png';
 
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
@@ -15,6 +15,11 @@ import { SmallButton } from '../commons/components/Buttons';
 const { jmt } = color;
 
 const HeaderBox = styled.header`
+  .top-banner {
+    width: 1920px;
+    height: 50px;
+  }
+
   .site-top {
     border-bottom: 1px solid #d5d5d5;
     height: 50px;
@@ -36,17 +41,6 @@ const HeaderBox = styled.header`
           color: ${jmt};
         }
       }
-    }
-  }
-
-  .logo {
-    div {
-      width: 360px;
-      height: 150px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 auto;
     }
   }
 `;
@@ -71,6 +65,11 @@ const Header = () => {
 
   return (
     <HeaderBox>
+      <section className="top-banner">
+        <NavLink to="/ai">
+          <img src={topbanner} alt={t('탑배너')} />
+        </NavLink>
+      </section>
       <section className="site-top">
         <div className="layout-width">
           {isLogin ? (
@@ -105,13 +104,6 @@ const Header = () => {
               </NavLink>
             </>
           )}
-        </div>
-      </section>
-      <section className="logo">
-        <div>
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
         </div>
       </section>
       <MainMenu />

@@ -1,33 +1,66 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import image from '../../images/banner/banner1.png';
-//import SwiperComponent from '../../Swiper/Swiper';
+import { color } from '../../styles/color';
+import SlideBanner from '../../commons/components/SlideBanner';
+import banner1 from '../../images/banner/banner1.png';
+import banner2 from '../../images/banner/banner2.png';
 
-const BannerImage = styled.div`
-  display: flex;  
-  align-items: center;
-  padding: 5px;
-  margin-bottom: 50px;
+const Wrapper = styled.div`
+  div {
+    margin: 0 auto  50px;
+  }
 
   img {
     width: 100%;
     height: 100%;
-    border-radius: 4px;
+  }
+`;
+
+const options = {
+  loop: true,
+  speed: 1000,
+  pagination: true,
+  navigation: true,
+};
+
+const items = [
+  { image: banner1, link: '/ai', alt: '배너1'},
+  { image: banner2, link: '/ai', alt: '배너2'},
+]
+
+const StyleSlideBanner = styled(SlideBanner)`
+  .swiper-pagination {
+    bottom: 10px;
   }
 
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #ececec;
+    opacity: 0.8;
+  }
+  .swiper-pagination-bullet-active {
+    background: ${color.jmt};
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: calc(50% - 22px);
+    color: #ececec;
+    opacity: 0.8;
+  }
 `;
 
 const MainBanner = ({}) => {
-  const { t } = useTranslation();
   return (
-    <BannerImage>
-      <NavLink to={'/ai'}>
-        <img src={image} alt="배너" />
-      </NavLink>
-    </BannerImage>
-    //<SwiperComponent>배너</SwiperComponent>
+    <Wrapper>
+      <StyleSlideBanner
+        items={items}
+        width={1920}
+        height={500}
+        options={options}
+      />
+    </Wrapper>
   );
 };
 
