@@ -6,9 +6,11 @@ const commonStyle = css`
   position: fixed;
   right: 100px;
   bottom: 30px;
-  width: 200px;
-  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   cursor: pointer;
+  box-shadow: 2px 2px 5px #555;
 `;
 
 export const ChatButton = styled.button`
