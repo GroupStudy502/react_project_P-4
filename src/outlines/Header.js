@@ -15,6 +15,11 @@ import { SmallButton } from '../commons/components/Buttons';
 const { jmt } = color;
 
 const HeaderBox = styled.header`
+  .top-banner {
+    width: 1920px;
+    height: 50px;
+  }
+
   .site-top {
     border-bottom: 1px solid #d5d5d5;
     height: 50px;

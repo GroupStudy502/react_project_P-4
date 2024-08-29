@@ -4,14 +4,10 @@ import { color } from '../../styles/color';
 import SlideBanner from '../../commons/components/SlideBanner';
 import banner1 from '../../images/banner/banner1.png';
 import banner2 from '../../images/banner/banner2.png';
-import banner3 from '../../images/banner/banner3.png';
-import banner from '../../images/banner/banner.png';
-
-import { NavLink } from 'react-router-dom';
 
 const Wrapper = styled.div`
   div {
-    margin: 0 auto  20px;
+    margin: 0 auto  50px;
   }
 
   img {
@@ -30,7 +26,6 @@ const options = {
 const items = [
   { image: banner1, link: '/ai', alt: '배너1'},
   { image: banner2, link: '/ai', alt: '배너2'},
-  { image: banner3, link: '/ai', alt: '배너3'},
 ]
 
 const StyleSlideBanner = styled(SlideBanner)`
@@ -59,13 +54,10 @@ const StyleSlideBanner = styled(SlideBanner)`
 const MainBanner = ({}) => {
   return (
     <Wrapper>
-      <NavLink to='/ai'>
-        <img src={banner}/>
-      </NavLink> 
       <StyleSlideBanner
         items={items}
         width={1920}
-        height={606}
+        height={500}
         options={options}
       />
     </Wrapper>
