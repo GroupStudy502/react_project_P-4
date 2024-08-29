@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 
 const options = {
   loop: true,
-  speed: 1000,
+  speed: 500,
   pagination: true,
   navigation: true,
   slidesPerView: 5,
@@ -74,7 +74,7 @@ const StyleSlideBanner = styled(SlideBanner)`
 
   .swiper-button-prev,
   .swiper-button-next {
-    top: calc(50% - 60px);
+    top: calc(50% - 80px);
     color: #ececec;
     opacity: 0.8;
   }
