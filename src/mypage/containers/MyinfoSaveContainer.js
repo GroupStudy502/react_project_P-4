@@ -4,41 +4,35 @@ import { useTranslation } from 'react-i18next';
 import { save } from '../apis/apiMyinfo';
 import { useParams, useNavigate } from 'react-router-dom';
 import UserInfoContext from '../../member/modules/UserInfoContext';
-import { getMember } from './a';
 
 const Form = styled.form``;
 
 const MyInfoSaveContainer = () => {
-  const { seq } = useParams();
-  const { states: userInfo } = useContext(UserInfoContext);
+
+  const {
+    states: { userInfo },
+    actions: { setUserInfo },
+  } = useContext(UserInfoContext);
+
   const userForm = userInfo;
-  delete userForm.password;
+  delete userForm.password; // 비밀번호는 값이 들어왔을 때만 수정되게끔
+
   const [form, setForm] = useState(userForm);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [errors, setErrors] = useState();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        console.log('유입되나요');
-        const res = await getMember(seq);
-        setForm(res);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  }, [seq]);
 
   const onChange = useCallback(
     (e) => {
+
       setForm({ ...form, [e.target.name]: e.target.value });
     },
     [form],
   );
   const onSubmit = useCallback(
     (e) => {
-      e.preventDefault();
+      e.preventDefault(); // 기본 기능 차단
 
       /*  필수 항목 검증 S */
       const requiredFields = {

@@ -27,7 +27,7 @@ const MypageList = () => {
         <BigButton
           type="submit"
           color="dark"
-          onClick={() => navigate('/board/write/freetalk')}
+          onClick={() => navigate('/board/write/review')}
         >
           {t('리뷰_작성')}
         </BigButton>

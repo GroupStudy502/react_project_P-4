@@ -56,7 +56,7 @@ const Btn = styled.div`
   }
 `;
 
-const MyInfo = ({ onSubmit, onChange }) => {
+const MyInfo = ({ onSubmit, onChange, form }) => {
   const {
     states: { userInfo },
   } = useContext(UserInfoContext);
@@ -75,13 +75,21 @@ const MyInfo = ({ onSubmit, onChange }) => {
           <dl>
             <dt>{t('비밀번호')}</dt>
             <dd>
-              <InputBox type="text" onChange={onChange} />
+              <InputBox
+                type="text"
+                value={form?.password}
+                onChange={onChange}
+              />
             </dd>
           </dl>
           <dl>
             <dt>{t('비밀번호확인')}</dt>
             <dd>
-              <InputBox type="text" onChange={onChange} />
+              <InputBox
+                type="text"
+                value={form?.confirmPassword}
+                onChange={onChange}
+              />
             </dd>
           </dl>
           <dl>
@@ -91,19 +99,17 @@ const MyInfo = ({ onSubmit, onChange }) => {
           <dl>
             <dt>{t('휴대전화')}</dt>
             <dd>
-              <InputBox type="text" onChange={onChange} />
-            </dd>
-          </dl>
-          <dl>
-            <dt>{t('활동_지역')}</dt>
-            <dd>
-              <InputBox type="text"></InputBox>
+              <InputBox type="text" value={form?.mobile} onChange={onChange} />
             </dd>
           </dl>
         </FormBox>
 
         <Btn>
-          <button type="submit" className="editbtn" onClick={() => console.log('클릭 잘되나요')}>
+          <button
+            type="submit"
+            className="editbtn"
+            onClick={() => console.log('클릭 잘되나요')}
+          >
             {t('수정하기')}
           </button>
 
@@ -111,7 +117,6 @@ const MyInfo = ({ onSubmit, onChange }) => {
             <button className="exitbtn">{t('나가기')}</button>
           </Link>
         </Btn>
-     
       </div>
     </div>
   );

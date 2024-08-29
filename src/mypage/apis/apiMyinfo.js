@@ -1,10 +1,5 @@
 import apiRequest from "../../commons/libs/apiRequest";
 import cookies from 'react-cookies';
-import requestData from '../../commons/libs/requestData';
-
-// 회원 정보를 가져오기
-export const getMember = (seq) => requestData(`/acconut/info`);
-
 
 // 회원 정보 저장
 export const save = (seq, form) =>
