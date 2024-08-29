@@ -220,7 +220,7 @@ const ReservationForm = ({
                   </dd>
                 </dl>
                 <dl>
-                  <dt>{t('휴대전화번호')}</dt>
+                  <dt>{t('전화번호')}</dt>
                   <dd>
                     <InfoInputBox
                       type="text"
