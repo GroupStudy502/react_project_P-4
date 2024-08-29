@@ -12,13 +12,14 @@ const FloatingBox = styled.div`
   width: 900px;
   height: 80px;
   z-index: 10;
-  position: fixed;
-  bottom: 0;
+  position: ${(props) => (props.isFixed ? 'fixed' : 'absolute')};
+  bottom: ${(props) => (props.isFixed ? '0' : 'auto')};
   left: calc(50% - 450px);
   display: flex;
   align-items: center;
   padding: 0 20px;
   border-top: 1px solid #d1cfcf;
+  border-radius: 15px;
 `;
 
 const ContentWrapper = styled.div`
@@ -41,7 +42,7 @@ const StyledButton = styled(MidButton)`
   font-size: 1.5em;
 `;
 
-const FloatingBar = ({ onReservationClick, item }) => {
+const FloatingBar = ({ onReservationClick, item, isFixed }) => {
   const { t } = useTranslation();
 
   const { rstrId } = item;
@@ -50,7 +51,7 @@ const FloatingBar = ({ onReservationClick, item }) => {
   }
 
   return (
-    <FloatingBox>
+    <FloatingBox isFixed={isFixed}>
       <ContentWrapper>
         <IconWrapper>
           <WishButton seq={rstrId} type="RESTAURANT" />
