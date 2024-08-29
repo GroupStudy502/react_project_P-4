@@ -52,7 +52,6 @@ const ReservationViewContainer = ({ setPageTitle }) => {
       <ReservationItem item={item} />
       <Seperator/>
       <Seperator/>
-      
     </ViewWrapper>
   );
 };
