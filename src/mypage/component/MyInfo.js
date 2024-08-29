@@ -8,7 +8,7 @@ import Myprofile from './Myprofile';
 
 const FormBox = styled.form`
   width: 300px;
-  margin: 0 auto; 
+  margin: 0 auto;
   dl {
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@ const Btn = styled.div`
   }
 `;
 
-const MyInfo = ({ onSubmit }) => {
+const MyInfo = ({ onSubmit, onChange }) => {
   const {
     states: { userInfo },
   } = useContext(UserInfoContext);
@@ -75,7 +75,13 @@ const MyInfo = ({ onSubmit }) => {
           <dl>
             <dt>{t('비밀번호')}</dt>
             <dd>
-              <InputBox type="text" value="form.password" />
+              <InputBox type="text" onChange={onChange} />
+            </dd>
+          </dl>
+          <dl>
+            <dt>{t('비밀번호확인')}</dt>
+            <dd>
+              <InputBox type="text" onChange={onChange} />
             </dd>
           </dl>
           <dl>
@@ -85,7 +91,7 @@ const MyInfo = ({ onSubmit }) => {
           <dl>
             <dt>{t('휴대전화')}</dt>
             <dd>
-              <InputBox type="text" />
+              <InputBox type="text" onChange={onChange} />
             </dd>
           </dl>
           <dl>
@@ -97,16 +103,15 @@ const MyInfo = ({ onSubmit }) => {
         </FormBox>
 
         <Btn>
-          <button type="submit" className="editbtn">
+          <button type="submit" className="editbtn" onClick={() => console.log('클릭 잘되나요')}>
             {t('수정하기')}
           </button>
-         <Link to="/mypage">
-          <button
-            className="exitbtn">
-            {t('나가기')}
-          </button>
+
+          <Link to="/mypage">
+            <button className="exitbtn">{t('나가기')}</button>
           </Link>
         </Btn>
+     
       </div>
     </div>
   );
