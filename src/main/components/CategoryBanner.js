@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
-import fontSize from '../../styles/fontSize';
 import SlideBanner from '../../commons/components/SlideBanner';
 import category1 from '../../images/category/1.png';
 import category2 from '../../images/category/2.png';
@@ -21,28 +20,22 @@ import category15 from '../../images/category/15.png';
 
 const Wrapper = styled.div`
   div {
-    margin: 0 auto 10px;
-    font-size: ${fontSize.extraBig};
-    font-family: "NanumSquareB";
+    margin: 0 auto 20px;
   }
 
   img {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
   }
 `;
 
-const Title = styled.div`
-  display: flex;
-`
-
 const options = {
   loop: true,
-  speed: 200,
+  speed: 1000,
   pagination: true,
   navigation: true,
   slidesPerView: 5,
+  spaceBetween: 20,
 };
 
 const items = [
@@ -71,35 +64,33 @@ const StyleSlideBanner = styled(SlideBanner)`
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    background: #ececec;
-    opacity: 0.8;
+    background: #000;
+    opacity: 0.3;
   }
   .swiper-pagination-bullet-active {
     background: ${color.jmt};
+    opacity: 0.8;
   }
 
   .swiper-button-prev,
   .swiper-button-next {
-    top: calc(50% - 22px);
+    top: calc(50% - 60px);
     color: #ececec;
     opacity: 0.8;
   }
 `;
 
-const MainCategory = ({}) => {
+const CategoryBanner = ({}) => {
   return (
     <Wrapper>
-      <Title>
-        <div>어떤 메뉴 찾고 계세요?</div>
-      </Title>
       <StyleSlideBanner
         items={items}
-        width={1200}
-        height={250}
+        width={1400}
+        height={370}
         options={options}
       />
     </Wrapper>
   );
 };
 
-export default React.memo(MainCategory);
+export default React.memo(CategoryBanner);
