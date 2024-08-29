@@ -19,9 +19,9 @@ const MenuBox = styled.nav`
     a {
       color: ${black};
       line-height: 70px;
-      padding: 0 50px;
       font-size: ${fontSize.big};
-      font-family: "NanumSquareB";
+      font-family: 'NanumSquareB';
+      text-align: center;
 
       &.on {
         color: ${jmt};
@@ -30,6 +30,11 @@ const MenuBox = styled.nav`
       img {
         width: 200px;
       }
+    }
+
+    a:not(.logo) {
+      width: 0;
+      flex-grow: 1;
     }
   }
 `;
@@ -55,7 +60,10 @@ const MainMenu = () => {
         >
           {t('주변_식당')}
         </NavLink>
-        <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
+        <NavLink
+          to="/ai"
+          className={({ isActive }) => classNames({ on: isActive })}
+        >
           {t('점메추_AI')}
         </NavLink>
         <NavLink

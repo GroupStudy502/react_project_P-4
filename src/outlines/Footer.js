@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 const FooterBox = styled.footer`
   min-height: 250px;
-  display: block;
   font-size: 100%;
   vertical-align: baseline;
+  border-top: 1px solid #d5d5d5;
 
   div {
+    display: inline-block;
     padding: 50px 200px;
   }
 
