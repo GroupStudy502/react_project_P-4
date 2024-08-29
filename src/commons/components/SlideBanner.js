@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -38,11 +38,18 @@ const SlideBanner = ({
   className,
 }) => {
   options = options ?? {};
-  const { spaceBetween, slidesPerView, loop, speed, pagination, navigation } =
-    options;
+  const {
+    spaceBetween,
+    slidesPerView,
+    loop,
+    speed,
+    pagination,
+    navigation,
+    autoplay,
+  } = options;
 
   const swiperProps = {
-    modules: [Navigation, Pagination],
+    modules: [Navigation, Pagination, Autoplay],
     spaceBetween: spaceBetween ?? 0,
     slidesPerView: slidesPerView ?? 1,
     loop: Boolean(loop),
@@ -53,7 +60,7 @@ const SlideBanner = ({
   if (onSwiper) swiperProps.onSwiper = onSwiper;
   if (navigation) swiperProps.navigation = true;
   if (pagination) swiperProps.pagination = { clickable: true };
-
+  if (autoplay) swiperProps.autoplay = { speed: autoplay };
   return (
     items &&
     items.length > 0 && (
