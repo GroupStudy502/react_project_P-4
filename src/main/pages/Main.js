@@ -21,8 +21,7 @@ const Main = () => {
       <MainOuterBox>
         <MainContainer />
         <ModalChat>
-          <RiRobot2Line />
-           {t('점메추_AI')}
+          <RiRobot2Line style={{width: '50px', height: '50px'}}/>
         </ModalChat>
       </MainOuterBox>
     </>

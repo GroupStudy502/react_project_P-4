@@ -7,7 +7,7 @@ import banner2 from '../../images/banner/banner2.png';
 
 const Wrapper = styled.div`
   div {
-    margin: 0 auto  50px;
+    margin: 0 auto 50px;
   }
 
   img {
@@ -21,12 +21,13 @@ const options = {
   speed: 1000,
   pagination: true,
   navigation: true,
+  autoplay: 4000,
 };
 
 const items = [
-  { image: banner1, link: '/ai', alt: '배너1'},
-  { image: banner2, link: '/ai', alt: '배너2'},
-]
+  { image: banner1, link: '/ai', alt: '배너1' },
+  { image: banner2, link: '/ai', alt: '배너2' },
+];
 
 const StyleSlideBanner = styled(SlideBanner)`
   .swiper-pagination {
@@ -36,18 +37,26 @@ const StyleSlideBanner = styled(SlideBanner)`
   .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
-    background: #ececec;
-    opacity: 0.8;
+    background: #000;
+    opacity: 0.3;
   }
   .swiper-pagination-bullet-active {
     background: ${color.jmt};
+    opacity: 0.8;
   }
 
   .swiper-button-prev,
   .swiper-button-next {
-    top: calc(50% - 22px);
+    top: calc(50% - 60px);
     color: #ececec;
     opacity: 0.8;
+  }
+  .swiper-button-prev {
+    left: calc(50% - 900px);
+  }
+
+  .swiper-button-next {
+    right: calc(50% - 900px);
   }
 `;
 
@@ -57,7 +66,7 @@ const MainBanner = ({}) => {
       <StyleSlideBanner
         items={items}
         width={1920}
-        height={500}
+        height={540}
         options={options}
       />
     </Wrapper>
