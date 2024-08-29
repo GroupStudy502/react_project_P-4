@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
@@ -41,7 +41,7 @@ const SlideBanner = ({
   const { spaceBetween, slidesPerView, loop, speed, pagination, navigation } =
     options;
 
-  const SwiperProps = {
+  const swiperProps = {
     modules: [Navigation, Pagination],
     spaceBetween: spaceBetween ?? 0,
     slidesPerView: slidesPerView ?? 1,
@@ -49,16 +49,16 @@ const SlideBanner = ({
     speed: speed ?? 500,
   };
 
-  if (onChange) SwiperProps.onSlideChange = onChange;
-  if (onSwiper) SwiperProps.onSwiper = onSwiper;
-  if (navigation) SwiperProps.navigation = true;
-  if (pagination) SwiperProps.pagination = { clickable: true };
+  if (onChange) swiperProps.onSlideChange = onChange;
+  if (onSwiper) swiperProps.onSwiper = onSwiper;
+  if (navigation) swiperProps.navigation = true;
+  if (pagination) swiperProps.pagination = { clickable: true };
 
   return (
     items &&
     items.length > 0 && (
       <Wrapper width={width} height={height} className={className}>
-        <Swiper {...SwiperProps}>
+        <Swiper {...swiperProps}>
           {items.map(({ image, link, alt }) => (
             <SwiperSlide key={image} className="banner">
               {link?.trim() ? (
