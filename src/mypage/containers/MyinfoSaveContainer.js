@@ -17,20 +17,15 @@ const MyInfoSaveContainer = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [errors, setErrors] = useState();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
         console.log('유입되나요');
         const res = await getMember(seq);
-        res.mode = 'save';
-
         setForm(res);
       } catch (err) {
         console.error(err);
-      } finally {
-        setLoading(false);
       }
     })();
   }, [seq]);
@@ -45,7 +40,7 @@ const MyInfoSaveContainer = () => {
     (e) => {
       e.preventDefault();
 
-      /* 유효성 검사 - 필수 항목 검증 S */
+      /*  필수 항목 검증 S */
       const requiredFields = {
         password: t('비밀번호를_입력해주세요'),
         confirmPassword: t('비밀번호를_확인주세요'),
@@ -72,11 +67,7 @@ const MyInfoSaveContainer = () => {
 
       (async () => {
         try {
-          const { locationAfterWriting, seq } = form;
-          const res = form.mode === 'save' ? await save(seq, form) : [];
-
-          const url = locationAfterWriting === 'info' ? `/mypage/info` : `[]`;
-          navigate(url, { replace: true });
+          const res = await save(form);
         } catch (err) {
           setErrors(err.message);
         }
