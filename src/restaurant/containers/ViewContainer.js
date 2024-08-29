@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import Loading from '../../commons/components/Loading';
 import { apiGet } from '../apis/apiInfo';
 import { useParams } from 'react-router-dom';
@@ -7,7 +7,6 @@ import ItemImage from '../components/ItemImage';
 import ItemDescription from '../components/ItemDescription';
 
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ItemTabmenu from '../components/ItemTabmenu';
 import FloatingBarContainer from './FloatingBarContainer';
@@ -35,6 +34,7 @@ const ViewContainer = ({ setPageTitle }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '300px', zoom: 3 });
+  const viewRef = useRef(null);
   
   const { rstrId } = useParams();
 
@@ -66,7 +66,7 @@ const ViewContainer = ({ setPageTitle }) => {
   }
 
   return (
-    <ViewWrapper>
+    <ViewWrapper ref={viewRef}>
       <Wrapper>
         {item?.images?.length && <ItemImage images={item.images} />}
       </Wrapper>
@@ -78,8 +78,8 @@ const ViewContainer = ({ setPageTitle }) => {
         <h3>{t('매장위치')}</h3>
         <KakaoMap {...mapOptions} />
         <div> {item.rstrRdnmAdr} / {item.rstrLnnoAdres}</div>
-      
-      <FloatingBarContainer item={item}/>
+      <Seperator/>
+      <FloatingBarContainer item={item} viewRef={viewRef}/>
       
     </ViewWrapper>
   );
