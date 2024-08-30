@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { ImageBgBox } from '../../commons/components/ImageBox';
+import { BigButton } from '../../commons/components/Buttons';
 
 const ResaddressWithIcon = styled.h2`
   display: flex;
@@ -60,9 +61,10 @@ const ReservationButton = styled.button`
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.1rem;
   text-align: center;
   width: 100%;
+  height: 37px;
 
   &:hover {
     background-color: #d03e12;
@@ -111,7 +113,7 @@ const ItemBox = ({ item, className }) => {
         </div>
       </div>
         <Link to={url}>
-          <ReservationButton>예약 정보 확인</ReservationButton>
+          <ReservationButton>{t('예약_정보_확인')}</ReservationButton>
         </Link>
     </li>
   );
