@@ -6,13 +6,14 @@ import { SmallButton } from '../../commons/components/Buttons';
 import { MdModeEdit } from 'react-icons/md';
 
 const Profile = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   display: block;
   position: relative;
+  margin: 0 auto;
+  
 `;
-
 
 const MyProfile = () => {
   const [Image, setImage] = useState(
@@ -32,14 +33,11 @@ const MyProfile = () => {
   return (
     <div className="profile">
       <div>
-       
         <Profile
           src={Image}
-          style={{ margin: '50px auto' }}
-          size={200}
           onClick={handleClick}
         />
-        
+
         <input
           type="file"
           ref={fileInput}
