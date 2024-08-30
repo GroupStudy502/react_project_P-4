@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import loadable from '@loadable/component';
 import { produce } from 'immer';
@@ -8,13 +8,18 @@ import Loading from '../../commons/components/Loading';
 import { apiFileDelete } from '../../commons/libs/file/apiFile';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 import { write, update, getInfo } from '../apis/apiBoard';
+import { apiGet } from '../../restaurant/apis/apiInfo';
 
 const DefaultForm = loadable(() => import('../components/skins/default/Form'));
 const GalleryForm = loadable(() => import('../components/skins/gallery/Form'));
+const ReviewForm = loadable(() => import('../components/skins/review/Form'));
+
 function skinRoute(skin) {
   switch (skin) {
     case 'gallery':
       return GalleryForm;
+    case 'review':
+      return ReviewForm;
     default:
       return DefaultForm;
   }
@@ -22,21 +27,41 @@ function skinRoute(skin) {
 
 const FormContainer = ({ setPageTitle }) => {
   const { bid, seq } = useParams();
+  const [searchParams] = useSearchParams();
 
   const {
     states: { isLogin, isAdmin, userInfo },
   } = useContext(UserInfoContext);
 
-  const [board, setBoard] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
+  const rstrId = searchParams.get('rstrId');
+
+  const initialForm = {
     gid: '' + Date.now(),
     mode: 'write',
     notice: false,
     attachFiles: [],
     editorImages: [],
     poster: userInfo?.userName,
-  });
+  };
+
+  useEffect(() => {
+    if (!rstrId) {
+      return;
+    }
+
+    (async () => {
+      try {
+        const res = await apiGet(rstrId);
+        setForm((form) => ({ ...form, restaurant: res }));
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [rstrId]);
+
+  const [board, setBoard] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState(initialForm);
 
   const [errors, setErrors] = useState({});
 
@@ -49,7 +74,8 @@ const FormContainer = ({ setPageTitle }) => {
    *
    */
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
+
     if (!seq) {
       return;
     }
@@ -64,6 +90,12 @@ const FormContainer = ({ setPageTitle }) => {
         if (!res.editable) {
           navigate(-1);
           return;
+        }
+
+        // 수정시 식당 정보가 있는 경우
+        if (res.num1) {
+          const restaurant = await apiGet(res.num1);
+          res.restaurant = restaurant;
         }
 
         setForm(res);
@@ -217,10 +249,16 @@ const FormContainer = ({ setPageTitle }) => {
               ? await update(seq, form)
               : await write(bid, form);
 
-          const url =
+          let url =
             locationAfterWriting === 'list'
               ? `/board/list/${bid}`
               : `/board/view/${res.seq}`;
+
+          if (form?.num1) {
+            // 식당 후기
+            url = `/restaurant/info/${form.num1}`;
+          }
+
           navigate(url, { replace: true });
         } catch (err) {
           setErrors(err.message);

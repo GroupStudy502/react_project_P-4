@@ -11,12 +11,15 @@ import MessageBox from '../../commons/components/MessageBox';
 
 import DefaultView from '../components/skins/default/View';
 import GalleryView from '../components/skins/gallery/View';
+import ReviewView from '../components/skins/review/View';
 import ListContainer from './ListContainer';
 
 function skinRoute(skin) {
   switch (skin) {
     case 'gallery':
       return GalleryView;
+      case 'review':
+        return ReviewView;
     default:
       return DefaultView;
   }

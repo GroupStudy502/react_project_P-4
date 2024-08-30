@@ -108,7 +108,6 @@ const MyInfo = ({ onSubmit, onChange, form }) => {
           <button
             type="submit"
             className="editbtn"
-            onClick={() => console.log('클릭 잘되나요')}
           >
             {t('수정하기')}
           </button>

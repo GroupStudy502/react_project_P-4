@@ -20,6 +20,7 @@ import FileItems from '../../../../commons/components/FileItems';
 
 import 'ckeditor5/ckeditor5.css';
 import { MidButton } from '../../../../commons/components/Buttons';
+import ItemsBox from '../../../../restaurant/components/ItemsBox';
 
 const Wrapper = styled.form`
   .ck-editor__editable {
@@ -72,6 +73,7 @@ const Form = ({
 
   return (
     <Wrapper onSubmit={onSubmit} autoComplete="off">
+      {form?.restaurant && <ItemsBox items={form.restaurant}></ItemsBox>}
       <div className="board">
         {isAdmin && (
           <dl>
@@ -99,16 +101,7 @@ const Form = ({
           </dd>
         </dl>
 
-        <dl>
-          <dt>{t('식당명')}</dt>
-          <dd>
-            <InputBox
-              name="rName"
-              value={form?.rName}
-            />
-          </dd>
-        </dl>
-        <dl>
+          <dl>
           <dt>{t('작성자')}</dt>
           <dd>
             <InputBox

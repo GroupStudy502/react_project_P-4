@@ -14,6 +14,7 @@ const FileUpload = ({
   done,
   callback,
   width,
+  imageUrl,
 }) => {
   const [message, setMessage] = useState('');
 
@@ -95,14 +96,23 @@ const FileUpload = ({
 
   return (
     <>
-      <SmallButton
-        width={width}
-        type="button"
-        color={color}
-        onClick={onButtonClick}
-      >
-        {children}
-      </SmallButton>
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          width={width}
+          alt="profile"
+          onClick={onButtonClick}
+        />
+      ) : (
+        <SmallButton
+          width={width}
+          type="button"
+          color={color}
+          onClick={onButtonClick}
+        >
+          {children}
+        </SmallButton>
+      )}
       {message && <MessageBox color="danger">{message}</MessageBox>}
     </>
   );

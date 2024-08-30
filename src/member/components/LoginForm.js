@@ -51,6 +51,8 @@ const LoginImage = styled.img`
   display: block;
 `;
 
+
+
 const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   const { t } = useTranslation();
 
@@ -58,14 +60,7 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
     <>
       <FormBox onSubmit={onSubmit} autoComplete="off">
         <Link to="/">
-          <FiHome
-            style={{
-              width: '25px',
-              height: '25px',
-              position: 'absolute',
-              right: '800',
-            }}
-          />
+          <FiHome />
         </Link>
         <LoginImage src={loginimage} />
 
