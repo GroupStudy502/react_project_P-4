@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Loading from '../../commons/components/Loading';
-import { apiGet } from '../apis/apiInfo';
-import { useParams } from 'react-router-dom';
+import { apiGet, deleteData } from '../apis/apiInfo';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReservationItem from '../components/ReservationItem';
 
 import styled from 'styled-components';
@@ -29,6 +29,7 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const { orderNo } = useParams();
   useEffect(() => {
@@ -41,6 +42,25 @@ const ReservationViewContainer = ({ setPageTitle }) => {
 
     setLoading(false);
   }, [orderNo, setPageTitle]);
+
+  const onDelete = useCallback(
+    (orderNo) => {
+      if (!window.confirm(t('정말_삭제_하겠습니까?'))) {
+        return;
+      }
+
+      (async () => {
+        try {
+          await deleteData(orderNo);
+          navigate(`/reservation/list/${item.orderNo}`);
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+    },
+    [t, navigate, item],
+  );
+
 
   if (loading || !item) {
     return <Loading />;

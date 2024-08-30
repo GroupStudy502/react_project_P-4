@@ -1,7 +1,7 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
@@ -25,8 +25,8 @@ const HeaderBox = styled.header`
   .site-top {
     border-bottom: 1px solid #d5d5d5;
     height: 50px;
-    
-    .layout-width{
+
+    .layout-width {
       margin-top: 20px;
     }
 
@@ -77,6 +77,16 @@ const Header = () => {
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
+              {userInfo?.profileImage && (
+                <Link to="/mypage">
+                  {' '}
+                  <img
+                    src={userInfo.profileImage.fileUrl}
+                    alt="profile"
+                    width={55}
+                  ></img>
+                </Link>
+              )}
               <span>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span>

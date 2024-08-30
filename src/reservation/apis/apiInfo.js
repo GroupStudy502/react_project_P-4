@@ -16,3 +16,7 @@ export const apiList = (search) => {
 
 // 상세 조회
 export const apiGet = (orderNo) => requestData(`/reservation/info/${orderNo}`);
+
+// 예약 내역 삭제
+export const deleteData = (orderNo) =>
+  requestData(`/reservation/delete/${orderNo}`, 'DELETE');
