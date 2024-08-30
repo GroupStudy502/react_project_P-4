@@ -35,7 +35,7 @@ const ReservationViewContainer = ({ setPageTitle }) => {
     setLoading(true);
 
     apiGet(orderNo).then((item) => {
-      setPageTitle(item.rname);
+      setPageTitle(`${item.rname} ${t('예약_정보')}`);
       setItem(item);
     });
 

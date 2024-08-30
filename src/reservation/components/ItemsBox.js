@@ -2,34 +2,73 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+const Resname = styled.div`
+  font-weight: bold;
+  font-size: 1.7em;
+`;
+
+const Resadress = styled.div`
+  font-weight: bold;
+  font-size: 1.0em;
+  color: #666;
+`;
+
+const Resinfo = styled.div`
+ font-weight: bold;
+  font-size: 1.2em;
+  color: #ff3d00; /* 글자 색상 빨간색으로 설정 */
+
+  .rDateTime,
+  .persons {
+    display: inline-block;
+    margin-right: 6px; /* 간격 추가 */
+  }
+`;
+
+const ReservationButton = styled.button`
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
 const ItemBox = ({ item, className }) => {
-  console.log('item', item);
   const url = `/reservation/info/${item?.orderNo}`;
 
   return (
     <li className={className}>
-      <Link to={url}>
-        <div className="item-content">
-          <div className="rname">
-            <strong>식당명:</strong> {item?.rname}
-          </div>
-          <div className="rDateTime">
-            <strong>예약 일시:</strong> {item?.rDateTime}
-          </div>
-          <div className="persons">
-            <strong>예약 인원수:</strong> {item?.persons}명
-          </div>
-          <div className="name">
-            <strong>예약자 성함:</strong> {item?.name}
-          </div>
-          <div className="email">
-            <strong>예약자 이메일:</strong> {item?.email}
-          </div>
-          <div className="mobile">
-            <strong>예약자 전화번호:</strong> {item?.mobile}
-          </div>
+          <div className="item-content">
+            <Resname>
+              <div className="rname">
+                {item?.rname}
+              </div>
+            </Resname>
+            <Resadress>
+              <div className="raddress">
+                {item?.raddress}
+              </div>
+            </Resadress>
+            <Resinfo>
+              <div className="rDateTime">
+                {item?.rDateTime}
+              </div>
+              <div className="persons">
+                {item?.persons}명
+              </div>
+            </Resinfo>
+            <Link to={url}>
+              <ReservationButton>예약정보</ReservationButton>
+            </Link>
         </div>
-      </Link>
     </li>
   );
 };
