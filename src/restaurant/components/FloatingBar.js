@@ -17,7 +17,7 @@ const FloatingBox = styled.div`
   left: calc(50% - 450px);
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 40px;
   border-top: 1px solid #d1cfcf;
   border-radius: 15px;
 `;

@@ -9,6 +9,7 @@ export const color = {
   dark: '#515151',
   black: '#000',
   jmt: '#ff3d00',
+  shadow: '#c9c9c9',
   
   baige: '#e9e4db',
   green: '#395144',
