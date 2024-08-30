@@ -29,7 +29,6 @@ const LinkBox = styled.div`
   border: 1px solid #d5d5d5;
   border-left: 0;
   border-right: 0;
- 
 
   a {
     flex-grow: 1;
@@ -60,10 +59,11 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
         <Link to="/">
           <FiHome
             style={{
-              width: '25px',
-              height: '25px',
-              position: 'absolute',
-              right: '800',
+              width: '30px',
+              height: '30px',
+              position: 'fixed',
+              right: '720',
+              top: '110',
             }}
           />
         </Link>

@@ -71,7 +71,6 @@ const ReservationButton = styled.button`
   }
 `;
 
-
 const ItemBox = ({ item, className }) => {
   const url = `/reservation/info/${item?.orderNo}`;
   const {
@@ -112,9 +111,9 @@ const ItemBox = ({ item, className }) => {
           </Resinfo>
         </div>
       </div>
-        <Link to={url}>
-          <ReservationButton>{t('예약_정보_확인')}</ReservationButton>
-        </Link>
+      <Link to={url}>
+        <ReservationButton>{t('예약_정보_확인')}</ReservationButton>
+      </Link>
     </li>
   );
 };
