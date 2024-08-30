@@ -17,7 +17,6 @@ const { jmt } = color;
 const HeaderBox = styled.header`
   .top-banner {
     position: relative;
-    font-size: 0;
     text-align: center;
     overflow: hidden;
     height: 50px;

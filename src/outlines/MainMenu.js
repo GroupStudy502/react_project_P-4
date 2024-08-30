@@ -70,7 +70,7 @@ const MainMenu = () => {
           to="/reservation/list"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('예약_내역')}
+          {t('나의_예약_내역')}
         </NavLink>
         <NavLink
           to="/mypage"

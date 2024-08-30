@@ -53,6 +53,26 @@ export const BigButton = styled.button`
     `}
 `;
 
+export const SearchButton = styled.button`
+  font-size: ${medium};
+  height: 30px;
+  ${commonStyle}
+
+  border-radius: 3px;
+  cursor: pointer;
+
+    ${({ color }) =>
+    buttonColor[color] &&
+    css`
+      background: ${buttonColor[color][0]};
+      color: ${buttonColor[color][1]};
+      border: 1px solid ${buttonColor[color][2]};
+    `}
+  ${({ width }) => css`
+    width: ${width}px;
+  `}
+`
+
 export const ButtonGroup = styled.div`
   display: flex;
   width: ${({ width }) => (width ? `${width}px` : '100%')};
