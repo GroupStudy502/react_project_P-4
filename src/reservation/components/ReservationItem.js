@@ -41,7 +41,7 @@ const Wrapper = styled.div`
 const ReservationItem = ({ item }) => {
   const { t } = useTranslation();
   const {
-    rName,
+    rname,
     rDateTime,
     persons,
     name,
@@ -53,7 +53,7 @@ const ReservationItem = ({ item }) => {
     <Wrapper>
       <dl>
         <dt>{t('식당명')}</dt>
-        <dd>{rName}</dd>
+        <dd>{rname}</dd>
       </dl>
 
       {rDateTime && (
