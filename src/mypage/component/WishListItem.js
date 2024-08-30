@@ -14,12 +14,12 @@ const ItemBox = ({ item, className }) => {
 
 const StyledItemBox = styled(ItemBox)`
 
-  background-color: gray;
+  background-color: white;
  /* 공통 스타일 */
   outline-color: black;
   border: 3px;
   border-radius: 4px;
-  color: white;
+  color: black;
   font-weight: bold;
   padding-left: 1rem;
   padding-right: 1rem;
