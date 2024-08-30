@@ -29,14 +29,13 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
-  
-  const { orderNo } = useParams();
 
+  const { orderNo } = useParams();
   useEffect(() => {
     setLoading(true);
 
     apiGet(orderNo).then((item) => {
-      setPageTitle(item.rName);
+      setPageTitle(`${item.rname} ${t('예약_정보')}`);
       setItem(item);
     });
 
@@ -50,8 +49,8 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   return (
     <ViewWrapper>
       <ReservationItem item={item} />
-      <Seperator/>
-      <Seperator/>
+      <Seperator />
+      <Seperator />
     </ViewWrapper>
   );
 };

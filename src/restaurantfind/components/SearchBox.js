@@ -1,24 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { color } from '../../styles/color';
-import fontSize from '../../styles/fontSize';
-
-const { jmt } = color;
-const { medium } = fontSize;
+import { SearchButton } from '../../commons/components/Buttons';
 
 const FormBox = styled.form``;
-
-export const SearchButton = styled.button`
-  font-size: ${medium};
-  height: 30px;
-  width: 80px;
-  border-radius: 3px;
-  cursor: pointer;
-  background: ${jmt};
-  color: #fff;
-  border: 1px solid ${jmt};
-`;
 
 const SearchBox = ({ search, onChange, onSubmit }) => {
   const { t } = useTranslation();
@@ -89,7 +74,9 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
           value={search.skey}
           onChange={onChange}
         />
-        <SearchButton>{t('검색')}</SearchButton>
+        <SearchButton type="submit" color="jmt" width="80">
+          {t('검색')}
+        </SearchButton>
       </div>
     </FormBox>
   );

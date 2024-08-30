@@ -2,13 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import MainContainer from '../containers/MainContainer';
+import { MainOuterBox } from '../../commons/components/LayoutBox';
 import ModalChat from '../../ai/components/ModalChat';
-import styled from 'styled-components';
 import { RiRobot2Line } from "react-icons/ri";
-
-const MainOuterBox = styled.div`
-  margin: 0 auto 50px;
-`;
 
 const Main = () => {
   const { t } = useTranslation();
