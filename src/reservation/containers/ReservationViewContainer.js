@@ -29,9 +29,9 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
-  
-  const { orderNo } = useParams();
 
+  const { orderNo } = useParams();
+  console.log(orderNo);
   useEffect(() => {
     setLoading(true);
 
@@ -50,8 +50,8 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   return (
     <ViewWrapper>
       <ReservationItem item={item} />
-      <Seperator/>
-      <Seperator/>
+      <Seperator />
+      <Seperator />
     </ViewWrapper>
   );
 };

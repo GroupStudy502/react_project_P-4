@@ -3,18 +3,31 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ItemBox = ({ item, className }) => {
-  const url = `/reservation/info/${item?.orderno}`;
+  console.log('item', item);
+  const url = `/reservation/info/${item?.orderNo}`;
 
   return (
     <li className={className}>
       <Link to={url}>
         <div className="item-content">
-          <div className="rName"><strong>식당명:</strong> {item?.rname}</div>
-          <div className="rDateTime"><strong>예약 일시:</strong> {item?.rdateTime}</div>
-          <div className="persons"><strong>예약 인원수:</strong> {item?.persons}명</div>
-          <div className="name"><strong>예약자 성함:</strong> {item?.name}</div>
-          <div className="email"><strong>예약자 이메일:</strong> {item?.email}</div>
-          <div className="mobile"><strong>예약자 전화번호:</strong> {item?.mobile}</div>
+          <div className="rName">
+            <strong>식당명:</strong> {item?.rName}
+          </div>
+          <div className="rDateTime">
+            <strong>예약 일시:</strong> {item?.rDateTime}
+          </div>
+          <div className="persons">
+            <strong>예약 인원수:</strong> {item?.persons}명
+          </div>
+          <div className="name">
+            <strong>예약자 성함:</strong> {item?.name}
+          </div>
+          <div className="email">
+            <strong>예약자 이메일:</strong> {item?.email}
+          </div>
+          <div className="mobile">
+            <strong>예약자 전화번호:</strong> {item?.mobile}
+          </div>
         </div>
       </Link>
     </li>
