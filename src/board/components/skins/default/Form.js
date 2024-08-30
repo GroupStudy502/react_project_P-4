@@ -15,24 +15,18 @@ import MessageBox from '../../../../commons/components/MessageBox';
 import InputBox from '../../../../commons/components/InputBox';
 import UserInfoContext from '../../../../member/modules/UserInfoContext';
 import { FaCheckSquare, FaSquare } from 'react-icons/fa';
-import { MidButton } from '../../../../commons/components/Buttons';
 import FileUpload from '../../../../commons/components/FileUpload';
 import FileItems from '../../../../commons/components/FileItems';
 
 import 'ckeditor5/ckeditor5.css';
 
 const Wrapper = styled.form`
-
-  
-  background-color: #f8f8f8;
-
   .ck-editor__editable {
     height: 450px;
-
   }
   textarea {
-    width: 100%;
-    height: 350px;
+    width: 350px;
+    height: 300px;
     border: 1px solid #d5d5d5;
     resize: none;
     padding: 15px;
@@ -54,7 +48,7 @@ const Form = ({
   const { useEditor, useUploadImage, useUploadFile } = board;
   const { t } = useTranslation();
   const {
-    states: { isLogin, isAdmin },
+    states: { isAdmin },
   } = useContext(UserInfoContext);
 
   useEffect(() => {
@@ -76,37 +70,6 @@ const Form = ({
   return (
     <Wrapper onSubmit={onSubmit} autoComplete="off">
       <div className="board">
-        <dl>
-          <dt>{t('작성자')}</dt>
-          <dd>
-            <InputBox
-              type="text"
-              name="poster"
-              value={form?.poster}
-              onChange={onChange}
-            />
-            {errors?.poster && (
-              <MessageBox color="danger" messages={errors.poster} />
-            )}
-          </dd>
-        </dl>
-        {((form.mode === 'write' && !isLogin) ||
-          (form.mode === 'update' && !form?.member)) && (
-          <dl>
-            <dt>{t('비밀번호')}</dt>
-            <dd>
-              <InputBox
-                type="password"
-                name="guestPw"
-                value={form?.guestPw}
-                onChange={onChange}
-              />
-              {errors?.guestPw && (
-                <MessageBox color="danger" messages={errors.guestPw} />
-              )}
-            </dd>
-          </dl>
-        )}
         {isAdmin && (
           <dl>
             <dt>{t('공지글')}</dt>
@@ -129,6 +92,36 @@ const Form = ({
             />
             {errors?.subject && (
               <MessageBox color="danger" messages={errors.subject} />
+            )}
+          </dd>
+        </dl>
+        
+        <dl>
+          <dt>{t('식당명')}</dt>
+          <dd>
+            <InputBox
+              type="text"
+              name="rstrnm"
+              value={form?.rstrnm}
+              onChange={onChange}
+            />
+            {errors?.rstrnm && (
+              <MessageBox color="danger" messages={errors.rstrnm} />
+            )}
+          </dd>
+        </dl>
+        <dl>
+
+          <dt>{t('작성자')}</dt>
+          <dd>
+            <InputBox
+              type="text"
+              name="poster"
+              value={form?.poster}
+              onChange={onChange}
+            />
+            {errors?.poster && (
+              <MessageBox color="danger" messages={errors.poster} />
             )}
           </dd>
         </dl>
@@ -214,9 +207,13 @@ const Form = ({
             </dd>
           </dl>
         )}
-        <MidButton type="submit" color="info">
+
+        <button
+          type="submit"
+          style={{ width: '70px', height: '30px' }}
+        >
           {t(form.mode === 'update' ? '수정하기' : '작성하기')}
-        </MidButton>
+        </button>
       </div>
     </Wrapper>
   );
