@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import fontSize from '../styles/fontSize';
+
 const FooterBox = styled.footer`
   min-height: 250px;
-  font-size: 100%;
   vertical-align: baseline;
   border-top: 1px solid #d5d5d5;
+  margin: 50px auto 0;
 
-  div {
+  div {    
     display: inline-block;
     padding: 50px 200px;
   }
 
   h4 {
-    font-size: 14px;
+    font-size: ${fontSize.normal};
     font-weight: 500;
     color: #666;
     margin-bottom: 10px;
@@ -20,7 +22,7 @@ const FooterBox = styled.footer`
   } 
   
   p {
-    font-size: 14px;
+    font-size: ${fontSize.normal};
     color: #8f8f8f;
     margin-bottom: 10px;
     line-height: 1.25;
@@ -28,7 +30,7 @@ const FooterBox = styled.footer`
   }
 
   .footer-menu {
-    font-size: 14px;
+    font-size: ${fontSize.normal};
     font-weight: 500;
     margin-top: 20px;
     display: flex;
@@ -56,7 +58,7 @@ const FooterBox = styled.footer`
     margin-top: 10px;
     margin-right: 3px;
     font-weight: 1000;
-    font-size: 16px;
+    font-size: ${fontSize.medium};
     line-height: 150%;
     display: flex;
     flex-direction: row;
@@ -95,11 +97,11 @@ const Footer = () => {
         (주)점메추는 통신판매중개자이며 통신판매의 당사자가 아닙니다. (주)점메추는 예약 및 구매 관련 통신판매업자가 제공하는 상품, 거래정보 및 거래 등에 대하여 책임을 지지 않습니다.
       </p>
       <nav className="footer-menu">
-        <a href="https://app.catchtable.co.kr/ct/main/policyService">서비스 이용 약관</a>
+        <a href="/">서비스 이용 약관</a>
         <span>|</span>
-        <a href="https://app.catchtable.co.kr/ct/main/policyPrivacy">개인정보 처리방침</a>
+        <a href="/">개인정보 처리방침</a>
         <span>|</span>
-        <a href="https://app.catchtable.co.kr/ct/main/policyLocation">위치정보 이용약관</a>
+        <a href="/">위치정보 이용약관</a>
       </nav>
       <span className="jmc">JEOMMECHU</span>
     </div>

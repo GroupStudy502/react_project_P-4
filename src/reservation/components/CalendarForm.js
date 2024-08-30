@@ -30,7 +30,7 @@ const StyledCalendar = styled(Calendar)`
   .react-calendar__navigation button {
     color: #ff3d00;
     background: none;
-    font-size: 1.5em;  /* 내비게이션 버튼 글자 크기 */
+    font-size: 1.5rem;  /* 내비게이션 버튼 글자 크기 */
     font-weight: bold;
     flex: 1;  /* 버튼이 균등하게 공간을 차지하도록 설정 */
     max-width: 43%;  /* 각 버튼의 최대 너비를 43%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
@@ -39,7 +39,7 @@ const StyledCalendar = styled(Calendar)`
 
   /* 요일 이름 스타일 */
   .react-calendar__month-view__weekdays {
-    font-size: 1.2em; /* 요일 이름 글자 크기 */
+    font-size: 1.2rem; /* 요일 이름 글자 크기 */
     margin-bottom: 10px; /* 요일 이름과 날짜 사이 간격 */
     text-align: center;
     font-weight: bold;
@@ -48,7 +48,7 @@ const StyledCalendar = styled(Calendar)`
 
   /* 날짜 스타일 */
   .react-calendar__tile {
-    font-size: 1.2em; /* 날짜 글자 크기 */
+    font-size: 1.2rem; /* 날짜 글자 크기 */
     padding: 15px 0; /* 날짜 상하 간격을 넓힘 */
 
     &:hover,
@@ -81,7 +81,7 @@ const StyledCalendar = styled(Calendar)`
     color: #ff3d00;
     min-width: 44px;
     background: none;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     margin-top: 8px;
   }
 
@@ -103,13 +103,13 @@ const TitleWithIcon = styled.h2`
 
   svg {
     margin-right: 7px; //아이콘과 글씨 사이 간격 
-    font-size: 1.1em; // 아이콘 크기 
+    font-size: 2.2rem; // 아이콘 크기 
     margin-bottom: 5px;
   }
 
   h2 {
     margin: 0;
-    font-size: 0.8em; // h2 글씨 크기(...선택해 주세요)
+    font-size: 1.6rem; // h2 글씨 크기(...선택해 주세요)
     font-weight: bold;
   }
 `;
