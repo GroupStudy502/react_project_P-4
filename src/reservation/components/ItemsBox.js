@@ -1,24 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 
-
 const ResaddressWithIcon = styled.h2`
   display: flex;
   align-items: center;
-  margin-bottom: 15px; /* 아이콘+글씨 줄 아래 마진 */
-  margin-top: 30px; /* 아이콘+글씨 줄 위 마진 */
 
   svg {
     margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
-    font-size: 1.1em; /* 아이콘 크기 */
+    font-size: 1.2rem; /* 아이콘 크기 */
   }
 
   h2 {
-    margin: 0; /* Remove default margin from h2 */
-    font-size: 0.8em; /* h2 글씨 크기(...선택해 주세요) */
+    margin: 0;
+    font-size: 1.1rem; /* h2 글씨 크기(...선택해 주세요) */
     font-weight: bold;
   }
 `;
@@ -38,6 +36,8 @@ const Resinfo = styled.div`
   font-weight: bold;
   font-size: 1.2em;
   color: #ff3d00;
+  margin-top: 10px;
+
   .rDateTime,
   .persons {
     display: inline-block;
@@ -52,26 +52,30 @@ const ResorderNo = styled.div`
 `;
 
 const ReservationButton = styled.button`
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 8px 12px;
   background-color: #ff3d00;
   color: white;
   border: none;
+  font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
   text-align: center;
+  width: 100%;
 
   &:hover {
     background-color: #d03e12;
   }
 `;
 
+
 const ItemBox = ({ item, className }) => {
   const url = `/reservation/info/${item?.orderNo}`;
   const {
     restaurant: { images, rstrNm },
   } = item;
+  const { t } = useTranslation();
 
   return (
     <li className={className}>
@@ -104,11 +108,11 @@ const ItemBox = ({ item, className }) => {
             <div className="rDateTime">{item?.rDateTime}</div>
             <div className="persons">{item?.persons}명</div>
           </Resinfo>
-          <Link to={url}>
-            <ReservationButton>예약 정보</ReservationButton>
-          </Link>
         </div>
       </div>
+        <Link to={url}>
+          <ReservationButton>예약 정보 확인</ReservationButton>
+        </Link>
     </li>
   );
 };

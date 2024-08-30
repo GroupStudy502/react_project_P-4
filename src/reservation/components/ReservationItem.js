@@ -36,6 +36,24 @@ const Wrapper = styled.div`
   }
 `;
 
+const ReviewButton = styled.button`
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 8px 12px;
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: #d03e12;
+  }
+`;
+
 const ReservationItem = ({ item, onDelete }) => {
   const { t } = useTranslation();
   const { rname, rDateTime, persons, name, email, mobile, price } = item;
@@ -89,6 +107,9 @@ const ReservationItem = ({ item, onDelete }) => {
         <SmallButton type="button" onClick={() => onDelete(item.orderNo)}>
           {t('예약삭제')}
         </SmallButton>
+        <Link to={'/board/write/review?rstrId='}>
+          <ReviewButton>{t('후기 작성하기')}</ReviewButton>
+        </Link>
     </Wrapper>
   );
 };
