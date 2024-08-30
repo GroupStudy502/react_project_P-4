@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaRegCalendarCheck } from "react-icons/fa";
+import { FaRegCalendarCheck } from 'react-icons/fa';
 import { ImageBgBox } from '../../commons/components/ImageBox';
 
 const Resname = styled.div`
@@ -11,12 +11,12 @@ const Resname = styled.div`
 
 const Resadress = styled.div`
   font-weight: bold;
-  font-size: 1.0em;
+  font-size: 1em;
   color: #666;
 `;
 
 const Resinfo = styled.div`
- font-weight: bold;
+  font-weight: bold;
   font-size: 1.2em;
   color: #ff3d00;
   .rDateTime,
@@ -28,7 +28,7 @@ const Resinfo = styled.div`
 
 const ResorderNo = styled.div`
   font-weight: bold;
-  font-size: 1.0em;
+  font-size: 1em;
   margin-bottom: 20px;
 `;
 
@@ -50,49 +50,42 @@ const ReservationButton = styled.button`
 
 const ItemBox = ({ item, className }) => {
   const url = `/reservation/info/${item?.orderNo}`;
-
+  const {
+    restaurant: { images, rstrNm },
+  } = item;
   return (
     <li className={className}>
-
       {images && images.length > 0 && (
-            <ImageBgBox
-              className="photo"
-              url={images[0].rstrImgUrl}
-              alt={rstrNm}
-              width="150px"
-              height="150px"
-            />
-          )}
-          
-          <div className="item-content">
-            <ResorderNo>
-              <div className="orderNo">
-              <FaRegCalendarCheck />
-              <strong>  </strong>{item?.orderNo}
-              </div>
-            </ResorderNo>
-            <Resname>
-              <div className="rname">
-                {item?.rname}
-              </div>
-            </Resname>
-            <Resadress>
-              <div className="raddress">
-                {item?.raddress}
-              </div>
-            </Resadress>
-            <Resinfo>
-              <div className="rDateTime">
-                {item?.rDateTime}
-              </div>
-              <div className="persons">
-                {item?.persons}명
-              </div>
-            </Resinfo>
-            <Link to={url}>
-              <ReservationButton>예약 정보</ReservationButton>
-            </Link>
-        </div>
+        <ImageBgBox
+          className="photo"
+          url={images[0].rstrImgUrl}
+          alt={rstrNm}
+          width="150px"
+          height="150px"
+        />
+      )}
+      <div className="item-content">
+        <ResorderNo>
+          <div className="orderNo">
+            <FaRegCalendarCheck />
+            <strong> </strong>
+            {item?.orderNo}
+          </div>
+        </ResorderNo>
+        <Resname>
+          <div className="rname">{item?.rname}</div>
+        </Resname>
+        <Resadress>
+          <div className="raddress">{item?.raddress}</div>
+        </Resadress>
+        <Resinfo>
+          <div className="rDateTime">{item?.rDateTime}</div>
+          <div className="persons">{item?.persons}명</div>
+        </Resinfo>
+        <Link to={url}>
+          <ReservationButton>예약 정보</ReservationButton>
+        </Link>
+      </div>
     </li>
   );
 };
