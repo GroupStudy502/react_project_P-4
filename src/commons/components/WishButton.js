@@ -38,7 +38,7 @@ const WishButton = ({ IconOn, IconOff, seq, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {
+  const { 
     states: { isLogin },
   } = useContext(UserInfoContext);
 

@@ -19,12 +19,11 @@ const Wrapper = styled.div`
     dt {
       width: 100px;
       font-weight: normal;
-      
+      font-size: 1.1em;
     }
 
     dd {
       width: calc(100% - 120px) l;
-      
     }
 
     a {
@@ -34,9 +33,31 @@ const Wrapper = styled.div`
 
   dl:first-child {
     border-bottom: 1px solid #e5e5e5;
-    
+    font-weight: bold;
+    font-size: 1.1em;
   }
 `;
+
+const FormatText = (text) => {
+  return text
+    .toString()
+    .replace(/([.])\s*/g, '.<br />')
+    .replace(/([!])\s*/g, '!<br />');
+};
+
+const formatUrls = (urls) => {
+  return urls.split(/[\s,]+/).map((url, index) => {
+    return (
+      <React.Fragment key={index}>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {url}
+        </a>
+        <br />
+      </React.Fragment>
+    );
+  });
+};
+
 
 const ItemDescription = ({ item }) => {
   const { t } = useTranslation();
@@ -55,8 +76,9 @@ const ItemDescription = ({ item }) => {
     <Wrapper>
       {rstrIntrcnCont && (
         <dl>
-          
-          <dd>{rstrIntrcnCont}</dd>
+          <dd
+            dangerouslySetInnerHTML={{ __html: FormatText(rstrIntrcnCont) }}
+          ></dd>
         </dl>
       )}
 
@@ -89,11 +111,7 @@ const ItemDescription = ({ item }) => {
       {hmpgUrl && (
         <dl>
           <dt>{t('홈페이지')}</dt>
-          <dd>
-            <a href={hmpgUrl} target="_blank">
-              {hmpgUrl}
-            </a>
-          </dd>
+          <dd>{formatUrls(hmpgUrl)}</dd>
         </dl>
       )}
     </Wrapper>

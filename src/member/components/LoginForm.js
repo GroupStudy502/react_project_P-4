@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { FaLock, FaKey, FaUserPlus, FaHome } from 'react-icons/fa';
+import { FiHome } from 'react-icons/fi';
 import InputBox from '../../commons/components/InputBox';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
@@ -15,7 +15,7 @@ const FormBox = styled.form`
   width: 350px;
   margin: 0 auto;
   padding-bottom: 5px;
-
+  font-size: 13px;
   input {
     width: 250;
     margin-bottom: 10px;
@@ -23,18 +23,20 @@ const FormBox = styled.form`
 `;
 const LinkBox = styled.div`
   width: 350px;
+  height: 40px;
   margin: 10px auto 0;
   display: flex;
   border: 1px solid #d5d5d5;
   border-left: 0;
   border-right: 0;
+ 
 
   a {
     flex-grow: 1;
     width: 0;
     text-align: center;
     padding: 10px 0;
-    font-size: ${small};
+    font-size: 15px;
 
     svg {
       vertical-align: middle;
@@ -49,15 +51,22 @@ const LoginImage = styled.img`
   display: block;
 `;
 
-
 const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   const { t } = useTranslation();
- 
-  return (
 
+  return (
     <>
       <FormBox onSubmit={onSubmit} autoComplete="off">
-      <FaHome style={{ width: '100px', height: '100px' }} />
+        <Link to="/">
+          <FiHome
+            style={{
+              width: '25px',
+              height: '25px',
+              position: 'absolute',
+              right: '800',
+            }}
+          />
+        </Link>
         <LoginImage src={loginimage} />
 
         <InputBox
@@ -85,15 +94,9 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
         <MessageBox messages={errors.global} color="danger" />
       </FormBox>
       <LinkBox>
-        <Link to="/member/find_id">
-          <FaLock /> {t('아이디_찾기')}
-        </Link>
-        <Link to="/member/find_pw">
-          <FaKey /> {t('비밀번호_찾기')}
-        </Link>
-        <Link to="/member/join">
-          <FaUserPlus /> {t('회원가입')}
-        </Link>
+        <Link to="/member/find_id">{t('아이디_찾기')}</Link>
+        <Link to="/member/find_pw">{t('비밀번호_찾기')}</Link>
+        <Link to="/member/join">{t('회원가입')}</Link>
       </LinkBox>
     </>
   );

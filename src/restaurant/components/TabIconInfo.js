@@ -13,7 +13,7 @@ const { primary, dark, light, jmt } = color;
 const IconWrapper = styled.div`
   
   
-  font-size: 1.1em; 
+  font-size: 1.2em; 
   display: flex;
   align-items: center;
 

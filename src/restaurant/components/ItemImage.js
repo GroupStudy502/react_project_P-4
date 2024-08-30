@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
 import SlideBanner from '../../commons/components/SlideBanner';
 
 const Wrapper = styled.div`
@@ -14,7 +12,6 @@ const Wrapper = styled.div`
   overflow: hidden;
   border: 1px solid #ccc;
 `;
-
 
 const StyleSlideBanner = styled(SlideBanner)`
   .swiper-button-prev,

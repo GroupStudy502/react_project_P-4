@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
 import MainMenu from './MainMenu';
-import topbanner from '../images/topbanner.png';
+import topbanner from '../images/banner/topbanner.png';
 
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
@@ -16,7 +16,10 @@ const { jmt } = color;
 
 const HeaderBox = styled.header`
   .top-banner {
-    width: 1920px;
+    position: relative;
+    font-size: 0;
+    text-align: center;
+    overflow: hidden;
     height: 50px;
   }
 
