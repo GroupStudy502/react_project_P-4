@@ -16,7 +16,7 @@ const View = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{pageTitle}</MainTitle>
-        <ViewContainer />
+        <ViewContainer setPageTitle={setPageTitle}/>
       </OuterBox>
     </>
   );

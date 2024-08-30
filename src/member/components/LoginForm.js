@@ -29,7 +29,6 @@ const LinkBox = styled.div`
   border: 1px solid #d5d5d5;
   border-left: 0;
   border-right: 0;
- 
 
   a {
     flex-grow: 1;
@@ -51,8 +50,6 @@ const LoginImage = styled.img`
   display: block;
 `;
 
-
-
 const LoginForm = ({ form, onSubmit, onChange, errors }) => {
   const { t } = useTranslation();
 
@@ -60,7 +57,15 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
     <>
       <FormBox onSubmit={onSubmit} autoComplete="off">
         <Link to="/">
-          <FiHome />
+          <FiHome
+            style={{
+              width: '30px',
+              height: '30px',
+              position: 'fixed',
+              right: '720',
+              top: '110',
+            }}
+          />
         </Link>
         <LoginImage src={loginimage} />
 

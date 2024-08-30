@@ -60,7 +60,7 @@ const ViewContainer = ({ setPageTitle }) => {
         setMessage(err.message);
         setTimeout(function () {
           setMessage('');
-          navigate(-1);
+         navigate(-1);
         }, 3000);
       }
     })();
