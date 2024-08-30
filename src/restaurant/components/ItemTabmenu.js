@@ -20,18 +20,17 @@ const TabMenuBox = styled.div`
     color: #000;
     font-size: ${big};
     padding: 0.5rem 1rem;
-  
   }
 
   .nav {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     max-width: 80%;
-    margin: 20px auto; 
+    margin: 20px auto;
   }
 `;
 
-const ItemTapmenu = ({ item }) => {
+const ItemTapmenu = ({ item, reviews, onPageClick }) => {
   const { t } = useTranslation();
 
   return (
@@ -55,7 +54,11 @@ const ItemTapmenu = ({ item }) => {
           <Tab.Content>
             <TabMenu item={item} />
             <TabMenuPhoto item={item} />
-            <TabReview />
+            <TabReview
+              items={reviews?.items}
+              pagination={reviews?.pagination}
+              onPageClick={onPageClick}
+            />
             <TabIconInfo item={item} />
           </Tab.Content>
         </Tab.Container>
