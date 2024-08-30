@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
 import logo from '../images/logo.png';
+import UserInfoContext from '../member/modules/UserInfoContext';
 
 const { black, jmt } = color;
 
@@ -40,6 +42,9 @@ const MenuBox = styled.nav`
 `;
 
 const MainMenu = () => {
+  const {
+    states: { isLogin },
+  } = useContext(UserInfoContext);
   const { t } = useTranslation();
 
   return (
@@ -66,18 +71,22 @@ const MainMenu = () => {
         >
           {t('점메추_AI')}
         </NavLink>
-        <NavLink
-          to="/reservation/list"
-          className={({ isActive }) => classNames({ on: isActive })}
-        >
-          {t('나의_예약_내역')}
-        </NavLink>
-        <NavLink
-          to="/mypage"
-          className={({ isActive }) => classNames({ on: isActive })}
-        >
-          {t('마이페이지')}
-        </NavLink>
+
+        <a>
+          {!isLogin ? (
+            <Link to="/member/login">{t('나의_예약_내역')}</Link>
+          ) : (
+            <Link to="/reservation/list">{t('나의_예약_내역')}</Link>
+          )}
+        </a>
+
+        <a>
+          {!isLogin ? (
+            <Link to="/member/login">{t('마이페이지')}</Link>
+          ) : (
+            <Link to="/mypage">{t('마이페이지')}</Link>
+          )}
+        </a>
       </div>
     </MenuBox>
   );
