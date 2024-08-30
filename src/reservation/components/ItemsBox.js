@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { ImageBgBox } from '../../commons/components/ImageBox';
 
 const Resname = styled.div`
   font-weight: bold;
@@ -24,10 +26,16 @@ const Resinfo = styled.div`
   }
 `;
 
+const ResorderNo = styled.div`
+  font-weight: bold;
+  font-size: 1.0em;
+  margin-bottom: 20px;
+`;
+
 const ReservationButton = styled.button`
   margin-top: 10px;
   padding: 8px 12px;
-  background-color: #007bff;
+  background-color: #ff3d00;
   color: white;
   border: none;
   border-radius: 5px;
@@ -36,7 +44,7 @@ const ReservationButton = styled.button`
   text-align: center;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #d03e12;
   }
 `;
 
@@ -45,7 +53,24 @@ const ItemBox = ({ item, className }) => {
 
   return (
     <li className={className}>
+
+      {images && images.length > 0 && (
+            <ImageBgBox
+              className="photo"
+              url={images[0].rstrImgUrl}
+              alt={rstrNm}
+              width="150px"
+              height="150px"
+            />
+          )}
+          
           <div className="item-content">
+            <ResorderNo>
+              <div className="orderNo">
+              <FaRegCalendarCheck />
+              <strong>  </strong>{item?.orderNo}
+              </div>
+            </ResorderNo>
             <Resname>
               <div className="rname">
                 {item?.rname}
@@ -65,7 +90,7 @@ const ItemBox = ({ item, className }) => {
               </div>
             </Resinfo>
             <Link to={url}>
-              <ReservationButton>예약정보</ReservationButton>
+              <ReservationButton>예약 정보</ReservationButton>
             </Link>
         </div>
     </li>

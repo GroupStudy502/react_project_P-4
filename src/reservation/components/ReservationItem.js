@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
 import fontSize from '../../styles/fontSize';
+import { SmallButton } from '../../commons/components/Buttons';
 
 const { medium } = fontSize;
 
@@ -19,12 +20,10 @@ const Wrapper = styled.div`
     dt {
       width: 100px;
       font-weight: normal;
-      
     }
 
     dd {
       width: calc(100% - 120px) l;
-      
     }
 
     a {
@@ -34,21 +33,13 @@ const Wrapper = styled.div`
 
   dl:first-child {
     border-bottom: 1px solid #e5e5e5;
-    
   }
 `;
 
-const ReservationItem = ({ item }) => {
+const ReservationItem = ({ item, onDelete }) => {
   const { t } = useTranslation();
-  const {
-    rname,
-    rDateTime,
-    persons,
-    name,
-    email,
-    mobile,
-  } = item;
-
+  const { rname, rDateTime, persons, name, email, mobile, price } = item;
+  console.log(item);
   return (
     <Wrapper>
       <dl>
@@ -88,6 +79,16 @@ const ReservationItem = ({ item }) => {
           <dd>{mobile}</dd>
         </dl>
       )}
+
+      {price && (
+        <dl>
+          <dt>{t('결제금액')}</dt>
+          <dd>{price}</dd>
+        </dl>
+      )}
+        <SmallButton type="button" onClick={() => onDelete(item.orderNo)}>
+          {t('예약삭제')}
+        </SmallButton>
     </Wrapper>
   );
 };
