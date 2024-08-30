@@ -13,7 +13,7 @@ const Wrapper = styled.nav`
   height: 55px;
   margin: 20px;
   a {
-    background-color: yellowgreen;
+    background-color: black;
     padding: 0 25px;
     border-radius: 10px;
     font-size: ${medium};
@@ -28,9 +28,9 @@ const Wrapper = styled.nav`
   a + a {
     margin-left: 10px;
   }
-`;
+`
 
-const TabMenus = ({ items }) => {
+const TabMenus = ({ items}) => {
   return (
     items &&
     items.length > 0 && (
