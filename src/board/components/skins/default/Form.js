@@ -19,14 +19,15 @@ import FileUpload from '../../../../commons/components/FileUpload';
 import FileItems from '../../../../commons/components/FileItems';
 
 import 'ckeditor5/ckeditor5.css';
+import { MidButton } from '../../../../commons/components/Buttons';
 
 const Wrapper = styled.form`
   .ck-editor__editable {
     height: 450px;
   }
   textarea {
-    width: 350px;
-    height: 300px;
+    width: 100%;
+    height: 350px;
     border: 1px solid #d5d5d5;
     resize: none;
     padding: 15px;
@@ -95,7 +96,7 @@ const Form = ({
             )}
           </dd>
         </dl>
-        
+
         <dl>
           <dt>{t('식당명')}</dt>
           <dd>
@@ -111,7 +112,6 @@ const Form = ({
           </dd>
         </dl>
         <dl>
-
           <dt>{t('작성자')}</dt>
           <dd>
             <InputBox
@@ -208,12 +208,9 @@ const Form = ({
           </dl>
         )}
 
-        <button
-          type="submit"
-          style={{ width: '70px', height: '30px' }}
-        >
+        <MidButton type="submit">
           {t(form.mode === 'update' ? '수정하기' : '작성하기')}
-        </button>
+        </MidButton>
       </div>
     </Wrapper>
   );
