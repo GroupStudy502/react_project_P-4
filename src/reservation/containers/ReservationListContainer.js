@@ -36,7 +36,7 @@ const ReservationListContainer = () => {
         console.error(err);
       }
     })();
-  }, [search]);
+  }, [search, orderNo]);
 
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
