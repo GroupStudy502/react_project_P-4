@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import Loading from '../../commons/components/Loading';
-import { apiGet } from '../apis/apiInfo';
+import { apiGet, apiReview } from '../apis/apiInfo';
 import { useParams } from 'react-router-dom';
 import KakaoMap from '../../kakaoapi/KakaoMap';
 import ItemImage from '../components/ItemImage';
@@ -34,6 +34,8 @@ const ViewContainer = ({ setPageTitle }) => {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mapOptions, setMapOptions] = useState({ height: '300px', zoom: 3 });
+  const [reviews, setReviews] = useState({});
+  const [page, setPage] = useState(1); 
   const viewRef = useRef(null);
   
   const { rstrId } = useParams();
@@ -41,21 +43,43 @@ const ViewContainer = ({ setPageTitle }) => {
   useEffect(() => {
     setLoading(true);
 
-    apiGet(rstrId).then((item) => {
-      setPageTitle(item.rstrNm);
-      setItem(item);
-      const position = { lat: item.rstrLa, lng: item.rstrLo };
-      setMapOptions((opt) => {
-        const options = item.rstrLa
-          ? { ...opt, center: position, marker: position }
-          : { ...opt, address: item.rstrRdnmAdr };
-
-        return options;
-      });
-    });
-
+    (async() => {
+      try{
+        const item = await apiGet(rstrId);
+        
+      
+        setPageTitle(item.rstrNm);
+        setItem(item);
+        
+          const position = { lat: item.rstrLa, lng: item.rstrLo };
+          setMapOptions((opt) => {
+            const options = item.rstrLa
+              ? { ...opt, center: position, marker: position }
+              : { ...opt, address: item.rstrRdnmAdr };
+    
+            return options;
+          });
+      
+      } catch (err) {
+        console.error(err);
+      }
+    })();
     setLoading(false);
   }, [rstrId, setPageTitle]);
+
+  useEffect(() => {
+    (async() => {
+      try {
+        const res = await apiReview(rstrId, page);
+        setReviews(res);
+      } catch (err) {
+        console.error(err);
+      }
+      
+    })();
+  }, [rstrId, page]);
+  
+  const onPageClick = useCallback((page) => setPage(page), []);
 
   const onShowImage = useCallback((imageUrl) => {
     console.log('이미지 주소', imageUrl);
@@ -72,7 +96,7 @@ const ViewContainer = ({ setPageTitle }) => {
       </Wrapper>
       <ItemDescription item={item} />
       <Seperator/>
-      <ItemTabmenu item={item}/>
+      <ItemTabmenu item={item} reviews={reviews} onPageClick={onPageClick} />
       <Seperator/>
       
         <h3>{t('매장위치')}</h3>
