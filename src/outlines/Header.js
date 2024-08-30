@@ -87,7 +87,7 @@ const Header = () => {
                   ></img>
                 </Link>
               )}
-              <span>
+              <span style={{ fontSize: '15px'}}>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span>
               {isAdmin && (
