@@ -36,7 +36,7 @@ const ReservationViewContainer = ({ setPageTitle }) => {
     setLoading(true);
 
     apiGet(orderNo).then((item) => {
-      setPageTitle(item.rName);
+      setPageTitle(item.rname);
       setItem(item);
     });
 

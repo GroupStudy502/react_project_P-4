@@ -9,12 +9,12 @@ const ItemBox = ({ item, className }) => {
     <li className={className}>
       <Link to={url}>
         <div className="item-content">
-          <div className="rName">{item?.rname}</div>
-          <div className="rDateTime">{item?.rdateTime}</div>
-          <div className="persons">{item?.persons}</div>
-          <div className="name">{item?.name}</div>
-          <div className="email">{item?.email}</div>
-          <div className="mobile">{item?.mobile}</div>
+          <div className="rName"><strong>식당명:</strong> {item?.rname}</div>
+          <div className="rDateTime"><strong>예약 일시:</strong> {item?.rdateTime}</div>
+          <div className="persons"><strong>예약 인원수:</strong> {item?.persons}명</div>
+          <div className="name"><strong>예약자 성함:</strong> {item?.name}</div>
+          <div className="email"><strong>예약자 이메일:</strong> {item?.email}</div>
+          <div className="mobile"><strong>예약자 전화번호:</strong> {item?.mobile}</div>
         </div>
       </Link>
     </li>
