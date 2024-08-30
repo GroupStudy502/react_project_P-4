@@ -5,6 +5,7 @@ import { OuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import MypageContainer from '../containers/MypageContainer';
 
+
 const MypageMain = () => {
   const { t } = useTranslation();
   return (
@@ -14,6 +15,7 @@ const MypageMain = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{t('마이페이지')}</MainTitle>
+        
         <MypageContainer />
       </OuterBox>
     </>

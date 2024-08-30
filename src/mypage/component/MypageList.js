@@ -4,6 +4,8 @@ import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
 import { NavLink, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import Myprofile from './Myprofile';
+import styled from 'styled-components';
+
 
 const MypageList = () => {
   const { t } = useTranslation();
@@ -13,7 +15,7 @@ const MypageList = () => {
     <div className="mymember">
       <Myprofile />
 
-      <ButtonGroup width={600}>
+      <ButtonGroup width={500}>
         <BigButton
           type="submit"
           color="dark"
@@ -25,7 +27,7 @@ const MypageList = () => {
         <BigButton
           type="submit"
           color="dark"
-          onClick={() => navigate('/board/write/freetalk')}
+          onClick={() => navigate('/board/write/review')}
         >
           {t('리뷰_작성')}
         </BigButton>
@@ -37,7 +39,7 @@ const MypageList = () => {
         >
           {t('찜한_식당')}
         </BigButton>
-      
+        
       </ButtonGroup>
     </div>
   );
