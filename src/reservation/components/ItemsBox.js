@@ -2,22 +2,72 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ItemBox = ({ item = {}, className }) => {
-  const { orderNo = '', rName = '', rDateTime = '', persons = '', name = '', email = '', mobile = '' } = item;
-  const url = `/reservation/info/${orderNo}`;
+const Resname = styled.div`
+  font-weight: bold;
+  font-size: 1.7em;
+`;
+
+const Resadress = styled.div`
+  font-weight: bold;
+  font-size: 1.0em;
+  color: #666;
+`;
+
+const Resinfo = styled.div`
+ font-weight: bold;
+  font-size: 1.2em;
+  color: #ff3d00;
+  .rDateTime,
+  .persons {
+    display: inline-block;
+    margin-right: 6px;
+  }
+`;
+
+const ReservationButton = styled.button`
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const ItemBox = ({ item, className }) => {
+  const url = `/reservation/info/${item?.orderNo}`;
 
   return (
     <li className={className}>
-      <Link to={url}>
-        <div className="item-content">
-          <div className="rName">{rName}</div>
-          <div className="rDateTime">{rDateTime}</div>
-          <div className="persons">{persons}</div>
-          <div className="name">{name}</div>
-          <div className="email">{email}</div>
-          <div className="mobile">{mobile}</div>
+          <div className="item-content">
+            <Resname>
+              <div className="rname">
+                {item?.rname}
+              </div>
+            </Resname>
+            <Resadress>
+              <div className="raddress">
+                {item?.raddress}
+              </div>
+            </Resadress>
+            <Resinfo>
+              <div className="rDateTime">
+                {item?.rDateTime}
+              </div>
+              <div className="persons">
+                {item?.persons}명
+              </div>
+            </Resinfo>
+            <Link to={url}>
+              <ReservationButton>예약정보</ReservationButton>
+            </Link>
         </div>
-      </Link>
     </li>
   );
 };
