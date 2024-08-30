@@ -16,12 +16,11 @@ const Resadress = styled.div`
 const Resinfo = styled.div`
  font-weight: bold;
   font-size: 1.2em;
-  color: #ff3d00; /* 글자 색상 빨간색으로 설정 */
-
+  color: #ff3d00;
   .rDateTime,
   .persons {
     display: inline-block;
-    margin-right: 6px; /* 간격 추가 */
+    margin-right: 6px;
   }
 `;
 
