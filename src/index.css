@@ -29,6 +29,7 @@
 
 * { 
   box-sizing: border-box; 
+  box-shadow: none;
   outline: none; 
   font-family: "NanumSquareR";
 }
