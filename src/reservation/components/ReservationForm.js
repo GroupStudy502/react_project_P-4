@@ -32,7 +32,7 @@ const TitleWithIcon = styled.h2`
 
   svg {
     margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
-    font-size: 1.1em; /* 아이콘 크기 */
+    font-size: 2.2rem; /* 아이콘 크기 */
   }
 
   h2 {
@@ -44,14 +44,14 @@ const TitleWithIcon = styled.h2`
 
 const Subtitle = styled.h3`
   margin: 5px 0 15px 5px;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   color: #666;
   font-weight: bold;
 `;
 
 const Checktitle = styled.h3`
   margin: 10px 0 20px 7px;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 `;
 
 const LastCheckTitle = styled(Checktitle)`
@@ -67,7 +67,7 @@ const TimeButton = styled.button`
   width: 130px;
   padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
   margin: 5px 5px 20px 20px; //상/우/하/좌
-  font-size: 1.2em; // 시간 버튼 글자 크기
+  font-size: 1.2rem; // 시간 버튼 글자 크기
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -89,7 +89,7 @@ const PersonButton = styled.button`
   align-items: center;
   justify-content: center;
   margin: 5px;
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -108,7 +108,7 @@ const PersonButtonsContainer = styled.div`
 `;
 
 const ReservationInfoBox = styled.dt`
-  font-size: 1.2em;
+  font-size: 1.2rem;
 `;
 
 const ReservationForm = ({
