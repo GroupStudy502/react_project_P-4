@@ -42,7 +42,7 @@ const ReservationItem = ({ item }) => {
   const { t } = useTranslation();
   const {
     rname,
-    rdateTime,
+    rDateTime,
     persons,
     name,
     email,
@@ -56,10 +56,10 @@ const ReservationItem = ({ item }) => {
         <dd>{rname}</dd>
       </dl>
 
-      {rdateTime && (
+      {rDateTime && (
         <dl>
           <dt>{t('운영시간')}</dt>
-          <dd>{rdateTime}</dd>
+          <dd>{rDateTime}</dd>
         </dl>
       )}
 

@@ -10,8 +10,8 @@ const ItemBox = ({ item, className }) => {
     <li className={className}>
       <Link to={url}>
         <div className="item-content">
-          <div className="rName">
-            <strong>식당명:</strong> {item?.rName}
+          <div className="rname">
+            <strong>식당명:</strong> {item?.rname}
           </div>
           <div className="rDateTime">
             <strong>예약 일시:</strong> {item?.rDateTime}

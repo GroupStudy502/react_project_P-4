@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { apiList } from '../../reservation/apis/apiInfo';
+import { useSearchParams, useParams } from 'react-router-dom';
+import { apiList, apiGet } from '../../reservation/apis/apiInfo';
 import ItemsBox from '../components/ItemsBox';
 import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
@@ -22,6 +22,7 @@ const ReservationListContainer = () => {
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
+  const { orderNo } = useParams();
 
   useEffect(() => {
     (async () => {

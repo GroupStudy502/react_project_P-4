@@ -31,7 +31,6 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   const [loading, setLoading] = useState(false);
 
   const { orderNo } = useParams();
-  console.log(orderNo);
   useEffect(() => {
     setLoading(true);
 
