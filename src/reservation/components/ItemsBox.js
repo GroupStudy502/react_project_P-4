@@ -56,6 +56,7 @@ const StatusAndButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
+  font-weight: bold;
 
   .status {
     font-size: 1.1em;
@@ -65,16 +66,16 @@ const StatusAndButtonWrapper = styled.div`
 
   button {
     padding: 6px 12px;
-    background-color: #ff3d00;
-    color: white;
-    border: none;
+    color: #ff3d00;
+    border-color: #ff3d00;;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
 
     &:hover {
-      background-color: #d03e12;
+      background-color: #ff3d00;
+      color: white;
     }
   }
 `;
