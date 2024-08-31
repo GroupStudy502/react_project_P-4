@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { t } from 'i18next';
 
-const Wrapper = styled.ul``;
+const Wrapper = styled.ul`
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5; /* 배경을 핑크색으로 */
+  margin: 0 auto;
+`;
 
 const ListItem = ({ item, className }) => {
   const {

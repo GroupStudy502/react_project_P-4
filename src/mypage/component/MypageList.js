@@ -5,13 +5,16 @@ import { NavLink, useNavigate, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import styled from 'styled-components';
 import UserInfoContext from '../../member/modules/UserInfoContext';
+import { FaUserCircle,FaBookmark } from "react-icons/fa";
+import { MdOutlineRateReview } from "react-icons/md";
 
 const ImageBox = styled.img`
   display: flex;
   width: 170px;
-  margin: auto;
+  margin: 0 auto;
   border: 2px solid #ccc;
   border-radius: 70%;
+  overflow: hidden;
 `;
 
 const MypageList = () => {
@@ -32,26 +35,38 @@ const MypageList = () => {
       <ButtonGroup width={500}>
         <BigButton
           type="submit"
-          color="dark"
+          color="jmt"
           onClick={() => navigate('/mypage/info')}
         >
-          {t('회원정보_수정')}
+          <FaUserCircle style={{ 
+              width: '14px',
+              height: '20px',
+              margin: 'auto 2',
+            }}/>{t('회원정보_수정')}
         </BigButton>
 
         <BigButton
           type="submit"
-          color="dark"
-          onClick={() => navigate('/board/write/review')}
+          color="jmt"
+          onClick={() => navigate('/board/list/review')}
         >
-          {t('리뷰_작성')}
+        <MdOutlineRateReview style={{ 
+              width: '14px',
+              height: '20px',
+              margin: 'auto 2',
+            }}/>{t('작성한_리뷰')}
         </BigButton>
 
         <BigButton
           type="submit"
-          color="dark"
+          color="jmt"
           onClick={() => navigate('/mypage/wishlist/restaurant')}
         >
-          {t('찜한_식당')}
+          <FaBookmark  style={{ 
+              width: '14px',
+              height: '20px',
+              margin: 'auto 2',
+            }}/>{t('찜한_식당')}
         </BigButton>
       </ButtonGroup>
     </div>
