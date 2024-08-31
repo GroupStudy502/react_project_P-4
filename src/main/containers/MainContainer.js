@@ -18,7 +18,7 @@ const MainContainer = () => {
     <>
       <MainBanner />
       <Title><div>어떤 메뉴 찾고 계세요?</div></Title>
-      <CategoryBanner/>
+      <CategoryBanner />
     </>
   );
 };
