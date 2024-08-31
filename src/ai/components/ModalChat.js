@@ -19,6 +19,7 @@ const divStyles = {
   color: 'red',
   fontSize: '1.5rem',
   
+  
 }
 
 const buttonStyles = {
