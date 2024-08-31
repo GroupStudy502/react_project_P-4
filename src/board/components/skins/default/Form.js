@@ -100,15 +100,6 @@ const Form = ({
         </dl>
 
         <dl>
-          <dt>{t('식당명')}</dt>
-          <dd>
-            <InputBox
-              name="rName"
-              value={form?.rName}
-            />
-          </dd>
-        </dl>
-        <dl>
           <dt>{t('작성자')}</dt>
           <dd>
             <InputBox
