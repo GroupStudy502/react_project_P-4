@@ -15,6 +15,7 @@ const ImageBox = styled.img`
   border: 2px solid #ccc;
   border-radius: 70%;
   overflow: hidden;
+  
 `;
 
 const MypageList = () => {
