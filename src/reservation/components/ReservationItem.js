@@ -93,22 +93,47 @@ const ReservationItem = ({ item, onCancel }) => {
   const {
     orderNo,
     rname,
+    raddress,
+    rTel,
     rDateTime,
     persons,
     name,
     email,
     mobile,
-    price,
     status,
     statusStr,
+    totalPayPrice,
   } = item;
 
   return (
     <Wrapper>
-      <dl>
-        <dt>{t('식당명')}</dt>
-        <dd>{rname}</dd>
-      </dl>
+      {orderNo && (
+        <dl>
+          <dt>{t('예약_번호')}</dt>
+          <dd>{orderNo}</dd>
+        </dl>
+      )}
+
+      {rname && (
+        <dl>
+          <dt>{t('식당명')}</dt>
+          <dd>{rname}</dd>
+        </dl>
+      )}
+      
+      {raddress && (
+        <dl>
+          <dt>{t('식당_주소')}</dt>
+          <dd>{raddress}</dd>
+        </dl>
+      )}
+
+      {rTel && (
+        <dl>
+          <dt>{t('식당_연락처')}</dt>
+          <dd>{rTel}</dd>
+        </dl>
+      )}
 
       {rDateTime && (
         <dl>
@@ -129,18 +154,6 @@ const ReservationItem = ({ item, onCancel }) => {
         <dd>{name}</dd>
       </dl>
 
-      <dl>
-        <dt>{t('예약상태')}</dt>
-        <dd>
-          {statusStr}
-          {['START', 'APPLY', 'CONFIRM'].includes(status) && (
-            <button type="button" onClick={() => onCancel(orderNo)}>
-              {t('예약취소')}
-            </button>
-          )}
-        </dd>
-      </dl>
-
       {email && (
         <dl>
           <dt>{t('이메일')}</dt>
@@ -155,10 +168,22 @@ const ReservationItem = ({ item, onCancel }) => {
         </dl>
       )}
 
-      {price && (
+      <dl>
+        <dt>{t('예약상태')}</dt>
+        <dd>
+          {statusStr}
+          {['START', 'APPLY', 'CONFIRM'].includes(status) && (
+            <button type="button" onClick={() => onCancel(orderNo)}>
+              {t('예약취소')}
+            </button>
+          )}
+        </dd>
+      </dl>
+
+      {totalPayPrice && (
         <dl>
           <dt>{t('결제_금액')}</dt>
-          <dd>{price}</dd>
+          <dd>{totalPayPrice}</dd>
         </dl>
       )}
       

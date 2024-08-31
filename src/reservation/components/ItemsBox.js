@@ -11,13 +11,13 @@ const ResaddressWithIcon = styled.h2`
   align-items: center;
 
   svg {
-    margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
-    font-size: 1.2rem; /* 아이콘 크기 */
+    margin-right: 7px;
+    font-size: 1.2rem;
   }
 
   h2 {
     margin: 0;
-    font-size: 1.1rem; /* h2 글씨 크기(...선택해 주세요) */
+    font-size: 1.1rem;
     font-weight: bold;
   }
 `;
@@ -50,6 +50,33 @@ const ResorderNo = styled.div`
   font-weight: bold;
   font-size: 1em;
   margin-bottom: 20px;
+`;
+
+const StatusAndButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  .status {
+    font-size: 1.1em;
+    color: #555;
+    margin-right: 10px;
+  }
+
+  button {
+    padding: 6px 12px;
+    background-color: #ff3d00;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: #d03e12;
+    }
+  }
 `;
 
 const ReservationButton = styled.button`
@@ -109,14 +136,14 @@ const ItemBox = ({ item, className, onCancel }) => {
             <div className="rDateTime">{item?.rDateTime}</div>
             <div className="persons">{item?.persons}명</div>
           </Resinfo>
-          <div>
-            {item?.statusStr}
+          <StatusAndButtonWrapper>
+            <div className="status">{item?.statusStr}</div>
             {item && ['START', 'APPLY', 'CONFIRM'].includes(item.status) && (
               <button type="button" onClick={() => onCancel(item.orderNo)}>
                 {t('예약취소')}
               </button>
             )}
-          </div>
+          </StatusAndButtonWrapper>
         </div>
       </div>
       <Link to={url}>
@@ -157,7 +184,9 @@ const ItemsBox = ({ items, onCancel }) => {
   return (
     <ul>
       {items && items.length > 0 ? (
-        items.map((item, index) => <ItemStyledBox key={index} item={item} onCancel={onCancel} />)
+        items.map((item, index) => (
+          <ItemStyledBox key={index} item={item} onCancel={onCancel} />
+        ))
       ) : (
         <li>항목이없습니다.</li>
       )}
