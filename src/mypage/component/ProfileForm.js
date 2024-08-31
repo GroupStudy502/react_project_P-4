@@ -9,21 +9,21 @@ import { color } from '../../styles/color';
 const FormBox = styled.form`
  width: 300px;
   margin: 0 auto;
-  dl {
-    display: flex;
-    align-items: center;
+  padding: 10px
 
-    dt {
-      width: 80px;
-    }
-    dd {
-      margin-top: 5px;
-      flex-grow: 1;
-    }
+ dl {
+  width: 10px;
+ }
+ dd {
+  margin-bottom: 10px;
+ }
+
+  dl + dd {
+    margin-top: 2px;
   }
 
   dl + dl {
-    margin-top: 10px;
+    margin-top: 11px;
 
   }
 `;
@@ -31,7 +31,7 @@ const FormBox = styled.form`
 const btnstyle = styled(MidButton)`
   width: 10px;
   height: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 
 `
 
