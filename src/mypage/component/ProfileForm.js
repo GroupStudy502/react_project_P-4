@@ -4,8 +4,36 @@ import { useTranslation } from 'react-i18next';
 import InputBox from '../../commons/components/InputBox';
 import { MidButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
+import { color } from '../../styles/color';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+ width: 300px;
+  margin: 0 auto;
+  dl {
+    display: flex;
+    align-items: center;
+
+    dt {
+      width: 80px;
+    }
+    dd {
+      margin-top: 5px;
+      flex-grow: 1;
+    }
+  }
+
+  dl + dl {
+    margin-top: 10px;
+
+  }
+`;
+
+const btnstyle = styled(MidButton)`
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
+
+`
 
 const ProfileForm = ({ form, errors, onChange, onSubmit }) => {
   const { t } = useTranslation();
@@ -74,7 +102,7 @@ const ProfileForm = ({ form, errors, onChange, onSubmit }) => {
         </dd>
       </dl>
       {errors?.global && <MessageBox color="danger" messages={errors.global} />}
-      <MidButton type="submit" color="gray">
+      <MidButton type="submit" color='jmt'>
         {t('수정하기')}
       </MidButton>
     </FormBox>
