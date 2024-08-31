@@ -10,7 +10,9 @@ const OuterChatBox = styled.div`
   height: ${({ height }) => height ?? '530px'};
   width: 100%;
   background: white;
-
+  .clear {
+    clear: both;
+  }
   .chat-box {
     width: 100%;
     height: 100%;
@@ -137,12 +139,13 @@ const MessageList = ({ messages }) => {
           {...message}
         />
       ))}
-    </div>
+    </div> 
   );
 };
 
 const Message = ({ text, isUser }) => {
   return (
+    <>
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
@@ -150,6 +153,8 @@ const Message = ({ text, isUser }) => {
         />
       </p>
     </div>
+    <div className="clear"></div>
+    </>
   );
 };
 
