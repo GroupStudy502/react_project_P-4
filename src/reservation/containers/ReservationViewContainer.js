@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Loading from '../../commons/components/Loading';
-import { apiGet, deleteData } from '../apis/apiInfo';
+import { apiGet } from '../apis/apiInfo';
+import apiCancel from '../../reservation/apis/apiCancel';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReservationItem from '../components/ReservationItem';
 
@@ -43,22 +44,23 @@ const ReservationViewContainer = ({ setPageTitle }) => {
     setLoading(false);
   }, [orderNo, setPageTitle]);
 
-  const onDelete = useCallback(
+  // 예약 취소 처리
+  const onCancel = useCallback(
     (orderNo) => {
-      if (!window.confirm(t('정말_삭제_하겠습니까?'))) {
+      if (!window.confirm(t('정말_취소하겠습니까?'))) {
         return;
       }
 
       (async () => {
         try {
-          await deleteData(orderNo);
-          navigate(`/reservation/list/${item.orderNo}`);
+          const res = await apiCancel(orderNo);
+          setItem(res);
         } catch (err) {
           console.error(err);
         }
       })();
     },
-    [t, navigate, item],
+    [t],
   );
 
 
@@ -68,7 +70,7 @@ const ReservationViewContainer = ({ setPageTitle }) => {
 
   return (
     <ViewWrapper>
-      <ReservationItem item={item} />
+      <ReservationItem item={item} onCancel={onCancel} />
       <Seperator />
       <Seperator />
     </ViewWrapper>

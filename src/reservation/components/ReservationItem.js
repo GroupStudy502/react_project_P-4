@@ -88,9 +88,20 @@ const StyledLinkButton = styled(Link)`
   }
 `;
 
-const ReservationItem = ({ item, onDelete }) => {
+const ReservationItem = ({ item, onCancel }) => {
   const { t } = useTranslation();
-  const { rname, rDateTime, persons, name, email, mobile, price } = item;
+  const {
+    orderNo,
+    rname,
+    rDateTime,
+    persons,
+    name,
+    email,
+    mobile,
+    price,
+    status,
+    statusStr,
+  } = item;
 
   return (
     <Wrapper>
@@ -118,6 +129,18 @@ const ReservationItem = ({ item, onDelete }) => {
         <dd>{name}</dd>
       </dl>
 
+      <dl>
+        <dt>{t('예약상태')}</dt>
+        <dd>
+          {statusStr}
+          {['START', 'APPLY', 'CONFIRM'].includes(status) && (
+            <button type="button" onClick={() => onCancel(orderNo)}>
+              {t('예약취소')}
+            </button>
+          )}
+        </dd>
+      </dl>
+
       {email && (
         <dl>
           <dt>{t('이메일')}</dt>
@@ -138,8 +161,9 @@ const ReservationItem = ({ item, onDelete }) => {
           <dd>{price}</dd>
         </dl>
       )}
+      
       <ButtonWrapper>
-        <StyledButton type="button" onClick={() => onDelete(item.orderNo)}>
+        <StyledButton type="button">
           {t('취소하기')}
         </StyledButton>
         <StyledLinkButton to={'/board/write/review?rstrId='}>
