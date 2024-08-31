@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import InputBox from '../../commons/components/InputBox';
-import { MidButton } from '../../commons/components/Buttons';
+import { MidButton,BackButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
-import { color } from '../../styles/color';
+
 
 const FormBox = styled.form`
  width: 300px;
@@ -105,6 +105,8 @@ const ProfileForm = ({ form, errors, onChange, onSubmit }) => {
       <MidButton type="submit" color='jmt'>
         {t('수정하기')}
       </MidButton>
+         <BackButton>안녕?</BackButton> 
+
     </FormBox>
   );
 };

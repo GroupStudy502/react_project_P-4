@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 const { big, medium, normal } = fontSize;
+
+
 const commonStyle = css`
   width: 100%;
   border-radius: 3px;
@@ -96,13 +98,5 @@ export const jmtButton = styled.button`
 export const BackButton = styled.button`
   font-size: ${medium};
   height: 45px;
-  ${commonStyle}
-
-  ${({ color }) =>
-    buttonColor[color] &&
-    css`
-      background: ${buttonColor[color][0]};
-      color: ${buttonColor[color][1]};
-      border: 1px solid ${buttonColor[color][2]};
-    `}
+  
 `;
