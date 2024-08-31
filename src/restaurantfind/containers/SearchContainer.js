@@ -21,7 +21,7 @@ function getQueryString(searchParams) {
 const SearchContainer = () => {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(() => getQueryString(searchParams));
-  const [searchTmp, setSearchTmp] = useState({
+  const [searchTmp, setSearchTmp] = useState({ // 기본값 통합검색으로 설정
     sopt: 'ALL',
     page: 1 });
   const [items, setItems] = useState([]);
