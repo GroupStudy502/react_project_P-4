@@ -6,7 +6,6 @@ import {
   MdOutlineRadioButtonUnchecked,
 } from 'react-icons/md';
 
-// Styled-components
 const Wrapper = styled.div`
   background-color: #fdfdfd;
   padding: 25px;
@@ -87,19 +86,16 @@ const Price = styled.div`
   color: #ff5722;
 `;
 
-// Helper function to format the date
 const formatDate = (dateString) => {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Intl.DateTimeFormat('ko-KR', options).format(new Date(dateString)).replace(/ /g, ' ');
 };
 
-// Helper function to format the time
 const formatTime = (timeString) => {
   const [hour, minute] = timeString.split(':');
   return `${parseInt(hour, 10)}시 ${minute}분`;
 };
 
-// PaymentInfo Component
 const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
   const { t } = useTranslation();
 

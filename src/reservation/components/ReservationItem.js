@@ -110,7 +110,6 @@ const StyledLinkButton = styled(Link)`
   }
 `;
 
-// Function to format date and time
 const formatDateTime = (rDateTime) => {
   const date = new Date(rDateTime);
   const year = date.getFullYear();
@@ -125,7 +124,6 @@ const formatDateTime = (rDateTime) => {
   return { formattedDate, formattedTime };
 };
 
-// Function to format mobile number
 const formatMobileNumber = (mobile) => {
   if (mobile && mobile.length === 11) {
     return `${mobile.slice(0, 3)}-${mobile.slice(3, 7)}-${mobile.slice(7)}`;
@@ -154,7 +152,6 @@ const ReservationItem = ({ item, onCancel }) => {
     restaurant,
   } = item;
 
-  // Get formatted date and time
   const { formattedDate, formattedTime } = formatDateTime(rDateTime);
 
   return (
@@ -170,7 +167,6 @@ const ReservationItem = ({ item, onCancel }) => {
         />
       )}
 
-      {/* Section 1: Reservation Number */}
       <Section>
         <SectionTitle>{t('예약 정보')}</SectionTitle>
         {orderNo && (
@@ -199,7 +195,6 @@ const ReservationItem = ({ item, onCancel }) => {
         )}
       </Section>
 
-      {/* Section 2: Restaurant Details */}
       <Section>
         <SectionTitle>{t('식당 정보')}</SectionTitle>
         {rname && (
@@ -222,7 +217,6 @@ const ReservationItem = ({ item, onCancel }) => {
         )}
       </Section>
 
-      {/* Section 3: Payment Details */}
       <Section>
         <SectionTitle>{t('결제 정보')}</SectionTitle>
         {totalPayPrice && (
@@ -233,7 +227,6 @@ const ReservationItem = ({ item, onCancel }) => {
         )}
       </Section>
 
-      {/* Section 4: Reservation Holder Details */}
       <Section>
         <SectionTitle>{t('예약자 정보')}</SectionTitle>
         <DetailRow>
@@ -254,7 +247,6 @@ const ReservationItem = ({ item, onCancel }) => {
         )}
       </Section>
 
-      {/* Status and Buttons */}
       <Section>
         <DetailRow>
           <dt>{t('예약상태')}</dt>

@@ -99,7 +99,6 @@ const ReservationButton = styled.button`
   }
 `;
 
-// Utility function to format date and time
 const formatDateTime = (rDateTime) => {
   const date = new Date(rDateTime);
   const year = date.getFullYear();
@@ -121,7 +120,6 @@ const ItemBox = ({ item, className, onCancel }) => {
     restaurant: { images, rstrNm },
   } = item;
 
-  // Get formatted date and time
   const { formattedDate, formattedTime } = formatDateTime(item?.rDateTime);
 
   return (

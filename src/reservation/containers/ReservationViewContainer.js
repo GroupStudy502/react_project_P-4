@@ -32,7 +32,6 @@ const ReservationViewContainer = ({ setPageTitle }) => {
     setLoading(false);
   }, [orderNo, setPageTitle]);
 
-  // 예약 취소 처리
   const onCancel = useCallback(
     (orderNo) => {
       if (!window.confirm(t('정말_취소하겠습니까?'))) {
