@@ -4,16 +4,19 @@ import FileUpload from '../../commons/components/FileUpload';
 import NoProfile from '../../images/profile.webp';
 
 const Wrapper = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   margin: 0 auto;
+  border: 2px solid #ccc;
+  border-radius: 70%;
+
 `;
 
 const ProfileImage = ({ gid, profileImage, fileUploadCallback, className }) => {
   return (
     <Wrapper className={className}>
       <FileUpload
-        width={200}
+        width={180}
         imageUrl={profileImage ?? NoProfile}
         gid={gid}
         imageOnly={true}

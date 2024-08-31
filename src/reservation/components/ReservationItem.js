@@ -18,7 +18,8 @@ const Wrapper = styled.div`
     align-items: center; /* Center items vertically */
     justify-content: space-between; /* Space between dt and dd */
 
-    dt, dd {
+    dt,
+    dd {
       display: flex;
       align-items: center;
       justify-content: center; /* Center content horizontally */
@@ -65,8 +66,6 @@ const StyledButton = styled.button`
   }
 `;
 
-
-
 const StyledLinkButton = styled(Link)`
   width: 50%; /* Each button takes up 50% of the width */
   padding: 8px 12px;
@@ -88,9 +87,21 @@ const StyledLinkButton = styled(Link)`
   }
 `;
 
-const ReservationItem = ({ item, onDelete }) => {
+const ReservationItem = ({ item, onCancel }) => {
   const { t } = useTranslation();
-  const { rname, rDateTime, persons, name, email, mobile, price } = item;
+  const {
+    orderNo,
+    rname,
+    rDateTime,
+    persons,
+    name,
+    email,
+    mobile,
+    price,
+    status,
+    statusStr,
+    restaurant,
+  } = item;
 
   return (
     <Wrapper>
@@ -118,6 +129,18 @@ const ReservationItem = ({ item, onDelete }) => {
         <dd>{name}</dd>
       </dl>
 
+      <dl>
+        <dt>{t('예약상태')}</dt>
+        <dd>
+          {statusStr}
+          {['START', 'APPLY', 'CONFIRM'].includes(status) && (
+            <button type="button" onClick={() => onCancel(orderNo)}>
+              {t('예약취소')}
+            </button>
+          )}
+        </dd>
+      </dl>
+
       {email && (
         <dl>
           <dt>{t('이메일')}</dt>
@@ -138,11 +161,12 @@ const ReservationItem = ({ item, onDelete }) => {
           <dd>{price}</dd>
         </dl>
       )}
+
       <ButtonWrapper>
-        <StyledButton type="button" onClick={() => onDelete(item.orderNo)}>
-          {t('취소하기')}
-        </StyledButton>
-        <StyledLinkButton to={'/board/write/review?rstrId='}>
+        <StyledButton type="button">{t('취소하기')}</StyledButton>
+        <StyledLinkButton
+          to={`/board/write/review?rstrId=${restaurant.rstrId}`}
+        >
           {t('후기_작성하기')}
         </StyledLinkButton>
       </ButtonWrapper>

@@ -71,12 +71,12 @@ const ReservationButton = styled.button`
   }
 `;
 
-const ItemBox = ({ item, className }) => {
+const ItemBox = ({ item, className, onCancel }) => {
   const url = `/reservation/info/${item?.orderNo}`;
+  const { t } = useTranslation();
   const {
     restaurant: { images, rstrNm },
   } = item;
-  const { t } = useTranslation();
 
   return (
     <li className={className}>
@@ -109,6 +109,12 @@ const ItemBox = ({ item, className }) => {
             <div className="rDateTime">{item?.rDateTime}</div>
             <div className="persons">{item?.persons}명</div>
           </Resinfo>
+          <div>{item?.statusStr}</div>
+            {item && ['START', 'APPLY', 'CONFIRM'].includes(item.status) && (
+              <button type="button" onClick={() => onCancel(item.orderNo)}>
+                {t('예약취소')}
+              </button>
+            )}
         </div>
       </div>
       <Link to={url}>
@@ -145,11 +151,11 @@ const ItemStyledBox = styled(ItemBox)`
   }
 `;
 
-const ItemsBox = ({ items = [] }) => {
+const ItemsBox = ({ items, onCancel }) => {
   return (
     <ul>
-      {items.length > 0 ? (
-        items.map((item, index) => <ItemStyledBox key={index} item={item} />)
+      {items && items.length > 0 ? (
+        items.map((item, index) => <ItemStyledBox key={index} item={item} onCancel={onCancel} />)
       ) : (
         <li>항목이없습니다.</li>
       )}
