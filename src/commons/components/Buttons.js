@@ -1,12 +1,16 @@
 import styled, { css } from 'styled-components';
-import { buttonColor } from '../../styles/color';
+import { buttonColor ,color} from '../../styles/color';
 import fontSize from '../../styles/fontSize';
 const { big, medium, normal } = fontSize;
+const { jmt } = color;
+
+
 const commonStyle = css`
   width: 100%;
   border-radius: 3px;
   cursor: pointer;
 `;
+
 
 export const SmallButton = styled.button`
   font-size: ${normal};
@@ -95,14 +99,13 @@ export const jmtButton = styled.button`
 
 export const BackButton = styled.button`
   font-size: ${medium};
-  height: 45px;
-  ${commonStyle}
+  width: 120px;
+  height: 40px;
+  background-color:${jmt}; 
+  color: white;
+  border-color: white;
+  margin: 0 auto;
+  border-radius: 3px;
+  display: block;
 
-  ${({ color }) =>
-    buttonColor[color] &&
-    css`
-      background: ${buttonColor[color][0]};
-      color: ${buttonColor[color][1]};
-      border: 1px solid ${buttonColor[color][2]};
-    `}
 `;

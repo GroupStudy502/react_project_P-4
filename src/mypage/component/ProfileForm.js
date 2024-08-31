@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import InputBox from '../../commons/components/InputBox';
-import { MidButton } from '../../commons/components/Buttons';
+import { MidButton,BackButton } from '../../commons/components/Buttons';
 import MessageBox from '../../commons/components/MessageBox';
-import { color } from '../../styles/color';
+import { Link } from 'react-router-dom';
 
 const FormBox = styled.form`
  width: 300px;
+ padding: 20px;
+  background-color: #F5F5F5; /* 배경을 핑크색으로 */
+  border-radius: 15px; /* 둥근 모서리 추가 */
   margin: 0 auto;
-  padding: 10px
-
  dl {
-  width: 10px;
+  width: 100%
  }
  dd {
   margin-bottom: 10px;
@@ -29,8 +30,8 @@ const FormBox = styled.form`
 `;
 
 const btnstyle = styled(MidButton)`
-  width: 10px;
-  height: 10px;
+  width: 100px;
+  height: 30px;
   margin-top: 10px;
 
 `
@@ -102,9 +103,10 @@ const ProfileForm = ({ form, errors, onChange, onSubmit }) => {
         </dd>
       </dl>
       {errors?.global && <MessageBox color="danger" messages={errors.global} />}
-      <MidButton type="submit" color='jmt'>
+      <BackButton type="submit" color='jmt' >
         {t('수정하기')}
-      </MidButton>
+      </BackButton>
+    
     </FormBox>
   );
 };

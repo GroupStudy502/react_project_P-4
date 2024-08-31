@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5; /* 배경을 핑크색으로 */
+  margin: 0 auto;
+`;
 
 const ListSearchForm = ({ search, onChange }) => {
   const { t } = useTranslation();
