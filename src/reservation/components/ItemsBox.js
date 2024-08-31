@@ -109,12 +109,14 @@ const ItemBox = ({ item, className, onCancel }) => {
             <div className="rDateTime">{item?.rDateTime}</div>
             <div className="persons">{item?.persons}명</div>
           </Resinfo>
-          <div>{item?.statusStr}</div>
+          <div>
+            {item?.statusStr}
             {item && ['START', 'APPLY', 'CONFIRM'].includes(item.status) && (
               <button type="button" onClick={() => onCancel(item.orderNo)}>
                 {t('예약취소')}
               </button>
             )}
+          </div>
         </div>
       </div>
       <Link to={url}>
