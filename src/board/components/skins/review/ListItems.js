@@ -53,7 +53,7 @@ const StyledListItem = styled(ListItem)`
   padding: 0 10px;
   height: 80px;
   align-items: center;
-
+font-size: 14px;
   .subject {
     flex-grow: 1;
     height: 44px;
