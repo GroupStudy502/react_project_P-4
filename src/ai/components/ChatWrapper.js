@@ -139,7 +139,7 @@ const MessageList = ({ messages }) => {
           {...message}
         />
       ))}
-    </div>
+    </div> 
   );
 };
 
