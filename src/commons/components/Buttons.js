@@ -91,3 +91,17 @@ export const ButtonGroup = styled.div`
 export const jmtButton = styled.button`
 
 `
+
+export const BackButton = styled.button`
+  font-size: ${medium};
+  height: 45px;
+  ${commonStyle}
+
+  ${({ color }) =>
+    buttonColor[color] &&
+    css`
+      background: ${buttonColor[color][0]};
+      color: ${buttonColor[color][1]};
+      border: 1px solid ${buttonColor[color][2]};
+    `}
+`;
