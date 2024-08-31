@@ -21,6 +21,9 @@ function getQueryString(searchParams) {
 const SearchContainer = () => {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(() => getQueryString(searchParams));
+  const [serachTmp, setSearchTmp] = useState({
+    sopt: 'ALL',
+    page: 1 });
   const [items, setItems] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(false);
@@ -32,11 +35,13 @@ const SearchContainer = () => {
     (async () => {
       try {
         setLoading(true);
+
         const { items, pagination } = await apiList(search);
 
         setItems(items);
         setPagination(pagination);
         setLoading(false);
+
         /* 마커 표기 좌표 가공 처리 S */
         if (!items || items?.length === 0) {
           return;
@@ -48,17 +53,18 @@ const SearchContainer = () => {
             lat: d.rstrLa,
             lng: d.rstrLo,
             info: {
-              content: `<div>
-                  <a href="/restaurant/info/${d.rstrId}" style="font-weight:bold">${d.rstrNm}</a>
-                </div>`,
+              content: `<a href="/restaurant/info/${d.rstrId}" style="font-weight:bold">${d.rstrNm}</a>`,
               clickable: true,
               removable: true,
             }, // 인포윈도우
           }));
+
         setLocations(_locations);
+
         if (_locations.length > 0)
           setCenter({ lat: _locations[0].lat, lng: _locations[0].lng });
         /* 마커 표기 좌표 가공 처리 E */
+
       } catch (err) {
         console.error(err);
       }
@@ -67,13 +73,13 @@ const SearchContainer = () => {
 
   /* 검색 관련 함수 */
   const onChangeSearch = useCallback((e) => {
-    setSearch((search) => ({ ...search, [e.target.name]: [e.target.value] }));
+    setSearchTmp((search) => ({ ...search, [e.target.name]: [e.target.value] }));
   }, []);
 
   const onSubmitSearch = useCallback((e) => {
     e.preventDefault();
-    setSearch((search) => ({ ...search, page: 1 }));
-  }, []);
+    setSearch({ ...setSearchTmp, page: 1 });
+  }, [setSearchTmp]);
 
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((page) => {

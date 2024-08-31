@@ -70,4 +70,5 @@ img {
 
 .ReactModal__Overlay {
   background: rgba(0, 0, 0, 0.7) !important;
+  z-index: 100;
 }
