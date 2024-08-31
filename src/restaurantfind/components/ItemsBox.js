@@ -10,7 +10,6 @@ const ItemBox = ({ item, className }) => {
     item;
   const url = `/restaurant/info/${rstrId}`;
 
-  const roundedNaverGrad = naverGrad ? naverGrad.toFixed(1) : null;
   return (
     <li className={className}>
       <Link to={url}>
@@ -26,15 +25,22 @@ const ItemBox = ({ item, className }) => {
         <div className="item-content">
           <div className="title">{rstrNm}</div>
           <div className="description">{rstrIntrcnCont}</div>
-          <div className="evaluation">
-            {roundedNaverGrad && (
-              <div className="navergrad">네이버 평점 : {roundedNaverGrad}</div>
-            )}
-            
-            {awardInfoDscrn && (
-              <div className="awardInfoDscrn">어워드 : {awardInfoDscrn}</div>
-            )}
-          </div>
+
+          {(naverGrad || awardInfoDscrn) && (
+            <div className="evaluation">
+              {naverGrad && (
+                <div className="navergrad">
+                  네이버 평점 : {parseFloat(naverGrad).toFixed(1)}
+                </div>
+              )}
+              {awardInfoDscrn && (
+                <div className="awardInfoDscrn">
+                  어워드 : {awardInfoDscrn}
+                </div>
+              )}
+            </div>
+          )}
+
         </div>
       </Link>
     </li>
@@ -74,7 +80,7 @@ const ItemStyledBox = styled(ItemBox)`
 
 const ItemsBox = ({ items }) => {
   return (
-    items.length > 0 &&
+    Array.isArray(items) && items.length > 0 &&
     items.map((item) => <ItemStyledBox key={item.rstrId} item={item} />)
   );
 };
