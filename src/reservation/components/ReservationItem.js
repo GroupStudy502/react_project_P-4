@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import fontSize from '../../styles/fontSize';
+import { SmallButton } from '../../commons/components/Buttons';
 
 const { medium } = fontSize;
 
@@ -13,40 +14,93 @@ const Wrapper = styled.div`
 
   dl {
     display: flex;
-
     padding: 10px 15px;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between dt and dd */
+
+    dt, dd {
+      display: flex;
+      align-items: center;
+      justify-content: center; /* Center content horizontally */
+      width: 50%; /* Each dt and dd takes up 50% of the row */
+    }
 
     dt {
-      width: 100px;
-      font-weight: normal;
-      
+      text-align: center; /* Center text within dt */
     }
 
     dd {
-      width: calc(100% - 120px) l;
-      
-    }
-
-    a {
-      height: 100%;
+      text-align: center; /* Center text within dd */
     }
   }
 
   dl:first-child {
     border-bottom: 1px solid #e5e5e5;
-    
   }
 `;
 
-const ReservationItem = ({ item }) => {
+const ButtonWrapper = styled.div`
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+`;
+
+const StyledButton = styled.button`
+  width: 50%; /* Each button takes up 50% of the width */
+  padding: 8px 12px;
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+
+  &:hover {
+    background-color: #d03e12;
+  }
+
+  &:nth-of-type(1) {
+    margin-right: 10px; /* Space between the first and second button */
+  }
+`;
+
+
+
+const StyledLinkButton = styled(Link)`
+  width: 50%; /* Each button takes up 50% of the width */
+  padding: 8px 12px;
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  margin: 1px; /* Fixed missing value issue */
+
+  &:hover {
+    background-color: #d03e12 !important;
+  }
+
+  & + & {
+    margin-left: 10px; /* Space between buttons */
+  }
+`;
+
+const ReservationItem = ({ item, onCancel }) => {
   const { t } = useTranslation();
   const {
+    orderNo,
     rname,
     rDateTime,
     persons,
     name,
     email,
     mobile,
+    price,
+    status,
+    statusStr,
   } = item;
 
   return (
@@ -58,21 +112,33 @@ const ReservationItem = ({ item }) => {
 
       {rDateTime && (
         <dl>
-          <dt>{t('운영시간')}</dt>
+          <dt>{t('예약_일시')}</dt>
           <dd>{rDateTime}</dd>
         </dl>
       )}
 
       {persons && (
         <dl>
-          <dt>{t('예약인원')}</dt>
+          <dt>{t('예약_인원')}</dt>
           <dd>{persons}</dd>
         </dl>
       )}
 
       <dl>
-        <dt>{t('예약자')}</dt>
+        <dt>{t('예약자_성함')}</dt>
         <dd>{name}</dd>
+      </dl>
+
+      <dl>
+        <dt>{t('예약상태')}</dt>
+        <dd>
+          {statusStr}
+          {['START', 'APPLY', 'CONFIRM'].includes(status) && (
+            <button type="button" onClick={() => onCancel(orderNo)}>
+              {t('예약취소')}
+            </button>
+          )}
+        </dd>
       </dl>
 
       {email && (
@@ -88,6 +154,22 @@ const ReservationItem = ({ item }) => {
           <dd>{mobile}</dd>
         </dl>
       )}
+
+      {price && (
+        <dl>
+          <dt>{t('결제_금액')}</dt>
+          <dd>{price}</dd>
+        </dl>
+      )}
+      
+      <ButtonWrapper>
+        <StyledButton type="button">
+          {t('취소하기')}
+        </StyledButton>
+        <StyledLinkButton to={'/board/write/review?rstrId='}>
+          {t('후기_작성하기')}
+        </StyledLinkButton>
+      </ButtonWrapper>
     </Wrapper>
   );
 };

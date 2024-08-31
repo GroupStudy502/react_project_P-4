@@ -87,3 +87,7 @@ export const ButtonGroup = styled.div`
     margin-left: 5px;
   }
 `;
+
+export const jmtButton = styled.button`
+
+`

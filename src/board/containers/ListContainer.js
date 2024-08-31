@@ -8,11 +8,14 @@ import getQueryString from '../../commons/libs/getQueryString';
 import Pagination from '../../commons/components/Pagination';
 import DefaultList from '../components/skins/default/List'; // 기본 스킨
 import GalleryList from '../components/skins/gallery/List'; // 갤러리 스킨
+import ReviewList from '../components/skins/review/List';
 
 function skinRoute(skin) {
   switch (skin) {
     case 'gallery':
       return GalleryList;
+      case 'review':
+      return ReviewList;
     default:
       return DefaultList;
   }
