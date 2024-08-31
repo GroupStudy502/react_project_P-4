@@ -10,11 +10,11 @@ const ItemBox = ({ item, className }) => {
 };
 
 const StyledItemBox = styled(ItemBox)`
-  background-color: gray;
-  /* 공통 스타일 */
+  background-color: pink; /* 배경색을 핑크색으로 설정 */
   outline-color: black;
   border: 3px;
-  border-radius: 4px;
+  border-radius: 4px; /* 둥근 모서리 */
+
   color: white;
   font-weight: bold;
   padding-left: 1rem;
