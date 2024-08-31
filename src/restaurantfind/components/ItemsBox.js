@@ -6,8 +6,11 @@ import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
 
 const ItemBox = ({ item, className }) => {
-  const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn } = item;
+  const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn } =
+    item;
   const url = `/restaurant/info/${rstrId}`;
+
+  const roundedNaverGrad = naverGrad ? naverGrad.toFixed(1) : null;
   return (
     <li className={className}>
       <Link to={url}>
@@ -24,12 +27,13 @@ const ItemBox = ({ item, className }) => {
           <div className="title">{rstrNm}</div>
           <div className="description">{rstrIntrcnCont}</div>
           <div className="evaluation">
-            <div className="navergrad">
-              네이버 평점 : {naverGrad}
-            </div>
-            <div className="awardInfoDscrn">
-              어워드 : {awardInfoDscrn}
-            </div>
+            {roundedNaverGrad && (
+              <div className="navergrad">네이버 평점 : {roundedNaverGrad}</div>
+            )}
+            
+            {awardInfoDscrn && (
+              <div className="awardInfoDscrn">어워드 : {awardInfoDscrn}</div>
+            )}
           </div>
         </div>
       </Link>
@@ -57,12 +61,12 @@ const ItemStyledBox = styled(ItemBox)`
 
       .title {
         font-family: 'NanumSquareB';
-        font-size: ${fontSize.big}
+        font-size: ${fontSize.big};
       }
-      
+
       .evaluation {
         margin-top: 10px;
-        color: ${color.jmt}
+        color: ${color.jmt};
       }
     }
   }
