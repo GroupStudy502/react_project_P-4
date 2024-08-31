@@ -40,6 +40,7 @@ const SectionTitle = styled.h3`
 const DetailRow = styled.dl`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 
   dt {
@@ -56,6 +57,13 @@ const DetailRow = styled.dl`
     font-weight: bold;
     color: #777;
     font-size: ${medium};
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 10px;
+    }
   }
 `;
 
@@ -67,42 +75,63 @@ const ButtonWrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  flex: 1;
-  padding: 12px 20px;
+  padding: 8px 15px;
   background-color: #ff5722;
   color: white;
   border: none;
+  font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
   transition: background-color 0.3s ease;
-  margin-right: 10px;
 
   &:hover {
     background-color: #e64a19;
   }
-
-  &:last-child {
-    margin-right: 0;
-  }
 `;
 
 const StyledLinkButton = styled(Link)`
-  flex: 1;
   padding: 12px 20px;
   background-color: #ff5722;
   color: white;
   border: none;
+  font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: center;
   transition: background-color 0.3s ease;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
 
   &:hover {
-    background-color: #e64a19 !important;
+    background-color: #d03e12;
   }
 `;
+
+// Function to format date and time
+const formatDateTime = (rDateTime) => {
+  const date = new Date(rDateTime);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  const formattedDate = `${year}년 ${month}월 ${day}일`;
+  const formattedTime = `${hours}시 ${minutes.toString().padStart(2, '0')}분`;
+
+  return { formattedDate, formattedTime };
+};
+
+// Function to format mobile number
+const formatMobileNumber = (mobile) => {
+  if (mobile && mobile.length === 11) {
+    return `${mobile.slice(0, 3)}-${mobile.slice(3, 7)}-${mobile.slice(7)}`;
+  }
+  return mobile;
+};
 
 const ReservationItem = ({ item, onCancel }) => {
   const { t } = useTranslation();
@@ -124,6 +153,9 @@ const ReservationItem = ({ item, onCancel }) => {
     totalPayPrice,
     restaurant,
   } = item;
+
+  // Get formatted date and time
+  const { formattedDate, formattedTime } = formatDateTime(rDateTime);
 
   return (
     <Wrapper>
@@ -147,10 +179,16 @@ const ReservationItem = ({ item, onCancel }) => {
             <dd>{orderNo}번</dd>
           </DetailRow>
         )}
-        {rDateTime && (
+        {formattedDate && (
           <DetailRow>
-            <dt>{t('예약_일시')}</dt>
-            <dd>{rDateTime}</dd>
+            <dt>{t('예약_날짜')}</dt>
+            <dd>{formattedDate}</dd>
+          </DetailRow>
+        )}
+        {formattedTime && (
+          <DetailRow>
+            <dt>{t('예약_시간')}</dt>
+            <dd>{formattedTime}</dd>
           </DetailRow>
         )}
         {persons && (
@@ -211,7 +249,7 @@ const ReservationItem = ({ item, onCancel }) => {
         {mobile && (
           <DetailRow>
             <dt>{t('전화번호')}</dt>
-            <dd>{mobile}</dd>
+            <dd>{formatMobileNumber(mobile)}</dd>
           </DetailRow>
         )}
       </Section>
@@ -224,7 +262,7 @@ const ReservationItem = ({ item, onCancel }) => {
             {statusStr}
             {['START', 'APPLY', 'CONFIRM'].includes(status) && (
               <StyledButton type="button" onClick={() => onCancel(orderNo)}>
-                {t('예약취소')}
+                {t('예약_취소')}
               </StyledButton>
             )}
           </dd>

@@ -6,8 +6,100 @@ import {
   MdOutlineRadioButtonUnchecked,
 } from 'react-icons/md';
 
-const Wrapper = styled.div``;
+// Styled-components
+const Wrapper = styled.div`
+  background-color: #fdfdfd;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+`;
 
+const Reservationinfo = styled.h2`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ff5722;
+  border-bottom: 2px solid #ff5722;
+  padding-bottom: 8px;
+`;
+
+const InfoSection = styled.dl`
+  margin-bottom: 20px;
+
+  dt {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 17px;
+    color: #333;
+  }
+
+  dd {
+    margin: 0 0 15px 0;
+    font-size: 15px;
+    color: #7E7E7E;
+    font-weight: bold;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  div {
+    margin-bottom: 3px;
+  }
+`;
+
+const PaymentMethods = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const PaymentMethod = styled.span`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: ${(props) => (props.selected ? '#e0f7fa' : 'transparent')};
+
+  &:hover {
+    background-color: #e0f7fa;
+    transform: translateY(-2px);
+  }
+
+  svg {
+    margin-right: 10px;
+    font-size: 20px;
+    color: ${(props) => (props.selected ? '#00796b' : '#888')};
+  }
+
+  font-size: 16px;
+  color: #333;
+`;
+
+const Price = styled.div`
+  font-size: 19px;
+  font-weight: bold;
+  color: #ff5722;
+`;
+
+// Helper function to format the date
+const formatDate = (dateString) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Intl.DateTimeFormat('ko-KR', options).format(new Date(dateString)).replace(/ /g, ' ');
+};
+
+// Helper function to format the time
+const formatTime = (timeString) => {
+  const [hour, minute] = timeString.split(':');
+  return `${parseInt(hour, 10)}시 ${minute}분`;
+};
+
+// PaymentInfo Component
 const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
   const { t } = useTranslation();
 
@@ -19,53 +111,67 @@ const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
 
   return (
     <Wrapper>
-      <h2>{t('예약정보')}</h2>
-      <dl>
-        <dt>{t('식당정보')}</dt>
-        <dd>
-          <div>{data?.rstrNm}</div>
-          <div>{data?.rstrRdnmAdr}</div>
-          <div>{data?.rstrTelNo}</div>
-        </dd>
-      </dl>
-      <dl>
+      <Reservationinfo>{t('식당_정보')}</Reservationinfo>
+      <InfoSection>
+        <dt>{t('식당명')}</dt>
+        <dd>{data?.rstrNm}</dd>
+      </InfoSection>
+      <InfoSection>
+        <dt>{t('식당_주소')}</dt>
+        <dd>{data?.rstrRdnmAdr}</dd>
+      </InfoSection>
+      <InfoSection>
+        <dt>{t('식당_연락처')}</dt>
+        <dd>{data?.rstrTelNo}</dd>
+      </InfoSection>
+
+      <Reservationinfo>{t('예약자_정보')}</Reservationinfo>
+      <InfoSection>
         <dt>{t('예약자명')}</dt>
         <dd>{form?.name}</dd>
-      </dl>
-      <dl>
-        <dt>{t('예약일시')}</dt>
-        <dd>
-          {form?.rDate} / {form?.rTime}
-        </dd>
-      </dl>
-      <dl>
+      </InfoSection>
+      <InfoSection>
+        <dt>{t('예약_날짜')}</dt>
+        <dd>{formatDate(form?.rDate)}</dd>
+      </InfoSection>
+      <InfoSection>
+        <dt>{t('예약_시간')}</dt>
+        <dd>{formatTime(form?.rTime)}</dd>
+      </InfoSection>
+      <InfoSection>
         <dt>{t('예약인원')}</dt>
         <dd>{form?.persons}명</dd>
-      </dl>
-      <dl>
-        <dt>{t('예약금액')}</dt>
+      </InfoSection>
+
+      <Reservationinfo>{t('결제하기')}</Reservationinfo>
+      <InfoSection>
+        <dt>{t('결제수단')}</dt>
         <dd>
-          {payConfig?.price?.toLocaleString()}
-          {t('원')}
-        </dd>
-      </dl>
-      <dl>
-        <dt>{t('결제방법')}</dt>
-        <dd>
-          {payConfig.payMethods.map((m) => (
-            <>
-              <span onClick={() => onPayMethod(m)}>
+          <PaymentMethods>
+            {payConfig.payMethods.map((m) => (
+              <PaymentMethod
+                key={m}
+                selected={payMethod === m}
+                onClick={() => onPayMethod(m)}
+              >
                 {payMethod === m ? (
                   <MdOutlineRadioButtonChecked />
                 ) : (
                   <MdOutlineRadioButtonUnchecked />
                 )}
                 {payMethods[m]}
-              </span>
-            </>
-          ))}
+              </PaymentMethod>
+            ))}
+          </PaymentMethods>
         </dd>
-      </dl>
+      </InfoSection>
+      
+      <InfoSection>
+        <dt>{t('예약금액')}</dt>
+        <Price>
+          {payConfig?.price?.toLocaleString()} {t('원')}
+        </Price>
+      </InfoSection>
     </Wrapper>
   );
 };
