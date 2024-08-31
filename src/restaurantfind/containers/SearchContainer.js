@@ -35,11 +35,13 @@ const SearchContainer = () => {
     (async () => {
       try {
         setLoading(true);
+
         const { items, pagination } = await apiList(search);
 
         setItems(items);
         setPagination(pagination);
         setLoading(false);
+
         /* 마커 표기 좌표 가공 처리 S */
         if (!items || items?.length === 0) {
           return;
@@ -51,17 +53,18 @@ const SearchContainer = () => {
             lat: d.rstrLa,
             lng: d.rstrLo,
             info: {
-              content: `<div>
-                  <a href="/restaurant/info/${d.rstrId}" style="font-weight:bold">${d.rstrNm}</a>
-                </div>`,
+              content: `<a href="/restaurant/info/${d.rstrId}" style="font-weight:bold">${d.rstrNm}</a>`,
               clickable: true,
               removable: true,
             }, // 인포윈도우
           }));
+
         setLocations(_locations);
+
         if (_locations.length > 0)
           setCenter({ lat: _locations[0].lat, lng: _locations[0].lng });
         /* 마커 표기 좌표 가공 처리 E */
+
       } catch (err) {
         console.error(err);
       }
