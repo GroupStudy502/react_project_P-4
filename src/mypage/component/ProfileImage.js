@@ -4,9 +4,9 @@ import FileUpload from '../../commons/components/FileUpload';
 import NoProfile from '../../images/profile.webp';
 
 const Wrapper = styled.div`
-  width: 200px;
-  height: 150px;
-  margin: 0 auto;
+  display: flex;
+  width: 170px;
+  margin: auto;
   border: 2px solid #ccc;
   border-radius: 50%;
   overflow: hidden;

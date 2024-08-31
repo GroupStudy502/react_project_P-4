@@ -9,9 +9,10 @@ import UserInfoContext from '../../member/modules/UserInfoContext';
 const ImageBox = styled.img`
   display: flex;
   width: 170px;
-  margin: auto;
+  margin: 0 auto;
   border: 2px solid #ccc;
   border-radius: 70%;
+  overflow: hidden;
 `;
 
 const MypageList = () => {
