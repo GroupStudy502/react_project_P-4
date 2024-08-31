@@ -1,20 +1,33 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BigButton, ButtonGroup } from '../../commons/components/Buttons';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import classNames from 'classnames';
-import Myprofile from './Myprofile';
 import styled from 'styled-components';
+import UserInfoContext from '../../member/modules/UserInfoContext';
 
+const ImageBox = styled.img`
+  display: block;
+  width: 200px;
+  margin: auto;
+  
+`;
 
 const MypageList = () => {
+  const {
+    states: { userInfo },
+    actions: { setUserInfo },
+  } = useContext(UserInfoContext);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
     <div className="mymember">
-      <Myprofile />
-
+      {userInfo?.profileImage && (
+        <Link to="/mypage">
+          <ImageBox src={userInfo.profileImage.fileUrl} alt="profile" />
+        </Link>
+      )}
       <ButtonGroup width={500}>
         <BigButton
           type="submit"
@@ -39,7 +52,6 @@ const MypageList = () => {
         >
           {t('찜한_식당')}
         </BigButton>
-        
       </ButtonGroup>
     </div>
   );
