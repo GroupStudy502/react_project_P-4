@@ -67,12 +67,14 @@ const Form = ({
       editor.execute('insertImage', { source: url });
     },
     [editor],
+    
   );
 
   return (
+
     <Wrapper onSubmit={onSubmit} autoComplete="off">
-      {form?.restaurant && <ItemsBox items={[form.restaurant]} />}
-      <dl>
+      {form?.restaurant && <ItemsBox items={[form.restaurant]} />}   
+      <dl>    
         <dt>{t('작성자')}</dt>
         <dd>
           <InputBox

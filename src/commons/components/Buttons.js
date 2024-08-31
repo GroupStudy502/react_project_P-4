@@ -28,6 +28,7 @@ export const SmallButton = styled.button`
 export const MidButton = styled.button`
   font-size: ${medium};
   height: 40px;
+  margin-top: 10px;
   ${commonStyle}
 
   ${({ color }) =>
