@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { color } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
+import { NoDataText } from './NoDataText';
 
 const { medium, big } = fontSize;
-
 
 const { jmt } = color;
 
@@ -38,13 +38,8 @@ const Menu = styled.div`
   }
 `;
 
-const NoDataText = styled.div`
-  font-size: 16px;
-  color: #818181;
-`;
-
 const formatPrice = (price) => {
-  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
 const TabMenu = ({ item }) => {
@@ -53,17 +48,20 @@ const TabMenu = ({ item }) => {
   const hasMenu = item.foods && item.foods.length > 0;
   return (
     <Tab.Pane eventKey="menu">
-      { hasMenu ? (
-      <Menu>
-        {item.foods &&
-          item.foods.map((food) => ( 
-            <dl key={food.menuId}>
-              <dt>{food.menuNm}</dt>
-              <dd>{formatPrice(food.menuPrice)}{t('원')}</dd>
-            </dl>
-          ))}
-      </Menu>
-       ) : (
+      {hasMenu ? (
+        <Menu>
+          {item.foods &&
+            item.foods.map((food) => (
+              <dl key={food.menuId}>
+                <dt>{food.menuNm}</dt>
+                <dd>
+                  {formatPrice(food.menuPrice)}
+                  {t('원')}
+                </dd>
+              </dl>
+            ))}
+        </Menu>
+      ) : (
         <NoDataText>{t('메뉴 정보가 없습니다')}</NoDataText>
       )}
     </Tab.Pane>

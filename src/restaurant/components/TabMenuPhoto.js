@@ -2,6 +2,7 @@ import React from 'react';
 import { Tab } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import { NoDataText } from './NoDataText';
 
 const ImagesContainer = styled.div`
   display: flex;
@@ -16,15 +17,11 @@ const ImagesContainer = styled.div`
   }
 `;
 
-const NoDataText = styled.div`
-  font-size: 16px;
-  color: #818181;
-`;
-
 const TabMenuPhoto = ({ item }) => {
   const { t } = useTranslation();
 
-  const hasImages = item.foods && item.foods.some(food => food.images.length > 0);
+  const hasImages =
+    item.foods && item.foods.some((food) => food.images.length > 0);
 
   return (
     <Tab.Pane eventKey="photo">
@@ -33,7 +30,7 @@ const TabMenuPhoto = ({ item }) => {
           {item.foods.map((food) =>
             food.images.map((image) => (
               <img key={image.seq} src={image.foodImgUrl} alt={food.menuNm} />
-            ))
+            )),
           )}
         </ImagesContainer>
       ) : (
