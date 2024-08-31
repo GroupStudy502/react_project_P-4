@@ -104,25 +104,6 @@ const StyledLinkButton = styled(Link)`
   }
 `;
 
-const ReservationButton = styled.button`
-  margin-top: 15px;
-  padding: 8px 12px;
-  background-color: #ff3d00;
-  color: white;
-  border: none;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  text-align: center;
-  width: 100%;
-  height: 37px;
-
-  &:hover {
-    background-color: #d03e12;
-  }
-`;
-
 const ReservationItem = ({ item, onCancel }) => {
   const { t } = useTranslation();
   const {
@@ -248,10 +229,11 @@ const ReservationItem = ({ item, onCancel }) => {
             )}
           </dd>
         </DetailRow>
-          <ReservationButton>
-            to={`/board/write/review?rstrId=${restaurant.rstrId}`}
-            {t('후기_작성하기')}
-          </ReservationButton>
+        <StyledLinkButton
+          to={`/board/write/review?rstrId=${restaurant.rstrId}`}
+        >
+          {t('후기_작성하기')}
+        </StyledLinkButton>
       </Section>
     </Wrapper>
   );
