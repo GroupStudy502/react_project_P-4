@@ -105,4 +105,7 @@ export const BackButton = styled.button`
   color: white;
   border-color: white;
   margin: 0 auto;
+  border-radius: 3px;
+  display: block;
+
 `;
