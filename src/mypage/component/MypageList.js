@@ -7,10 +7,11 @@ import styled from 'styled-components';
 import UserInfoContext from '../../member/modules/UserInfoContext';
 
 const ImageBox = styled.img`
-  display: block;
-  width: 200px;
+  display: flex;
+  width: 170px;
   margin: auto;
-  
+  border: 2px solid #ccc;
+  border-radius: 70%;
 `;
 
 const MypageList = () => {

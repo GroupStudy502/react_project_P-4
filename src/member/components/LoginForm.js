@@ -58,12 +58,11 @@ const LoginForm = ({ form, onSubmit, onChange, errors }) => {
       <FormBox onSubmit={onSubmit} autoComplete="off">
         <Link to="/">
           <FiHome
-            style={{
-              width: '30px',
+            style={{ 
+              width: '100%',
               height: '30px',
+              right: '-170px',
               position: 'fixed',
-              right: '720',
-              top: '110',
             }}
           />
         </Link>
