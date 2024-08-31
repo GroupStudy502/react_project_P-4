@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom';
 
 const FormBox = styled.form`
  width: 300px;
+ padding: 20px;
+  background-color: #F5F5F5; /* 배경을 핑크색으로 */
+  border-radius: 15px; /* 둥근 모서리 추가 */
   margin: 0 auto;
-  padding: 10px
-
  dl {
-  width: 10px;
+  width: 100%
  }
  dd {
   margin-bottom: 10px;
