@@ -32,7 +32,6 @@ const ReservationPayContainer = ({ payConfig, form, data, setPageTitle }) => {
         data={data}
         onPayMethod={onPayMethod}
       />
-      <PaymentInfo payConfig={payConfig} form={form} data={data} />
       <BigButton type="button" color="jmt" onClick={onPayProcess}>
         {t('결제하기')}
       </BigButton>
