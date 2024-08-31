@@ -21,7 +21,7 @@ function getQueryString(searchParams) {
 const SearchContainer = () => {
   const [searchParams] = useSearchParams();
   const [search, setSearch] = useState(() => getQueryString(searchParams));
-  const [serachTmp, setSearchTmp] = useState({
+  const [searchTmp, setSearchTmp] = useState({
     sopt: 'ALL',
     page: 1 });
   const [items, setItems] = useState([]);
@@ -76,10 +76,13 @@ const SearchContainer = () => {
     setSearchTmp((search) => ({ ...search, [e.target.name]: [e.target.value] }));
   }, []);
 
-  const onSubmitSearch = useCallback((e) => {
-    e.preventDefault();
-    setSearch({ ...setSearchTmp, page: 1 });
-  }, [setSearchTmp]);
+  const onSubmitSearch = useCallback(
+    (e) => {
+      e.preventDefault();
+      setSearch({ ...searchTmp, page: 1 });
+    },
+    [searchTmp],
+  );
 
   /* 페이지 변경 함수 */
   const onChangePage = useCallback((page) => {
