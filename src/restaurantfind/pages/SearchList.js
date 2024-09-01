@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { OuterBox } from '../../commons/components/LayoutBox';
+import { OuterBox, ListOuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import SearchContainer from '../containers/SearchContainer';
 
@@ -15,7 +15,9 @@ const SearchList = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{t('식당_검색')}</MainTitle>
-        <SearchContainer />
+        <ListOuterBox>
+          <SearchContainer />
+        </ListOuterBox>
       </OuterBox>
     </>
   );
