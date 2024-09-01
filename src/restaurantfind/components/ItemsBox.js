@@ -45,8 +45,7 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
-  padding: 20px;
-  margin-bottom: 15px;
+  padding: 20px 0;
   border-radius: 5px;
 
   a {
