@@ -12,11 +12,13 @@ const customStyles = {
     height: '610px',
     radius: '10px',
 }};
+
 const divStyles = {
   display: 'flex',
   float: 'left',
   color: 'red',
   fontSize: '1.5rem',
+  
   
 }
 

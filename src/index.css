@@ -1,13 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+/* 나눔스퀘어 S*/
+@font-face {
+  font-family: "NanumSquareR";
+  src: url('./commons/fonts/font2/NanumSquare_acR.ttf');
+}
+@font-face {
+  font-family: "NanumSquareB";
+  src: url('./commons/fonts/font2/NanumSquare_acB.ttf');
+}
+@font-face {
+  font-family: "NanumSquareEB";
+  src: url('./commons/fonts/font2/NanumSquare_acEB.ttf');
+}
+/* 나눔스퀘어 E*/
+
+@font-face {
+  font-family: "NanumBarunGothic";
+  src: url('./commons/fonts/font1/NanumBarunGothicBold.ttf');
+}
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url('./commons/fonts/font3/NanumSquareRoundB.ttf');
+}
+@font-face {
+  font-family: "cafe24dangdang";
+  src: url('./commons/fonts/font4/Cafe24Ohsquare-v2.0.ttf');
+}
+
 
 * { 
   box-sizing: border-box; 
+  box-shadow: none;
   outline: none; 
-  font-family: "Do Hyeon", sans-serif;
+  font-family: "NanumSquareR";
 }
 
 html {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 body { 
@@ -42,4 +70,5 @@ img {
 
 .ReactModal__Overlay {
   background: rgba(0, 0, 0, 0.7) !important;
+  z-index: 100;
 }

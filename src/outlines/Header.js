@@ -1,13 +1,13 @@
 import React, { useContext, useCallback } from 'react';
 import cookies from 'react-cookies';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
 import fontSize from '../styles/fontSize';
 import { color } from '../styles/color';
-import logo from '../images/logo.png';
 import MainMenu from './MainMenu';
+import topbanner from '../images/banner/topbanner.png';
 
 import UserInfoContext from '../member/modules/UserInfoContext';
 import { SmallButton } from '../commons/components/Buttons';
@@ -15,10 +15,20 @@ import { SmallButton } from '../commons/components/Buttons';
 const { jmt } = color;
 
 const HeaderBox = styled.header`
+  .top-banner {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    height: 50px;
+  }
+
   .site-top {
-    background: #f8f8f8;
     border-bottom: 1px solid #d5d5d5;
     height: 50px;
+
+    .layout-width {
+      margin-top: 20px;
+    }
 
     div {
       text-align: right;
@@ -33,17 +43,6 @@ const HeaderBox = styled.header`
           color: ${jmt};
         }
       }
-    }
-  }
-
-  .logo {
-    div {
-      width: 360px;
-      height: 150px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 auto;
     }
   }
 `;
@@ -68,20 +67,35 @@ const Header = () => {
 
   return (
     <HeaderBox>
+      <section className="top-banner">
+        <NavLink to="/ai">
+          <img src={topbanner} alt={t('탑배너')} />
+        </NavLink>
+      </section>
       <section className="site-top">
         <div className="layout-width">
           {isLogin ? (
             <>
               {/* 로그인 상태 */}
-              <span>
-                {userInfo?.userName}({userInfo?.email}){t('님 로그인')}
+              {userInfo?.profileImage && (
+                <Link to="/mypage">
+                  {' '}
+                  <img
+                    src={userInfo.profileImage.fileUrl}
+                    alt="profile"
+                    width={55}
+                  ></img>
+                </Link>
+              )}
+              <span style={{ fontSize: '15px'}}>
+                {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
               </span>
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
-                  {t('사이트 관리')}
+                  {t('사이트_관리')}
                 </a>
               )}
-              <SmallButton color="secondary" width={150} onClick={onLogout}>
+              <SmallButton color="secondary" width={100} onClick={onLogout}>
                 {t('로그아웃')}
               </SmallButton>
             </>
@@ -102,13 +116,6 @@ const Header = () => {
               </NavLink>
             </>
           )}
-        </div>
-      </section>
-      <section className="logo">
-        <div>
-          <Link to="/">
-            <img src={logo} alt={t('로고')} />
-          </Link>
         </div>
       </section>
       <MainMenu />

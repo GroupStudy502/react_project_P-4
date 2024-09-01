@@ -1,69 +1,92 @@
 import React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { useContext } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { color } from '../styles/color';
 import fontSize from '../styles/fontSize';
+import logo from '../images/logo.png';
+import UserInfoContext from '../member/modules/UserInfoContext';
 
-const { dark, light, jmt } = color;
+const { black, jmt } = color;
 
 const MenuBox = styled.nav`
-  background: ${light};
-
   div {
     display: flex;
-    height: 50px;
-    width: 1100px;
+    height: 70px;
+    width: 1400px;
     margin: 0 auto;
 
     a {
-      color: ${dark};
-      line-height: 50px;
-      padding: 0 50px;
-      font-size: ${fontSize.extraBig};
+      color: ${black};
+      line-height: 70px;
+      font-size: ${fontSize.big};
+      font-family: 'NanumSquareB';
+      text-align: center;
 
       &.on {
-        background: ${jmt};
-        color: ${light};
+        color: ${jmt};
       }
+
+      img {
+        width: 200px;
+      }
+    }
+
+    a:not(.logo) {
+      width: 0;
+      flex-grow: 1;
     }
   }
 `;
 
 const MainMenu = () => {
+  const {
+    states: { isLogin },
+  } = useContext(UserInfoContext);
   const { t } = useTranslation();
 
   return (
     <MenuBox>
       <div>
+        <NavLink to="/" className="logo">
+          <img src={logo} alt={t('로고')} />
+        </NavLink>
         <NavLink
           to="/restaurant/search"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('식당 검색')}
+          {t('식당_검색')}
         </NavLink>
         <NavLink
           to="/restaurant/near"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('내 주변 식당 찾기')}
-        </NavLink>
-        <NavLink to="/ai" className={({ isActive }) => classNames({ on: isActive })}>
-          {t('점메추AI')}
+          {t('주변_식당')}
         </NavLink>
         <NavLink
-          to="/reservationList"
+          to="/ai"
           className={({ isActive }) => classNames({ on: isActive })}
         >
-          {t('예약 내역')}
+          {t('점메추_AI')}
         </NavLink>
-        <NavLink
-                to="/mypage"
-                className={({ isActive }) => classNames({ on: isActive })}
-              >
-                {t('마이페이지')}
-              </NavLink>
+
+        <a>
+          {!isLogin ? (
+            <Link to="/member/login">{t('나의_예약_내역')}</Link>
+          ) : (
+            <Link to="/reservation/list">{t('나의_예약_내역')}</Link>
+          )}
+        </a>
+
+        <a>
+          {!isLogin ? (
+            <Link to="/member/login">{t('마이페이지')}</Link>
+          ) : (
+            <Link to="/mypage">{t('마이페이지')}</Link>
+          )}
+        </a>
       </div>
     </MenuBox>
   );

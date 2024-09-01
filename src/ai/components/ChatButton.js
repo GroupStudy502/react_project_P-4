@@ -1,19 +1,22 @@
 import styled, { css } from 'styled-components';
 import { buttonColor } from '../../styles/color';
 import fontSize from '../../styles/fontSize';
-const {  normal } = fontSize;
+const { extraBig } = fontSize;
 const commonStyle = css`
-  position: fixed;;
+  position: fixed;
   right: 100px;
   bottom: 30px;
   width: 100px;
-  border-radius: 10px;
+  height: 100px;
+  border-radius: 50%;
   cursor: pointer;
+  box-shadow: 2px 2px 5px #555;
 `;
 
 export const ChatButton = styled.button`
-  font-size: ${normal};
-  height: 30px;
+  font-size: ${ extraBig };
+  height: 70px;
+  z-index: 100;
   ${commonStyle}
 
   ${({ color }) =>

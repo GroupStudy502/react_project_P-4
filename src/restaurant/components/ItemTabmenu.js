@@ -7,30 +7,30 @@ import TabMenuPhoto from './TabMenuPhoto';
 import TabReview from './TabReview';
 import TabIconInfo from './TabIconInfo';
 import { color } from '../../styles/color';
+import fontSize from '../../styles/fontSize';
+
+const { medium, big } = fontSize;
 
 const { jmt } = color;
 
 const TabMenuBox = styled.div`
-    margin: 20px 0;
+  margin: 20px 0;
 
-    .nav-link {
-      color: #000;
-      font-size: 1.5rem;
-      padding: 0.5rem 1rem;
-     
-    }
+  .nav-link {
+    color: #000;
+    font-size: ${big};
+    padding: 0.5rem 1rem;
+  }
 
-    .nav {
+  .nav {
     display: flex;
-    justify-content: space-between; // Distribute items evenly
-    max-width: 80%; // Adjust this value to control the overall width of the nav
-    margin: 0 auto; // Center the nav
-    
+    justify-content: space-between;
+    max-width: 80%;
+    margin: 20px auto;
   }
 `;
 
-
-const ItemTapmenu = ({ item }) => {
+const ItemTapmenu = ({ item, reviews, onPageClick }) => {
   const { t } = useTranslation();
 
   return (
@@ -48,15 +48,18 @@ const ItemTapmenu = ({ item }) => {
               <Nav.Link eventKey="review">{t('리뷰')}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="icons">{t('편의정보')}
-              </Nav.Link>
+              <Nav.Link eventKey="icons">{t('편의정보')}</Nav.Link>
             </Nav.Item>
           </Nav>
           <Tab.Content>
             <TabMenu item={item} />
             <TabMenuPhoto item={item} />
-            <TabReview />
-            <TabIconInfo item= {item} />
+            <TabReview
+              items={reviews?.items}
+              pagination={reviews?.pagination}
+              onPageClick={onPageClick}
+            />
+            <TabIconInfo item={item} />
           </Tab.Content>
         </Tab.Container>
       </TabMenuBox>

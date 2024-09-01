@@ -11,20 +11,20 @@ const Member = loadable(() => import('./routes/Member'));
 // 마이 페이지
 const Mypage = loadable(() => import('./routes/Mypage'));
 
+// 리뷰 게시판 페이지
+const Board = loadable(()=> import('./routes/Board'))
+
 // 식당 페이지
 const Restaurant = loadable(() => import('./routes/Restaurant'));
-
-// 게시판 페이지
-const Board = loadable(() => import('./routes/Board'));
 
 // 예약 페이지
 const Reservation = loadable(() => import('./routes/Reservation'));
 
-// 예약 내역 페이지
-const ReservationList = loadable(() => import('./routes/ReservationList'));
-
 // AI 페이지
 const Ai = loadable(() => import('./routes/Ai'));
+
+// 결제 처리 URL
+const Payment = loadable(() => import('./routes/Payment'));
 
 const routeUrlPaths = [
   'member',
@@ -32,8 +32,8 @@ const routeUrlPaths = [
   'restaurant',
   'board',
   'reservation',
-  'reservationlist',
   'ai',
+  'payment',
 ];
 
 const App = () => {
@@ -45,8 +45,8 @@ const App = () => {
       <Restaurant />
       <Board />
       <Reservation />
-      <ReservationList />
       <Ai />
+      <Payment />
     </>
   ) : (
     <Routes>

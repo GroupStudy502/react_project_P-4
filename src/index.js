@@ -14,7 +14,7 @@ import { WishListProvider } from './commons/contexts/WishListContext';
 
 import 'react-calendar/dist/Calendar.css';
 
-import './i18n';
+import './i18n'; //
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -17,7 +17,6 @@ const KakaoMap = ({
   currentLocation, // 위치 기반
   address, // 주소
 }) => {
-  
   const [_center, setCenter] = useState(center ?? {});
   const mapRef = useRef(null);
   useEffect(() => {
@@ -60,7 +59,7 @@ const KakaoMap = ({
       _center?.lat ?? 37.557756188912954,
       _center?.lng ?? 126.94062742683245,
     );
-    
+
     const map = new kakao.maps.Map(mapEl, {
       center: position,
       level: zoom || 3,
@@ -71,7 +70,7 @@ const KakaoMap = ({
     if (marker) {
       let _markers = marker;
       if (!Array.isArray(marker)) _markers = [marker];
-
+      map.panTo(new kakao.maps.LatLng(_markers[0].lat, _markers[0].lng));
       const markers = _markers.map((m) => {
         const { lat, lng, image, info } = m;
         const options = {
@@ -83,7 +82,7 @@ const KakaoMap = ({
         if (mi) {
           const mIcon = new kakao.maps.MarkerImage(
             mi,
-            new kakao.maps.Size(64, 69),
+            new kakao.maps.Size(45, 45),
             { offset: new kakao.maps.Point(27, 69) },
           );
 
@@ -107,7 +106,6 @@ const KakaoMap = ({
               if (_marker.isInfoWindowOpen) {
                 // 미노출
                 infoWindow.close();
-
                 _marker.isInfoWindowOpen = false;
               } else {
                 // 노출
@@ -131,7 +129,6 @@ const KakaoMap = ({
       };
       const _marker = new kakao.maps.Marker(options);
       _marker.setMap(map);
-
     }
 
     // 마커 출력 E

@@ -10,14 +10,16 @@ const OuterChatBox = styled.div`
   height: ${({ height }) => height ?? '530px'};
   width: 100%;
   background: white;
-
+  .clear {
+    clear: both;
+  }
   .chat-box {
     width: 100%;
     height: 100%;
     margin-top: ${({marginTop}) => marginTop ?? '15px'};
     background: white;
     border-radius: 8px;
-    box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
+
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -137,12 +139,13 @@ const MessageList = ({ messages }) => {
           {...message}
         />
       ))}
-    </div>
+    </div> 
   );
 };
 
 const Message = ({ text, isUser }) => {
   return (
+    <>
     <div className={isUser ? 'user-message' : 'ai-message'}>
       <p>
         <b>{isUser ? 'User' : 'AI'}</b>:{' '}
@@ -150,6 +153,8 @@ const Message = ({ text, isUser }) => {
         />
       </p>
     </div>
+    <div className="clear"></div>
+    </>
   );
 };
 

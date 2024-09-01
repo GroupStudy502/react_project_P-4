@@ -6,8 +6,14 @@ export const color = {
   warning: '#ffc107',
   info: '#17a2b8',
   light: '#f8f9fa',
-  dark: '#343a40',
+  dark: '#515151',
+  black: '#000',
   jmt: '#ff3d00',
+  shadow: '#c9c9c9',
+  
+  baige: '#e9e4db',
+  green: '#395144',
+  yellow: '#fae8ae',
 };
 
 export const buttonColor = {
