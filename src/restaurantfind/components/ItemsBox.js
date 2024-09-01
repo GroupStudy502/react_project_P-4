@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../commons/components/ImageBox';
@@ -6,7 +7,9 @@ import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
 
 const ItemBox = ({ item, className }) => {
-  const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn } = item;
+  const { t } = useTranslation();
+
+  const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn, prkgPosYn, petEntrnPosblYn, dcrnYn, fgggMenuOfrYn, wifiOfrYn, mbPmamtYn, smorderYn } = item;
   const url = `/restaurant/info/${rstrId}`;
   
   return (
@@ -34,6 +37,45 @@ const ItemBox = ({ item, className }) => {
               {awardInfoDscrn && (
                 <div className="awardInfoDscrn">
                   어워드 : {awardInfoDscrn}
+                </div>
+              )}
+            </div>
+          )}
+          {(prkgPosYn || petEntrnPosblYn) && (
+            <div className="convenience">
+              {prkgPosYn && (
+                <div className="prkgPosYn">
+                  {t('주차_가능')}
+                </div>
+              )}
+              {petEntrnPosblYn && (
+                <div className="petEntrnPosblYn">
+                  {t('반려동물_동반')}
+                </div>
+              )}
+              {dcrnYn && (
+                <div className="dcrnYn">
+                  {t('유아시설')}
+                </div>
+              )}
+              {fgggMenuOfrYn && (
+                <div className="fgggMenuOfrYn">
+                  {t('다국어_메뉴판')}
+                </div>
+              )}
+              {wifiOfrYn && (
+                <div className="wifiOfrYn">
+                  {t('무선인터넷')}
+                </div>
+              )}
+              {mbPmamtYn && (
+                <div className="mbPmamtYn">
+                  {t('모바일_페이먼트')}
+                </div>
+              )}
+              {smorderYn && (
+                <div className="smorderYn">
+                  {t('스마트_오더')}
                 </div>
               )}
             </div>
@@ -74,7 +116,21 @@ const ItemStyledBox = styled(ItemBox)`
         div{
           font-family: 'NanumSquareB';
           color: ${color.jmt};
+          margin-bottom: 10px;
         }
+      }
+    }
+    
+    .convenience {
+      color: #8f8f8f;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: center;
+
+      div {
+        margin-right: 7px;
       }
     }
   }
