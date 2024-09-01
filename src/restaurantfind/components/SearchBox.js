@@ -78,7 +78,7 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
         </select>
       </div>
       <div>
-        <select name="sopt" onChange={onChange} value={search?.sopt}>
+        <select name="sopt" value={search?.sopt} onChange={onChange}>
           <option value="ALL">{t('통합검색')}</option>
           <option value="TITLE">{t('식당명')}</option>
           <option value="TEL">{t('연락처')}</option>
