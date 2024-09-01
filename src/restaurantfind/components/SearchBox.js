@@ -1,9 +1,32 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { SearchButton } from '../../commons/components/Buttons';
+import { MidButton } from '../../commons/components/Buttons';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: #ffffff;
+
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  select, input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+`;
 
 const SearchBox = ({ search, onChange, onSubmit }) => {
   const { t } = useTranslation();
@@ -74,9 +97,9 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
           value={search.skey}
           onChange={onChange}
         />
-        <SearchButton type="submit" color="jmt" width="80">
+        <MidButton type="submit" color="jmt" width="80">
           {t('검색')}
-        </SearchButton>
+        </MidButton>
       </div>
     </FormBox>
   );
