@@ -47,7 +47,6 @@ const ItemBox = ({ item, className }) => {
 const ItemStyledBox = styled(ItemBox)`
   padding: 20px;
   margin-bottom: 15px;
-  box-shadow: 2px 2px 5px #818181;
   border-radius: 5px;
 
   a {
@@ -61,6 +60,7 @@ const ItemStyledBox = styled(ItemBox)`
     .item-content {
       width: calc(100% - 160px);
       word-break: break-all;
+      padding: 0 20px;
 
       .title {
         font-family: 'NanumSquareB';
