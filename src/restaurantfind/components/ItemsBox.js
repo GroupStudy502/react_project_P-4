@@ -52,23 +52,29 @@ const ItemStyledBox = styled(ItemBox)`
     display: flex;
 
     .photo {
-      margin-right: 10px;
       border-radius: 5px;
     }
 
     .item-content {
       width: calc(100% - 160px);
       word-break: break-all;
-      padding: 0 20px;
+      padding: 0 30px;
 
       .title {
         font-family: 'NanumSquareB';
         font-size: ${fontSize.big};
+        margin-bottom: 10px;
+      }
+
+      .description {
+        margin-bottom: 20px;
       }
       
       .evaluation {
-        margin-top: 10px;
-        color: ${color.jmt};
+        div{
+          font-family: 'NanumSquareB';
+          color: ${color.jmt};
+        }
       }
     }
   }
