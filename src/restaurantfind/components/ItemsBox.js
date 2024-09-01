@@ -20,8 +20,8 @@ const ItemBox = ({ item, className }) => {
             className="photo"
             url={images[0].rstrImgUrl}
             alt={rstrNm}
-            width="150px"
-            height="150px"
+            width="180px"
+            height="180px"
           />
         )}
         <div className="item-content">
@@ -95,28 +95,29 @@ const ItemStyledBox = styled(ItemBox)`
 
     .photo {
       border-radius: 5px;
+      margin-right: 20px;
     }
 
     .item-content {
-      width: calc(100% - 160px);
+      width: calc(100% - 200px);
       word-break: break-all;
-      padding: 0 30px;
 
       .title {
         font-family: 'NanumSquareB';
         font-size: ${fontSize.big};
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
 
       .description {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
       
       .evaluation {
+        margin-bottom: 8px;
+
         div{
           font-family: 'NanumSquareB';
           color: ${color.jmt};
-          margin-bottom: 10px;
         }
       }
     }
