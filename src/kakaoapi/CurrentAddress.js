@@ -7,7 +7,11 @@ import { FaLocationDot } from "react-icons/fa6";
 const CurrentAddressWrapper = styled.div`
   font-family: "NanumSquareB";
   font-size: ${fontSize.medium};
-  margin-bottom: 20px;
+  margin: 10px 0 20px;
+
+  svg {
+  margin-right: 5px;
+  }
 `;
 
 const CurrentAddress = () => {
