@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 const FormBox = styled.form`
   width: 100%;
   max-width: 600px; 
-  margin: 20px auto; 
+  margin: 350px auto;
   padding: 20px;
   background-color: #fff; 
   border-radius: 8px; 
