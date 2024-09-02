@@ -1,10 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
-import { OuterBox } from '../../commons/components/LayoutBox';
+import { OuterBox, ListOuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
-import NearContainer from '../containers/NearContainer';
 import CurrentAddress from '../../kakaoapi/CurrentAddress';
+import NearContainer from '../containers/NearContainer';
+import ModalChat from '../../ai/components/ModalChat';
+import { RiRobot2Line } from "react-icons/ri";
 
 const NearList = () => {
   const { t } = useTranslation();
@@ -16,8 +18,13 @@ const NearList = () => {
       </Helmet>
       <OuterBox>
         <MainTitle>{t('주변_식당')}</MainTitle>
-        <CurrentAddress />
-        <NearContainer />
+        <ListOuterBox>
+          <CurrentAddress />
+          <NearContainer />
+        </ListOuterBox>
+        <ModalChat>
+          <RiRobot2Line style={{width: '50px', height: '50px'}}/>
+        </ModalChat>
       </OuterBox>
     </>
   );

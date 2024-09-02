@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   max-width: 450px;
   min-width: 100px;
-  margin: 10px auto;
+  margin: 20px auto;
   align-items: center;
   justify-content: center;
 

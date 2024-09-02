@@ -16,7 +16,7 @@ import { NoDataText } from './NoDataText';
 const { primary, dark, light, jmt } = color;
 
 const IconWrapper = styled.div`
-  font-size: 1.2em;
+  font-size: 1em;
   display: flex;
   align-items: center;
 

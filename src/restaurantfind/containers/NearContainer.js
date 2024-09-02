@@ -7,6 +7,11 @@ import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
 import KakaoMap from '../../kakaoapi/KakaoMap';
 import marker from '../../images/marker.png';
+import styled from 'styled-components';
+
+const ItemsBoxWrapper = styled.div `
+  margin: 20px auto;
+`;
 
 function getQueryString(searchParams) {
   const qs = {};
@@ -117,13 +122,15 @@ const NearContainer = () => {
           center={center}
           marker={locations}
           markerImage={marker}
-          zoom={8}
+          zoom={7}
         />
       )}
-      <ItemsBox items={items} />
-      {items.length > 0 && (
-        <Pagination onClick={onChangePage} pagination={pagination} />
-      )}
+      <ItemsBoxWrapper>
+        <ItemsBox items={items} />
+        {items.length > 0 && (
+          <Pagination onClick={onChangePage} pagination={pagination} />
+        )}
+      </ItemsBoxWrapper>
     </>
   );
 };

@@ -14,18 +14,6 @@ const ViewWrapper = styled.div`
   padding-bottom: 80px;
 `;
 
-const Seperator = styled.div`
-  margin: 10px 0;
-  width: 100%;
-  height: 8px;
-  background-color: #ececec;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  margin-bottom: 15px;
-`;
-
 const ReservationViewContainer = ({ setPageTitle }) => {
   const { t } = useTranslation();
   const [item, setItem] = useState(null);
@@ -44,7 +32,6 @@ const ReservationViewContainer = ({ setPageTitle }) => {
     setLoading(false);
   }, [orderNo, setPageTitle]);
 
-  // 예약 취소 처리
   const onCancel = useCallback(
     (orderNo) => {
       if (!window.confirm(t('정말_취소하겠습니까?'))) {
@@ -71,8 +58,6 @@ const ReservationViewContainer = ({ setPageTitle }) => {
   return (
     <ViewWrapper>
       <ReservationItem item={item} onCancel={onCancel} />
-      <Seperator />
-      <Seperator />
     </ViewWrapper>
   );
 };
