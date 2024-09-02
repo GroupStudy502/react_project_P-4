@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_project=self.webpackChunkreact_project||[]).push([[8541],{8541:(e,t,c)=>{c.r(t),c.d(t,{default:()=>l});var s=c(5043),h=c(3216),a=c(9136),n=c(579);const r=(0,a.Ay)((()=>c.e(337).then(c.bind(c,337)))),p=()=>(0,n.jsx)(h.BV,{children:(0,n.jsx)(h.qh,{path:"/payment",children:(0,n.jsx)(h.qh,{path:"close",element:(0,n.jsx)(r,{})})})}),l=s.memo(p)}}]);
+//# sourceMappingURL=8541.7bed0124.chunk.js.map

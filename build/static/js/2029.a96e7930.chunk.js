@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_project=self.webpackChunkreact_project||[]).push([[2029],{2029:(e,s,t)=>{t.r(s),t.d(s,{default:()=>d});var n=t(5043),l=t(3216),r=t(9136),a=t(579);const c=(0,r.Ay)((()=>Promise.all([t.e(8244),t.e(2716),t.e(1065)]).then(t.bind(t,1065)))),h=(0,r.Ay)((()=>Promise.all([t.e(8244),t.e(9143),t.e(4619)]).then(t.bind(t,5031)))),i=()=>(0,a.jsx)(l.BV,{children:(0,a.jsx)(l.qh,{path:"/ai",element:(0,a.jsx)(c,{}),children:(0,a.jsx)(l.qh,{index:!0,element:(0,a.jsx)(h,{})})})}),d=n.memo(i)}}]);
+//# sourceMappingURL=2029.a96e7930.chunk.js.map
