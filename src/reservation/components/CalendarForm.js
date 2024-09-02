@@ -8,39 +8,38 @@ const CalendarWrapper = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   font-weight: bold;
-  width: 100%; /* 부모 컨테이너의 크기에 맞게 확장 */
+  width: 100%;
 `;
 
 const StyledCalendar = styled(Calendar)`
-  width: 100%;  /* 캘린더의 가로 크기를 부모 컨테이너에 맞춤 */
-  max-width: 100%;  /* 캘린더의 최대 가로 크기를 부모 컨테이너에 맞춤 */
+  width: 100%;
+  max-width: 100%; 
   border: none;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* 연월 표시 부분 스타일 */
   .react-calendar__navigation {
     display: flex;
-    justify-content: space-between;  /* 공간을 균등하게 배분하여 양쪽 끝으로 화살표 버튼 배치 */
+    justify-content: space-between; 
     align-items: center;
     margin-bottom: 10px;
-    padding: 0 170px;  /* 내비게이션 버튼이 가로 크기에 맞게 공간 확보 */
+    padding: 0 170px; 
   }
 
   .react-calendar__navigation button {
     color: #ff3d00;
     background: none;
-    font-size: 1.5rem;  /* 내비게이션 버튼 글자 크기 */
+    font-size: 1.5rem; 
     font-weight: bold;
-    flex: 1;  /* 버튼이 균등하게 공간을 차지하도록 설정 */
-    max-width: 43%;  /* 각 버튼의 최대 너비를 43%로 설정하여 중앙의 월/년 텍스트와 조화를 이루도록 함 */
-    text-align: center;  /* 텍스트를 중앙에 배치 */
+    flex: 1; 
+    max-width: 43%;  
+    text-align: center;  
   }
 
   /* 요일 이름 스타일 */
   .react-calendar__month-view__weekdays {
-    font-size: 1.2rem; /* 요일 이름 글자 크기 */
-    margin-bottom: 10px; /* 요일 이름과 날짜 사이 간격 */
+    font-size: 1.2rem; 
+    margin-bottom: 10px;
     text-align: center;
     font-weight: bold;
     color: #ff3d00;
@@ -48,22 +47,22 @@ const StyledCalendar = styled(Calendar)`
 
   /* 날짜 스타일 */
   .react-calendar__tile {
-    font-size: 1.2rem; /* 날짜 글자 크기 */
-    padding: 15px 0; /* 날짜 상하 간격을 넓힘 */
+    font-size: 1.2rem; 
+    padding: 15px 0; 
 
     &:hover,
     &:focus,
     &.react-calendar__tile--active {
-      background: #ff3d00; /* 클릭하거나 포커스된 날짜의 배경색을 #ff3d00으로 변경 */
-      color: #ffffff; /* 클릭된 날짜의 텍스트 색상을 흰색으로 설정 */
-      border-radius: 10px; /* 모서리가 둥근 사각형으로 유지 */
+      background: #ff3d00; 
+      color: #ffffff; 
+      border-radius: 10px; 
   }
 
   .react-calendar__tile--now {
     //background: #ffe4e1;
-    background: #ffcccb;  /* 핑크색 배경 */
-    color: #d32f2f;  /* 핑크색과 조화를 이루는 진한 빨간색 텍스트 */
-    border-radius: 10px; /* 모서리가 둥근 사각형으로 표시 */
+    background: #ffcccb;  
+    color: #d32f2f;  
+    border-radius: 10px; 
   }
 
   .react-calendar__tile--active {
@@ -102,14 +101,14 @@ const TitleWithIcon = styled.h2`
   margin: 30px 0px 15px 30px;
 
   svg {
-    margin-right: 7px; //아이콘과 글씨 사이 간격 
-    font-size: 2.2rem; // 아이콘 크기 
+    margin-right: 7px; 
+    font-size: 2.2rem; 
     margin-bottom: 5px;
   }
 
   h2 {
     margin: 0;
-    font-size: 1.6rem; // h2 글씨 크기(...선택해 주세요)
+    font-size: 1.6rem;
     font-weight: bold;
   }
 `;
@@ -138,11 +137,11 @@ const CalendarForm = ({
               date.getDate() === d.getDate(),
           ) === -1
         }
-        prevLabel="<"  /* 이전 월로 가는 버튼의 라벨 */
-        nextLabel=">"  /* 다음 월로 가는 버튼의 라벨 */
-        navigationLabel={null}  /* 연도 표시를 위한 내비게이션 라벨을 숨김 */
-        next2Label={null}  /* 다음 연도로 가는 버튼을 숨김 */
-        prev2Label={null}  /* 이전 연도로 가는 버튼을 숨김 */
+        prevLabel="<"  
+        nextLabel=">"  
+        navigationLabel={null}  
+        next2Label={null} 
+        prev2Label={null}  
       />
     </CalendarWrapper>
   );

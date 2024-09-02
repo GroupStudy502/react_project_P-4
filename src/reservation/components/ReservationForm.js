@@ -27,17 +27,17 @@ const TimeTableAndPerson = styled.div`
 const TitleWithIcon = styled.h2`
   display: flex;
   align-items: center;
-  margin-bottom: 15px; /* 아이콘+글씨 줄 아래 마진 */
-  margin-top: 30px; /* 아이콘+글씨 줄 위 마진 */
+  margin-bottom: 15px; 
+  margin-top: 30px; 
 
   svg {
-    margin-right: 7px; /* 아이콘과 글씨 사이 간격 */
-    font-size: 2.2rem; /* 아이콘 크기 */
+    margin-right: 7px; 
+    font-size: 2.2rem; 
   }
 
   h2 {
-    margin: 0; /* Remove default margin from h2 */
-    font-size: 0.8em; /* h2 글씨 크기(...선택해 주세요) */
+    margin: 0; 
+    font-size: 0.8em; 
     font-weight: bold;
   }
 `;
@@ -65,9 +65,9 @@ const TimeButton = styled.button`
   border: 1px solid #ff3d00;
   border-radius: 5px;
   width: 130px;
-  padding: 10px 35px; /* 시간 버튼 가로, 세로 크기 */
-  margin: 5px 5px 20px 20px; //상/우/하/좌
-  font-size: 1.2rem; // 시간 버튼 글자 크기
+  padding: 10px 35px; 
+  margin: 5px 5px 20px 20px; 
+  font-size: 1.2rem; 
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
@@ -83,8 +83,8 @@ const PersonButton = styled.button`
   color: ${({ isSelected }) => (isSelected ? '#ffffff' : '#ff3d00')};
   border: 1px solid #ff3d00;
   border-radius: 50%;
-  width: 57px; // 인원 버튼 가로 크기
-  height: 57px; // 인원 버튼 세로 크기
+  width: 57px; 
+  height: 57px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,8 +103,8 @@ const PersonButton = styled.button`
 
 const PersonButtonsContainer = styled.div`
   display: flex;
-  flex-wrap: wrap; /* Allows wrapping if needed */
-  gap: 10px; /* Space between buttons */
+  flex-wrap: wrap; 
+  gap: 10px;
 `;
 
 const ReservationInfoBox = styled.dt`
@@ -244,7 +244,7 @@ const ReservationForm = ({
                 '* 예약시간 15분 이상 늦을 시 자동 취소됩니다.(예약금 환불 X)',
                 '* 1인 1메뉴 주문 부탁드립니다.',
                 '* 외부 음식, 음료 반입 및 취식이 불가합니다.',
-                '* 인원 변경 시 방문 3시간 전까지 예약 수정 가능합니다.',
+                '* 예약은 취소만 가능하며, 수정은 지원되지 않습니다.',
               ].map((item, index) => (
                 <Checktitle key={index}>{t(item)}</Checktitle>
               ))}
