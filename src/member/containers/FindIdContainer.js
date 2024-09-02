@@ -3,7 +3,7 @@ import FindIdForm from '../components/FindIdForm';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import apiRequest from '../../commons/libs/apiRequest';
-
+import { SmallButton } from '../../commons/components/Buttons';
 
 
 const FindIdContainer = () => {
@@ -75,11 +75,12 @@ const FindIdContainer = () => {
   return userId ? (
     <div className="find_id">
       <h2>{t('찾은_이메일')}</h2>
-      <div className="email">{userId}</div>
+      <div className="email"><h2>{userId} 입니다.</h2></div>
       <div className="button">
-        <button onClick={() => { /* 버튼 클릭 시 동작 정의 */ }}>
-          {t('다시_찾기')}
-        </button>
+    
+      <SmallButton type="submit" color="primary">
+        {t('아이디_다시찾기')}
+      </SmallButton>
       </div>
     </div>
   ) : (
