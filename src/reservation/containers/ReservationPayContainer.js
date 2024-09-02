@@ -10,9 +10,15 @@ const ReservationPayContainer = ({ payConfig, form, data, setPageTitle }) => {
     payConfig?.payMethods?.length > 0 ? payConfig.payMethods[0] : '';
   const { t } = useTranslation();
   const [payMethod, setPayMethod] = useState(initialPayMethod);
-
+  {/*
   useEffect(() => {
     setPageTitle(data.rstrNm + ' ' + t('예약결제하기'));
+  }, [t, data, setPageTitle]);
+
+  */}
+
+  useEffect(() => {
+    setPageTitle(data.rstrNm + ' ' + t('예약_확인하기'));
   }, [t, data, setPageTitle]);
 
   const onPayProcess = useCallback(() => {
@@ -32,9 +38,11 @@ const ReservationPayContainer = ({ payConfig, form, data, setPageTitle }) => {
         data={data}
         onPayMethod={onPayMethod}
       />
+      {/*
       <BigButton type="button" color="jmt" onClick={onPayProcess}>
         {t('결제하기')}
       </BigButton>
+      */}
       <form id="inicisForm" method="POST">
         <input type="hidden" name="version" value="1.0" />
         <input type="hidden" name="gopaymethod" value="VBank" />

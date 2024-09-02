@@ -5,6 +5,7 @@ import {
   MdOutlineRadioButtonChecked,
   MdOutlineRadioButtonUnchecked,
 } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const Wrapper = styled.div`
   background-color: #fdfdfd;
@@ -37,7 +38,7 @@ const InfoSection = styled.dl`
   dd {
     margin: 0 0 15px 0;
     font-size: 15px;
-    color: #7E7E7E;
+    color: #7e7e7e;
     font-weight: bold;
 
     &:last-child {
@@ -49,14 +50,14 @@ const InfoSection = styled.dl`
     margin-bottom: 3px;
   }
 `;
-
-const PaymentMethods = styled.div`
+{/*
+const PaymentMethods = styled.div
   display: flex;
   flex-direction: column;
   gap: 12px;
-`;
+;
 
-const PaymentMethod = styled.span`
+const PaymentMethod = styled.span
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -78,12 +79,47 @@ const PaymentMethod = styled.span`
 
   font-size: 16px;
   color: #333;
-`;
+;
 
-const Price = styled.div`
+const Price = styled.div
   font-size: 19px;
   font-weight: bold;
   color: #ff5722;
+;  
+
+const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
+  const { t } = useTranslation();
+
+  const payMethods = {
+    CARD: t('신용카드'),
+    DirectBank: t('계좌이체'),
+    VBank: t('가상계좌'),
+  };
+*/}
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+const ListButton = styled.button`
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: #ff3d00;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-align: center;
+  width: 100%;
+  height: 37px;
+
+  &:hover {
+    background-color: #d03e12;
+  }
 `;
 
 const formatDate = (dateString) => {
@@ -98,11 +134,10 @@ const formatTime = (timeString) => {
 
 const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
-  const payMethods = {
-    CARD: t('신용카드'),
-    DirectBank: t('계좌이체'),
-    VBank: t('가상계좌'),
+  const handleGoToList = () => {
+    navigate('/reservation/list');
   };
 
   return (
@@ -139,6 +174,7 @@ const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
         <dd>{form?.persons}명</dd>
       </InfoSection>
 
+      {/*
       <Reservationinfo>{t('결제하기')}</Reservationinfo>
       <InfoSection>
         <dt>{t('결제수단')}</dt>
@@ -168,6 +204,11 @@ const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
           {payConfig?.price?.toLocaleString()} {t('원')}
         </Price>
       </InfoSection>
+      */}
+
+      <ButtonContainer>
+        <ListButton onClick={handleGoToList}>{t('예약_목록으로_이동')}</ListButton>
+      </ButtonContainer>
     </Wrapper>
   );
 };
