@@ -207,7 +207,7 @@ const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
       */}
 
       <ButtonContainer>
-        <ListButton onClick={handleGoToList}>{t('예약_목록으로_이동')}</ListButton>
+        <ListButton onClick={handleGoToList}>{t('나의_예약_내역')}</ListButton>
       </ButtonContainer>
     </Wrapper>
   );
