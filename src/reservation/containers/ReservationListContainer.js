@@ -48,7 +48,7 @@ const ReservationListContainer = () => {
 
   const onCancel = useCallback(
     (orderNo) => {
-      if (!window.confirm(t('정말_취소하겠습니까?'))) {
+      if (!window.confirm(t('정말_취소하겠습니까'))) {
         return;
       }
 
