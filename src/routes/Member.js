@@ -6,6 +6,7 @@ const MainLayout = loadable(() => import('../layouts/MainLayout'));
 
 const Join = loadable(() => import('../member/pages/Join'));
 const Login = loadable(() => import('../member/pages/Login'));
+const Findid = loadable(() => import('../member/pages/Findid'));
 
 const Member = () => {
   return (
@@ -14,6 +15,7 @@ const Member = () => {
         <Route path="join" element={<Join />} />
       </Route>
       <Route path="/member/login" element={<Login />} />
+      <Route path="/member/find_id" element={<Findid />} />
     </Routes>
   );
 };

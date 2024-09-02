@@ -5,7 +5,14 @@ import InputBox from '../../commons/components/InputBox';
 import MessageBox from '../../commons/components/MessageBox';
 import { MidButton } from '../../commons/components/Buttons';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 여백을 추가 */
+`;
 
 const FindIdForm = ({ form, onChange, onSubmit, errors }) => {
   const { t } = useTranslation();
