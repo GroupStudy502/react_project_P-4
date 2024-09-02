@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { OuterBox, ListOuterBox } from '../../commons/components/LayoutBox';
 import { MainTitle } from '../../commons/components/TitleBox';
 import SearchContainer from '../containers/SearchContainer';
+import ModalChat from '../../ai/components/ModalChat';
+import { RiRobot2Line } from "react-icons/ri";
 
 const SearchList = () => {
   const { t } = useTranslation();
@@ -18,6 +20,9 @@ const SearchList = () => {
         <ListOuterBox>
           <SearchContainer />
         </ListOuterBox>
+        <ModalChat>
+          <RiRobot2Line style={{width: '50px', height: '50px'}}/>
+        </ModalChat>
       </OuterBox>
     </>
   );
