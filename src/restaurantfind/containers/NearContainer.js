@@ -122,7 +122,7 @@ const NearContainer = () => {
           center={center}
           marker={locations}
           markerImage={marker}
-          zoom={7}
+          zoom={6}
         />
       )}
       <ItemsBoxWrapper>
