@@ -16,9 +16,10 @@ export const MainOuterBox = styled.div`
 export const ListOuterBox = styled.div`
   max-width: 900px;
   min-width: 700px;
-  box-shadow: 0 0 20px #0000000d;
+  box-shadow: 0 0 20px #c9c9c9;
   padding: 25px 50px;
   margin: 50px auto;
+  border-radius: 3px;
 `;
 
 export const ChatOuterBox = styled.div`

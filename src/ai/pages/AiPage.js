@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import ChatWrapper from '../components/ChatWrapper';
 import ModalChat from '../../ai/components/ModalChat';
 import { RiRobot2Line } from "react-icons/ri";
-import { ChatOuterBox } from '../../commons/components/LayoutBox';
+import { ChatOuterBox, OuterBox } from '../../commons/components/LayoutBox';
+import { MainTitle } from '../../commons/components/TitleBox';
 
 
 const AiPage = () => {
@@ -14,12 +15,15 @@ const AiPage = () => {
       <Helmet>
         <title>{t('JeomMechu_AI')}</title>
       </Helmet>
-      <ChatOuterBox>
-        <ChatWrapper height="560px" marginTop="50px"/>
-        <ModalChat>
-          <RiRobot2Line style={{width: '50px', height: '50px'}}/>
-        </ModalChat>
-      </ChatOuterBox>
+      <OuterBox>
+        <MainTitle>{t('JeomMechu_AI')}</MainTitle>
+        <ChatOuterBox>
+          <ChatWrapper height="560px" marginTop="50px"/>
+          <ModalChat>
+            <RiRobot2Line style={{width: '50px', height: '50px'}}/>
+          </ModalChat>
+        </ChatOuterBox>
+      </OuterBox>
     </>
   );
 };
