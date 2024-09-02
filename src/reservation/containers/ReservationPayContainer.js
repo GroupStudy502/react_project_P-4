@@ -10,7 +10,7 @@ const ReservationPayContainer = ({ payConfig, form, data, setPageTitle }) => {
     payConfig?.payMethods?.length > 0 ? payConfig.payMethods[0] : '';
   const { t } = useTranslation();
   const [payMethod, setPayMethod] = useState(initialPayMethod);
-  {/*
+  {/* 결제 페이지 관련
   useEffect(() => {
     setPageTitle(data.rstrNm + ' ' + t('예약결제하기'));
   }, [t, data, setPageTitle]);

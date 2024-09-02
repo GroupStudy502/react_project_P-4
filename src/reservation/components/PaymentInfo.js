@@ -50,7 +50,7 @@ const InfoSection = styled.dl`
     margin-bottom: 3px;
   }
 `;
-{/*
+{/* 결제 기능 관련
 const PaymentMethods = styled.div
   display: flex;
   flex-direction: column;
@@ -174,7 +174,7 @@ const PaymentInfo = ({ payConfig, form, data, onPayMethod, payMethod }) => {
         <dd>{form?.persons}명</dd>
       </InfoSection>
 
-      {/*
+      {/* 결제 기능 관련
       <Reservationinfo>{t('결제하기')}</Reservationinfo>
       <InfoSection>
         <dt>{t('결제수단')}</dt>
