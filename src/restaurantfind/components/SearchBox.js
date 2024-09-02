@@ -2,8 +2,25 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { SearchButton } from '../../commons/components/Buttons';
+import fontSize from '../../styles/fontSize';
 
-const FormBox = styled.form``;
+const FormBox = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 7px;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+
+  select, input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    font-size: ${fontSize.normal}
+  }
+`;
 
 const SearchBox = ({ search, onChange, onSubmit }) => {
   const { t } = useTranslation();
@@ -61,7 +78,7 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
         </select>
       </div>
       <div>
-        <select name="sopt" onChange={onChange} value={search?.sopt}>
+        <select name="sopt" value={search?.sopt} onChange={onChange}>
           <option value="ALL">{t('통합검색')}</option>
           <option value="TITLE">{t('식당명')}</option>
           <option value="TEL">{t('연락처')}</option>
@@ -74,7 +91,9 @@ const SearchBox = ({ search, onChange, onSubmit }) => {
           value={search.skey}
           onChange={onChange}
         />
-        <SearchButton type="submit" color="jmt" width="80">
+      </div>
+      <div>
+        <SearchButton type="submit" color="jmt">
           {t('검색')}
         </SearchButton>
       </div>
