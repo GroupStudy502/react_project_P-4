@@ -23,16 +23,78 @@ import ItemsBox from '../../../../restaurantfind/components/ItemsBox';
 import 'ckeditor5/ckeditor5.css';
 
 const Wrapper = styled.form`
-  .ck-editor__editable {
-    height: 350px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  dl {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
   }
+
+  dt {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  dd {
+    margin-bottom: 10px;
+  }
+
   textarea {
     width: 100%;
-    height: 350px;
-    border: 1px solid #d5d5d5;
-    resize: none;
-    padding: 15px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    resize: vertical;
   }
+
+  .ck-editor__editable {
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #007bff;
+    margin-top: 10px;
+  }
+
+  label svg {
+    margin-right: 8px;
+  }
+
+  .ck-toolbar {
+    border-bottom: 1px solid #ddd;
+  }
+`;
+
+const StyledInputBox = styled(InputBox)`
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+`;
+
+const ErrorMessage = styled(MessageBox)`
+  margin-top: 5px;
+  font-size: 14px;
+  color: #e74c3c;
+`;
+
+const SubmitButton = styled(MidButton)`
+  margin-top: 20px;
 `;
 
 const Form = ({
@@ -66,25 +128,23 @@ const Form = ({
     (url) => {
       editor.execute('insertImage', { source: url });
     },
-    [editor],
-    
+    [editor]
   );
 
   return (
-
     <Wrapper onSubmit={onSubmit} autoComplete="off">
       {form?.restaurant && <ItemsBox items={[form.restaurant]} />}   
       <dl>    
         <dt>{t('작성자')}</dt>
         <dd>
-          <InputBox
+          <StyledInputBox
             type="text"
             name="poster"
             value={form?.poster}
             onChange={onChange}
           />
           {errors?.poster && (
-            <MessageBox color="danger" messages={errors.poster} />
+            <ErrorMessage color="danger" messages={errors.poster} />
           )}
         </dd>
       </dl>
@@ -93,14 +153,14 @@ const Form = ({
         <dl>
           <dt>{t('비밀번호')}</dt>
           <dd>
-            <InputBox
+            <StyledInputBox
               type="password"
               name="guestPw"
               value={form?.guestPw}
               onChange={onChange}
             />
             {errors?.guestPw && (
-              <MessageBox color="danger" messages={errors.guestPw} />
+              <ErrorMessage color="danger" messages={errors.guestPw} />
             )}
           </dd>
         </dl>
@@ -119,14 +179,14 @@ const Form = ({
       <dl>
         <dt>{t('제목')}</dt>
         <dd>
-          <InputBox
+          <StyledInputBox
             type="text"
             name="subject"
             value={form?.subject}
             onChange={onChange}
           />
           {errors?.subject && (
-            <MessageBox color="danger" messages={errors.subject} />
+            <ErrorMessage color="danger" messages={errors.subject} />
           )}
         </dd>
       </dl>
@@ -187,7 +247,7 @@ const Form = ({
             ></textarea>
           )}
           {errors?.content && (
-            <MessageBox color="danger" messages={errors.content} />
+            <ErrorMessage color="danger" messages={errors.content} />
           )}
         </dd>
       </dl>
@@ -211,10 +271,12 @@ const Form = ({
             />
           </dd>
         </dl>
+
+        
       )}
-      <MidButton type="submit" color="info">
+      <SubmitButton type="submit" color="info">
         {t(form.mode === 'update' ? '수정하기' : '작성하기')}
-      </MidButton>
+      </SubmitButton>
     </Wrapper>
   );
 };

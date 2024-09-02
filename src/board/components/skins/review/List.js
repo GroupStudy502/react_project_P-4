@@ -4,18 +4,25 @@ import ListSearchForm from './ListSearchForm';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
+
 const Wrapper = styled.div`
+  margin-top: 20px; 
+  padding: 10px;
+  border-top: 1px solid #ddd;
+`;
 
-`
 
-const List = ({ board,items, search, onChange}) => {
+const StyledListItems = styled(ListItems)`
+  margin-bottom: 20px; 
+`;
+
+const List = ({ board, items, search, onChange }) => {
   const { t } = useTranslation();
   return (
     <>
-      <ListItems items={items} />
+      <StyledListItems items={items} />
       <Wrapper>
-     
-      <ListSearchForm search={search} onSubmit={onChange} />
+        <ListSearchForm search={search} onSubmit={onChange} />
       </Wrapper>
     </>
   );

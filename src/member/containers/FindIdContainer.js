@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import apiRequest from '../../commons/libs/apiRequest';
 
+
+
 const FindIdContainer = () => {
   // 양식 데이터
   const [form, setForm] = useState({
@@ -71,9 +73,15 @@ const FindIdContainer = () => {
   );
 
   return userId ? (
-    <h1>
-      {t('찾은_이메일')}:{userId}
-    </h1>
+    <div className="find_id">
+      <h2>{t('찾은_이메일')}</h2>
+      <div className="email">{userId}</div>
+      <div className="button">
+        <button onClick={() => { /* 버튼 클릭 시 동작 정의 */ }}>
+          {t('다시_찾기')}
+        </button>
+      </div>
+    </div>
   ) : (
     <FindIdForm
       form={form}
