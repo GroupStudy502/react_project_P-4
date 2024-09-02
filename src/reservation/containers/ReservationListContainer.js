@@ -42,12 +42,10 @@ const ReservationListContainer = () => {
     })();
   }, [search, orderNo]);
 
-  /* 페이지 변경 함수 */
   const onChangePage = useCallback((p) => {
     setSearch((search) => ({ ...search, page: p }));
   }, []);
 
-  // 예약 취소 처리
   const onCancel = useCallback(
     (orderNo) => {
       if (!window.confirm(t('정말_취소하겠습니까?'))) {
@@ -68,7 +66,6 @@ const ReservationListContainer = () => {
     [t],
   );
 
-  // 로딩 처리
   if (loading) {
     return <Loading />;
   }

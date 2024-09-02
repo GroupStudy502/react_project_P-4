@@ -67,7 +67,7 @@ const StatusAndButtonWrapper = styled.div`
   button {
     padding: 6px 12px;
     color: #ff3d00;
-    border-color: #ff3d00;;
+    border-color: #ff3d00;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -99,12 +99,28 @@ const ReservationButton = styled.button`
   }
 `;
 
+const formatDateTime = (rDateTime) => {
+  const date = new Date(rDateTime);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+
+  const formattedDate = `${year}년 ${month}월 ${day}일`;
+  const formattedTime = `${hours}시 ${minutes.toString().padStart(2, '0')}분`;
+
+  return { formattedDate, formattedTime };
+};
+
 const ItemBox = ({ item, className, onCancel }) => {
   const url = `/reservation/info/${item?.orderNo}`;
   const { t } = useTranslation();
   const {
     restaurant: { images, rstrNm },
   } = item;
+
+  const { formattedDate, formattedTime } = formatDateTime(item?.rDateTime);
 
   return (
     <li className={className}>
@@ -134,14 +150,16 @@ const ItemBox = ({ item, className, onCancel }) => {
             <div className="raddress">{item?.raddress}</div>
           </Resaddress>
           <Resinfo>
-            <div className="rDateTime">{item?.rDateTime}</div>
+            <div className="rDateTime">
+              {formattedDate} {formattedTime}
+            </div>
             <div className="persons">{item?.persons}명</div>
           </Resinfo>
           <StatusAndButtonWrapper>
             <div className="status">{item?.statusStr}</div>
             {item && ['START', 'APPLY', 'CONFIRM'].includes(item.status) && (
               <button type="button" onClick={() => onCancel(item.orderNo)}>
-                {t('예약취소')}
+                {t('예약_취소')}
               </button>
             )}
           </StatusAndButtonWrapper>

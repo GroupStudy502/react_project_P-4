@@ -20,7 +20,6 @@ const ReservationContainer = ({ setPageTitle }) => {
     name: userInfo?.userName,
     email: userInfo?.email,
     mobile: userInfo?.mobile,
-    //persons: 1,
   });
   const [times, setTimes] = useState([]);
   const [errors, setErrors] = useState({});
@@ -43,7 +42,7 @@ const ReservationContainer = ({ setPageTitle }) => {
 
   const onCalendarClick = useCallback(
     (selected) => {
-      const yoil = selected.getDay(); // 0(일) ~ 6(토)
+      const yoil = selected.getDay();
       const { availableTimes } = data;
 
       for (const [k, times] of Object.entries(availableTimes)) {
@@ -78,7 +77,7 @@ const ReservationContainer = ({ setPageTitle }) => {
 
       const _errors = {};
       let hasErrors = false;
-      // 필수 항목 검증 S
+
       const requiredFields = {
         rDate: t('예약날짜를_선택하세요'),
         rTime: t('예약시간을_선택하세요'),
@@ -99,7 +98,6 @@ const ReservationContainer = ({ setPageTitle }) => {
         hasErrors = true;
       }
 
-      // 필수 항목 검증 E
       setErrors(_errors);
       if (hasErrors) {
         return;
@@ -123,7 +121,6 @@ const ReservationContainer = ({ setPageTitle }) => {
   }
 
   if (payConfig) {
-    // 결제 설정이 있는 경우 결제 진행
     return (
       <ReservationPayContainer
         payConfig={payConfig}

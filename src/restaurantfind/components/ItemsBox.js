@@ -11,7 +11,7 @@ const ItemBox = ({ item, className }) => {
 
   const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn, prkgPosYn, petEntrnPosblYn, dcrnYn, fgggMenuOfrYn, wifiOfrYn, mbPmamtYn, smorderYn } = item;
   const url = `/restaurant/info/${rstrId}`;
-  
+
   return (
     <li className={className}>
       <Link to={url}>
@@ -27,6 +27,7 @@ const ItemBox = ({ item, className }) => {
         <div className="item-content">
           <div className="title">{rstrNm}</div>
           <div className="description">{rstrIntrcnCont}</div>
+
           {(naverGrad || awardInfoDscrn) && (
             <div className="evaluation">
               {naverGrad && (
@@ -111,7 +112,7 @@ const ItemStyledBox = styled(ItemBox)`
       .description {
         margin-bottom: 10px;
       }
-      
+
       .evaluation {
         margin-bottom: 8px;
 
