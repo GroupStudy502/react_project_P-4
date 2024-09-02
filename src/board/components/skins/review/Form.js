@@ -18,7 +18,7 @@ import { FaCheckSquare, FaSquare } from 'react-icons/fa';
 import { MidButton } from '../../../../commons/components/Buttons';
 import FileUpload from '../../../../commons/components/FileUpload';
 import FileItems from '../../../../commons/components/FileItems';
-import ItemsBox from '../../../../restaurant/components/ItemsBox';
+import ItemsBox from '../../../../restaurantfind/components/ItemsBox';
 
 import 'ckeditor5/ckeditor5.css';
 

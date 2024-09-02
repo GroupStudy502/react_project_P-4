@@ -1,5 +1,12 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import fontSize from '../styles/fontSize';
+
+const CurrentAddressWrapper = styled.div`
+  font-family: "NanumSquareB";
+  font-size: ${fontSize.medium};
+`;
 
 const CurrentAddress = () => {
   const [address, setAddress] = useState('');
@@ -22,7 +29,11 @@ const CurrentAddress = () => {
     });
   }, [address]);
 
-  return address && <div>{address}</div>;
+  return address && (
+    <CurrentAddressWrapper>
+      {address}
+    </CurrentAddressWrapper>
+  );
 };
 
 export default React.memo(CurrentAddress);

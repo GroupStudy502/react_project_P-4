@@ -2,24 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import fontSize from '../styles/fontSize';
 
-const FooterContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
 const FooterBox = styled.footer`
   min-height: 250px;
   vertical-align: baseline;
   border-top: 1px solid #d5d5d5;
   margin: 50px auto 0;
-  
+  display: flex;
+  justify-content: center;
+
   div {
     display: inline-block;
     padding: 50px 200px;
-    @media (max-width: 768px) {
-      padding: 20px;
-    }
   }
 
   h4 {
@@ -77,7 +70,6 @@ const FooterBox = styled.footer`
 
 const Footer = () => {
   return (
-    <FooterContainer>
       <FooterBox>
         <div>
           <h4>
@@ -116,7 +108,6 @@ const Footer = () => {
           <span className="jmc">JEOMMECHU</span>
         </div>
       </FooterBox>
-    </FooterContainer>
   );
 };
 
