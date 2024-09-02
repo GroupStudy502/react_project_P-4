@@ -6,7 +6,7 @@ import { MainTitle } from '../../commons/components/TitleBox';
 import CurrentAddress from '../../kakaoapi/CurrentAddress';
 import NearContainer from '../containers/NearContainer';
 import ModalChat from '../../ai/components/ModalChat';
-import { RiRobot2Line } from "react-icons/ri";
+import { RiRobot2Line } from 'react-icons/ri';
 
 const NearList = () => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const NearList = () => {
           <NearContainer />
         </ListOuterBox>
         <ModalChat>
-          <RiRobot2Line style={{width: '50px', height: '50px'}}/>
+          <RiRobot2Line style={{ width: '50px', height: '50px' }} />
         </ModalChat>
       </OuterBox>
     </>
