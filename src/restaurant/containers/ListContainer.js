@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { apiList } from '../../restaurant/apis/apiInfo';
-import ItemsBox from '../components/ItemsBox';
+import ItemsBox from '../../restaurantfind/components/ItemsBox';
 import Pagination from '../../commons/components/Pagination';
 import Loading from '../../commons/components/Loading';
 

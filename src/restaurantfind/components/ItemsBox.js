@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ImageBgBox } from '../../commons/components/ImageBox';
@@ -6,7 +7,9 @@ import fontSize from '../../styles/fontSize';
 import { color } from '../../styles/color';
 
 const ItemBox = ({ item, className }) => {
-  const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn } = item;
+  const { t } = useTranslation();
+
+  const { rstrId, images, rstrNm, rstrIntrcnCont, naverGrad, awardInfoDscrn, prkgPosYn, petEntrnPosblYn, dcrnYn, fgggMenuOfrYn, wifiOfrYn, mbPmamtYn, smorderYn } = item;
   const url = `/restaurant/info/${rstrId}`;
   
   return (
@@ -17,8 +20,8 @@ const ItemBox = ({ item, className }) => {
             className="photo"
             url={images[0].rstrImgUrl}
             alt={rstrNm}
-            width="150px"
-            height="150px"
+            width="180px"
+            height="180px"
           />
         )}
         <div className="item-content">
@@ -38,6 +41,45 @@ const ItemBox = ({ item, className }) => {
               )}
             </div>
           )}
+          {(prkgPosYn || petEntrnPosblYn) && (
+            <div className="convenience">
+              {prkgPosYn && (
+                <div className="prkgPosYn">
+                  {t('주차_가능')}
+                </div>
+              )}
+              {petEntrnPosblYn && (
+                <div className="petEntrnPosblYn">
+                  {t('반려동물_동반')}
+                </div>
+              )}
+              {dcrnYn && (
+                <div className="dcrnYn">
+                  {t('유아시설')}
+                </div>
+              )}
+              {fgggMenuOfrYn && (
+                <div className="fgggMenuOfrYn">
+                  {t('다국어_메뉴판')}
+                </div>
+              )}
+              {wifiOfrYn && (
+                <div className="wifiOfrYn">
+                  {t('무선인터넷')}
+                </div>
+              )}
+              {mbPmamtYn && (
+                <div className="mbPmamtYn">
+                  {t('모바일_페이먼트')}
+                </div>
+              )}
+              {smorderYn && (
+                <div className="smorderYn">
+                  {t('스마트_오더')}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </Link>
     </li>
@@ -45,31 +87,51 @@ const ItemBox = ({ item, className }) => {
 };
 
 const ItemStyledBox = styled(ItemBox)`
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 2px 2px 5px #818181;
+  padding: 20px 0;
   border-radius: 5px;
 
   a {
     display: flex;
 
     .photo {
-      margin-right: 10px;
       border-radius: 5px;
+      margin-right: 20px;
     }
 
     .item-content {
-      width: calc(100% - 160px);
+      width: calc(100% - 200px);
       word-break: break-all;
 
       .title {
         font-family: 'NanumSquareB';
         font-size: ${fontSize.big};
+        margin-bottom: 8px;
+      }
+
+      .description {
+        margin-bottom: 10px;
       }
       
       .evaluation {
-        margin-top: 10px;
-        color: ${color.jmt};
+        margin-bottom: 8px;
+
+        div{
+          font-family: 'NanumSquareB';
+          color: ${color.jmt};
+        }
+      }
+    }
+    
+    .convenience {
+      color: #8f8f8f;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      align-content: center;
+
+      div {
+        margin-right: 7px;
       }
     }
   }

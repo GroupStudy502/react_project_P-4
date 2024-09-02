@@ -5,12 +5,20 @@ const { dark } = color;
 export const OuterBox = styled.div`
   max-width: 900px;
   min-width: 700px;
-  padding: 25px 50px 0 50px;
+  padding: 25px 50px;
   margin: 50px auto;
 `;
 
 export const MainOuterBox = styled.div`
   margin: 0 auto 50px;
+`;
+
+export const ListOuterBox = styled.div`
+  max-width: 900px;
+  min-width: 700px;
+  box-shadow: 0 0 20px #0000000d;
+  padding: 25px 50px;
+  margin: 50px auto;
 `;
 
 export const ChatOuterBox = styled.div`

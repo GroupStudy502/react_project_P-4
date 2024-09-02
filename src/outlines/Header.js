@@ -25,6 +25,7 @@ const HeaderBox = styled.header`
   .site-top {
     border-bottom: 1px solid #d5d5d5;
     height: 50px;
+    font-size: ${fontSize.medium};
 
     .layout-width {
       margin-top: 20px;
@@ -36,13 +37,17 @@ const HeaderBox = styled.header`
       a {
         display: inline-block;
         line-height: 34px;
-        margin-left: 10px;
-        font-size: ${fontSize.normal};
+        margin: 0 10px;
+        font-family: 'NanumSquareB';
 
         &.on {
           color: ${jmt};
         }
       }
+    }
+    
+    .logout {
+      font-size: ${fontSize.medium};
     }
   }
 `;
@@ -87,15 +92,13 @@ const Header = () => {
                   ></img>
                 </Link>
               )}
-              <span style={{ fontSize: '15px'}}>
                 {userInfo?.userName}({userInfo?.email}){t('님_로그인')}
-              </span>
               {isAdmin && (
                 <a href={adminUrl} target="_blank">
                   {t('사이트_관리')}
                 </a>
               )}
-              <SmallButton color="secondary" width={100} onClick={onLogout}>
+              <SmallButton className="logout" color="secondary" width={100} onClick={onLogout}>
                 {t('로그아웃')}
               </SmallButton>
             </>
