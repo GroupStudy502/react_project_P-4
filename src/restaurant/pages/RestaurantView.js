@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { OuterBox } from "../../commons/components/LayoutBox";
 import { MainTitle } from "../../commons/components/TitleBox";
 import ViewContainer from "../containers/ViewContainer";
-import styled from "styled-components";
+import ModalChat from '../../ai/components/ModalChat';
+import { RiRobot2Line } from "react-icons/ri";import styled from "styled-components";
 import { color } from "../../styles/color";
 
 
@@ -28,6 +29,9 @@ const RestaurantView = () => {
             <OuterBoxStyle>
                 <MainTitle>{pageTitle}</MainTitle>
                 <ViewContainer setPageTitle={setPageTitle} />
+                <ModalChat>
+                    <RiRobot2Line style={{width: '50px', height: '50px'}}/>
+                </ModalChat>
             </OuterBoxStyle>
         </>
 
