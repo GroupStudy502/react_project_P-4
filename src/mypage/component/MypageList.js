@@ -8,13 +8,22 @@ import UserInfoContext from '../../member/modules/UserInfoContext';
 import { FaUserCircle,FaBookmark } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
 
+const MyMemberContainer = styled.div`
+  background-color: pink;
+  border-radius: 10px;
+  padding: 20px; 
+  width: 350px; 
+  margin: 0 auto; 
+`;
+
 const ImageBox = styled.img`
-  display: flex;
+  display: block;
   width: 170px;
   margin: 0 auto;
   border: 2px solid #ccc;
   border-radius: 70%;
   overflow: hidden;
+  
 `;
 
 const MypageList = () => {

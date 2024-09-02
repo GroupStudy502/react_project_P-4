@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   border: 2px solid #ccc;
   border-radius: 50%;
   overflow: hidden;
+
 `;
 
 const ProfileImage = ({ gid, profileImage, fileUploadCallback, className }) => {
