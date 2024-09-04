@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import FindIdForm from '../components/FindIdForm';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import apiRequest from '../../commons/libs/apiRequest';
 import { SmallButton } from '../../commons/components/Buttons';
 
@@ -77,10 +77,12 @@ const FindIdContainer = () => {
       <h2>{t('찾은_이메일')}</h2>
       <div className="email"><h2>{userId} 입니다.</h2></div>
       <div className="button">
-    
-      <SmallButton type="submit" color="primary">
+
+        <Link to="/member/login">
+      <SmallButton color="primary" width='50px'>
         {t('아이디_다시찾기')}
       </SmallButton>
+      </Link>
       </div>
     </div>
   ) : (
