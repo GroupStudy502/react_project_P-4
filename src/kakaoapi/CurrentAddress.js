@@ -2,10 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import fontSize from '../styles/fontSize';
+import { FaLocationDot } from "react-icons/fa6";
 
 const CurrentAddressWrapper = styled.div`
   font-family: "NanumSquareB";
   font-size: ${fontSize.medium};
+  margin: 10px 0 20px;
+
+  svg {
+  margin-right: 5px;
+  }
 `;
 
 const CurrentAddress = () => {
@@ -31,6 +37,7 @@ const CurrentAddress = () => {
 
   return address && (
     <CurrentAddressWrapper>
+      <FaLocationDot />
       {address}
     </CurrentAddressWrapper>
   );
