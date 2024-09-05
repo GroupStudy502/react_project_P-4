@@ -11,13 +11,13 @@ import ReservationPayContainer from './ReservationPayContainer';
 
 const ReservationContainer = ({ setPageTitle }) => {
   const {
-    states: { userInfo },
+    states: { userInfo }, //상태만 조회
   } = useContext(UserInfoContext);
-  const { rstrId } = useParams();
+  const { rstrId } = useParams(); 
   const [data, setData] = useState(null);
   const [form, setForm] = useState({
     rstrId,
-    name: userInfo?.userName,
+    name: userInfo?.userName, // 이름 가져올 때 
     email: userInfo?.email,
     mobile: userInfo?.mobile,
   });
