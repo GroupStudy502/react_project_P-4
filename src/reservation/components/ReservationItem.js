@@ -133,9 +133,7 @@ const formatMobileNumber = (mobile) => {
 
 const ReservationItem = ({ item, onCancel }) => {
   const { t } = useTranslation();
-  const {
-    restaurant: { images, rstrNm },
-  } = item;
+  const {restaurant: { images, rstrNm }, } = item;
   const {
     orderNo,
     rname,
